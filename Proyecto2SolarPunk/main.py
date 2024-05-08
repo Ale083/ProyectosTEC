@@ -2,11 +2,30 @@ import random as r #en vez de por ejemplo poner random.randint se pone r.randint
 from funcionesNoRelacionadas import *
 
 def main():
-    nombres = ["Lucía", "Juan", "María", "Carlos", "Ana", "Pedro", "Laura", "Diego", "Sofía", "Javier","Valentina", "Miguel", "Paula", "Sebastián", "Andrea", "José", "Elena", "Gabriel", "Isabella", "Daniel"]
-    apellidos = ["García", "Fernández", "López", "Martínez", "González", "Rodríguez", "Pérez", "Sánchez", "Ramírez", "Torres","Flores", "Vásquez", "Ruiz", "Díaz", "Alvarez", "Gómez", "Romero", "Hernández", "Jiménez", "Moreno"]
-    primerosNombres = ["Parque", "Jardín", "Bosque", "Plaza", "Paseo", "Arboreto", "Sendero", "Mirador", "Pulmón", "Rincón", "Orilla", "Vereda", "Oasis", "Colina", "Pradera", "Río", "Balcón", "Cascada", "Ladera", "Reserva"]
-    segundosNombres = ["Primavera", "Encantado", "Alegre", "Sombra", "Fresco", "Tranquilo", "Silvestre", "Esmeralda", "Susurro", "Sereno", "Encanto", "Armonía", "Cristal", "Eterno", "Cálido", "Aguamarina", "Brisa", "Luminoso", "Floreciente", "Serenidad"]
-    print("bla bla bla, hablada ... Puedes escoger entre 1-100 áreas verdes y 2-200 personas")
+    nombres = [
+        "Lucía", "Juan", "María", "Carlos", "Ana", "Pedro", "Laura", "Diego",
+        "Sofía", "Javier", "Valentina", "Miguel", "Paula", "Sebastián",
+        "Andrea", "José", "Elena", "Gabriel", "Isabella", "Daniel"
+    ]
+    apellidos = [
+        "García", "Fernández", "López", "Martínez", "González", "Rodríguez",
+        "Pérez", "Sánchez", "Ramírez", "Torres", "Flores", "Vásquez", "Ruiz",
+        "Díaz", "Alvarez", "Gómez", "Romero", "Hernández", "Jiménez", "Moreno"
+    ]
+    primerosNombres = [
+        "Parque", "Jardín", "Bosque", "Plaza", "Paseo", "Arboreto", "Sendero",
+        "Mirador", "Pulmón", "Rincón", "Orilla", "Vereda", "Oasis", "Colina",
+        "Pradera", "Río", "Balcón", "Cascada", "Ladera", "Reserva"
+    ]
+    segundosNombres = [
+        "Primavera", "Encantado", "Alegre", "Sombra", "Fresco", "Tranquilo",
+        "Silvestre", "Esmeralda", "Susurro", "Sereno", "Encanto", "Armonía",
+        "Cristal", "Eterno", "Cálido", "Aguamarina", "Brisa", "Luminoso",
+        "Floreciente", "Serenidad"
+    ]
+    print(
+        "Bienvenido al juego HABLANDO CON TU SOLAR PUNK. En este juego, vas a poder escoger entre 1-100 áreas verdes y 2-200 personas. Para jugar, tendrás que escoger una de las áreas verdes y podrás interactuar con los personajes que te interesen dentro de ellas."
+    )
     numAreas = input("Cuantas áreas verdes quieres generar")
     if not esDigito(numAreas):
         print("Error, el cáracter ingresado no es un número.")
@@ -26,7 +45,8 @@ def main():
         print("Error, el límite de personas es de 2-200")
         return None
     nombresPersonas = juntarListas(nombres, apellidos, numPersonas, [])
-    listaPrincipal(nombresAreas, nombresPersonas, numAreas, numPersonas)
+    listaPrincipal = crearlistaPrincipal(nombresAreas, nombresPersonas, numAreas, numPersonas)
+    print(listaPrincipal)
 
 def juntarListas(lista1, lista2, contador, listaNueva, index=0):
     '''
@@ -39,7 +59,7 @@ def juntarListas(lista1, lista2, contador, listaNueva, index=0):
     else: 
         return listaNueva
 
-def listaPrincipal(nombresAreas, nombresPersonas, numAreas, numPersonas):
+def crearlistaPrincipal(nombresAreas, nombresPersonas, numAreas, numPersonas):
     '''
     E: la lista con los nombres de las áreas, la lista con los nombres de las personas y los números de áreas y personas.
     S: Retorna una lista de la forma [[lugar1,[personas en lugar1]],[lugar2,[personas en lugar2]]...]
@@ -52,6 +72,7 @@ def listaPrincipal(nombresAreas, nombresPersonas, numAreas, numPersonas):
         crearListaPrincipal3(nombresPersonas[numAreas*(numPersonas//numAreas):], listaNueva)
     else:
         crearListaPrincipal3(nombresPersonas[numAreas*(numPersonas//numAreas):], listaNueva)
+    return listaNueva
 
 
 def crearListaPrincipal1(nombresAreas, numAreas, listaNueva = [], index=0): #TODO: cambiar nombre a algo que tenga más sentido
@@ -84,7 +105,7 @@ def crearListaPrincipal2(nombresPersonas, numAreas, contador, listaNueva,j=0, i=
         listaNueva[i][1] += [nombresPersonas[0]]
         return crearListaPrincipal2(nombresPersonas[1:], numAreas, contador, listaNueva, j+1, i)
 
-def crearListaPrincipal3(nombresPersonas, listaNueva, index=0):
+def crearListaPrincipal3(nombresPersonas, listaNueva, index=0): #TODO: cambiar nombre a algo que tenga más sentido
     '''
     E: la lista de las personas que sobraron (podría ser lista vacía desde el inicio), la lista que devolvió crearListaPrincipal2 o de haber menos personas que lugares en un principio, la que devolvió crearListaPrincipal1, un index que es 0 por default.
     S: Mete a la lista principal las personas sobrantes (en el caso que haya), en las primeras áreas.
@@ -94,9 +115,8 @@ def crearListaPrincipal3(nombresPersonas, listaNueva, index=0):
     else:
         listaNueva[index][1] += [nombresPersonas[0]]
         return crearListaPrincipal3(nombresPersonas[1:], listaNueva, index+1)
+
+
+
 main()
-
-
-
-
 
