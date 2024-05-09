@@ -179,3 +179,4 @@ main()
 #TODO validaciones en general
 #TODO salirse del área
 #TODO que cuando el usuario se equivoque que se devuelva a la función
+#TODO Cuando sea un área verde sin personas, que imprima y la vara cosas diferentes.
