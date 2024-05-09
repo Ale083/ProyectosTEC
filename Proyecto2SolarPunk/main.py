@@ -1,5 +1,6 @@
 import random as r #en vez de por ejemplo poner random.randint se pone r.randint
 from funcionesNoRelacionadas import *
+import os
 
 def main():
     nombres = [
@@ -28,7 +29,7 @@ def main():
     )
     numAreas = input("Cuantas áreas verdes quieres generar")
     if not esDigito(numAreas):
-        print("Error, el cáracter ingresado no es un número.")
+        print("Error, El caracter o caracteres ingresados no son un número")
         return None
     numAreas = int(numAreas)
     if numAreas <1 or numAreas >100:
@@ -38,7 +39,7 @@ def main():
 
     numPersonas = input("Cuantas personas quieres generar?")
     if not esDigito(numPersonas):
-        print("Error, el cáracter ingresado no es un número.")
+        print("Error, El caracter o caracteres ingresados no son un número")
         return None
     numPersonas = int(numPersonas)
     if numPersonas <2 or numPersonas >200:
@@ -46,7 +47,9 @@ def main():
         return None
     nombresPersonas = juntarListas(nombres, apellidos, numPersonas, [])
     listaPrincipal = crearlistaPrincipal(nombresAreas, nombresPersonas, numAreas, numPersonas)
+    os.system('cls') #TODO: antes de entregarlo, cambiar cls a clear
     printMapa(numAreas, listaPrincipal)
+    queAreaVisitar(listaPrincipal, numAreas)
 
 def juntarListas(lista1, lista2, contador, listaNueva, index=0):
     '''
@@ -127,6 +130,34 @@ def printMapaAux(numAreas,listaPrincipal,index=0):
     print(f"{index}) {listaPrincipal[index][0]} --> {len(listaPrincipal[index][1])} persona(s)") #[input]. [área] --> N Personas
     printMapaAux(numAreas,listaPrincipal,index+1)
 
+
+def queAreaVisitar(listaPrincipal, numAreas):
+    areaAVisitar = input(f"\nCual área verde quieres visitar? [0,{numAreas-1}]")
+    if not esDigito(areaAVisitar):
+        print("Error, El caracter o caracteres ingresados no son un número")
+        return None
+    areaAVisitar = int(areaAVisitar)
+    if areaAVisitar < 0 or areaAVisitar >= numAreas:
+        print("Error, no es un número valido")
+        return None
+    visitarArea(listaPrincipal[areaAVisitar])
+    
+def visitarArea(Area):
+    printPersonasEnArea(Area)
+    
+
+def printPersonasEnArea(Area):
+    print(f"En {Area[0]} están las siguientes personas")
+    printPersonasEnAreaAux(Area, len(Area[1]))
+
+def printPersonasEnAreaAux(Area, lenArea, index=0):
+    if lenArea == index:
+        return None
+    print(f"{index}) {Area[1][index]}")
+    return printPersonasEnAreaAux(Area, lenArea, index+1)
+
+
+
 main()
 
-#TODO validaciones
+#TODO validaciones en general
