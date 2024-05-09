@@ -47,7 +47,7 @@ def main():
         return None
     nombresPersonas = juntarListas(nombres, apellidos, numPersonas, [])
     listaPrincipal = crearlistaPrincipal(nombresAreas, nombresPersonas, numAreas, numPersonas)
-    os.system('cls') #TODO: antes de entregarlo, cambiar cls a clear
+    os.system('clear')
     printMapa(numAreas, listaPrincipal)
     queAreaVisitar(listaPrincipal, numAreas)
 
@@ -142,22 +142,40 @@ def queAreaVisitar(listaPrincipal, numAreas):
         return None
     visitarArea(listaPrincipal[areaAVisitar])
     
-def visitarArea(Area):
-    printPersonasEnArea(Area)
+def visitarArea(listaArea):
+    printPersonasEnArea(listaArea)
+    quePersonaHablar(listaArea)
+    
+def quePersonaHablar(listaArea):
+    personaAHablar = input(f"\nCon que persona quieres hablar? [0,{len(listaArea[1])-1}]")
+    if not esDigito(personaAHablar):
+        print("Error, El caracter o caracteres ingresados no son un número")
+        return None
+    personaAHablar = int(personaAHablar)
+    if personaAHablar < 0 or personaAHablar >= len(listaArea[1]):
+        print("Error, no es un número valido")
+        return None
+    hablarPersona(listaArea[1][personaAHablar], listaArea[0])
+
+def hablarPersona(Persona, Area):
+    print(f"Hola soy {Persona} y estoy en {Area}")
+    #TODO: todo lo relacionado con dialogos y etc.
     
 
-def printPersonasEnArea(Area):
-    print(f"En {Area[0]} están las siguientes personas")
-    printPersonasEnAreaAux(Area, len(Area[1]))
+def printPersonasEnArea(listaArea):
+    print(f"En {listaArea[0]} están las siguientes personas")
+    printPersonasEnAreaAux(listaArea, len(listaArea[1]))
 
-def printPersonasEnAreaAux(Area, lenArea, index=0):
+def printPersonasEnAreaAux(listaArea, lenArea, index=0):
     if lenArea == index:
         return None
-    print(f"{index}) {Area[1][index]}")
-    return printPersonasEnAreaAux(Area, lenArea, index+1)
+    print(f"{index}) {listaArea[1][index]}")
+    return printPersonasEnAreaAux(listaArea, lenArea, index+1)
 
 
 
 main()
 
 #TODO validaciones en general
+#TODO salirse del área
+#TODO que cuando el usuario se equivoque que se devuelva a la función
