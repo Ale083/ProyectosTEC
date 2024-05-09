@@ -46,7 +46,7 @@ def main():
         return None
     nombresPersonas = juntarListas(nombres, apellidos, numPersonas, [])
     listaPrincipal = crearlistaPrincipal(nombresAreas, nombresPersonas, numAreas, numPersonas)
-    print(listaPrincipal)
+    printMapa(numAreas, listaPrincipal)
 
 def juntarListas(lista1, lista2, contador, listaNueva, index=0):
     '''
@@ -117,6 +117,16 @@ def crearListaPrincipal3(nombresPersonas, listaNueva, index=0): #TODO: cambiar n
         return crearListaPrincipal3(nombresPersonas[1:], listaNueva, index+1)
 
 
+def printMapa(numAreas,listaPrincipal):
+    print("Las siguientes son las áreas verdes creadas:")
+    printMapaAux(numAreas,listaPrincipal)
+    
+def printMapaAux(numAreas,listaPrincipal,index=0):
+    if numAreas == index:
+        return None
+    print(f"{index}) {listaPrincipal[index][0]} --> {len(listaPrincipal[index][1])} persona(s)") #[input]. [área] --> N Personas
+    printMapaAux(numAreas,listaPrincipal,index+1)
 
 main()
 
+#TODO validaciones
