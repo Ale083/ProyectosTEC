@@ -21,9 +21,7 @@ def main():
     ]
 
     #bienvenida
-    print(
-        "Bienvenido al juego HABLANDO CON TU SOLAR PUNK. En este juego, vas a poder escoger entre 1-100 áreas verdes y 2-200 personas. Para jugar, tendrás que escoger una de las áreas verdes y podrás interactuar con los personajes que te interesen dentro de ellas. Que disfrutes el juego!"
-    ) 
+    print("Bienvenido al juego HABLANDO CON TU SOLAR PUNK. En este juego, vas a poder escoger entre 1-100 áreas verdes y 2-200 personas. Para jugar, tendrás que escoger una de las áreas verdes y podrás interactuar con los personajes que te interesen dentro de ellas. Que disfrutes el juego!") 
     print(r'''
              .-.                                    ,-.
           .-(   )-.                              ,-(   )-.
