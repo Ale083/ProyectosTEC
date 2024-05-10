@@ -24,6 +24,29 @@ def main():
     print(
         "Bienvenido al juego HABLANDO CON TU SOLAR PUNK. En este juego, vas a poder escoger entre 1-100 áreas verdes y 2-200 personas. Para jugar, tendrás que escoger una de las áreas verdes y podrás interactuar con los personajes que te interesen dentro de ellas. Que disfrutes el juego!"
     ) 
+    print(r'''
+             .-.                                    ,-.
+          .-(   )-.                              ,-(   )-.
+         (     __) )-.                        ,-(_      __)
+          `-(       __)                      (_    )  __)-'
+            `(____)-',                        `-(____)-'
+          - -  :   :  - -
+              / `-' \
+            ,    |   .
+                 .                         _
+                                          >')
+                       _   /              (\\         (W)
+                      =') //               = \     -. `|'
+                       ))////)             = ,-      \(| ,-
+                      ( (///))           ( |/  _______\|/____
+        ~~~~~~~~~~~~~~~`~~~~'~~~~~~~~~~~~~\|,-'::::::::::::::
+                    _                 ,----':::::::::::::::::
+                 {><_'c   _      _.--':MJP:::::::::::::::::::
+        __,'`----._,-. {><_'c  _-':::::::::::::::::::::::::::
+        :.:.:.:.:.:.:.\_    ,-'.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:
+        .:.:.:.:.:.:.:.:`--'.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.
+        .....................................................
+    ''')
     
     numAreas = input("Cuantas áreas verdes quieres generar?")
     if not esDigito(numAreas):
