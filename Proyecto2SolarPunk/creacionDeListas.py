@@ -30,7 +30,7 @@ def crearlistaPrincipal(nombresAreas, nombresPersonas, numAreas, numPersonas):
 def EsqueletoListaPrincipal(nombresAreas,numAreas,listaNueva=[],index=0):  
     '''
     E: La lista con los nombres de las áreas y el número de áreas, además una lista que es vacía por default y un indice que es 0 por default
-    S: Retorna una lista de la forma --> [[lugar1,[]], [lugar2,[]]...]
+    S: Retorna una lista de la forma --> [[lugar1,[]], [lugar2,[]]...], puede verse como un "esqueleto" de la lista principal
     '''
     if index == numAreas:
         return listaNueva
@@ -40,15 +40,16 @@ def EsqueletoListaPrincipal(nombresAreas,numAreas,listaNueva=[],index=0):
 
 
 def DividirPersonasEquivalentemente(nombresPersonas,numAreas,contador,listaNueva,j=0, i=0): #Hace que cada area tenga la misma cantidad de personas como minimo. 
-
-    
     '''
-    E: Las entradas son la lista con los nombres de personas, el número de áreas, el contador que es numPersonas//numAreas 
-        , la lista que nos dió EsqueletoListaPrincipal, los índices j,i
-        La i se usa para indexar a cada área.
-        La j se usa para indexar a las personas dentro de cada área.
+    E: Las entradas son la lista con los nombres de personas, el número de áreas, el contador que es numPersonas//numAreas (número de personas que van a haber en cada área al repartir de forma equivalente) 
+        , el esqueleto de la lista principal, los índices j,i
+        La i se usa para indexar en el esqueleto. Por ejemplo listaEsqueleto[i=0] == [área1,[]]
+        La j se usa como un index que cuando llega al número de personas por área (contador) se devuelve a 0.
     S: divide equivalentemente a las personas en cada área, las que sobran no se meten, se meterán en DividirPersonasSobrantes.
         Las personas se meten en las listas vacías que devolvió EsqueletoListaPrincipal.
+    Como sirve: La i como se dijo antes, se usa para indexar en el esqueleto, y la j para controlar que se meta el número correcto de 
+    personas por área, cuando llega a ese número, j se devuelve a 0 y se le suma 1 a i, para ir a la siguiente área, esto continúa 
+    hasta que i == numAreas.
     '''
     if i == numAreas:
         return listaNueva
