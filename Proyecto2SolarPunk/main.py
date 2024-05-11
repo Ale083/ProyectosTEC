@@ -71,18 +71,26 @@ def main():
 
     #creación de la lista principal
     listaPrincipal = crearlistaPrincipal(nombresAreas, nombresPersonas, numAreas, numPersonas)
+
     Inicio(listaPrincipal)
 
 def Inicio(listaPrincipal):
+    '''
+    E: Tiene como entrada la lista principal
+    S: Llama a printMapa() y a queAreaVisitar()
+    '''
     os.system('clear')
     printMapa(len(listaPrincipal), listaPrincipal)
     queAreaVisitar(listaPrincipal, len(listaPrincipal))
 
 
-def printMapa(numAreas, listaPrincipal): #dice cuantas personas hay en cada area
+def printMapa(numAreas, listaPrincipal): 
+    '''
+    E: Tiene como entrada el número de áreas y la lista principal
+    S: Muestra al usuario los lugares a los que puede ir y las personas en cada uno
+    '''
     print("Las siguientes son las áreas verdes creadas:")
     printMapaAux(numAreas, listaPrincipal)
-
 
 def printMapaAux(numAreas, listaPrincipal, index=0):
     if numAreas == index:
@@ -95,6 +103,11 @@ def printMapaAux(numAreas, listaPrincipal, index=0):
 
 
 def queAreaVisitar(listaPrincipal, numAreas):
+    '''
+    E: Tiene como entradas la lista principal y el número de áreas
+    S: Le pregunta al usuario cual área verde quiere visitar, si no da una respuesta válida lo devuelve a la última sección, llamando a la función Inicio()
+       de dar una respuesta válida, llama a la función VisitarArea() 
+    '''
     areaAVisitar = input(
         f"\nCual área verde quieres visitar? [0,{numAreas-1}]")
     if not esDigito(areaAVisitar):
@@ -109,17 +122,27 @@ def queAreaVisitar(listaPrincipal, numAreas):
     visitarArea(listaPrincipal[areaAVisitar], listaPrincipal)
 
 
-#[[lugar1,[personas en lugar1]],[lugar2,[personas en lugar2]]...]
-
-
 def visitarArea(listaArea, listaPrincipal):
+    '''
+    E: Tiene como entradas, la lista del área, la cual es la lista que se ve: [áreaX,[personasEnElÁrea]] y también la lista principal
+       que solo es usada si el usuario decide ir a la sección anterior
+    S: Revisa si en el área escogida hay personas, si no hay personas entonces llama a la función AreaVacia().
+       De lo contrario llama a printPersonasEnArea() y quePersonaHablar()
+    '''
     os.system('clear')
     if listaArea[1] == []: #si no hay personas en el área
         AreaVacia(listaArea, listaPrincipal)
-    printPersonasEnArea(listaArea)
-    quePersonaHablar(listaArea, listaPrincipal)
+    else:
+        printPersonasEnArea(listaArea)
+        quePersonaHablar(listaArea, listaPrincipal)
 
 def AreaVacia(listaArea, listaPrincipal):
+    '''
+    E: Tiene como entradas, la lista del área, la cual es la lista que se ve: [áreaX,[personasEnElÁrea]] y también la lista principal
+       que solo es usada si el usuario decide ir a la sección anterior.
+    S: Muestra al usuario las actividades que puede hacer en un área sin personas, le pregunta que quiere hacer y dependiendo de la opción escogida se imprimen diferentes cosas, luego se llama a la misma función de nuevo.
+       Si el usuario quiere volver a la sección anterior puede escoger SALIR y se llama a la función Inicio()
+    '''
     actividadesSolitarias()
     opcion = input(f"Se siente muy solo por aquí, que quieres hacer?")
     if not esDigito(opcion):
@@ -199,6 +222,10 @@ def AreaVacia(listaArea, listaPrincipal):
         Inicio(listaPrincipal)
 
 def actividadesSolitarias():
+    '''
+    E: No tiene entradas
+    S: Imprime las actividades que el usuario puede hacer en AreaVacia()
+    '''
     os.system('clear')
     print("0) Gritar")
     print("1) Preguntar")
