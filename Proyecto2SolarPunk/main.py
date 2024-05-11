@@ -234,7 +234,32 @@ def actividadesSolitarias():
     print("4) Llorar")
     print("5) Salir")
     
+
+def printPersonasEnArea(listaArea):
+    '''
+    E: Tiene como parámetro la lista del Área
+    S: Muestra al usuario las personas que hay en dicha área.
+    '''
+    os.system('clear')
+    print(f"En {listaArea[0]} están las siguientes personas")
+    printPersonasEnAreaAux(listaArea, len(listaArea[1]))
+
+def printPersonasEnAreaAux(listaArea, personasEnArea, index=0):
+    if personasEnArea == index:
+        print(f"{personasEnArea}) Salir")
+        return None
+    print(f"{index}) {listaArea[1][index]}")
+    return printPersonasEnAreaAux(listaArea, personasEnArea, index + 1)
+
+
 def quePersonaHablar(listaArea, listaPrincipal):
+    '''
+    E: Tiene como entradas, la lista del área, la cual es la lista que se ve: [áreaX,[personasEnElÁrea]] y también la lista principal
+       que solo es usada si el usuario decide ir a la sección anterior
+    S: Pregunta al usuario con que persona del área quiere hablar, si da una respuesta invalida llama VisitarArea()
+       si selecciona la opción SALIR, lo devuelve a la sección anterior llamando Inicio()
+       si escoge un número valido que no sea SALIR, llama a la función hablarPersona()
+    '''
     personaAHablar = input(
         f"\nCon que persona quieres hablar? [0,{len(listaArea[1])}]")
     if not esDigito(personaAHablar):
@@ -250,10 +275,17 @@ def quePersonaHablar(listaArea, listaPrincipal):
         time.sleep(2)
         print()
         Inicio(listaPrincipal)
-    hablarPersona(listaArea[1][personaAHablar], listaArea[0],listaArea, listaPrincipal)
+    else:
+        hablarPersona(listaArea[1][personaAHablar], listaArea[0],listaArea, listaPrincipal)
 
 
-def hablarPersona(Persona, Area, listaArea, listaPrincipal): #listaArea solo se usa para salir
+def hablarPersona(Persona, Area, listaArea, listaPrincipal): 
+    '''
+    E: Tiene como entradas el nombre de la persona con la que se está interactuando, el área en donde se encuentra.
+       la Lista del Area y la lista principal son solo usadas en el caso que se quiera volver a la sección anterior, pues son parámetros de las funciones anteriores.
+    S: Pregunta al usuario de que quiere hablar con la persona, responde según lo escogido y vuelve a llamar a hablarPersona para seguir el dialogo.
+       Si el usuario escoge SALIR, vuelve a la sección anterior llamando visitarArea()
+    '''
     #Respuestas que pueden dar los personajes al interactuar con el usuario
     Dialogos = [
         ["Qué le dice un techo a otro techo? Techo de menos. JAJAJA", "Por qué los pájaros no usan Facebook? Porque ya tienen Twitter. JAJAJ", "Qué hace una abeja en el gimnasio? Zum-ba! JAJAJ", "Qué le dice una iguana a su hermana gemela? Iguanita! JAJAJA", "Qué le dice una uva verde a una roja? Respira, respira! JAJAJA", "Cuál es el colmo de un electricista? Que su hijo sea un conductor. JAJAJ", "Por qué el libro de matemáticas está triste? Porque tiene demasiados problemas. JAJAJA", "Cómo se llama el campeón de buceo japonés? Tokofondo. JAJAJA", "Por qué los esqueletos no pelean entre sí? Porque no tienen agallas. JAJAJA", "Qué le dice una impresora a otra? Esa hoja es tuya o es una impresión mía? JAJAJA", "Qué hace una cama en el ejército? Se en-cama! JAJAJA", "Por qué los elefantes nunca olvidan? Porque siempre tienen en mente sus elefantásticas memorias. JAJAJ", "Cuál es el animal más conocido en la industria de la moda? El elefante, porque siempre lleva troncos a la pasarela! JAJAJA", "Cuál es el animal más alegre? El elefante, porque siempre anda con la trompa arriba! JAJAJA", "Por qué los elefantes son grises, grandes y arrugados? Porque si fueran blancos y pequeños, serían alka seltzer! JAJAJA", "Qué hace un elefante para esconderse de los depredadores? Se pone detrás de un árbol... pero a veces olvida lo grande que es y ¡sobresale un poco!", "Cómo cruzan los elefantes un río helado? En troncomóvil! JAJA", "Por qué los elefantes nunca juegan al póker en la selva? Porque hay demasiados tramposos con las trompas largas!", "Cómo puedes saber si un elefante ha estado en tu refrigerador? Por las huellas de sus patas en la mantequilla. JAJA"],  #chistes
@@ -304,21 +336,12 @@ def hablarPersona(Persona, Area, listaArea, listaPrincipal): #listaArea solo se 
         time.sleep(3)
         visitarArea(listaArea, listaPrincipal)
 
-def printPersonasEnArea(listaArea):
-    os.system('clear')
-    print(f"En {listaArea[0]} están las siguientes personas")
-    printPersonasEnAreaAux(listaArea, len(listaArea[1]))
-    
 
-def printPersonasEnAreaAux(listaArea, personasEnArea, index=0):
-    if personasEnArea == index:
-        print(f"{personasEnArea}) Salir")
-        return None
-    print(f"{index}) {listaArea[1][index]}")
-    return printPersonasEnAreaAux(listaArea, personasEnArea, index + 1)
-    #[lugar1,[personas en lugar1]]
-
-def printOpciones(): #printea las opciones para hablar con el personaje
+def printOpciones(): 
+    '''
+    E: No tiene entradas
+    S: Muestra al usuario las opciones de dialogo con el personaje
+    '''
     os.system('clear')
     print('0) "Cuentame un chiste!"')
     print('1) "Puedo hacerte una pregunta?"')
