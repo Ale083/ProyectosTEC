@@ -22,6 +22,7 @@ def main():
     ]
 
     #bienvenida
+    os.system('clear')
     print("Bienvenido al juego HABLANDO CON TU SOLAR PUNK. En este juego, vas a poder escoger entre 1-100 áreas verdes y 2-200 personas. Para jugar, tendrás que escoger una de las áreas verdes y podrás interactuar con los personajes que te interesen dentro de ellas. Que disfrutes el juego!") 
     print(r'''
              .-.                                    ,-.
@@ -51,22 +52,26 @@ def main():
     numAreas = input("Cuantas áreas verdes quieres generar?")
     if not esDigito(numAreas):
         print("Error, El caracter o caracteres ingresados no son un número")
-        return None
+        time.sleep(2)
+        return main()
     numAreas = int(numAreas)
     if numAreas < 1 or numAreas > 100:
         print("Error, el límite de áreas verdes es de 1-100")
-        return None
+        time.sleep(2)
+        return main()
     nombresAreas = juntarListas(primerosNombres, segundosNombres, numAreas, [])
 
     #Generación de la lista con las personas
     numPersonas = input("Cuantas personas quieres generar?")
     if not esDigito(numPersonas):
         print("Error, El caracter o caracteres ingresados no son un número")
-        return None
+        time.sleep(2)
+        return main()
     numPersonas = int(numPersonas)
     if numPersonas < 2 or numPersonas > 200:
         print("Error, el límite de personas es de 2-200")
-        return None
+        time.sleep(2)
+        return main()
     nombresPersonas = juntarListas(nombres, apellidos, numPersonas, [])
 
     #creación de la lista principal
@@ -168,6 +173,17 @@ def AreaVacia(listaArea, listaPrincipal):
         AreaVacia(listaArea,listaPrincipal)
     if opcion == 2: #jugar solitario
         print("Te pusiste a jugar solitario")
+        print(r'''
+                  _____
+                 |A .  | _____
+                 | /.\ ||A ^  | _____
+                 |(_._)|| / \ ||A _  | _____
+                 |  |  || \ / || ( ) ||A_ _ |
+                 |____V||  .  ||(_'_)||( v )|
+                        |____V||  |  || \ / |
+                               |____V||  .  |
+                                      |____V|
+        ''')
         time.sleep(3)
         if r.randint(0,1) == 0: #50%
             print("Perdiste")
@@ -176,7 +192,21 @@ def AreaVacia(listaArea, listaPrincipal):
         time.sleep(1)
         AreaVacia(listaArea,listaPrincipal)
     if opcion == 3: #Pensar
-        print("...")
+        print(r'''
+        ⠀⠀⠀⠀⠀⠀⠀⠀⢀⡴⠚⠉⠉⠉⠓⠦⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+        ⠀⠀⠀⠀⠀⠀⠀⢠⠋⠀⠀⠀⠀⠀⠀⠀⠙⣆⣀⣀⣀⠀⠀⠀⠀⠀⠀⠀
+        ⠀⠀⠀⠀⢀⣠⠤⠏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠑⢄⠀⠀⠀⠀⠀⠀
+        ⠀⠀⠀⡴⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠓⠒⠒⠦
+        ⠀⢀⡸⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢆
+        ⣰⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸
+        ⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡞
+        ⠹⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣀⡠⠴⠋⠀
+        ⠀⠈⠓⠒⠒⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠇⠀⠀⠀⠀⠀
+        ⠀⠀⠀⠀⠀⠹⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠞⠀⠀⠀⠀⠀⠀
+        ⠀⠀⠀⢠⠚⠉⢪⠓⠦⢄⣀⠤⠴⠒⠦⣄⣀⠀⢀⣀⡤⠖⠀⠀⠀⠀⠀⠀
+        ⠀⢀⡤⣜⢦⣠⠜⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+        ⣠⣾⢲⠚⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+        ''')
         time.sleep(3)
         AreaVacia(listaArea,listaPrincipal)
     if opcion == 4:
@@ -321,7 +351,7 @@ def hablarPersona(Persona, Area, listaArea, listaPrincipal):
     if opcion == 0 or opcion == 2 or opcion == 3 or opcion == 4 or opcion == 5:
         dialogo = Dialogos[opcion][r.randint(0, len(Dialogos[opcion]) - 1)]
         print(dialogo)
-        time.sleep(5)
+        time.sleep(3)
         os.system('clear')
         hablarPersona(Persona,Area,listaArea, listaPrincipal)
     if opcion == 1:
