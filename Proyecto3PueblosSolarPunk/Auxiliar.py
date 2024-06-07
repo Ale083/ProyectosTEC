@@ -5,20 +5,20 @@ from funcionesNoRelacionadas import *
 def infoSolarpunk(): #info sobre solarpunk
     print("El solarpunk es un movimiento que presenta un futuro sostenible y optimista en el que la humanidad vive en armonía con la naturaleza. Se caracteriza por representar a un mundo utópico. Ejemplos de rasgos que podrían llegar a tener los solarpunks: ciudades impulsadas por energía solar, agricultura urbana y tecnología ecológica avanzada. Caracteristicas esenciales del solarpunk son la tecnología, la naturaleza, la comunidad, la igualdad y la sostenibilidad. \n \nEl término Solarpunk se originó en el 2008, sin embargo, su fama se dio hasta el 2014 con una publicación de Adam Flynn, un investigador de la Universidad Estatal de Arizona que comenzó a visibilizar el movimiento.\n\n") 
     
-    noImporta = input("Digita algo para volver al menú.")
+    noImporta = input("Presiona enter para continuar.")
     os.system("clear")
 
 
 def infoPueblosOriginarios(): #info sobre pueblos originarios
     print("Los pueblos originarios son comunidades con historias, culturas y tradiciones que han habitado el una región específica durante múltiples años y han contribuido significativamente al patrimonio natural y cultural de la zona. Algunos pueblos originarios en Costa Rica son: Cabécares, Bribris, Ngäbe, Térrabas, Borucas, Huetares, Malekus y Chorotegas. \n \nA pesar de ser quienes han habitado por un gran tiempo el mismo lugar, los pueblos originarios llegan a ser atacados por otros grupos de personas para adueñarse de sus tierras. Además, también enfrentan desafíos de discriminación, pobreza, acceso limitado a la educación y la salud, y luchan por  proteger sus recursos. \n\n")
-    noImporta = input("Digita algo para volver al menú.")
+    noImporta = input("Presiona enter para continuar.")
     os.system("clear")
 
 
 def infoConflictoCabagra(): #info sobre el conflicto de recuperación de tierras en Cabagra
     print("El conflicto trata sobre la recuperación de tierras en la zona de Cabagra de Buenos Aires, Puntarenas, por parte del pueblo originario de la región. Las tierras que fueron uzurpadas ilegalmente en años anteriores están siendo reclamadas por la comunidad de indígenas, quienes han iniciado con planes para recuperar sus tierras. La recuperación de ese terreno inició en abril del 2021 por parte de la familia Sandí Morales.\n\n El conflicto ha causado numerosas concecuencias negativas para los pueblos originarios. Ya que las personas fuera de la comunidad indígena ha promovido un ambiente de violencia. Este grupo ha realizado amenazas, agresiones físicas y psicologicas, e incluso asesinatos para mantener tierras que no les pertenecían originalmente. \n\nActualmente, se ha discutido la situación entre el pueblo originario, las autoridades y las personas no indígenas, sin embargo, aún no se ha llegado a ningún tipo de acuerdo. \n\n")
     
-    noImporta = input("Digita algo para volver al menú.")
+    noImporta = input("Presiona enter para continuar.")
     os.system("clear")
 
 
@@ -26,7 +26,7 @@ def infoConflictoCabagra(): #info sobre el conflicto de recuperación de tierras
 def infoReferencias(): #referencias en formato apa
     print("Cervera, A. (2023, 22 noviembre). Solarpunk: dibujando un futuro positivo para el planeta. SIMBIOTIA. https://www.simbiotia.com/solarpunk/#:~:text=El%20solarpunk%20es%20un%20movimiento,de%20la%20sociedad%20en%20general. \n \nChavarría, D. (2022, 5 noviembre). Coordinadora de Lucha Sur-Sur cuestiona a Gobierno por pedir detener las recuperaciones de tierras indígenas. Radioemisoras UCR. https://radios.ucr.ac.cr/2022/11/interferencia/destacada/gobierno-detener-recuperaciones-tierras-indigenas/ \n \nPueblos indígenas: Panorama general. (s. f.). World Bank. https://www.bancomundial.org/es/topic/indigenouspeoples#:~:text=Los%20pueblos%20ind%C3%ADgenas%20son%20grupos,los%20cuales%20han%20sido%20desplazados. \n \nTerritorios indígenas sufren la desidia y el olvido de sus compatriotas. (s. f.). Delfino.cr. https://delfino.cr/2023/09/territorios-indigenas-en-el-olvido \n \n")
     
-    noImporta = input("Digita algo para volver al menú.")
+    noImporta = input("Presiona enter para continuar.")
     os.system("clear")
 
 
@@ -59,7 +59,7 @@ def instrucciones():
                     *......**   **......*     
                       **  *       * **        
       ''')
-    noImporta = input("Digita algo para volver al menú.")
+    noImporta = input("Presiona enter para continuar.")
     os.system("clear")
     
 def largoTablero():

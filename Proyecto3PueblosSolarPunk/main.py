@@ -304,33 +304,33 @@ def ataque(tablero,ataques):
             print(listaAtaques[0][r.randint(0,len(listaAtaques[0])-1)])
             tablero[ataques[i][0]][ataques[i][1]] = "U"
             printTablero(tablero, len(tablero))
-            noImporta = input("Inserta cualquier cosa para continuar:")
+            noImporta = input("Presiona enter para continuar")
             
         elif tablero[ataques[i][0]][ataques[i][1]] == "I":
             print(f"En el ataque {i+1} los usurpadores atacaron una iniciativa")
             print(listaAtaques[1][r.randint(0,len(listaAtaques[1])-1)])
             printTablero(tablero, len(tablero))
-            noImporta = input("Inserta cualquier cosa para continuar:")
+            noImporta = input("Presiona enter para continuar")
             
         elif tablero[ataques[i][0]][ataques[i][1]] == "C":
             print(f"En el ataque {i+1} los usurpadores atacaron una casilla donde se difundió cultura")
             print(listaAtaques[2][r.randint(0,len(listaAtaques[2])-1)])
             tablero[ataques[i][0]][ataques[i][1]] = "◼"
             printTablero(tablero, len(tablero))
-            noImporta = input("Inserta cualquier cosa para continuar:")
+            noImporta = input("Presiona enter para continuar")
             
         elif tablero[ataques[i][0]][ataques[i][1]] == "◼":
             print(f"En el ataque {i+1} los usurpadores atacaron una casilla vacia de los pueblos originarios.")
             print(listaAtaques[3][r.randint(0,len(listaAtaques[3])-1)])
             tablero[ataques[i][0]][ataques[i][1]] = "U"
             printTablero(tablero, len(tablero))
-            noImporta = input("Inserta cualquier cosa para continuar:")
+            noImporta = input("Presiona enter para continuar")
             
         else: #otro usurpado
             print(f"En el ataque {i+1} los usurpadores atacaron una casilla que ya había sido usurpada anteriormente.")
             print(listaAtaques[4][r.randint(0,len(listaAtaques[4])-1)])
             printTablero(tablero, len(tablero))
-            noImporta = input("Inserta cualquier cosa para continuar:")
+            noImporta = input("Presiona enter para continuar")
             
         os.system("clear")
     
