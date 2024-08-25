@@ -35,22 +35,6 @@ void borrarReceta(){
 	}
 }
 
-int buscarIndexReceta(){
-	cout << "Pon el nombre de la receta" << endl;
-	string busqueda;
-	getline(cin,busqueda);
-	for (int i=0;i<numRecetas;i++){
-		if(LibroDeRecetas[i].nombre == busqueda){
-			return i;
-		}
-	}
-	cout << "No se encontró la receta" << endl;
-	wait();
-	return -1;
-}
-
-
-
 
 void printRecetas(){
 	for(int i=0;i<numRecetas;i++){
@@ -59,6 +43,7 @@ void printRecetas(){
 	wait();
 	return;
 }
+
 
 void modificarNombreReceta(){
 	int indexReceta = buscarIndexReceta();
@@ -112,4 +97,20 @@ void sustituirIngredienteEnRecetas(){
 		LibroDeRecetas[i].sustituirIngredienteEnReceta(busqueda,nuevoIngrediente);
 	}
 }
+
+
+int buscarIndexReceta(){
+	cout << "Pon el nombre de la receta" << endl;
+	string busqueda;
+	getline(cin,busqueda);
+	for (int i=0;i<numRecetas;i++){
+		if(LibroDeRecetas[i].nombre == busqueda){
+			return i;
+		}
+	}
+	cout << "No se encontró la receta" << endl;
+	wait();
+	return -1;
+}
+
 };
