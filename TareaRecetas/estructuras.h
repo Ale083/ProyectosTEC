@@ -13,7 +13,7 @@ struct Ingrediente {
 	float cantidad;
 	string medida;
 	
-	Ingrediente(){
+	Ingrediente(){ //Constructor default, inicializa valores.
 		nombre = "";
 		cantidad = 0;
 		medida = "";
@@ -23,18 +23,18 @@ struct Ingrediente {
 		cantidad = 0;
 		medida = "";
 	}
+	
 	void inicializarIngrediente(Ingrediente ingredientes[], int contIngredientes){
 		cout << "Que nombre tiene el ingrediente?" << endl;
 		getline(cin, nombre);
 		
-		for (int i=0;i<contIngredientes;i++){
+		for (int i=0;i<contIngredientes;i++){ //verifica que el ingrediente no se repita en esa receta por nombre.
 			if (ingredientes[i].nombre == nombre){
 				cout << "Ya añadiste este ingrediente. Intentelo de nuevo." << endl;
 				inicializarIngrediente(ingredientes,contIngredientes);
 				return;
 			}
 		}
-		
 		
 		cout << "Que cantidad de " + nombre << " se necesita? (sin la medida)" << endl;
 		cantidad = pedirDouble();
@@ -51,12 +51,12 @@ struct Ingrediente {
 		cout << "- " << cantidad  << medida << " de " << nombre << endl;
 	}
 	
-	void imprimirMultiplicadorCantidad(double multiplicador){
+	void imprimirMultiplicadorCantidad(double multiplicador){ //imprime con un parámetro que se multiplica por la cantidad. Sirve para calcularPorciones.
 		double nuevaCantidad = cantidad*multiplicador;
 		cout << "- " << nuevaCantidad  << medida << " de " << nombre << endl;
 	}
 	
-	void inicializarIngredienteSinValidacion(){
+	void inicializarIngredienteSinValidacion(){ //Sirve para la opción 9 del menú. No tiene sentido pasar verificando que no esté un ingrediente en todas las recetas realmente.
 		cout << "Que nombre tiene el ingrediente?" << endl;
 		getline(cin, nombre);
 		
@@ -65,7 +65,6 @@ struct Ingrediente {
 		cout << "En que medida es esa cantidad?" << endl;
 		getline(cin,medida);
 	}
-	
 };
 
 
@@ -82,7 +81,7 @@ struct Receta {
 	}
 	
 	
-	void resetReceta(){
+	void resetReceta(){ 
 		for(int i=0;i<contIngredientes;i++){
 			ingredientes[i].resetIngrediente();
 		}
@@ -96,7 +95,7 @@ struct Receta {
 		cout << "Que nombre tiene la receta?" << endl;
 		getline(cin, nombre);
 		
-		for (int i=0;i<numRecetas;i++){
+		for (int i=0;i<numRecetas;i++){ //Pasa por todas las recetas y compara el nombre con el de estas para que no se repita.
 			if (libroDeRecetas[i].nombre == nombre){
 				cout << "Ya existe esta receta. Intentelo de nuevo." << endl;
 				_init_(libroDeRecetas, numRecetas);
@@ -108,16 +107,19 @@ struct Receta {
 			cout << "Ingrediente " << (contIngredientes+1) << endl;
 			ingredientes[contIngredientes].inicializarIngrediente(ingredientes, contIngredientes);
 			contIngredientes++;
+			
 			cout << "Escribe 'Si' si quieres agregar otro ingrediente, presiona enter si no.";
 			string respuesta;
 			getline(cin,respuesta);
-			if (respuesta != "Si" ){	
+			if (respuesta != "Si" ){ 	
 				break;
 			} 
 		}
+		
 		if (contIngredientes == 20){
-			cout << "Ya tienes 20 ingredientes." << endl;
+			cout << "Ya tienes 20 ingredientes." << endl; //mensaje para que el usuario sepa que llegó al max de ingredientes.
 		}
+		
 		cout << "Para cuantas porciones son esa cantidad de ingredientes" << endl;
 		porciones = pedirEntero();
 	}
@@ -125,7 +127,7 @@ struct Receta {
 	
 	void cambiarCantIngrediente(){
 		int indexIngrediente = buscarIndexIngrediente();
-		if (indexIngrediente == -1){
+		if (indexIngrediente == -1){ //si dio error
 			return;
 		} else {
 			ingredientes[indexIngrediente].cambiarCantidad();
@@ -151,7 +153,7 @@ struct Receta {
 		cout << "A que nombre lo quieres cambiar?" << endl;
 		string nuevoNombre;
 		getline(cin,nuevoNombre);
-		for (int i=0;i<numRecetas;i++){
+		for (int i=0;i<numRecetas;i++){ //verificar que no exista uno con el mismo nombre
 			if (LibroDeRecetas[i].nombre == nuevoNombre){
 				cout << "Ya existe esta receta. Intentelo de nuevo." << endl;
 				return cambiarNombre(LibroDeRecetas, numRecetas);
@@ -180,7 +182,8 @@ struct Receta {
 	void calcularParaPorciones(){
 		cout << "Para cuantas porciones quieres calcular?" << endl;
 		int calcPorciones;
-		double multiplicador;
+		double multiplicador; //multiplicador es la cantidad por la que se multiplicara las cantidades originales para mostrar las que se necesitan
+		//para x porciones.
 		calcPorciones = pedirEntero();
 		multiplicador = (double)calcPorciones/porciones;
 		cout << "Receta de " << nombre << ". Para " << calcPorciones << " porciones. Ingredientes:" << endl;

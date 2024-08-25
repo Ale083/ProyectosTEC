@@ -3,14 +3,14 @@
 void menu(Recetario* r1);
 
 int main(int argc, char** argv) {
-	Recetario* r1 = new Recetario(); 
-	menu(r1);
+	Recetario* r1 = new Recetario(); //crea un puntero para recetario, facilita tener que trabajar con muchos métodos con el arreglo de recetas.
+	menu(r1); //Llama al menu, desde aqui empieza el programa.
 	return 0;
 }
 
 void menu(Recetario* r1){
 	system("cls");
-	printMenu();
+	printMenu(); 
 	int opcion = pedirEntero();
     system("cls");
     switch(opcion){

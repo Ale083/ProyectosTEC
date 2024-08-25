@@ -2,17 +2,18 @@ struct Recetario{
 	Receta LibroDeRecetas[100];
 	int numRecetas;
 	
-	Recetario(){
+	Recetario(){ //constructor default.
 		numRecetas = 0;
 	}
+	
 void nuevaReceta(){
-	LibroDeRecetas[numRecetas]._init_(LibroDeRecetas,numRecetas); // Necesita parametros para que no repita nombre
+	LibroDeRecetas[numRecetas]._init_(LibroDeRecetas,numRecetas); // Necesita llevarse libroDeRecetas y numRecetas para que no repita nombre
 	++numRecetas;
 }
 
 void buscarReceta(){
 	int indexReceta = buscarIndexReceta();
-	if (indexReceta == -1){
+	if (indexReceta == -1){ //si dio error
 		return;
 	} else{
 		LibroDeRecetas[indexReceta].imprimir();
@@ -23,7 +24,7 @@ void buscarReceta(){
 
 void borrarReceta(){
 	int indexReceta = buscarIndexReceta();
-	if (indexReceta == -1){
+	if (indexReceta == -1){ //si dio error
 		return;
 	} else{
 		for (int i = indexReceta; i < numRecetas - 1; i++) {
@@ -61,7 +62,7 @@ void printRecetas(){
 
 void modificarNombreReceta(){
 	int indexReceta = buscarIndexReceta();
-	if (indexReceta == -1){
+	if (indexReceta == -1){ //si dio error
 		return;
 	} else{
 		LibroDeRecetas[indexReceta].cambiarNombre(LibroDeRecetas, numRecetas); // Necesita parametros para que no repita nombre
@@ -71,7 +72,7 @@ void modificarNombreReceta(){
 
 void modificarCantIngrediente(){
 	int indexReceta = buscarIndexReceta();
-	if (indexReceta == -1){
+	if (indexReceta == -1){//si dio error
 		return;
 	} else{
 		LibroDeRecetas[indexReceta].cambiarCantIngrediente();
@@ -81,7 +82,7 @@ void modificarCantIngrediente(){
 
 void agregarIngrediente(){
 	int indexReceta = buscarIndexReceta();
-	if (indexReceta == -1){
+	if (indexReceta == -1){//si dio error
 		return;
 	} else{
 		LibroDeRecetas[indexReceta].anadirIngrediente();
@@ -91,7 +92,7 @@ void agregarIngrediente(){
 
 void calcularParaPorciones(){
 	int indexReceta = buscarIndexReceta();
-	if (indexReceta == -1){
+	if (indexReceta == -1){//si dio error
 		return;
 	} else{
 		LibroDeRecetas[indexReceta].calcularParaPorciones();
@@ -107,7 +108,7 @@ void sustituirIngredienteEnRecetas(){
 	cout << "A continuación vas a declarar el nuevo ingrediente con el que lo sustituirás." << endl;
 	Ingrediente nuevoIngrediente;
 	nuevoIngrediente.inicializarIngredienteSinValidacion();
-	for (int i=0;i<numRecetas;i++){
+	for (int i=0;i<numRecetas;i++){ 
 		LibroDeRecetas[i].sustituirIngredienteEnReceta(busqueda,nuevoIngrediente);
 	}
 }
