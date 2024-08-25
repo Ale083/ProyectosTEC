@@ -3,7 +3,7 @@
 void menu(Recetario* r1);
 
 int main(int argc, char** argv) {
-	Recetario* r1 = new Recetario();
+	Recetario* r1 = new Recetario(); 
 	menu(r1);
 	return 0;
 }
@@ -11,9 +11,7 @@ int main(int argc, char** argv) {
 void menu(Recetario* r1){
 	system("cls");
 	printMenu();
-	int opcion;
-    cin >> opcion;
-    cin.ignore();
+	int opcion = pedirEntero();
     system("cls");
     switch(opcion){
     	case 1:
@@ -54,6 +52,11 @@ void menu(Recetario* r1){
     		break;
     	case 10:
     		break;
+    	default:
+    		cout << "Ese número no está en el menu, intentalo de nuevo" << endl;
+    		wait();
+    		menu(r1);
+    		break;
 	}
 }
 
@@ -76,4 +79,33 @@ void wait(){
 	cout << "Presiona enter para volver al menú";
 	getline(cin,temp);
 	system("cls");
+}
+int pedirEntero(){
+	int numero;
+	while(true){
+		cin >> numero;
+		if(cin.fail()){
+			cout << "Entrada no válida, debes ingresar un número entero, intentalo de nuevo" << endl;
+			cin.clear(); //quita el flag de error
+			cin.ignore(numeric_limits<streamsize>::max(),'\n'); //quita todo lo restante en el buffer
+		} else {
+			cin.ignore(numeric_limits<streamsize>::max(),'\n'); //quita lo restante del buffer, por ejemplo \t, \n, etc.
+			return numero;
+		}
+	}
+}
+
+double pedirDouble(){
+	double numero;
+	while(true){
+		cin >> numero;
+		if(cin.fail()){
+			cout << "Entrada no válida, debes ingresar un número, intentalo de nuevo" << endl;
+			cin.clear(); //quita el flag de error
+			cin.ignore(numeric_limits<streamsize>::max(),'\n'); //quita todo lo restante en el buffer
+		} else {
+			cin.ignore(numeric_limits<streamsize>::max(),'\n'); //quita lo restante del buffer, por ejemplo \t, \n, etc.
+			return numero;
+		}
+	}
 }

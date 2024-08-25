@@ -1,8 +1,11 @@
 #include <iostream>
 #include <cstdlib> //Solo para clear terminal.
+#include <limits> //Para poder clear los cin cuando dan error.
 using namespace std;
 void printMenu();
 void wait();
+int pedirEntero();
+double pedirDouble();
 
 
 struct Ingrediente {
@@ -33,17 +36,15 @@ struct Ingrediente {
 		}
 		
 		
-		cout << "Que cantidad de " + nombre << " se necesita?" << endl;
-		cin >> cantidad; //TODO: hacer un método para recibir entero, y poder validarlo ahí mismo, luego darle el valor a cantidad.
-		cin.ignore();
+		cout << "Que cantidad de " + nombre << " se necesita? (sin la medida)" << endl;
+		cantidad = pedirDouble();
 		cout << "En que medida es esa cantidad?" << endl;
 		getline(cin,medida);
 	}
 	
 	void cambiarCantidad(){
 		cout << "Cual es la nueva cantidad para el ingrediente? \t Cantidad anterior -> " << cantidad << endl;
-		cin >> cantidad;
-		cin.ignore();
+		cantidad = pedirDouble();
 	}
 	
 	void imprimir(){
@@ -60,8 +61,7 @@ struct Ingrediente {
 		getline(cin, nombre);
 		
 		cout << "Que cantidad de " + nombre << " se necesita?" << endl;
-		cin >> cantidad; //TODO: hacer un método para recibir entero, y poder validarlo ahí mismo, luego darle el valor a cantidad.
-		cin.ignore();
+		cantidad = pedirDouble();
 		cout << "En que medida es esa cantidad?" << endl;
 		getline(cin,medida);
 	}
@@ -119,8 +119,7 @@ struct Receta {
 			cout << "Ya tienes 20 ingredientes." << endl;
 		}
 		cout << "Para cuantas porciones son esa cantidad de ingredientes" << endl;
-		cin >> porciones;
-		cin.ignore();
+		porciones = pedirEntero();
 	}
 	
 	
@@ -182,8 +181,7 @@ struct Receta {
 		cout << "Para cuantas porciones quieres calcular?" << endl;
 		int calcPorciones;
 		double multiplicador;
-		cin >> calcPorciones;
-		cin.ignore();
+		calcPorciones = pedirEntero();
 		multiplicador = (double)calcPorciones/porciones;
 		cout << "Receta de " << nombre << ". Para " << calcPorciones << " porciones. Ingredientes:" << endl;
 		for (int i=0; i<contIngredientes;i++){
