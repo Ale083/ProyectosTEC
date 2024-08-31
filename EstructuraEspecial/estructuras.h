@@ -56,7 +56,7 @@ struct EstructuraEspecial{
 			return;
 		}
 		while(tmp != NULL){
-			if(tmp -> arriba == NULL){
+			if(tmp -> arriba == NULL){ 
 				nodoAuxiliar* nuevo = new nodoAuxiliar(dato);
 				tmp -> arriba = nuevo;
 				nodoPrincipal* siguientePrincipal = siguiente(tmp);
