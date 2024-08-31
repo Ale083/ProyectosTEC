@@ -19,7 +19,7 @@ struct nodoPrincipal{
 };
 
 
-struct nodoAuxiliar{
+struct nodoAuxiliar{ 
 	int dato;
 	nodoPrincipal* siguiente;
 	
@@ -42,9 +42,9 @@ struct EstructuraEspecial{
 	
 	void insertar(int dato){
 		if (dato % 10 == 0){
-			insertarArriba(dato);
-		} else if(dato % 2 == 0){
 			insertarNodoPrincipal(dato);
+		} else if(dato % 2 == 0){
+			insertarArriba(dato);
 		} else{
 			insertarAbajo(dato);
 		}
@@ -120,7 +120,7 @@ struct EstructuraEspecial{
 			enlazarNodos(tmp,NULL); //conecta los auxiliares del nodo borrado con NULL
 			return tmp;
 		}
-		while (tmp != NULL){
+		while (siguiente(tmp) != NULL){
 			if (siguiente(tmp) -> dato == dato){
 				nodoPrincipal* nodoBorrado = siguiente(tmp);
 				
@@ -171,7 +171,7 @@ struct EstructuraEspecial{
 		
 		tmp = primerNodo;
 		while (tmp != NULL){
-			if (tmp -> arriba != NULL){
+			if (tmp -> abajo != NULL){
 				cout << "\t" << tmp -> abajo -> dato << "\t";
 				tmp = siguiente(tmp);
 			} else {
