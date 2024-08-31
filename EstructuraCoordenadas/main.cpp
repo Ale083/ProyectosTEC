@@ -4,6 +4,6 @@
 
 int main(int argc, char** argv) {
 	listaCoordenadas* estructura = new listaCoordenadas();
-	estructura -> insertar(2,0);
+	estructura -> insertar(0,10);
 	return 0;
 }
