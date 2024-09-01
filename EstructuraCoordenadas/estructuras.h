@@ -5,6 +5,8 @@ struct nodoAuxiliar;
 struct nodoPrincipal{
 	int x;
 	int y;
+	int auxiliaresArriba;
+	int auxiliaresAbajo;
 	nodoPrincipal* izquierda;
 	nodoPrincipal* derecha;
 	nodoAuxiliar* arriba;
@@ -17,6 +19,8 @@ struct nodoPrincipal{
 		derecha = NULL;
 		arriba = NULL;
 		abajo = NULL;
+		auxiliaresArriba = 0;
+		auxiliaresAbajo = 0;
 	}
 	nodoPrincipal(int _x, int _y){
 		x = _x;
@@ -25,8 +29,12 @@ struct nodoPrincipal{
 		derecha = NULL;
 		arriba = NULL;
 		abajo = NULL;
+		auxiliaresArriba = 0;
+		auxiliaresAbajo = 0;
 	}
-	
+	imprimir(){
+		cout << "(" << x << "," << y << ")\t\t";
+	}
 };
 
 struct nodoAuxiliar{
@@ -46,6 +54,9 @@ struct nodoAuxiliar{
 		y = _y;
 		arriba = NULL;
 		abajo = NULL;
+	}
+	imprimir(){
+		cout << "(" << x << "," << y << ")\t\t";
 	}
 };
 
@@ -140,6 +151,7 @@ struct listaCoordenadas{
 	}
 	
 	void insertarAuxiliarArriba(int x, int y, nodoPrincipal* nodoX){
+		nodoX -> auxiliaresArriba++;
 		nodoAuxiliar* tmp = nodoX -> arriba;
 		if (tmp == NULL){ //Si no tiene nada arriba.
 			nodoX -> arriba = new nodoAuxiliar(x,y);
@@ -160,6 +172,7 @@ struct listaCoordenadas{
 				nuevo -> abajo = tmp;
 				return;
 			} else if (y == tmp -> arriba -> y){
+				nodoX -> auxiliaresArriba--;
 				return;
 			} else {
 				tmp = tmp -> arriba;
@@ -171,6 +184,7 @@ struct listaCoordenadas{
 	}
 	
 	void insertarAuxiliarAbajo(int x, int y, nodoPrincipal* nodoX){ //misma lógica que insertarAuxiliarArriba
+		nodoX -> auxiliaresAbajo++;
 		nodoAuxiliar* tmp = nodoX -> abajo;
 		if (tmp == NULL){
 			nodoX -> abajo = new nodoAuxiliar(x,y);
@@ -191,6 +205,7 @@ struct listaCoordenadas{
 				nuevo -> arriba = tmp;
 				return;
 			} else if (y == tmp -> abajo -> y){
+				nodoX -> auxiliaresAbajo--;
 				return;
 			} else {
 				tmp = tmp -> abajo;
@@ -199,5 +214,64 @@ struct listaCoordenadas{
 		nodoAuxiliar* nuevo = new nodoAuxiliar(x,y);
 		tmp -> abajo = nuevo;
 		nuevo -> arriba = tmp;
+	}
+	
+	void imprimir(){
+		nodoPrincipal* tmp = primerNodo;
+		while(tmp -> izquierda != NULL){
+			tmp = tmp -> izquierda;
+		}
+		nodoPrincipal* nodoExtremoIzquierda = tmp;
+		int mayorAuxArriba = 0;
+		int mayorAuxAbajo = 0;
+		while(tmp != NULL){ //Recorre toda la lista para ver cual es el mayor número de auxiliares que tiene un nodoPrincipal tanto arriba como abajo
+			if(tmp -> auxiliaresArriba > mayorAuxArriba){
+				mayorAuxArriba = tmp -> auxiliaresArriba;
+			}
+			if(tmp -> auxiliaresAbajo > mayorAuxAbajo){
+				mayorAuxAbajo = tmp -> auxiliaresAbajo;
+			}
+			tmp = tmp -> derecha;
+		}
+		imprimirArribaAux(nodoExtremoIzquierda, mayorAuxArriba);
+		imprimirPrincipales(nodoExtremoIzquierda);	
+		//TODO: Reflejar esa mierda de arriba pero abajo.	
+	}
+	
+	void imprimirArribaAux(nodoPrincipal* nodoExtremoIzquierda, int mayorAuxArriba){
+		for (int i = mayorAuxArriba;i>0;i--){ // empieza a imprimir desde arriba de todo.
+			nodoPrincipal* tmp = nodoExtremoIzquierda;
+			while(tmp != NULL){ 
+				printCoordsArribaIPosiciones(tmp,i);
+				tmp = tmp -> derecha;
+			}
+			cout << endl;
+		}
+	}
+	
+	void printCoordsArribaIPosiciones(nodoPrincipal* nodo, int altura){
+		nodoAuxiliar* tmp = nodo -> arriba;
+		if (tmp == NULL){ //Si no tenía aux arriba.
+			cout << "\t\t";
+			return;
+		}
+		for(int i=0;i<altura-1;i++){ 
+			if (tmp -> arriba == NULL){
+				cout << "\t\t";
+				return;
+			} else {
+				tmp = tmp -> arriba;
+			}
+		}
+		tmp -> imprimir(); 
+		return;
+	}
+	
+	void imprimirPrincipales(nodoPrincipal* nodoExtremoIzquierda){
+		nodoPrincipal* tmp = nodoExtremoIzquierda;
+		while (tmp != NULL){
+			tmp -> imprimir();
+			tmp = tmp -> derecha;
+		}
 	}
 };
