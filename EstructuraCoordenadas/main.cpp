@@ -9,6 +9,15 @@ int main(int argc, char** argv) {
 	estructura -> insertar(3,30);
 	estructura -> insertar(4,10);
 	estructura -> insertar(4,30);
+	estructura -> insertar(-4,10);
+	estructura -> insertar(-4,-30);
 	estructura -> imprimir();	
+	cout << "------------------------------------------------"<< endl;
+	listaCoordenadas* estructura2 = new listaCoordenadas();
+	estructura2 -> insertar(2,0);
+	estructura2 -> insertar(3,0);
+	estructura2 -> insertar(4,0);
+	estructura2 -> insertar(5,0);
+	estructura2 -> imprimir();
 	return 0;
 }

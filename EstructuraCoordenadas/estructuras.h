@@ -235,7 +235,7 @@ struct listaCoordenadas{
 		}
 		imprimirArribaAux(nodoExtremoIzquierda, mayorAuxArriba);
 		imprimirPrincipales(nodoExtremoIzquierda);	
-		//TODO: Reflejar esa mierda de arriba pero abajo.	
+		imprimirAbajoAux(nodoExtremoIzquierda, mayorAuxAbajo);
 	}
 	
 	void imprimirArribaAux(nodoPrincipal* nodoExtremoIzquierda, int mayorAuxArriba){
@@ -273,5 +273,35 @@ struct listaCoordenadas{
 			tmp -> imprimir();
 			tmp = tmp -> derecha;
 		}
+		cout << endl;
+	}
+	
+	void imprimirAbajoAux(nodoPrincipal* nodoExtremoIzquierda, int mayorAuxAbajo){
+		for (int i = 1;i<=mayorAuxAbajo;i++){ 
+			nodoPrincipal* tmp = nodoExtremoIzquierda;
+			while(tmp != NULL){ 
+				printCoordsAbajoIPosiciones(tmp,i);
+				tmp = tmp -> derecha;
+			}
+			cout << endl;
+		}
+	}
+	
+	void printCoordsAbajoIPosiciones(nodoPrincipal* nodo, int altura){
+		nodoAuxiliar* tmp = nodo -> abajo;
+		if (tmp == NULL){ //Si no tenía aux arriba.
+			cout << "\t\t";
+			return;
+		}
+		for(int i=0;i<altura-1;i++){ 
+			if (tmp -> abajo == NULL){
+				cout << "\t\t";
+				return;
+			} else {
+				tmp = tmp -> abajo;
+			}
+		}
+		tmp -> imprimir(); 
+		return;
 	}
 };
