@@ -1,25 +1,26 @@
 #include "estructuras.h"
 
-/* run this program using the console pauser or add your own getch, system("pause") or input loop */
+
 
 int main(int argc, char** argv) {
 	listaCoordenadas* estructura = new listaCoordenadas();
-	estructura -> insertar(1,10);
-	estructura -> insertar(2,20);
-	estructura -> insertar(3,30);
-	estructura -> insertar(4,10);
-	estructura -> insertar(4,30);
-	estructura -> insertar(-4,10);
-	estructura -> insertar(-4,-30);
-	estructura -> insertar(2,-20);
-	estructura -> insertar(4,-20);
+	estructura -> insertar(-10,0);
+	estructura -> insertar(0,70);
+	estructura -> insertar(0,100);
+	estructura -> insertar(0,-60);
+	estructura -> insertar(10,-20);
+	estructura -> insertar(10,-90);
+	estructura -> insertar(20,10);
+	estructura -> insertar(40,0);
+	estructura -> insertar(40,20);
+	estructura -> insertar(40,-50);
+	
 	estructura -> imprimir();	
-	cout << "------------------------------------------------"<< endl;
-	listaCoordenadas* estructura2 = new listaCoordenadas();
-	estructura2 -> insertar(2,0);
-	estructura2 -> insertar(3,0);
-	estructura2 -> insertar(4,0);
-	estructura2 -> insertar(5,0);
-	estructura2 -> imprimir();
-	return 0;
+	cout << "--------------------------------------------------------------------"<< endl << endl;;
+	
+	//Los insertar que hay como casos en el pdf
+	estructura -> insertar(30,20);
+	estructura -> insertar(30,0);
+	estructura -> insertar(0,80);
+	estructura -> imprimir();	
 }

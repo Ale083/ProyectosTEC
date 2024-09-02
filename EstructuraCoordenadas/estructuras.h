@@ -95,46 +95,22 @@ struct listaCoordenadas{
 	listaCoordenadas(){
 		primerNodo = new nodoPrincipal(0,0);
 	}
-	//TODO: simplificar, no es necesario 8 ifs.
+	
 	void insertar(int x, int y){
-		if (y % 10 != 0 || (x==0 && y==0)){
+		if (x % 10 != 0 || y % 10 != 0 || (x==0 && y==0)){
 			return; //y debe ser multiplo de 10, si no lo es entonces no se inserta. Además no podemos insertar otro (0,0)
 		}
-		if (y == 0 && x > 0){
-			insertarPrincipalDerecha(x);
-			return;
-		}
-		if (y == 0 && x < 0){
-			insertarPrincipalIzquierda(x);
-			return;
-		}
-		if (x == 0 && y > 0){
-			insertarAuxiliarArriba(x,y,primerNodo);
-			return;
-		}
-		if (x == 0 && y < 0){
-			insertarAuxiliarAbajo(x,y,primerNodo);
-			return;
-		}
-		if (x > 0 && y > 0){ //cuadrante 1
-			nodoPrincipal* nodoX = insertarPrincipalDerecha(x);
-			insertarAuxiliarArriba(x,y,nodoX);
-		}
-		if (x < 0 && y >0){ //cuadrante 2
-			nodoPrincipal* nodoX = insertarPrincipalIzquierda(x);
-			insertarAuxiliarArriba(x,y,nodoX);
-		}
-		if (x < 0 && y < 0){ //cuadrante 3
-			nodoPrincipal* nodoX = insertarPrincipalIzquierda(x);
-			insertarAuxiliarAbajo(x,y,nodoX);
-		}
-		if (x > 0 && y < 0){ //cuadrante 4
-			nodoPrincipal* nodoX = insertarPrincipalDerecha(x);
-			insertarAuxiliarAbajo(x,y,nodoX);
+		
+		nodoPrincipal* nodoX = (x >= 0) ? insertarPrincipalDerecha(x) : insertarPrincipalIzquierda(x); 
+		if (y!=0){ //Si no está en el eje x, entonces si hay que insertar arriba/abajo.
+			(y > 0) ? insertarAuxiliarArriba(x,y,nodoX) : insertarAuxiliarAbajo(x,y,nodoX);
 		}
 	}
 	
 	nodoPrincipal* insertarPrincipalDerecha(int x){
+		if (x==0){
+			return primerNodo;
+		}
 		nodoPrincipal* tmp = primerNodo;
 			while(tmp -> derecha != NULL){
 				if (x  <  tmp -> derecha -> x){ //Si la x del siguiente, es mayor al que queremos insertar, osea que si está en posición.
@@ -274,7 +250,7 @@ struct listaCoordenadas{
 				printCoordsArribaIPosiciones(tmp,i);
 				tmp = tmp -> derecha;
 			}
-			cout << endl;
+			cout << endl << endl;
 		}
 	}
 	
@@ -302,7 +278,7 @@ struct listaCoordenadas{
 			tmp -> imprimir();
 			tmp = tmp -> derecha;
 		}
-		cout << endl;
+		cout << endl << endl;
 	}
 	
 	void imprimirAbajoAux(nodoPrincipal* nodoExtremoIzquierda, int mayorAuxAbajo){
@@ -312,7 +288,7 @@ struct listaCoordenadas{
 				printCoordsAbajoIPosiciones(tmp,i);
 				tmp = tmp -> derecha;
 			}
-			cout << endl;
+			cout << endl << endl;
 		}
 	}
 	
