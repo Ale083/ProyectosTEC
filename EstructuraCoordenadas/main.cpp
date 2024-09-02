@@ -11,6 +11,8 @@ int main(int argc, char** argv) {
 	estructura -> insertar(4,30);
 	estructura -> insertar(-4,10);
 	estructura -> insertar(-4,-30);
+	estructura -> insertar(2,-20);
+	estructura -> insertar(4,-20);
 	estructura -> imprimir();	
 	cout << "------------------------------------------------"<< endl;
 	listaCoordenadas* estructura2 = new listaCoordenadas();

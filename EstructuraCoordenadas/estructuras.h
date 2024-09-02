@@ -1,6 +1,8 @@
 #include <iostream>
 using namespace std;
 struct nodoAuxiliar;
+#include <string>
+int contarCaracteres(int num);
 
 struct nodoPrincipal{
 	int x;
@@ -33,7 +35,12 @@ struct nodoPrincipal{
 		auxiliaresAbajo = 0;
 	}
 	imprimir(){
-		cout << "(" << x << "," << y << ")\t\t";
+		
+		if ((contarCaracteres(x) + contarCaracteres(y)) < 5){
+			cout << "(" << x << "," << y << ")\t\t";
+		} else  {
+			cout << "(" << x << "," << y << ")\t";
+		}	
 	}
 };
 
@@ -56,9 +63,31 @@ struct nodoAuxiliar{
 		abajo = NULL;
 	}
 	imprimir(){
-		cout << "(" << x << "," << y << ")\t\t";
+		if (contarCaracteres(x) + contarCaracteres(y) < 5){
+			cout << "(" << x << "," << y << ")\t\t";
+		} else  {
+			cout << "(" << x << "," << y << ")\t";
+		}	
 	}
 };
+
+int contarCaracteres(int num) {
+    if (num == 0) {
+    	return 1;  	
+	}
+    int contador = 0;
+    if (num < 0) { 
+        num = -num; //Si es negativo lo convierte a positiva y cuenta el - como un caracter.
+        contador++;
+    }
+
+    while (num > 0) {
+        num /= 10;  
+        contador++;
+    }
+
+    return contador;
+}
 
 struct listaCoordenadas{
 	nodoPrincipal* primerNodo;
