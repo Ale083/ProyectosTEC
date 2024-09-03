@@ -22,12 +22,16 @@ public class User {
 	}
 	
 	public void addBorrowedBook(Book book){
-		borrowedBooks.add(book);
+		if(book.isAvailable()){
+			borrowedBooks.add(book);
+			book.borrow();
+		}
 	}
 	
 	public void returnBorrowedBook(Book book){
-		borrowedBooks.remove(book);
-		book.returnBook();
+		if(borrowedBooks.remove(book)){
+			book.returnBook();
+		}
 	}
 	public void showBorrowedBooks(){
 		System.out.println("Books borrowed by [" + id + "] " + name);

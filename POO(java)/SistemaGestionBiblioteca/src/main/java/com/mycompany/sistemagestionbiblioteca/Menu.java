@@ -41,13 +41,13 @@ public class Menu {
 
 			switch(option) {
 				case 1:
-					// registerNewBook();
+					// registerNewBook(); //Aqui revisar que el codigo que de no se repita.
 					break;
 				case 2:
 					// removeBook();
 					break;
 				case 3:
-					// registerNewUser();
+					// registerNewUser(); //Aqui revisar que el id que de no se repita.
 					break;
 				case 4:
 					// lendBookToUser();

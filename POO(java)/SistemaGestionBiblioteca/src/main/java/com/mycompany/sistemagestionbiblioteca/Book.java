@@ -26,12 +26,23 @@ public class Book {
 	}
 	
 	public void borrow(){
-		available = false;
+		if(available){
+			available = false;
+			System.out.println("Book borrowed successfully.");
+		} else {
+			System.out.println("Book is already borrowed.");
+		}
 	}
 	
 	public void returnBook(){
-		available = true;
+		if(!available){
+			available = true;
+			System.out.println("Book returned successfully.");
+		} else {
+			System.out.println("Book is already available.");
+		}
 	}
+
 
 	public int getCode() {
 		return code;
@@ -48,8 +59,4 @@ public class Book {
 	public boolean isAvailable() {
 		return available;
 	}
-	
-	
-	
-	
 }
