@@ -21,8 +21,8 @@ public class Book {
 		available = true;
 	}
 
-	public String showDetails() {
-		return "[" + code + "] " + title + " | By: " + author + (available ? " | Is available" : "| Not available");
+	public void showDetails() {
+		System.out.println("[" + code + "] " + title + " | By: " + author + (available ? " | Is available" : "| Not available"));
 	}
 	
 	public void borrow(){

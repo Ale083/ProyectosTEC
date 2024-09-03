@@ -21,5 +21,22 @@ public class User {
 		borrowedBooks = new ArrayList<Book>();
 	}
 	
+	public void addBorrowedBook(Book book){
+		borrowedBooks.add(book);
+	}
+	
+	public void returnBorrowedBook(Book book){
+		borrowedBooks.remove(book);
+		book.returnBook();
+	}
+	public void showBorrowedBooks(){
+		System.out.println("Books borrowed by [" + id + "] " + name);
+		for (int i = 0; i < borrowedBooks.size(); i++) {
+			borrowedBooks.get(i).showDetails();
+		}
+	}
+	public void userDetails(){
+		System.out.println("[" + id + "] " + name);
+	}
 	
 }
