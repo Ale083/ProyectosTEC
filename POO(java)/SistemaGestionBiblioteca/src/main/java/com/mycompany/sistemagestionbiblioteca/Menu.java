@@ -77,15 +77,17 @@ public class Menu {
 	private void registerNewBook(){
 		String bookName = "";
 		String authorName = "";
+		int bookCode = 0;
 		boolean codeRepeated = true;
 		while (codeRepeated){
 			System.out.print("Enter the book code: ");
-			int userId = scanner.nextInt();
+			bookCode = scanner.nextInt();
 			scanner.nextLine();
 			codeRepeated = false; //asumir que es falso antes de buscar.
 			for (int i = 0; i< library.getBookCount();i++){
-				if (userId == library.getBooks()[i].getCode()){
+				if (bookCode == library.getBooks()[i].getCode()){
 					System.out.println("Code matches with an already existing book, try again.");
+					waiting();
 					codeRepeated = true;
 					break;
 				}
@@ -100,9 +102,14 @@ public class Menu {
 			System.out.print("Enter the author name (If you input spaces/nothing, this will be prompted again): ");
 			authorName = scanner.nextLine();
 		}
+		library.addBook(new Book(bookCode, bookName, authorName));
 	}
 	
-	
+	public void waiting(){
+		System.out.print("Press enter to continue...");
+		scanner.nextLine();
+		System.out.println("---------------");
+	}
 	
 	
 	
