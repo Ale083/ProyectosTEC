@@ -75,5 +75,22 @@ public class Library {
 		loan.getBook().returnBook(); //TODO poner return date.
 		loans.remove(loan);
 	}
+
+	public Book[] getBooks() {
+		return books;
+	}
+
+	public ArrayList<User> getUsers() {
+		return users;
+	}
+
+	public ArrayList<Loan> getLoans() {
+		return loans;
+	}
+
+	public int getBookCount() {
+		return bookCount;
+	}
+	
 }
 

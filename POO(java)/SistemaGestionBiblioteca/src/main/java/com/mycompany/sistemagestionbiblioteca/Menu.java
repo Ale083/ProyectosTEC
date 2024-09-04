@@ -37,11 +37,11 @@ public class Menu {
 			System.out.println("8. Show all loans");
 			System.out.println("9. Exit");
 			System.out.print("Select an option: ");
-			option = scanner.nextInt();
+			option = scanner.nextInt();//TODO: caso que ponga algo que no es int.
 
 			switch(option) {
 				case 1:
-					// registerNewBook(); //Aqui revisar que el codigo que de no se repita.
+					registerNewBook(); //Aqui revisar que el codigo que de no se repita.
 					break;
 				case 2:
 					// removeBook();
@@ -71,7 +71,35 @@ public class Menu {
 					System.out.println("Invalid option.");
 			}
     
-} while(option != 9);
+		} while(option != 9);
+	}
+	
+	private void registerNewBook(){
+		String bookName = "";
+		String authorName = "";
+		boolean codeRepeated = true;
+		while (codeRepeated){
+			System.out.print("Enter the book code: ");
+			int userId = scanner.nextInt();
+			scanner.nextLine();
+			codeRepeated = false; //asumir que es falso antes de buscar.
+			for (int i = 0; i< library.getBookCount();i++){
+				if (userId == library.getBooks()[i].getCode()){
+					System.out.println("Code matches with an already existing book, try again.");
+					codeRepeated = true;
+					break;
+				}
+			}
+		}
+		while (bookName.trim().equals("")){
+			System.out.print("Enter the book name (If you input spaces/nothing, this will be prompted again): ");
+			bookName = scanner.nextLine();
+		}
+		
+		while (authorName.trim().equals("")){
+			System.out.print("Enter the author name (If you input spaces/nothing, this will be prompted again): ");
+			authorName = scanner.nextLine();
+		}
 	}
 	
 	
