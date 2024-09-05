@@ -18,6 +18,8 @@ public class Library {
 	
 	public Library(){
 		bookCount = 0;
+		users = new ArrayList<User>();
+		loans = new ArrayList<Loan>();
 	}
 	
 	public void addBook(Book book){
@@ -25,14 +27,19 @@ public class Library {
 	}
 	
 	public void removeBook(int code){
+		boolean bookFound = false;
 		for (int i = 0; i < bookCount; i++) {
 			if (books[i].getCode() == code){
 				books[i] = null; 
 				for (int j = i; j < bookCount-1; j++) {
-					books[i] = books[i+1];
+					books[j] = books[j+1];
+					bookFound = true;
 				}
 				bookCount--;
 			}
+		}
+		if(!bookFound){
+			System.out.println("Book wasn't found, try again later.");
 		}
 	}
 	
@@ -42,7 +49,17 @@ public class Library {
 				return books[i];
 			}
 		}
-		System.out.println("Book wasn't found.");
+		System.out.println("Book wasn't found, try again later.");
+		return null;
+	}
+	
+	public User findUserByCode(int id){
+		for (int i = 0; i < users.size(); i++) {
+			if (users.get(i).getId() == id){
+				return users.get(i);
+			}
+		}
+		System.out.println("User wasn't found, try again later.");
 		return null;
 	}
 	
@@ -65,15 +82,35 @@ public class Library {
 	}
 	
 	public void createLoan(User user, Book book){
-		loans.add(new Loan(user,book));
-		user.addBorrowedBook(book);
-		book.borrow();
+		if (!book.isAvailable()){
+			System.out.println("Book is not available at this moment, try again at another time.");
+		} else{
+			loans.add(new Loan(user,book));
+			user.addBorrowedBook(book);
+		}
 	}
 	
 	public void returnLoan(Loan loan){
 		loan.getUser().returnBorrowedBook(loan.getBook());
 		loan.getBook().returnBook(); //TODO poner return date.
 		loans.remove(loan);
+	}
+	
+	public Loan findLoanByBookAndUser(Book book, User user){
+		for (int i = 0; i < loans.size(); i++) {
+			Loan get = loans.get(i);
+			if (get.getBook().equals(book) && get.getUser().equals(user)){
+				return get;
+			}
+		}
+		System.out.println("No loan found that matches the provided book and user.");
+		return null;
+	}
+	
+	public void showLoans(){
+		for (int i = 0; i < loans.size(); i++) {
+			loans.get(i).showLoanDetails();
+		}
 	}
 
 	public Book[] getBooks() {

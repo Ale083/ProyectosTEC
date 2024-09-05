@@ -22,7 +22,7 @@ public class Book {
 	}
 
 	public void showDetails() {
-		System.out.println("[" + code + "] " + title + " | By: " + author + (available ? " | Is available" : "| Not available"));
+		System.out.println("[" + code + "]" + title + " | By: " + author + (available ? " | Is available" : "| Not available"));
 	}
 	
 	public void borrow(){

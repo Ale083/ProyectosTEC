@@ -20,7 +20,26 @@ public class Menu {
 	}
 	
 	public void init(){
-		//TODO:crear cosas predeterminadas.
+		library.addBook(new Book(1, "Cien Años de Soledad", "Gabriel García Márquez"));
+		library.addBook(new Book(2, "Don Quijote", "Miguel de Cervantes"));
+		library.addBook(new Book(3, "El Principito", "Antoine de Saint-Exupéry"));
+		library.addBook(new Book(4, "La Odisea", "Homero"));
+		library.addBook(new Book(5, "Moby Dick", "Herman Melville"));
+		library.addBook(new Book(6, "Crimen y Castigo", "Fiódor Dostoyevski"));
+		library.addBook(new Book(7, "Orgullo y Prejuicio", "Jane Austen"));
+		library.addBook(new Book(8, "Fahrenheit 451", "Ray Bradbury"));
+		library.addBook(new Book(9, "1984", "George Orwell"));
+		library.addBook(new Book(10, "El Señor de los Anillos", "J.R.R. Tolkien"));
+		library.addBook(new Book(11, "El Hobbit", "J.R.R. Tolkien"));
+		library.addBook(new Book(12, "La Divina Comedia", "Dante Alighieri"));
+		library.addBook(new Book(13, "Hamlet", "William Shakespeare"));
+		library.addBook(new Book(14, "El Conde de Montecristo", "Alejandro Dumas"));
+		library.addBook(new Book(15, "Drácula", "Bram Stoker"));
+		library.addBook(new Book(16, "Guerra y Paz", "León Tolstói"));
+		library.addBook(new Book(17, "Los Miserables", "Victor Hugo"));
+		library.addBook(new Book(18, "El Nombre de la Rosa", "Umberto Eco"));
+		library.addBook(new Book(19, "Rayuela", "Julio Cortázar"));
+		library.addBook(new Book(20, "El Padrino", "Mario Puzo"));
 	}
 	
 	public void showMenu(){
@@ -41,28 +60,28 @@ public class Menu {
 
 			switch(option) {
 				case 1:
-					registerNewBook(); //Aqui revisar que el codigo que de no se repita.
+					registerNewBook();
 					break;
 				case 2:
-					// removeBook();
+					removeBook();
 					break;
 				case 3:
-					// registerNewUser(); //Aqui revisar que el id que de no se repita.
+					registerNewUser(); 
 					break;
 				case 4:
-					// lendBookToUser();
+					lendBookToUser();
 					break;
 				case 5:
-					// returnBook();
+					returnBook();
 					break;
 				case 6:
-					// showAllAvailableBooks();
+					showAllAvailableBooks();
 					break;
 				case 7:
-					// showAllUsers();
+					showAllUsers();
 					break;
 				case 8:
-					// showAllLoans();
+					showAllLoans();
 					break;
 				case 9:
 					System.out.println("Exiting the system.");
@@ -84,13 +103,11 @@ public class Menu {
 			bookCode = scanner.nextInt();
 			scanner.nextLine();
 			codeRepeated = false; //asumir que es falso antes de buscar.
-			for (int i = 0; i< library.getBookCount();i++){
-				if (bookCode == library.getBooks()[i].getCode()){
-					System.out.println("Code matches with an already existing book, try again.");
-					waiting();
-					codeRepeated = true;
-					break;
-				}
+			Book book = library.findBookByCode(bookCode);
+			if (book != null){
+				System.out.println("Code matches with an already existing book, try again.");
+				waiting();
+				codeRepeated = true;
 			}
 		}
 		while (bookName.trim().equals("")){
@@ -103,6 +120,91 @@ public class Menu {
 			authorName = scanner.nextLine();
 		}
 		library.addBook(new Book(bookCode, bookName, authorName));
+	}
+	
+	private void removeBook(){
+		System.out.print("Enter the book ID: ");
+		int bookCode = scanner.nextInt();
+		scanner.nextLine();
+		library.removeBook(bookCode);
+	}
+	
+	private void registerNewUser(){
+		String userName = "";
+		int userId = 0;
+		boolean idRepeated = true;
+		while (idRepeated){
+			System.out.print("Enter the user ID: ");
+			userId = scanner.nextInt();
+			scanner.nextLine();
+			idRepeated = false; //asumir que es falso antes de buscar.
+			for (int i = 0; i< library.getUsers().size();i++){
+				if (userId == library.getUsers().get(i).getId()){
+					System.out.println("ID matches with an already existing user, try again.");
+					waiting();
+					idRepeated = true;
+					break;
+				}
+			}
+		}
+		while (userName.trim().equals("")){
+			System.out.print("Enter the user name (If you input spaces/nothing, this will be prompted again): ");
+			userName = scanner.nextLine();
+		}
+		library.registerUser(new User(userId,userName));
+	}
+	
+	private void lendBookToUser(){
+		System.out.print("Enter the book code: ");
+		int bookCode = scanner.nextInt();
+		scanner.nextLine();
+		Book bookFound = library.findBookByCode(bookCode);
+		if (bookFound == null){
+			return;
+		}
+		System.out.print("Enter the user id: ");
+		int userId = scanner.nextInt();
+		scanner.nextLine();
+		User userFound = library.findUserByCode(userId);
+		if (userFound == null){
+			return;
+		}
+		library.createLoan(userFound, bookFound);
+	}
+	
+	private void returnBook(){
+		System.out.print("Enter the book code: ");
+		int bookCode = scanner.nextInt();
+		scanner.nextLine();
+		Book bookFound = library.findBookByCode(bookCode);
+		if (bookFound == null){
+			return;
+		}
+		System.out.print("Enter the user id: ");
+		int userId = scanner.nextInt();
+		scanner.nextLine();
+		User userFound = library.findUserByCode(userId);
+		if (userFound == null){
+			return;
+		}
+		
+		Loan loanFound = library.findLoanByBookAndUser(bookFound, userFound);
+		if (bookFound == null){
+			return;
+		}
+		library.returnLoan(loanFound);
+	}
+	
+	private void showAllAvailableBooks(){
+		library.showAvailableBooks();
+	}
+	
+	private void showAllUsers(){
+		library.showUsers();
+	}
+	
+	private void showAllLoans(){
+		library.showLoans();
 	}
 	
 	public void waiting(){

@@ -42,5 +42,10 @@ public class User {
 	public void userDetails(){
 		System.out.println("[" + id + "] " + name);
 	}
+
+	public int getId() {
+		return id;
+	}
+	
 	
 }
