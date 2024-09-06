@@ -40,6 +40,38 @@ public class Menu {
 		library.addBook(new Book(18, "El Nombre de la Rosa", "Umberto Eco"));
 		library.addBook(new Book(19, "Rayuela", "Julio Cortázar"));
 		library.addBook(new Book(20, "El Padrino", "Mario Puzo"));
+		
+		library.registerUser(new User(1, "Carlos García"));
+		library.registerUser(new User(2, "María Rodríguez"));
+		library.registerUser(new User(3, "José Martínez"));
+		library.registerUser(new User(4, "Ana Sánchez"));
+		library.registerUser(new User(5, "Juan López"));
+		library.registerUser(new User(6, "Lucía Fernández"));
+		library.registerUser(new User(7, "Pedro Gómez"));
+		library.registerUser(new User(8, "Laura Díaz"));
+		library.registerUser(new User(9, "Santiago Pérez"));
+		library.registerUser(new User(10, "Elena Morales"));
+		library.registerUser(new User(11, "Miguel Torres"));
+		library.registerUser(new User(12, "Carmen Ruiz"));
+		library.registerUser(new User(13, "Luis Jiménez"));
+		library.registerUser(new User(14, "Isabel Mendoza"));
+		library.registerUser(new User(15, "Francisco Ortega"));
+		library.registerUser(new User(16, "Patricia Castro"));
+		library.registerUser(new User(17, "Diego Ramírez"));
+		library.registerUser(new User(18, "Rosa Herrera"));
+		library.registerUser(new User(19, "Jorge Vargas"));
+		library.registerUser(new User(20, "Alicia Romero"));
+		
+		library.createLoan(library.findUserByCode(1), library.findBookByCode(1));
+		library.createLoan(library.findUserByCode(2), library.findBookByCode(2));
+		library.createLoan(library.findUserByCode(3), library.findBookByCode(3));
+		library.createLoan(library.findUserByCode(4), library.findBookByCode(4));
+		library.createLoan(library.findUserByCode(5), library.findBookByCode(5));
+		library.createLoan(library.findUserByCode(6), library.findBookByCode(6));
+		library.createLoan(library.findUserByCode(7), library.findBookByCode(7));
+		library.createLoan(library.findUserByCode(8), library.findBookByCode(8));
+		library.createLoan(library.findUserByCode(9), library.findBookByCode(9));
+		library.createLoan(library.findUserByCode(10), library.findBookByCode(10));
 	}
 	
 	public void showMenu(){
@@ -56,7 +88,7 @@ public class Menu {
 			System.out.println("8. Show all loans");
 			System.out.println("9. Exit");
 			System.out.print("Select an option: ");
-			option = scanner.nextInt();//TODO: caso que ponga algo que no es int.
+			option = getInt();
 
 			switch(option) {
 				case 1:
@@ -100,32 +132,24 @@ public class Menu {
 		boolean codeRepeated = true;
 		while (codeRepeated){
 			System.out.print("Enter the book code: ");
-			bookCode = scanner.nextInt();
-			scanner.nextLine();
+			bookCode = getInt();
 			codeRepeated = false; //asumir que es falso antes de buscar.
 			Book book = library.findBookByCode(bookCode);
 			if (book != null){
 				System.out.println("Code matches with an already existing book, try again.");
-				waiting();
 				codeRepeated = true;
 			}
 		}
-		while (bookName.trim().equals("")){
-			System.out.print("Enter the book name (If you input spaces/nothing, this will be prompted again): ");
-			bookName = scanner.nextLine();
-		}
 		
-		while (authorName.trim().equals("")){
-			System.out.print("Enter the author name (If you input spaces/nothing, this will be prompted again): ");
-			authorName = scanner.nextLine();
-		}
+		bookName = getValidString("Enter the book name (If you input spaces/nothing, this will be prompted again): ");
+		authorName = getValidString("Enter the author name (If you input spaces/nothing, this will be prompted again): ");
+
 		library.addBook(new Book(bookCode, bookName, authorName));
 	}
 	
 	private void removeBook(){
 		System.out.print("Enter the book ID: ");
-		int bookCode = scanner.nextInt();
-		scanner.nextLine();
+		int bookCode = getInt();
 		library.removeBook(bookCode);
 	}
 	
@@ -135,36 +159,30 @@ public class Menu {
 		boolean idRepeated = true;
 		while (idRepeated){
 			System.out.print("Enter the user ID: ");
-			userId = scanner.nextInt();
-			scanner.nextLine();
+			userId = getInt();;
 			idRepeated = false; //asumir que es falso antes de buscar.
 			for (int i = 0; i< library.getUsers().size();i++){
 				if (userId == library.getUsers().get(i).getId()){
 					System.out.println("ID matches with an already existing user, try again.");
-					waiting();
 					idRepeated = true;
 					break;
 				}
 			}
 		}
-		while (userName.trim().equals("")){
-			System.out.print("Enter the user name (If you input spaces/nothing, this will be prompted again): ");
-			userName = scanner.nextLine();
-		}
+		userName = getValidString("Enter the user name (If you input spaces/nothing, this will be prompted again): ");
 		library.registerUser(new User(userId,userName));
 	}
 	
 	private void lendBookToUser(){
 		System.out.print("Enter the book code: ");
-		int bookCode = scanner.nextInt();
-		scanner.nextLine();
+		int bookCode = getInt();
 		Book bookFound = library.findBookByCode(bookCode);
 		if (bookFound == null){
+			System.out.println("Book wasn't found, try again later.");
 			return;
 		}
 		System.out.print("Enter the user id: ");
-		int userId = scanner.nextInt();
-		scanner.nextLine();
+		int userId = getInt();
 		User userFound = library.findUserByCode(userId);
 		if (userFound == null){
 			return;
@@ -174,22 +192,21 @@ public class Menu {
 	
 	private void returnBook(){
 		System.out.print("Enter the book code: ");
-		int bookCode = scanner.nextInt();
-		scanner.nextLine();
+		int bookCode = getInt();
 		Book bookFound = library.findBookByCode(bookCode);
 		if (bookFound == null){
+			System.out.println("Book wasn't found, try again later.");
 			return;
 		}
 		System.out.print("Enter the user id: ");
-		int userId = scanner.nextInt();
-		scanner.nextLine();
+		int userId = getInt();
 		User userFound = library.findUserByCode(userId);
 		if (userFound == null){
 			return;
 		}
 		
 		Loan loanFound = library.findLoanByBookAndUser(bookFound, userFound);
-		if (bookFound == null){
+		if (loanFound == null){
 			return;
 		}
 		library.returnLoan(loanFound);
@@ -213,6 +230,35 @@ public class Menu {
 		System.out.println("---------------");
 	}
 	
+	public int getInt() {
+        int input = -1;
+        while (true) {
+            if (scanner.hasNextInt()) {
+                input = scanner.nextInt();
+                scanner.nextLine();
+                break;
+            } else {
+                System.out.println("Invalid input. Enter a valid number.");
+                scanner.nextLine(); 
+            }
+        }
+        return input;  // Return the valid integer
+    }
 	
-	
+	public String getValidString(String prompt) {
+        String input = "";
+
+        while (true) {
+            System.out.print(prompt);
+            input = scanner.nextLine();
+
+            if (!input.trim().isEmpty()) {
+                break; 
+            } else {
+                System.out.println("Input cannot be empty. Please enter a valid value.");
+            }
+        }
+
+        return input;
+    }
 }

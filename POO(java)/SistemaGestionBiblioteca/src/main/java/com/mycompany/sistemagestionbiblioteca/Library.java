@@ -49,7 +49,6 @@ public class Library {
 				return books[i];
 			}
 		}
-		System.out.println("Book wasn't found, try again later.");
 		return null;
 	}
 	
@@ -92,8 +91,7 @@ public class Library {
 	
 	public void returnLoan(Loan loan){
 		loan.getUser().returnBorrowedBook(loan.getBook());
-		loan.getBook().returnBook(); //TODO poner return date.
-		loans.remove(loan);
+		loan.getBook().returnBook(); 
 	}
 	
 	public Loan findLoanByBookAndUser(Book book, User user){

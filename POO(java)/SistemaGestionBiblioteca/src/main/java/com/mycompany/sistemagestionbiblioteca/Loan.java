@@ -14,17 +14,18 @@ public class Loan {
 	private User user;
 	private Book book;
 	private String loanDate;
-	private String returnDate;
+	private String returnDate; //Cuando pregunté, como nunca se va a usar porque quitó ahi algo de las instrucciones el profe dijo que nada más lo deje como null.
 
 	public Loan(User user, Book book) {
 		this.user = user;
 		this.book = book;
 		LocalDate currentDate = LocalDate.now();
-        String loanDate = currentDate.toString();
+        loanDate = currentDate.toString();
 	}
 
 	public void showLoanDetails() {
-		System.out.println("Loan{" + "user=" + user + ", book=" + book + ", loanDate=" + loanDate + ", returnDate=" + returnDate + '}');
+		System.out.println("Loan from [" + user.getId() + "] " + user.getName() + ":  " + "[" + book.getCode() + "]" + book.getTitle() + " | By: " + book.getAuthor());
+		System.out.println("\tLoan date: " + loanDate);
 	}
 
 	public User getUser() {
