@@ -90,8 +90,7 @@ public class Library {
 	}
 	
 	public void returnLoan(Loan loan){
-		loan.getUser().returnBorrowedBook(loan.getBook());
-		loan.getBook().returnBook(); 
+		loan.getUser().returnBorrowedBook(loan.getBook()); 
 	}
 	
 	public Loan findLoanByBookAndUser(Book book, User user){

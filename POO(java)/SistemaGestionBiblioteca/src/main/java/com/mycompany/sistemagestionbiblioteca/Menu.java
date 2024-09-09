@@ -141,10 +141,11 @@ public class Menu {
 			}
 		}
 		
-		bookName = getValidString("Enter the book name (If you input spaces/nothing, this will be prompted again): ");
-		authorName = getValidString("Enter the author name (If you input spaces/nothing, this will be prompted again): ");
+		bookName = getValidString("Enter the book name: ");
+		authorName = getValidString("Enter the author name: ");
 
 		library.addBook(new Book(bookCode, bookName, authorName));
+		System.out.println("Book registered succesfully!");
 	}
 	
 	private void removeBook(){
@@ -169,8 +170,9 @@ public class Menu {
 				}
 			}
 		}
-		userName = getValidString("Enter the user name (If you input spaces/nothing, this will be prompted again): ");
+		userName = getValidString("Enter the user name: ");
 		library.registerUser(new User(userId,userName));
+		System.out.println("User registered succesfully!");
 	}
 	
 	private void lendBookToUser(){
@@ -188,6 +190,7 @@ public class Menu {
 			return;
 		}
 		library.createLoan(userFound, bookFound);
+		System.out.println(bookFound.getTitle() + " was lent to " + userFound.getName() + " successfully");
 	}
 	
 	private void returnBook(){
@@ -210,6 +213,7 @@ public class Menu {
 			return;
 		}
 		library.returnLoan(loanFound);
+		System.out.println("Book returned successfully");
 	}
 	
 	private void showAllAvailableBooks(){
@@ -222,12 +226,6 @@ public class Menu {
 	
 	private void showAllLoans(){
 		library.showLoans();
-	}
-	
-	public void waiting(){
-		System.out.print("Press enter to continue...");
-		scanner.nextLine();
-		System.out.println("---------------");
 	}
 	
 	public int getInt() {
