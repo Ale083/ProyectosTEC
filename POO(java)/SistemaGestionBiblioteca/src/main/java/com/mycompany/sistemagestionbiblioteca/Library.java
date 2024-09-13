@@ -30,11 +30,14 @@ public class Library {
 		boolean bookFound = false;
 		for (int i = 0; i < bookCount; i++) {
 			if (books[i].getCode() == code){
+				Loan loanAssociated = findLoanByBook(books[i]);
+				if(loanAssociated != null) 
+					returnLoan(loanAssociated); //Si hay algún loan con ese libro, entonces quita el Loan tambien.
 				books[i] = null; 
 				for (int j = i; j < bookCount-1; j++) {
 					books[j] = books[j+1];
-					bookFound = true;
 				}
+				bookFound = true;
 				bookCount--;
 			}
 		}
@@ -101,6 +104,16 @@ public class Library {
 			}
 		}
 		System.out.println("No loan found that matches the provided book and user.");
+		return null;
+	}
+	
+	public Loan findLoanByBook(Book book){
+		for (int i = 0; i < loans.size(); i++) {
+			Loan get = loans.get(i);
+			if (get.getBook().equals(book)){
+				return get;
+			}
+		}
 		return null;
 	}
 	
