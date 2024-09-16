@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>809</width>
-    <height>505</height>
+    <height>581</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -531,7 +531,7 @@
      </property>
      <property name="geometry">
       <rect>
-       <x>30</x>
+       <x>50</x>
        <y>30</y>
        <width>42</width>
        <height>22</height>
@@ -542,6 +542,25 @@
      </property>
      <property name="maximum">
       <number>20</number>
+     </property>
+    </widget>
+    <widget class="QLabel" name="lblCountdownCombinar">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>30</y>
+       <width>37</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>2</string>
+     </property>
+     <property name="textFormat">
+      <enum>Qt::TextFormat::RichText</enum>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignmentFlag::AlignCenter</set>
      </property>
     </widget>
    </widget>
@@ -1017,6 +1036,25 @@
       </property>
      </widget>
     </widget>
+    <widget class="QLabel" name="lblCountdownHorno">
+     <property name="geometry">
+      <rect>
+       <x>170</x>
+       <y>20</y>
+       <width>37</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>10</string>
+     </property>
+     <property name="textFormat">
+      <enum>Qt::TextFormat::RichText</enum>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignmentFlag::AlignCenter</set>
+     </property>
+    </widget>
    </widget>
    <widget class="QLabel" name="lblHorno">
     <property name="geometry">
@@ -1039,6 +1077,61 @@
     <property name="alignment">
      <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
     </property>
+   </widget>
+   <widget class="QFrame" name="frmControles">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>449</y>
+      <width>281</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Shape::Box</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Shadow::Raised</enum>
+    </property>
+    <widget class="QPushButton" name="btnPausa">
+     <property name="geometry">
+      <rect>
+       <x>100</x>
+       <y>10</y>
+       <width>80</width>
+       <height>18</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Pausa</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="btnDetener">
+     <property name="geometry">
+      <rect>
+       <x>190</x>
+       <y>10</y>
+       <width>80</width>
+       <height>18</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Detener</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="btnIniciar">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>80</width>
+       <height>18</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Iniciar</string>
+     </property>
+    </widget>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
