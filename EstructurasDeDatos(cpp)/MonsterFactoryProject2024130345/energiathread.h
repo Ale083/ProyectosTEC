@@ -5,6 +5,7 @@
 #include <QtCore>
 #include <QSpinBox>
 #include <QCheckBox>
+#include <QProgressBar>
 #include "estructuras.h"
 
 
@@ -12,7 +13,7 @@ class EnergiaThread : public QThread
 {
 public:
     EnergiaThread();
-    EnergiaThread(QString id, cola<QString>* colaEnergia, QLabel* queueLabel, QLabel* countdownLabel,QSpinBox* tiempoSbx,QSpinBox* capacidadSbx, QCheckBox* corriendoChbx){
+    EnergiaThread(QString id, cola<QString>* colaEnergia, QLabel* queueLabel, QLabel* countdownLabel,QSpinBox* tiempoSbx,QSpinBox* capacidadSbx, QCheckBox* corriendoChbx,QProgressBar* pBarEnergia){
         this->id = id;
         this->colaEnergia = colaEnergia;
         this->queueLabel = queueLabel;
@@ -20,6 +21,7 @@ public:
         this->tiempoSbx = tiempoSbx;
         this->capacidadSbx = capacidadSbx;
         this->corriendoChbx = corriendoChbx;
+        this->pBarEnergia = pBarEnergia;
     }
     void run();
 
@@ -31,6 +33,7 @@ private:
     QSpinBox* tiempoSbx;
     QSpinBox* capacidadSbx;
     QCheckBox* corriendoChbx;
+    QProgressBar* pBarEnergia;
 };
 
 #endif // ENERGIATHREAD_H

@@ -2,11 +2,11 @@
 #define ESTRUCTURAS_H
 template<typename T>
 struct Nodo{
-private:
+public:
     T dato;
     Nodo* siguiente;
     Nodo* anterior;
-public:
+
     Nodo(T _dato){
         dato = _dato;
         siguiente = anterior = nullptr;
@@ -36,6 +36,7 @@ public:
     void encolar(T dato){
         if(nodoFondo == nullptr){ //Si hay 0 nodos.
             nodoFondo = nodoFrente = new Nodo(dato);
+            longitud++;
         } else{ //si hay 1 o mas nodos.
             Nodo<T>* nuevoNodo = new Nodo(dato);
             nuevoNodo -> siguiente = nodoFondo;
