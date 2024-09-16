@@ -32,7 +32,7 @@
     <property name="lineWidth">
      <number>2</number>
     </property>
-    <widget class="QSpinBox" name="sbxMateria">
+    <widget class="QSpinBox" name="sbxMaterial">
      <property name="enabled">
       <bool>true</bool>
      </property>
@@ -190,7 +190,7 @@
       <bool>true</bool>
      </property>
     </widget>
-    <widget class="QCheckBox" name="checkBoxMateria">
+    <widget class="QCheckBox" name="checkBoxMaterial">
      <property name="geometry">
       <rect>
        <x>60</x>
@@ -206,7 +206,7 @@
       <bool>true</bool>
      </property>
     </widget>
-    <widget class="QLabel" name="lblMateria">
+    <widget class="QLabel" name="lblMaterial">
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -332,7 +332,7 @@
       <number>20</number>
      </property>
     </widget>
-    <widget class="QLabel" name="lblCountdownMateria">
+    <widget class="QLabel" name="lblCountdownMaterial">
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -389,7 +389,7 @@
       <number>25</number>
      </property>
     </widget>
-    <widget class="QSpinBox" name="sbxCapacidadColaMateria">
+    <widget class="QSpinBox" name="sbxCapacidadColaMaterial">
      <property name="geometry">
       <rect>
        <x>210</x>
@@ -427,7 +427,7 @@
       <number>25</number>
      </property>
     </widget>
-    <widget class="QLabel" name="lblColaMateria">
+    <widget class="QLabel" name="lblColaMaterial">
      <property name="geometry">
       <rect>
        <x>140</x>
@@ -461,47 +461,6 @@
       <number>-1</number>
      </property>
     </widget>
-    <widget class="QProgressBar" name="pBarEnergia">
-     <property name="geometry">
-      <rect>
-       <x>140</x>
-       <y>20</y>
-       <width>151</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="value">
-      <number>50</number>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-     </property>
-     <property name="textVisible">
-      <bool>false</bool>
-     </property>
-    </widget>
-    <zorder>pBarEnergia</zorder>
-    <zorder>sbxMateria</zorder>
-    <zorder>sbxMaldad</zorder>
-    <zorder>checkBoxMaldad</zorder>
-    <zorder>lblColaEnergia</zorder>
-    <zorder>lblCapacidad2</zorder>
-    <zorder>lblMaldad</zorder>
-    <zorder>lblCapacidad1</zorder>
-    <zorder>checkBoxEnergia</zorder>
-    <zorder>checkBoxMateria</zorder>
-    <zorder>lblMateria</zorder>
-    <zorder>lblCapacidad3</zorder>
-    <zorder>lblColaMaldad</zorder>
-    <zorder>lblCountdownMaldad</zorder>
-    <zorder>lblEnergia</zorder>
-    <zorder>sbxEnergia</zorder>
-    <zorder>lblCountdownMateria</zorder>
-    <zorder>lblCountdownEnergia</zorder>
-    <zorder>sbxCapacidadColaEnergia</zorder>
-    <zorder>sbxCapacidadColaMateria</zorder>
-    <zorder>sbxCapacidadColaMaldad</zorder>
-    <zorder>lblColaMateria</zorder>
    </widget>
    <widget class="QLabel" name="lblFuentes">
     <property name="geometry">

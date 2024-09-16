@@ -11,12 +11,16 @@ CONFIG += c++17
 SOURCES += \
     energiathread.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    maldadthread.cpp \
+    materialthread.cpp
 
 HEADERS += \
     energiathread.h \
     estructuras.h \
-    mainwindow.h
+    mainwindow.h \
+    maldadthread.h \
+    materialthread.h
 
 FORMS += \
     mainwindow.ui

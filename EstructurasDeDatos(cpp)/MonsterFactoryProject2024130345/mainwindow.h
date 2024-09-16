@@ -6,6 +6,8 @@
 
 #include "energiathread.h"
 #include "estructuras.h"
+#include "materialthread.h"
+#include "maldadthread.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {class MainWindow;}
@@ -22,6 +24,11 @@ public:
     cola<QString>* energiaCola;
     EnergiaThread* energiaThread;
 
+    cola<QString>* materialCola;
+    MaterialThread* materialThread;
+
+    cola<QString>* maldadCola;
+    MaldadThread* maldadThread;
 
 private:
     Ui::MainWindow *ui;

@@ -1,20 +1,10 @@
 #include "energiathread.h"
 
 EnergiaThread::EnergiaThread() {}
-/*
-this->id = id;
-    this->colaEnergia = colaEnergia;
-    this->queueLabel = queueLabel;
-    this->timerLabel = timerLabel;
-    this->tiempoSbx = tiempoSbx;
-    this->capacidadSbx = capacidadSbx;
-    this->corriendoChbx = corriendoChbx;
-*/
+
 void EnergiaThread::run(){
     while(true){
         queueLabel -> setText(QString::number(colaEnergia->size()) + " de " + QString::number(capacidadSbx->value()));
-        //pBarEnergia -> setMaximum(capacidadSbx->value());
-        //pBarEnergia ->setValue(colaEnergia->size());
         int secondsLeft = this->tiempoSbx->value();
         while(secondsLeft > 0){
             if(!(this->corriendoChbx->isChecked())){

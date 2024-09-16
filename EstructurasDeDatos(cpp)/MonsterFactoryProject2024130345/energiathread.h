@@ -13,7 +13,7 @@ class EnergiaThread : public QThread
 {
 public:
     EnergiaThread();
-    EnergiaThread(QString id, cola<QString>* colaEnergia, QLabel* queueLabel, QLabel* countdownLabel,QSpinBox* tiempoSbx,QSpinBox* capacidadSbx, QCheckBox* corriendoChbx,QProgressBar* pBarEnergia){
+    EnergiaThread(QString id, cola<QString>* colaEnergia, QLabel* queueLabel, QLabel* countdownLabel,QSpinBox* tiempoSbx,QSpinBox* capacidadSbx, QCheckBox* corriendoChbx){
         this->id = id;
         this->colaEnergia = colaEnergia;
         this->queueLabel = queueLabel;
@@ -21,7 +21,6 @@ public:
         this->tiempoSbx = tiempoSbx;
         this->capacidadSbx = capacidadSbx;
         this->corriendoChbx = corriendoChbx;
-        this->pBarEnergia = pBarEnergia;
     }
     void run();
 
@@ -33,7 +32,6 @@ private:
     QSpinBox* tiempoSbx;
     QSpinBox* capacidadSbx;
     QCheckBox* corriendoChbx;
-    QProgressBar* pBarEnergia;
 };
 
 #endif // ENERGIATHREAD_H
