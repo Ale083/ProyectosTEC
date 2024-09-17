@@ -40,6 +40,7 @@ public:
     QString toString(){
         QString resultado = tipo + " de consecutivo " + QString::number(consecutivo) + " generado por la combinación de " + combinacion[0] + ", " + combinacion[1] + " y " + combinacion[2] + " en " + timestampCreacion;
         //TODO
+        return resultado;
     }
 };
 

@@ -12,7 +12,7 @@ class MaldadThread : public QThread
 {
 public:
     MaldadThread();
-    MaldadThread(QString id, cola<QString>* colaMaldad, QLabel* queueLabel, QLabel* countdownLabel, QSpinBox* tiempoSbx, QSpinBox* capacidadSbx, QCheckBox* corriendoChbx) {
+    MaldadThread(QString id, cola<QString>* colaMaldad, QLabel* queueLabel, QLabel* countdownLabel, QSpinBox* tiempoSbx, QSpinBox* capacidadSbx, QCheckBox* corriendoChbx, QMutex* mutex) {
         this->id = id;
         this->colaMaldad = colaMaldad;
         this->queueLabel = queueLabel;
@@ -20,6 +20,7 @@ public:
         this->tiempoSbx = tiempoSbx;
         this->capacidadSbx = capacidadSbx;
         this->corriendoChbx = corriendoChbx;
+        this->mutex = mutex;
     }
     void run();
 
@@ -31,6 +32,7 @@ private:
     QSpinBox* tiempoSbx;
     QSpinBox* capacidadSbx;
     QCheckBox* corriendoChbx;
+    QMutex* mutex;
 };
 
 #endif // MALDADTHREAD_H

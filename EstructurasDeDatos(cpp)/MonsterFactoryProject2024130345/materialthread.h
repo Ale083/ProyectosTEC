@@ -12,7 +12,7 @@ class MaterialThread : public QThread
 {
 public:
     MaterialThread();
-    MaterialThread(QString id, cola<QString>* colaMaterial, QLabel* queueLabel, QLabel* countdownLabel,QSpinBox* tiempoSbx,QSpinBox* capacidadSbx, QCheckBox* corriendoChbx){
+    MaterialThread(QString id, cola<QString>* colaMaterial, QLabel* queueLabel, QLabel* countdownLabel,QSpinBox* tiempoSbx,QSpinBox* capacidadSbx, QCheckBox* corriendoChbx, QMutex* mutex){
         this->id = id;
         this->colaMaterial = colaMaterial;
         this->queueLabel = queueLabel;
@@ -20,6 +20,7 @@ public:
         this->tiempoSbx = tiempoSbx;
         this->capacidadSbx = capacidadSbx;
         this->corriendoChbx = corriendoChbx;
+        this->mutex = mutex;
     }
     void run();
 
@@ -31,6 +32,7 @@ private:
     QSpinBox* tiempoSbx;
     QSpinBox* capacidadSbx;
     QCheckBox* corriendoChbx;
+    QMutex* mutex;
 };
 
 #endif // MATERIALTHREAD_H
