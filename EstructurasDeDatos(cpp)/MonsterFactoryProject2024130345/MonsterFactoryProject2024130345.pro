@@ -9,6 +9,7 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    combinarthread.cpp \
     energiathread.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -16,7 +17,9 @@ SOURCES += \
     materialthread.cpp
 
 HEADERS += \
+    combinarthread.h \
     energiathread.h \
+    estructuramonstruo.h \
     estructuras.h \
     mainwindow.h \
     maldadthread.h \

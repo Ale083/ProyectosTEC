@@ -69,9 +69,25 @@ public:
     }
 };
 
-//bool isempty()
-//void encolar()
-//Nodo* desencolar()
-
+template<typename T>
+struct Lista{
+private:
+    Nodo<T> primerNodo;
+    Nodo<T> ultimoNodo;
+public:
+    Lista(){
+        primerNodo = ultimoNodo = nullptr;
+    }
+    void insertarAlFinal(T dato){
+        if (ultimoNodo == nullptr){ //Si hay 0 nodos
+            primerNodo = ultimoNodo = new Nodo(dato);
+        } else{
+            Nodo<T>* nuevoNodo = new Nodo(dato);
+            ultimoNodo -> siguiente = nuevoNodo;
+            nuevoNodo -> anterior = ultimoNodo;
+            ultimoNodo = nuevoNodo;
+        }
+    }
+};
 
 #endif // ESTRUCTURAS_H
