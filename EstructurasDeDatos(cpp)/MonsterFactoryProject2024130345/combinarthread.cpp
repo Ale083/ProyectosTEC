@@ -15,7 +15,7 @@ void CombinarThread::run(){
     while(true){
         colaDeMonstruosLabel -> setText(QString::number(colaDeMonstruos->size()) + " de " + QString::number(capacidadColaMonstruos->value()));
         int secondsLeft = this->tiempoSbx->value();
-        while(secondsLeft >= 0){
+        while(secondsLeft > 0){
             if(!(this->corriendoChbx->isChecked()) || colaEnergia->isEmpty() || colaMaterial->isEmpty() || colaMaldad->isEmpty()){
                 if(!corriendoChbx->isEnabled()){ //si no está enabled, es porque en algun momento paró por overflow
                     if(capacidadColaMonstruos -> value() > colaDeMonstruos->size()){
@@ -35,12 +35,11 @@ void CombinarThread::run(){
             continue;
         }
         //cuando secondsLeft llega a 0, sigue aqui.
+        countdownLabel->setText("0"); //Solo para que si se vea que llegó a 0, sino lo deja en 1 el label.
         int conteo = 1;
-        mutex->lock();
-        QString energia = colaEnergia->desencolar()->dato; //lblColaEnergia -> setText(QString::number(colaEnergia->size()) + " de " + QString::number(capacidadColaEnergia->value()));
-        QString material = colaMaterial->desencolar()->dato; //lblColaMaterial -> setText(QString::number(colaMaterial->size()) + " de " + QString::number(capacidadColaMaterial->value()));
-        QString maldad = colaMaldad->desencolar()->dato; //lblColaMaldad -> setText(QString::number(colaMaldad->size()) + " de " + QString::number(capacidadColaMaldad->value()));
-        mutex->unlock();
+        QString energia = colaEnergia->desencolar()->dato;
+        QString material = colaMaterial->desencolar()->dato;
+        QString maldad = colaMaldad->desencolar()->dato;
 
         //Combinaciones:
         if (energia == "Energia Cosmica" && material == "Material Organico" && maldad == "Maldad Astuta"){
@@ -72,6 +71,7 @@ void CombinarThread::run(){
         } else{
             basureroDeMonstruos->insertarAlFinal(new Monstruo(conteo++, energia, material, maldad, "Monstruo Defectuoso", true, "Por combinacion"));
         }
+
         capacidadColaMonstruos->setMinimum(colaDeMonstruos->size());
         //El mínimo de la capacidad debe ser la cantidad que hay en la cola. Esto para que no ocurra 12 de 10 por ejemplo.
     }

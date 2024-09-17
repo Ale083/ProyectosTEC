@@ -45,7 +45,7 @@
       </rect>
      </property>
      <property name="minimum">
-      <number>3</number>
+      <number>2</number>
      </property>
      <property name="maximum">
       <number>20</number>
@@ -64,7 +64,7 @@
       </rect>
      </property>
      <property name="minimum">
-      <number>3</number>
+      <number>2</number>
      </property>
      <property name="maximum">
       <number>20</number>
@@ -286,7 +286,7 @@
       </rect>
      </property>
      <property name="text">
-      <string>3</string>
+      <string>2</string>
      </property>
      <property name="textFormat">
       <enum>Qt::TextFormat::RichText</enum>
@@ -326,7 +326,7 @@
       </rect>
      </property>
      <property name="minimum">
-      <number>3</number>
+      <number>2</number>
      </property>
      <property name="maximum">
       <number>20</number>
@@ -342,7 +342,7 @@
       </rect>
      </property>
      <property name="text">
-      <string>3</string>
+      <string>2</string>
      </property>
      <property name="textFormat">
       <enum>Qt::TextFormat::RichText</enum>
@@ -361,7 +361,7 @@
       </rect>
      </property>
      <property name="text">
-      <string>3</string>
+      <string>2</string>
      </property>
      <property name="textFormat">
       <enum>Qt::TextFormat::RichText</enum>
@@ -554,7 +554,7 @@
       </rect>
      </property>
      <property name="text">
-      <string>5</string>
+      <string>2</string>
      </property>
      <property name="textFormat">
       <enum>Qt::TextFormat::RichText</enum>
@@ -687,7 +687,7 @@
     <property name="frameShadow">
      <enum>QFrame::Shadow::Raised</enum>
     </property>
-    <widget class="QSpinBox" name="sbxCapacidadColaDeMonstruos">
+    <widget class="QSpinBox" name="sbxCapacidadColaMaldad_2">
      <property name="geometry">
       <rect>
        <x>80</x>
@@ -706,7 +706,7 @@
       <number>25</number>
      </property>
     </widget>
-    <widget class="QLabel" name="lblColaMonstruos">
+    <widget class="QLabel" name="lblColaMaldad_2">
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -740,7 +740,7 @@
       <number>-1</number>
      </property>
     </widget>
-    <widget class="QLabel" name="lblCapacidad4">
+    <widget class="QLabel" name="lblCapacidad3_2">
      <property name="geometry">
       <rect>
        <x>30</x>
@@ -800,7 +800,7 @@
     <property name="frameShadow">
      <enum>QFrame::Shadow::Raised</enum>
     </property>
-    <widget class="QSpinBox" name="sbxTiempoHorno">
+    <widget class="QSpinBox" name="sbxCombinar_2">
      <property name="enabled">
       <bool>true</bool>
      </property>
@@ -1133,16 +1133,6 @@
      </property>
     </widget>
    </widget>
-   <widget class="QSpinBox" name="spinBox">
-    <property name="geometry">
-     <rect>
-      <x>760</x>
-      <y>510</y>
-      <width>42</width>
-      <height>25</height>
-     </rect>
-    </property>
-   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -1150,7 +1140,7 @@
      <x>0</x>
      <y>0</y>
      <width>809</width>
-     <height>21</height>
+     <height>17</height>
     </rect>
    </property>
   </widget>

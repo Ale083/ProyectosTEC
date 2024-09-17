@@ -72,8 +72,8 @@ public:
 template<typename T>
 struct Lista{
 private:
-    Nodo<T>* primerNodo;
-    Nodo<T>* ultimoNodo;
+    Nodo<T> primerNodo;
+    Nodo<T> ultimoNodo;
 public:
     Lista(){
         primerNodo = ultimoNodo = nullptr;
