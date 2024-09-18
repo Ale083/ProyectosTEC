@@ -18,6 +18,10 @@ MainWindow::MainWindow(QWidget *parent)
     maldadThread = new MaldadThread("Maldad Thread 1", maldadCola, ui->lblColaMaldad, ui->lblCountdownMaldad, ui->sbxMaldad, ui->sbxCapacidadColaMaldad, ui->checkBoxMaldad);
     maldadThread->start();
 
+    colaDeMonstruos = new cola<Monstruo*>;
+    basureroDeMonstruos = new Lista<Monstruo*>;
+    combinarThread = new CombinarThread("Combinar Thread 1",energiaCola, materialCola, maldadCola, ui->lblCountdownCombinar,ui->sbxCombinar,ui->checkBoxCombinar,ui->lblColaMonstruos,ui->sbxCapacidadColaDeMonstruos,colaDeMonstruos,basureroDeMonstruos);
+    combinarThread -> start();
 }
 
 MainWindow::~MainWindow()

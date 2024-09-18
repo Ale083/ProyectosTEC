@@ -687,7 +687,7 @@
     <property name="frameShadow">
      <enum>QFrame::Shadow::Raised</enum>
     </property>
-    <widget class="QSpinBox" name="sbxCapacidadColaMaldad_2">
+    <widget class="QSpinBox" name="sbxCapacidadColaDeMonstruos">
      <property name="geometry">
       <rect>
        <x>80</x>
@@ -706,7 +706,7 @@
       <number>25</number>
      </property>
     </widget>
-    <widget class="QLabel" name="lblColaMaldad_2">
+    <widget class="QLabel" name="lblColaMonstruos">
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -740,7 +740,7 @@
       <number>-1</number>
      </property>
     </widget>
-    <widget class="QLabel" name="lblCapacidad3_2">
+    <widget class="QLabel" name="lblCapacidad4">
      <property name="geometry">
       <rect>
        <x>30</x>
@@ -1140,7 +1140,7 @@
      <x>0</x>
      <y>0</y>
      <width>809</width>
-     <height>17</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>

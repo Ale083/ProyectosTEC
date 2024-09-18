@@ -8,6 +8,7 @@
 #include "estructuras.h"
 #include "materialthread.h"
 #include "maldadthread.h"
+#include "combinarthread.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {class MainWindow;}
@@ -30,6 +31,9 @@ public:
     cola<QString>* maldadCola;
     MaldadThread* maldadThread;
 
+    cola<Monstruo*>* colaDeMonstruos;
+    Lista<Monstruo*>* basureroDeMonstruos;
+    CombinarThread* combinarThread;
 private:
     Ui::MainWindow *ui;
 };

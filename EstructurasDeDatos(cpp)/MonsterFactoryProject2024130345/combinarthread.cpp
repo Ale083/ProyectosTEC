@@ -16,6 +16,7 @@ void CombinarThread::run(){
         colaDeMonstruosLabel -> setText(QString::number(colaDeMonstruos->size()) + " de " + QString::number(capacidadColaMonstruos->value()));
         int secondsLeft = this->tiempoSbx->value();
         while(secondsLeft > 0){
+            colaDeMonstruosLabel -> setText(QString::number(colaDeMonstruos->size()) + " de " + QString::number(capacidadColaMonstruos->value()));
             if(!(this->corriendoChbx->isChecked()) || colaEnergia->isEmpty() || colaMaterial->isEmpty() || colaMaldad->isEmpty()){
                 if(!corriendoChbx->isEnabled()){ //si no está enabled, es porque en algun momento paró por overflow
                     if(capacidadColaMonstruos -> value() > colaDeMonstruos->size()){
