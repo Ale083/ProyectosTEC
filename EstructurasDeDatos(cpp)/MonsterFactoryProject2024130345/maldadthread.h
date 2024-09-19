@@ -5,7 +5,6 @@
 #include <QtCore>
 #include <QSpinBox>
 #include <QCheckBox>
-#include <QProgressBar>
 #include "estructuras.h"
 
 class MaldadThread : public QThread

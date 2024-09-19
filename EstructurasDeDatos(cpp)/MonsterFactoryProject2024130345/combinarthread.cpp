@@ -48,6 +48,7 @@ void CombinarThread::run(){
         mutexColaEnergia->unlock(); mutexColaMaterial->unlock(); mutexColaMaldad->unlock();
 
         //Combinaciones:
+        mutexColaMonstruos->lock();
         if (energia == "Energia Cosmica" && material == "Material Organico" && maldad == "Maldad Astuta"){
             colaDeMonstruos->encolar(new Monstruo(conteo++,energia,material,maldad,"Monstruo de Inteligencia",false,"")); //Inteligencia
         }
@@ -76,8 +77,9 @@ void CombinarThread::run(){
             colaDeMonstruos->encolar(new Monstruo(conteo++, energia, material, maldad, "Monstruo de Velocidad", false, "")); //Velocidad
         } else{
             basureroDeMonstruos->insertarAlFinal(new Monstruo(conteo++, energia, material, maldad, "Monstruo Defectuoso", true, "Por combinacion"));
+            qDebug() << "test";
         }
-
+        mutexColaMonstruos->unlock();
         capacidadColaMonstruos->setMinimum(colaDeMonstruos->size());
         //El mínimo de la capacidad debe ser la cantidad que hay en la cola. Esto para que no ocurra 12 de 10 por ejemplo.
     }

@@ -11,6 +11,7 @@
 #include "maldadthread.h"
 #include "combinarthread.h"
 #include "refresh.h"
+#include "hornothread.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {class MainWindow;}
@@ -39,9 +40,15 @@ public:
     cola<Monstruo*>* colaDeMonstruos;
     Lista<Monstruo*>* basureroDeMonstruos;
     CombinarThread* combinarThread;
+    QMutex  mutexColaMonstruos;
 
     Refresh* refresh;
 
+    cola<Monstruo*>* colaBandeja1;
+    cola<Monstruo*>* colaBandeja2;
+    cola<Monstruo*>* colaBandeja3;
+    cola<Monstruo*>* colaBandeja4;
+    HornoThread* hornoThread;
 
 private slots:
     void on_btnRefresh_clicked();

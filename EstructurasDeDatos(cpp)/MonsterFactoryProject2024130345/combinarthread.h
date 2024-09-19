@@ -12,7 +12,7 @@ class CombinarThread : public QThread
 {
 public:
     CombinarThread();
-    CombinarThread(QString id, cola<QString>* colaEnergia, cola<QString>* colaMaterial, cola<QString>* colaMaldad, QLabel* countdownLabel,QSpinBox* tiempoSbx, QCheckBox* corriendoChbx, QLabel* colaDeMonstruosLabel, QSpinBox* capacidadColaMonstruos, cola<Monstruo*>* colaDeMonstruos, Lista<Monstruo*>* basureroDeMonstruos, QMutex* mutexColaEnergia, QMutex* mutexColaMaterial, QMutex* mutexColaMaldad){
+    CombinarThread(QString id, cola<QString>* colaEnergia, cola<QString>* colaMaterial, cola<QString>* colaMaldad, QLabel* countdownLabel,QSpinBox* tiempoSbx, QCheckBox* corriendoChbx, QLabel* colaDeMonstruosLabel, QSpinBox* capacidadColaMonstruos, cola<Monstruo*>* colaDeMonstruos, Lista<Monstruo*>* basureroDeMonstruos, QMutex* mutexColaEnergia, QMutex* mutexColaMaterial, QMutex* mutexColaMaldad, QMutex* mutexColaMonstruos){
         this->id = id;
         this->colaEnergia = colaEnergia;
         this->colaMaterial = colaMaterial;
@@ -27,6 +27,7 @@ public:
         this->mutexColaEnergia = mutexColaEnergia;
         this->mutexColaMaterial = mutexColaMaterial;
         this->mutexColaMaldad = mutexColaMaldad;
+        this->mutexColaMonstruos = mutexColaMonstruos;
     }
     void run();
 private:
@@ -44,6 +45,7 @@ private:
     QMutex* mutexColaEnergia;
     QMutex* mutexColaMaterial;
     QMutex* mutexColaMaldad;
+    QMutex* mutexColaMonstruos;
 };
 
 #endif // COMBINARTHREAD_H

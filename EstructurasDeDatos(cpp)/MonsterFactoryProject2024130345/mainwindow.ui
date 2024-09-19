@@ -45,10 +45,13 @@
       </rect>
      </property>
      <property name="minimum">
-      <number>2</number>
+      <number>1</number>
      </property>
      <property name="maximum">
       <number>20</number>
+     </property>
+     <property name="value">
+      <number>1</number>
      </property>
     </widget>
     <widget class="QSpinBox" name="sbxMaldad">
@@ -64,10 +67,13 @@
       </rect>
      </property>
      <property name="minimum">
-      <number>2</number>
+      <number>1</number>
      </property>
      <property name="maximum">
       <number>20</number>
+     </property>
+     <property name="value">
+      <number>1</number>
      </property>
     </widget>
     <widget class="QCheckBox" name="checkBoxMaldad">
@@ -326,10 +332,13 @@
       </rect>
      </property>
      <property name="minimum">
-      <number>2</number>
+      <number>1</number>
      </property>
      <property name="maximum">
       <number>20</number>
+     </property>
+     <property name="value">
+      <number>1</number>
      </property>
     </widget>
     <widget class="QLabel" name="lblCountdownMaterial">
@@ -800,7 +809,7 @@
     <property name="frameShadow">
      <enum>QFrame::Shadow::Raised</enum>
     </property>
-    <widget class="QSpinBox" name="sbxCombinar_2">
+    <widget class="QSpinBox" name="sbxHorno">
      <property name="enabled">
       <bool>true</bool>
      </property>
@@ -819,7 +828,7 @@
       <number>20</number>
      </property>
     </widget>
-    <widget class="QLabel" name="label">
+    <widget class="QLabel" name="lblTiempoHorno">
      <property name="geometry">
       <rect>
        <x>60</x>
@@ -869,7 +878,7 @@
       </property>
       <property name="geometry">
        <rect>
-        <x>20</x>
+        <x>10</x>
         <y>20</y>
         <width>42</width>
         <height>22</height>
@@ -880,6 +889,19 @@
       </property>
       <property name="maximum">
        <number>4</number>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lblContenido1">
+      <property name="geometry">
+       <rect>
+        <x>60</x>
+        <y>20</y>
+        <width>21</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>0</string>
       </property>
      </widget>
     </widget>
@@ -920,7 +942,7 @@
       </property>
       <property name="geometry">
        <rect>
-        <x>20</x>
+        <x>10</x>
         <y>20</y>
         <width>42</width>
         <height>22</height>
@@ -931,6 +953,19 @@
       </property>
       <property name="maximum">
        <number>4</number>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lblContenido2">
+      <property name="geometry">
+       <rect>
+        <x>60</x>
+        <y>20</y>
+        <width>21</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>0</string>
       </property>
      </widget>
     </widget>
@@ -971,7 +1006,7 @@
       </property>
       <property name="geometry">
        <rect>
-        <x>20</x>
+        <x>10</x>
         <y>20</y>
         <width>42</width>
         <height>22</height>
@@ -982,6 +1017,19 @@
       </property>
       <property name="maximum">
        <number>4</number>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lblContenido3">
+      <property name="geometry">
+       <rect>
+        <x>60</x>
+        <y>20</y>
+        <width>21</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>0</string>
       </property>
      </widget>
     </widget>
@@ -1022,7 +1070,7 @@
       </property>
       <property name="geometry">
        <rect>
-        <x>20</x>
+        <x>10</x>
         <y>20</y>
         <width>42</width>
         <height>22</height>
@@ -1033,6 +1081,19 @@
       </property>
       <property name="maximum">
        <number>4</number>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lblContenido4">
+      <property name="geometry">
+       <rect>
+        <x>60</x>
+        <y>20</y>
+        <width>21</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>0</string>
       </property>
      </widget>
     </widget>
@@ -1136,8 +1197,8 @@
    <widget class="QPushButton" name="btnRefresh">
     <property name="geometry">
      <rect>
-      <x>670</x>
-      <y>460</y>
+      <x>10</x>
+      <y>500</y>
       <width>80</width>
       <height>24</height>
      </rect>

@@ -11,6 +11,7 @@ CONFIG += c++17
 SOURCES += \
     combinarthread.cpp \
     energiathread.cpp \
+    hornothread.cpp \
     main.cpp \
     mainwindow.cpp \
     maldadthread.cpp \
@@ -22,6 +23,7 @@ HEADERS += \
     energiathread.h \
     estructuramonstruo.h \
     estructuras.h \
+    hornothread.h \
     mainwindow.h \
     maldadthread.h \
     materialthread.h \
