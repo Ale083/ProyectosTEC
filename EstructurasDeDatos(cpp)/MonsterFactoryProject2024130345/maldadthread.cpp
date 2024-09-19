@@ -32,7 +32,7 @@ void MaldadThread::run() {
 
         // Generar un número aleatorio y agregar diferentes tipos de maldad
         int randomNumber = QRandomGenerator::global()->generate();
-
+        mutexColaMaldad->lock();
         if (randomNumber % 3 == 0) {
             this->colaMaldad->encolar("Maldad Despiadada");
         } else if (randomNumber % 2 == 1) {
@@ -40,8 +40,8 @@ void MaldadThread::run() {
         } else {
             this->colaMaldad->encolar("Maldad Caotica");
         }
-
         capacidadSbx->setMinimum(colaMaldad->size());
+        mutexColaMaldad->unlock();
         // El mínimo de la capacidad debe ser la cantidad que hay en la cola. Esto para que no ocurra algo como "12 de 10".
     }
 }

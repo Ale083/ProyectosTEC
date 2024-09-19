@@ -12,7 +12,7 @@ class CombinarThread : public QThread
 {
 public:
     CombinarThread();
-    CombinarThread(QString id, cola<QString>* colaEnergia, cola<QString>* colaMaterial, cola<QString>* colaMaldad, QLabel* countdownLabel,QSpinBox* tiempoSbx, QCheckBox* corriendoChbx, QLabel* colaDeMonstruosLabel, QSpinBox* capacidadColaMonstruos, cola<Monstruo*>* colaDeMonstruos, Lista<Monstruo*>* basureroDeMonstruos){
+    CombinarThread(QString id, cola<QString>* colaEnergia, cola<QString>* colaMaterial, cola<QString>* colaMaldad, QLabel* countdownLabel,QSpinBox* tiempoSbx, QCheckBox* corriendoChbx, QLabel* colaDeMonstruosLabel, QSpinBox* capacidadColaMonstruos, cola<Monstruo*>* colaDeMonstruos, Lista<Monstruo*>* basureroDeMonstruos, QMutex* mutexColaEnergia, QMutex* mutexColaMaterial, QMutex* mutexColaMaldad){
         this->id = id;
         this->colaEnergia = colaEnergia;
         this->colaMaterial = colaMaterial;
@@ -24,6 +24,9 @@ public:
         this->capacidadColaMonstruos = capacidadColaMonstruos;
         this->colaDeMonstruos = colaDeMonstruos;
         this->basureroDeMonstruos = basureroDeMonstruos;
+        this->mutexColaEnergia = mutexColaEnergia;
+        this->mutexColaMaterial = mutexColaMaterial;
+        this->mutexColaMaldad = mutexColaMaldad;
     }
     void run();
 private:
@@ -38,6 +41,9 @@ private:
     QSpinBox* capacidadColaMonstruos;
     cola<Monstruo*>* colaDeMonstruos;
     Lista<Monstruo*>* basureroDeMonstruos;
+    QMutex* mutexColaEnergia;
+    QMutex* mutexColaMaterial;
+    QMutex* mutexColaMaldad;
 };
 
 #endif // COMBINARTHREAD_H

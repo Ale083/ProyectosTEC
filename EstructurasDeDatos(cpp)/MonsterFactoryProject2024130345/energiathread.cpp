@@ -31,6 +31,7 @@ void EnergiaThread::run(){
         countdownLabel->setText("0"); //Solo para que si se vea que llegó a 0, sino lo deja en 1.
 
         int randomNumber = QRandomGenerator::global()->generate();
+        mutexColaEnergia->lock();
         if(randomNumber%3==0){
             this->colaEnergia->encolar("Energia Oscura");
         } else if (randomNumber%2 == 1){
@@ -39,6 +40,7 @@ void EnergiaThread::run(){
             this->colaEnergia->encolar("Energia Elemental");
         }
         capacidadSbx->setMinimum(colaEnergia->size());
+        mutexColaEnergia->unlock();
         //El mínimo de la capacidad debe ser la cantidad que hay en la cola. Esto para que no ocurra 12 de 10 por ejemplo.
     }
 }

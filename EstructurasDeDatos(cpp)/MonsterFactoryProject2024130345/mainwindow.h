@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QDebug>
+#include <QMutex>
 
 #include "energiathread.h"
 #include "estructuras.h"
@@ -24,16 +25,21 @@ public:
 
     cola<QString>* energiaCola;
     EnergiaThread* energiaThread;
+    QMutex mutexColaEnergia;
 
     cola<QString>* materialCola;
     MaterialThread* materialThread;
+    QMutex mutexColaMaterial;
 
     cola<QString>* maldadCola;
     MaldadThread* maldadThread;
+    QMutex mutexColaMaldad;
 
     cola<Monstruo*>* colaDeMonstruos;
     Lista<Monstruo*>* basureroDeMonstruos;
     CombinarThread* combinarThread;
+
+
 private:
     Ui::MainWindow *ui;
 };

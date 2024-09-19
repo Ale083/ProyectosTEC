@@ -12,12 +12,13 @@
 CombinarThread::CombinarThread() {}
 
 void CombinarThread::run(){
+    QThread::sleep(1);
     while(true){
         colaDeMonstruosLabel -> setText(QString::number(colaDeMonstruos->size()) + " de " + QString::number(capacidadColaMonstruos->value()));
         int secondsLeft = this->tiempoSbx->value();
         while(secondsLeft > 0){
             colaDeMonstruosLabel -> setText(QString::number(colaDeMonstruos->size()) + " de " + QString::number(capacidadColaMonstruos->value()));
-            if(!(this->corriendoChbx->isChecked()) || colaEnergia->isEmpty() || colaMaterial->isEmpty() || colaMaldad->isEmpty()){
+            if(!(this->corriendoChbx->isChecked())){
                 if(!corriendoChbx->isEnabled()){ //si no está enabled, es porque en algun momento paró por overflow
                     if(capacidadColaMonstruos -> value() > colaDeMonstruos->size()){
                         corriendoChbx->setChecked(true);
@@ -35,12 +36,17 @@ void CombinarThread::run(){
             corriendoChbx->setEnabled(false);
             continue;
         }
+        if(colaEnergia->isEmpty() || colaMaterial->isEmpty() || colaMaldad->isEmpty()){
+            continue;
+        }
         //cuando secondsLeft llega a 0, sigue aqui.
         countdownLabel->setText("0"); //Solo para que si se vea que llegó a 0, sino lo deja en 1 el label.
         int conteo = 1;
+        mutexColaEnergia->lock(); mutexColaMaterial->lock(); mutexColaMaldad->lock();
         QString energia = colaEnergia->desencolar()->dato;
         QString material = colaMaterial->desencolar()->dato;
         QString maldad = colaMaldad->desencolar()->dato;
+        mutexColaEnergia->unlock(); mutexColaMaterial->unlock(); mutexColaMaldad->unlock();
 
         //Combinaciones:
         if (energia == "Energia Cosmica" && material == "Material Organico" && maldad == "Maldad Astuta"){
