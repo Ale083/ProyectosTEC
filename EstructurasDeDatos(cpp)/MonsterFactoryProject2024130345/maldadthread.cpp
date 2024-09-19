@@ -4,10 +4,9 @@ MaldadThread::MaldadThread() {}
 
 void MaldadThread::run() {
     while (true) {
-        queueLabel->setText(QString::number(colaMaldad->size()) + " de " + QString::number(capacidadSbx->value()));
+        // queueLabel->setText(QString::number(colaMaldad->size()) + " de " + QString::number(capacidadSbx->value()));
         int secondsLeft = this->tiempoSbx->value();
         while (secondsLeft > 0) {
-            queueLabel->setText(QString::number(colaMaldad->size()) + " de " + QString::number(capacidadSbx->value()));
             if (!(this->corriendoChbx->isChecked())) {
                 if (!corriendoChbx->isEnabled()) {  // Si no está habilitado, es porque se detuvo por overflow.
                     if (capacidadSbx->value() > colaMaldad->size()) {
@@ -19,6 +18,8 @@ void MaldadThread::run() {
                 continue;
             }
             countdownLabel->setText(QString::number(secondsLeft--));
+            // secondsLeft--;
+
             QThread::sleep(1);
         }
 
@@ -28,7 +29,6 @@ void MaldadThread::run() {
             continue;
         }
 
-        countdownLabel->setText("0");  // Asegurarse de que el countdown llegue a 0.
 
         // Generar un número aleatorio y agregar diferentes tipos de maldad
         int randomNumber = QRandomGenerator::global()->generate();

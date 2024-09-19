@@ -14,7 +14,8 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     maldadthread.cpp \
-    materialthread.cpp
+    materialthread.cpp \
+    refresh.cpp
 
 HEADERS += \
     combinarthread.h \
@@ -23,7 +24,8 @@ HEADERS += \
     estructuras.h \
     mainwindow.h \
     maldadthread.h \
-    materialthread.h
+    materialthread.h \
+    refresh.h
 
 FORMS += \
     mainwindow.ui

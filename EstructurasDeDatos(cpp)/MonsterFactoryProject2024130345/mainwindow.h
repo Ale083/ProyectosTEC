@@ -10,6 +10,7 @@
 #include "materialthread.h"
 #include "maldadthread.h"
 #include "combinarthread.h"
+#include "refresh.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {class MainWindow;}
@@ -39,6 +40,11 @@ public:
     Lista<Monstruo*>* basureroDeMonstruos;
     CombinarThread* combinarThread;
 
+    Refresh* refresh;
+
+
+private slots:
+    void on_btnRefresh_clicked();
 
 private:
     Ui::MainWindow *ui;
