@@ -50,6 +50,11 @@ public:
     cola<Monstruo*>* colaBandeja4;
     HornoThread* hornoThread;
 
+    cola<Monstruo*>* colaRobot1;
+    cola<Monstruo*>* colaRobot2;
+    QMutex mutexColaRobot1;
+
+
 private slots:
     void on_btnRefresh_clicked();
 

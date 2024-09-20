@@ -27,7 +27,8 @@ MainWindow::MainWindow(QWidget *parent)
     colaBandeja2 = new cola<Monstruo*>;
     colaBandeja3 = new cola<Monstruo*>;
     colaBandeja4 = new cola<Monstruo*>;
-    hornoThread = new HornoThread("Horno Thread 1", colaDeMonstruos, colaBandeja1, ui->checkBoxBandeja1, ui->lblContenido1, ui->sbxBandeja1, colaBandeja2, ui->checkBoxBandeja2, ui->lblContenido2, ui->sbxBandeja2, colaBandeja3, ui->checkBoxBandeja3, ui->lblContenido3, ui->sbxBandeja3, colaBandeja4, ui->checkBoxBandeja4, ui->lblContenido4, ui->sbxBandeja4, ui->lblCountdownHorno, ui->sbxHorno, &mutexColaMonstruos);
+    colaRobot1 = new cola<Monstruo*>;
+    hornoThread = new HornoThread("Horno Thread 1", colaDeMonstruos, colaBandeja1, ui->checkBoxBandeja1, ui->lblContenido1, ui->sbxBandeja1, colaBandeja2, ui->checkBoxBandeja2, ui->lblContenido2, ui->sbxBandeja2, colaBandeja3, ui->checkBoxBandeja3, ui->lblContenido3, ui->sbxBandeja3, colaBandeja4, ui->checkBoxBandeja4, ui->lblContenido4, ui->sbxBandeja4, ui->lblCountdownHorno, ui->sbxHorno, &mutexColaMonstruos,colaRobot1,&mutexColaRobot1);
     hornoThread -> start();
 
     refresh = new Refresh(energiaCola,materialCola,maldadCola,ui->lblColaEnergia,ui->sbxCapacidadColaEnergia,ui->lblColaMaterial, ui->sbxCapacidadColaMaterial, ui->lblColaMaldad, ui->sbxCapacidadColaMaldad, colaDeMonstruos, ui->lblColaMonstruos,ui->sbxCapacidadColaDeMonstruos, colaBandeja1, ui->lblContenido1, colaBandeja2, ui->lblContenido2, colaBandeja3, ui->lblContenido3, colaBandeja4, ui->lblContenido4, &mutexColaEnergia,&mutexColaMaterial,&mutexColaMaldad);
