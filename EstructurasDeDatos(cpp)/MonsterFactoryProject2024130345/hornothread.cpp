@@ -38,6 +38,21 @@ void HornoThread::run(){
             checkBoxBandeja1->setEnabled(false);
             sbxBandeja1->setEnabled(false);
             continue;
+        } else if (checkBoxBandeja2->isChecked() && colaBandeja2->size() != sbxBandeja2->value()) {
+            colaBandeja2->encolar(colaDeMonstruos->desencolar()->dato);
+            checkBoxBandeja2->setEnabled(false);
+            sbxBandeja2->setEnabled(false);
+            continue;
+        } else if (checkBoxBandeja3->isChecked() && colaBandeja3->size() != sbxBandeja3->value()) {
+            colaBandeja3->encolar(colaDeMonstruos->desencolar()->dato);
+            checkBoxBandeja3->setEnabled(false);
+            sbxBandeja3->setEnabled(false);
+            continue;
+        } else if (checkBoxBandeja4->isChecked() && colaBandeja4->size() != sbxBandeja4->value()) {
+            colaBandeja4->encolar(colaDeMonstruos->desencolar()->dato);
+            checkBoxBandeja4->setEnabled(false);
+            sbxBandeja4->setEnabled(false);
+            continue;
         }
         QThread::sleep(1);
         //en vez de while hacer 4 ifs, y ponerle continue

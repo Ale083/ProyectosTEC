@@ -8,10 +8,10 @@ void Refresh::run(){
         lblColaEnergia -> setText(QString::number(colaEnergia->size()) + " de " + QString::number(sbxCapacidadColaEnergia->value()));
         lblColaMaterial -> setText(QString::number(colaMaterial->size()) + " de " + QString::number(sbxCapacidadColaMaterial->value()));
         lblColaMaldad -> setText(QString::number(colaMaldad->size()) + " de " + QString::number(sbxCapacidadColaMaldad->value()));
-        // lblContenido1->setText(QString::number(colaBandeja1->size()));
-        // lblContenido2->setText(QString::number(colaBandeja2->size()));
-        // lblContenido3->setText(QString::number(colaBandeja3->size()));
-        // lblContenido4->setText(QString::number(colaBandeja4->size()));
+        lblContenido1->setText(QString::number(colaBandeja1->size()));
+        lblContenido2->setText(QString::number(colaBandeja2->size()));
+        lblContenido3->setText(QString::number(colaBandeja3->size()));
+        lblContenido4->setText(QString::number(colaBandeja4->size()));
         mutexColaEnergia->unlock(); mutexColaMaterial->unlock(); mutexColaMaldad->unlock();
         QThread::msleep(500);
     }
