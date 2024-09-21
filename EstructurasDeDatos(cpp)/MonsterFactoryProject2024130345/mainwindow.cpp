@@ -53,28 +53,26 @@ MainWindow::~MainWindow()
 }
 
 void MainWindow::on_btnRefresh_clicked(){
-    /*
-    //energiaCola
-    QLabel* lblColaEnergia = ui->lblColaEnergia;
-    // QLabel* lblCountdownEnergia = ui->lblColaEnergia;
-    QSpinBox* sbxCapacidadColaEnergia = ui->sbxCapacidadColaEnergia;
-    QLabel* lblColaMaterial = ui->lblColaMaterial;
-    // QLabel* lblCountdownMaterial = ui->lblColaMaterial;
-    QSpinBox* sbxCapacidadColaMaterial = ui->sbxCapacidadColaMaterial;
-    QLabel* lblColaMaldad = ui->lblColaMaldad;
-    // QLabel* lblCountdownMaldad = ui->lblColaMaldad;
-    QSpinBox* sbxCapacidadColaMaldad = ui->sbxCapacidadColaMaldad;
-    QLabel* lblColaMonstruos = ui->lblColaMonstruos;
-    QSpinBox* sbxCapacidadColaDeMonstruos = ui->sbxCapacidadColaDeMonstruos;
 
+    QDir dirPedidos("C:\\Users\\Proyecto Diseño\\Desktop\\testingMonsterFaact\\pedidos");  //carpeta de pedidos
+    QDir dirProcesados("C:\\Users\\Proyecto Diseño\\Desktop\\testingMonsterFaact\\procesads");  //carpeta de procesados
+    QFileInfoList listaArchivos = dirPedidos.entryInfoList(QDir::Files);
+    qDebug() << "Ruta de pedidos:" << dirPedidos.absolutePath();
+    qDebug() << "Ruta de procesados:" << dirProcesados.absolutePath();
+    if (!listaArchivos.isEmpty()) {
+        QFileInfo archivoInfo = listaArchivos.at(0);  //el primer archivo de la lista
+        //procesarArchivo(archivoInfo.absoluteFilePath());  //lo procesa con la función creada, parámetro es el path al archivo.
 
-    lblColaMonstruos -> setText(QString::number(colaDeMonstruos->size()) + " de " + QString::number(sbxCapacidadColaDeMonstruos->value()));
-    lblColaEnergia -> setText(QString::number(energiaCola->size()) + " de " + QString::number(sbxCapacidadColaEnergia->value()));
-    lblColaMaterial -> setText(QString::number(materialCola->size()) + " de " + QString::number(sbxCapacidadColaMaterial->value()));
-    lblColaMaldad -> setText(QString::number(maldadCola->size()) + " de " + QString::number(sbxCapacidadColaMaldad->value()));
-*/
-    QLabel* lblContenido1 = ui->lblContenido1;
-    lblContenido1->setText(QString::number(colaBandeja1->size()));
+        QString timestamp = QDateTime::currentDateTime().toString("yyyyMMdd_hhmmss");
+
+        QString nombreBase = archivoInfo.completeBaseName();
+        QString extension = archivoInfo.suffix();
+        QString nuevoNombreArchivo = nombreBase + "_" + timestamp + "." + extension;
+
+        QString rutaDestino = dirProcesados.absoluteFilePath(nuevoNombreArchivo);
+        QFile::rename(archivoInfo.absoluteFilePath(), rutaDestino);
+    }
+
 }
 
 
