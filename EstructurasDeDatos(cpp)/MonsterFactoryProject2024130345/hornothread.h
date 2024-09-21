@@ -43,8 +43,11 @@ public: //if !enabled or size = capacity
         this->colaRobot1 = colaRobot1;
         this->sbxColaRobot1 = sbxColaRobot1;
         this->mutexColaRobot1 = mutexColaRobot1;
+        this->running = true;
     }
 
+    bool resume() { return running = true; };
+    bool pause() { return running = false; };
     void run();
 
 private:
@@ -83,6 +86,8 @@ private:
     cola<Monstruo*>* colaRobot1;
     QSpinBox* sbxColaRobot1;
     QMutex* mutexColaRobot1;
+
+    bool running;
 };
 
 #endif // HORNOTHREAD_H

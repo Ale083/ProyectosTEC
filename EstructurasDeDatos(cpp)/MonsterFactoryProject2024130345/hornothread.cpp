@@ -29,7 +29,7 @@
 HornoThread::HornoThread() {}
 void HornoThread::run(){
     while(true){
-        if(colaDeMonstruos->isEmpty() || (!checkBoxBandeja1->isChecked() && !checkBoxBandeja1->isChecked() && !checkBoxBandeja1->isChecked() && !checkBoxBandeja1->isChecked())){ //Si cola de monstruos empty o si todas las bandejas están deshabilitadas.
+        if(colaDeMonstruos->isEmpty() || (!checkBoxBandeja1->isChecked() && !checkBoxBandeja2->isChecked() && !checkBoxBandeja3->isChecked() && !checkBoxBandeja4->isChecked())){ //Si cola de monstruos empty o si todas las bandejas están deshabilitadas.
             QThread::sleep(1);
             continue;
         }
@@ -63,8 +63,11 @@ void HornoThread::run(){
         sbxBandeja1->setEnabled(false); sbxBandeja2->setEnabled(false); sbxBandeja3->setEnabled(false); sbxBandeja4->setEnabled(false);
         int secondsLeft = this->sbxHorno->value();
         QString timestampInicioHorneado = QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss");
+
         while(secondsLeft > 0){
-            lblCountdownHorno->setText(QString::number(secondsLeft--));
+            if(running){
+                lblCountdownHorno->setText(QString::number(secondsLeft--));
+            }
             QThread::sleep(1);
         }
 

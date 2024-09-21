@@ -7,7 +7,9 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-
+    ui->btnPausa->setEnabled(false);
+    ui->btnResumir->setEnabled(false);
+    ui->btnDetener->setEnabled(false);
     energiaCola = new cola<QString>();
     energiaThread = new EnergiaThread("Energia Thread 1",energiaCola,ui->lblColaEnergia,ui->lblCountdownEnergia,ui->sbxEnergia,ui->sbxCapacidadColaEnergia,ui->checkBoxEnergia,&mutexColaEnergia);
 
@@ -87,21 +89,45 @@ void MainWindow::on_btnIniciar_clicked()
     robot2Thread->start();
     refresh -> start();
     ui->btnIniciar->setEnabled(false);
+    ui->btnPausa->setEnabled(true);
+    ui->btnDetener->setEnabled(true);
+
 }
 
 
 void MainWindow::on_btnPausa_clicked()
 {
-    ui->checkBoxBandeja1->setEnabled(false);
-    ui->checkBoxBandeja2->setEnabled(false);
-    ui->checkBoxBandeja3->setEnabled(false);
-    ui->checkBoxBandeja4->setEnabled(false);
-    ui->checkBoxRobot1->setEnabled(false);
-    ui->checkBoxRobot2->setEnabled(false);
-    ui->checkBoxCombinar->setEnabled(false);
-    ui->checkBoxEnergia->setEnabled(false);
-    ui->checkBoxMaterial->setEnabled(false);
-    ui->checkBoxMaldad->setEnabled(false);
+    ui->checkBoxBandeja1->isEnabled() ? ui->checkBoxBandeja1->setChecked(false) : ui->checkBoxBandeja1->setChecked(true);
+    ui->checkBoxBandeja2->isEnabled() ? ui->checkBoxBandeja2->setChecked(false) : ui->checkBoxBandeja2->setChecked(true);
+    ui->checkBoxBandeja3->isEnabled() ? ui->checkBoxBandeja3->setChecked(false) : ui->checkBoxBandeja3->setChecked(true);
+    ui->checkBoxBandeja4->isEnabled() ? ui->checkBoxBandeja4->setChecked(false) : ui->checkBoxBandeja4->setChecked(true); //Si está enabled, es decir si aún sigue vacío.
+    hornoThread->pause();
+    ui->checkBoxRobot1->setChecked(false);
+    ui->checkBoxRobot2->setChecked(false);
+    ui->checkBoxCombinar->setChecked(false);
+    ui->checkBoxEnergia->setChecked(false);
+    ui->checkBoxMaterial->setChecked(false);
+    ui->checkBoxMaldad->setChecked(false);
+    ui->btnPausa->setEnabled(false);
+    ui->btnResumir->setEnabled(true);
 
+}
+
+
+void MainWindow::on_btnResumir_clicked()
+{
+    ui->checkBoxBandeja1->isEnabled() ? ui->checkBoxBandeja1->setChecked(true) : ui->checkBoxBandeja1->setChecked(false);
+    ui->checkBoxBandeja2->isEnabled() ? ui->checkBoxBandeja2->setChecked(true) : ui->checkBoxBandeja2->setChecked(false);
+    ui->checkBoxBandeja3->isEnabled() ? ui->checkBoxBandeja3->setChecked(true) : ui->checkBoxBandeja3->setChecked(false);
+    ui->checkBoxBandeja4->isEnabled() ? ui->checkBoxBandeja4->setChecked(true) : ui->checkBoxBandeja4->setChecked(false);
+    hornoThread->resume();
+    ui->checkBoxRobot1->isEnabled() ? ui->checkBoxRobot1->setChecked(true) : ui->checkBoxRobot1->setChecked(false);
+    ui->checkBoxRobot2->isEnabled() ? ui->checkBoxRobot2->setChecked(true) : ui->checkBoxRobot2->setChecked(false);
+    ui->checkBoxCombinar->isEnabled() ? ui->checkBoxCombinar->setChecked(true) : ui->checkBoxCombinar->setChecked(false);
+    ui->checkBoxEnergia->isEnabled() ? ui->checkBoxEnergia->setChecked(true) : ui->checkBoxEnergia->setChecked(false);
+    ui->checkBoxMaterial->isEnabled() ? ui->checkBoxMaterial->setChecked(true) : ui->checkBoxMaterial->setChecked(false);
+    ui->checkBoxMaldad->isEnabled() ? ui->checkBoxMaldad->setChecked(true) : ui->checkBoxMaldad->setChecked(false);
+    ui->btnPausa->setEnabled(true);
+    ui->btnResumir->setEnabled(false);
 }
 

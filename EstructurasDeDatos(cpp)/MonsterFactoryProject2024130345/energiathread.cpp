@@ -7,7 +7,6 @@ void EnergiaThread::run(){
         // queueLabel -> setText(QString::number(colaEnergia->size()) + " de " + QString::number(capacidadSbx->value()));
         int secondsLeft = this->tiempoSbx->value();
         while(secondsLeft > 0){
-            qDebug() << secondsLeft;
             if(!(this->corriendoChbx->isChecked())){
                 if(!corriendoChbx->isEnabled()){ //si no está enabled, es porque en algun momento paró por overflow
                     if(capacidadSbx -> value() > colaEnergia->size()){

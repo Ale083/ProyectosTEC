@@ -1170,7 +1170,7 @@
       <x>10</x>
       <y>449</y>
       <width>281</width>
-      <height>41</height>
+      <height>61</height>
      </rect>
     </property>
     <property name="frameShape">
@@ -1216,6 +1216,19 @@
      </property>
      <property name="text">
       <string>Iniciar</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="btnResumir">
+     <property name="geometry">
+      <rect>
+       <x>100</x>
+       <y>30</y>
+       <width>80</width>
+       <height>18</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Resumir</string>
      </property>
     </widget>
    </widget>
