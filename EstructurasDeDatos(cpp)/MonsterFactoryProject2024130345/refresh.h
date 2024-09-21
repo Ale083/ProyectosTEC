@@ -12,7 +12,7 @@ class Refresh : public QThread
 {
 public:
     Refresh();
-    Refresh(cola<QString>* colaEnergia, cola<QString>* colaMaterial, cola<QString>* colaMaldad, QLabel* lblColaEnergia, QSpinBox* sbxCapacidadColaEnergia, QLabel* lblColaMaterial, QSpinBox* sbxCapacidadColaMaterial, QLabel* lblColaMaldad, QSpinBox* sbxCapacidadColaMaldad, cola<Monstruo*>* colaDeMonstruos, QLabel* lblColaMonstruos, QSpinBox* sbxCapacidadColaDeMonstruos, cola<Monstruo*>* colaBandeja1, QLabel* lblContenido1, cola<Monstruo*>* colaBandeja2, QLabel* lblContenido2, cola<Monstruo*>* colaBandeja3, QLabel* lblContenido3, cola<Monstruo*>* colaBandeja4, QLabel* lblContenido4, cola<Monstruo*>* colaRobot1, QLabel* lblColaRobot1, cola<Monstruo*>* colaRobot2, QLabel* lblColaRobot2, QMutex* mutexColaEnergia, QMutex* mutexColaMaterial, QMutex* mutexColaMaldad){
+    Refresh(cola<QString>* colaEnergia, cola<QString>* colaMaterial, cola<QString>* colaMaldad, QLabel* lblColaEnergia, QSpinBox* sbxCapacidadColaEnergia, QLabel* lblColaMaterial, QSpinBox* sbxCapacidadColaMaterial, QLabel* lblColaMaldad, QSpinBox* sbxCapacidadColaMaldad, cola<Monstruo*>* colaDeMonstruos, QLabel* lblColaMonstruos, QSpinBox* sbxCapacidadColaDeMonstruos, cola<Monstruo*>* colaBandeja1, QLabel* lblContenido1, cola<Monstruo*>* colaBandeja2, QLabel* lblContenido2, cola<Monstruo*>* colaBandeja3, QLabel* lblContenido3, cola<Monstruo*>* colaBandeja4, QLabel* lblContenido4, cola<Monstruo*>* colaRobot1, QLabel* lblColaRobot1, QSpinBox* sbxColaRobot1, cola<Monstruo*>* colaRobot2, QLabel* lblColaRobot2, QSpinBox* sbxColaRobot2, Lista<Monstruo*>* listaAlmacen, QLabel* lblAlmacenCant, Lista<Monstruo*>* basureroDeMonstruos, QLabel* lblBasureroCant, QMutex* mutexColaEnergia, QMutex* mutexColaMaterial, QMutex* mutexColaMaldad){
         this->colaEnergia = colaEnergia;
         this->colaMaterial = colaMaterial;
         this->colaMaldad = colaMaldad;
@@ -35,8 +35,14 @@ public:
         this->lblContenido4 = lblContenido4;
         this->lblColaRobot1 = lblColaRobot1;
         this->colaRobot1 = colaRobot1;
+        this->sbxColaRobot1 = sbxColaRobot1;
         this->lblColaRobot2 = lblColaRobot2;
         this->colaRobot2 = colaRobot2;
+        this->sbxColaRobot2 = sbxColaRobot2;
+        this->listaAlmacen = listaAlmacen;
+        this->lblAlmacenCant = lblAlmacenCant;
+        this->basureroDeMonstruos = basureroDeMonstruos;
+        this->lblBasureroCant = lblBasureroCant;
         this->mutexColaEnergia = mutexColaEnergia;
         this->mutexColaMaterial = mutexColaMaterial;
         this->mutexColaMaldad = mutexColaMaldad;
@@ -66,8 +72,14 @@ private:
     QLabel* lblContenido4;
     cola<Monstruo*>* colaRobot1;
     QLabel* lblColaRobot1;
+    QSpinBox* sbxColaRobot1;
     cola<Monstruo*>* colaRobot2;
     QLabel* lblColaRobot2;
+    QSpinBox* sbxColaRobot2;
+    Lista<Monstruo*>* listaAlmacen;
+    QLabel* lblAlmacenCant;
+    Lista<Monstruo*>* basureroDeMonstruos;
+    QLabel* lblBasureroCant;
     QMutex* mutexColaEnergia;
     QMutex* mutexColaMaterial;
     QMutex* mutexColaMaldad;

@@ -74,11 +74,14 @@ struct Lista{
 private:
     Nodo<T>* primerNodo;
     Nodo<T>* ultimoNodo;
+    int longitud;
 public:
     Lista(){
         primerNodo = ultimoNodo = nullptr;
+        longitud = 0;
     }
     void insertarAlFinal(T dato){
+        longitud++;
         if (ultimoNodo == nullptr){ //Si hay 0 nodos
             primerNodo = ultimoNodo = new Nodo(dato);
         } else{
@@ -87,6 +90,9 @@ public:
             nuevoNodo -> anterior = ultimoNodo;
             ultimoNodo = nuevoNodo;
         }
+    }
+    int size(){
+        return longitud;
     }
 };
 

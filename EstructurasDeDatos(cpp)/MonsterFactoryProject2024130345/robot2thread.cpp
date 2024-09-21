@@ -17,7 +17,7 @@ void Robot2Thread::run(){
             mutexColaRobot2->lock();
             Monstruo* monstruo = colaRobot2->desencolar()->dato;
             mutexColaRobot2->unlock();
-
+            sbxColaRobot2->setMinimum(colaRobot2->size());
             int randomNumber = (QRandomGenerator::global()->generate())%101; //da un número entre 0-100
             if(randomNumber < sbxProbaRobot2->value()){
                 mutexListaAlmacen->lock();

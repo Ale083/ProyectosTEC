@@ -12,7 +12,7 @@ class HornoThread : public QThread
 {
 public: //if !enabled or size = capacity
     HornoThread();
-    HornoThread(QString id, cola<Monstruo*>* colaDeMonstruos, cola<Monstruo*>* colaBandeja1, QCheckBox* checkBoxBandeja1, QLabel* lblContenido1, QSpinBox* sbxBandeja1, cola<Monstruo*>* colaBandeja2, QCheckBox* checkBoxBandeja2, QLabel* lblContenido2, QSpinBox* sbxBandeja2, cola<Monstruo*>* colaBandeja3, QCheckBox* checkBoxBandeja3, QLabel* lblContenido3, QSpinBox* sbxBandeja3, cola<Monstruo*>* colaBandeja4, QCheckBox* checkBoxBandeja4, QLabel* lblContenido4, QSpinBox* sbxBandeja4, QLabel* lblCountdownHorno, QSpinBox* sbxHorno, QMutex* mutexColaMonstruos, cola<Monstruo*>* colaRobot1, QMutex* mutexColaRobot1) {
+    HornoThread(QString id, cola<Monstruo*>* colaDeMonstruos, cola<Monstruo*>* colaBandeja1, QCheckBox* checkBoxBandeja1, QLabel* lblContenido1, QSpinBox* sbxBandeja1, cola<Monstruo*>* colaBandeja2, QCheckBox* checkBoxBandeja2, QLabel* lblContenido2, QSpinBox* sbxBandeja2, cola<Monstruo*>* colaBandeja3, QCheckBox* checkBoxBandeja3, QLabel* lblContenido3, QSpinBox* sbxBandeja3, cola<Monstruo*>* colaBandeja4, QCheckBox* checkBoxBandeja4, QLabel* lblContenido4, QSpinBox* sbxBandeja4, QLabel* lblCountdownHorno, QSpinBox* sbxHorno, QMutex* mutexColaMonstruos, cola<Monstruo*>* colaRobot1, QSpinBox* sbxColaRobot1, QMutex* mutexColaRobot1) {
         this->id = id;
         this->colaDeMonstruos = colaDeMonstruos;
 
@@ -41,6 +41,7 @@ public: //if !enabled or size = capacity
         this->mutexColaMonstruos = mutexColaMonstruos;
 
         this->colaRobot1 = colaRobot1;
+        this->sbxColaRobot1 = sbxColaRobot1;
         this->mutexColaRobot1 = mutexColaRobot1;
     }
 
@@ -80,6 +81,7 @@ private:
     QMutex* mutexColaMonstruos;
 
     cola<Monstruo*>* colaRobot1;
+    QSpinBox* sbxColaRobot1;
     QMutex* mutexColaRobot1;
 };
 

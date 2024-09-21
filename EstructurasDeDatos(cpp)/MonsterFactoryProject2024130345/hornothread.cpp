@@ -29,7 +29,7 @@
 HornoThread::HornoThread() {}
 void HornoThread::run(){
     while(true){
-        if(colaDeMonstruos->isEmpty()){
+        if(colaDeMonstruos->isEmpty() || (!checkBoxBandeja1->isChecked() && !checkBoxBandeja1->isChecked() && !checkBoxBandeja1->isChecked() && !checkBoxBandeja1->isChecked())){ //Si cola de monstruos empty o si todas las bandejas están deshabilitadas.
             QThread::sleep(1);
             continue;
         }
@@ -58,7 +58,7 @@ void HornoThread::run(){
             QThread::sleep(1);
             continue;
         }
-        //mientras hornea, disable todos.
+
         checkBoxBandeja1->setEnabled(false); checkBoxBandeja2->setEnabled(false); checkBoxBandeja3->setEnabled(false); checkBoxBandeja4->setEnabled(false);
         sbxBandeja1->setEnabled(false); sbxBandeja2->setEnabled(false); sbxBandeja3->setEnabled(false); sbxBandeja4->setEnabled(false);
         int secondsLeft = this->sbxHorno->value();
@@ -67,41 +67,52 @@ void HornoThread::run(){
             lblCountdownHorno->setText(QString::number(secondsLeft--));
             QThread::sleep(1);
         }
+
+        lblCountdownHorno->setText(QString::number(sbxHorno->value()));
+
         while(!colaBandeja1->isEmpty()){
+            while(colaRobot1->size() == sbxColaRobot1->value()) { QThread::sleep(1);}
             Monstruo* monstruo = colaBandeja1 -> desencolar()->dato;
             monstruo -> bandejaDondeSeHorneo = 1;
             monstruo -> timestampInicioHorneado = timestampInicioHorneado;
             monstruo -> timestampFinalHorneado = QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss");
             mutexColaRobot1->lock(); colaRobot1 -> encolar(monstruo); mutexColaRobot1->unlock();
+            sbxColaRobot1->setMinimum(colaRobot1->size());
         }
 
         while (!colaBandeja2->isEmpty()) {
+            while(colaRobot1->size() == sbxColaRobot1->value()) { QThread::sleep(1);}
             Monstruo* monstruo = colaBandeja2->desencolar()->dato;
             monstruo->bandejaDondeSeHorneo = 2;
             monstruo->timestampInicioHorneado = timestampInicioHorneado;
             monstruo->timestampFinalHorneado = QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss");
             mutexColaRobot1->lock(); colaRobot1 -> encolar(monstruo); mutexColaRobot1->unlock();
+            sbxColaRobot1->setMinimum(colaRobot1->size());
         }
 
         while (!colaBandeja3->isEmpty()) {
+            while(colaRobot1->size() == sbxColaRobot1->value()) { QThread::sleep(1);}
             Monstruo* monstruo = colaBandeja3->desencolar()->dato;
             monstruo->bandejaDondeSeHorneo = 3;
             monstruo->timestampInicioHorneado = timestampInicioHorneado;
             monstruo->timestampFinalHorneado = QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss");
             mutexColaRobot1->lock(); colaRobot1 -> encolar(monstruo); mutexColaRobot1->unlock();
+            sbxColaRobot1->setMinimum(colaRobot1->size());
         }
 
         while (!colaBandeja4->isEmpty()) {
+            while(colaRobot1->size() == sbxColaRobot1->value()) { QThread::sleep(1);}
             Monstruo* monstruo = colaBandeja4->desencolar()->dato;
             monstruo->bandejaDondeSeHorneo = 4;
             monstruo->timestampInicioHorneado = timestampInicioHorneado;
             monstruo->timestampFinalHorneado = QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss");
             mutexColaRobot1->lock(); colaRobot1 -> encolar(monstruo); mutexColaRobot1->unlock();
+            sbxColaRobot1->setMinimum(colaRobot1->size());
         }
 
         checkBoxBandeja1->setEnabled(true); checkBoxBandeja2->setEnabled(true); checkBoxBandeja3->setEnabled(true); checkBoxBandeja4->setEnabled(true);
         sbxBandeja1->setEnabled(true); sbxBandeja2->setEnabled(true); sbxBandeja3->setEnabled(true); sbxBandeja4->setEnabled(true);
-        lblCountdownHorno->setText(QString::number(sbxHorno->value()));
+
         QThread::sleep(5); //Cooldown, además da tiempo para que el usuario deshabilite bandejas si quiere.
     }
 }

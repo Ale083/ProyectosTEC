@@ -29,16 +29,18 @@ MainWindow::MainWindow(QWidget *parent)
     colaBandeja4 = new cola<Monstruo*>;
     colaRobot1 = new cola<Monstruo*>;
     colaRobot2 = new cola<Monstruo*>;
-    hornoThread = new HornoThread("Horno Thread 1", colaDeMonstruos, colaBandeja1, ui->checkBoxBandeja1, ui->lblContenido1, ui->sbxBandeja1, colaBandeja2, ui->checkBoxBandeja2, ui->lblContenido2, ui->sbxBandeja2, colaBandeja3, ui->checkBoxBandeja3, ui->lblContenido3, ui->sbxBandeja3, colaBandeja4, ui->checkBoxBandeja4, ui->lblContenido4, ui->sbxBandeja4, ui->lblCountdownHorno, ui->sbxHorno, &mutexColaMonstruos,colaRobot1,&mutexColaRobot1);
+    hornoThread = new HornoThread("Horno Thread 1", colaDeMonstruos, colaBandeja1, ui->checkBoxBandeja1, ui->lblContenido1, ui->sbxBandeja1, colaBandeja2, ui->checkBoxBandeja2, ui->lblContenido2, ui->sbxBandeja2, colaBandeja3, ui->checkBoxBandeja3, ui->lblContenido3, ui->sbxBandeja3, colaBandeja4, ui->checkBoxBandeja4, ui->lblContenido4, ui->sbxBandeja4, ui->lblCountdownHorno, ui->sbxHorno, &mutexColaMonstruos,colaRobot1, ui->sbxCapacidadColaRobot1, &mutexColaRobot1);
     hornoThread -> start();
 
-    robot1Thread = new Robot1Thread("Robot 1 Thread", colaRobot1, ui->checkBoxRobot1, ui->sbxProbaRobot1, colaRobot2, basureroDeMonstruos, &mutexColaRobot1, &mutexColaRobot2);
+    listaAlmacen = new Lista<Monstruo*>;
+
+    robot1Thread = new Robot1Thread("Robot 1 Thread", colaRobot1, ui->checkBoxRobot1, ui->sbxProbaRobot1, colaRobot2, basureroDeMonstruos, ui->sbxCapacidadColaRobot1, ui->sbxCapacidadColaRobot2, &mutexColaRobot1, &mutexColaRobot2);
     robot1Thread->start();
 
-    robot2Thread = new Robot2Thread("Robot 2 Thread", colaRobot2, ui->checkBoxRobot2, ui->sbxProbaRobot2, listaAlmacen, basureroDeMonstruos, &mutexColaRobot2, &mutexListaAlmacen);
+    robot2Thread = new Robot2Thread("Robot 2 Thread", colaRobot2, ui->checkBoxRobot2, ui->sbxProbaRobot2, listaAlmacen, basureroDeMonstruos, ui->sbxCapacidadColaRobot2, &mutexColaRobot2, &mutexListaAlmacen);
     robot2Thread->start();
 
-    refresh = new Refresh(energiaCola,materialCola,maldadCola,ui->lblColaEnergia,ui->sbxCapacidadColaEnergia,ui->lblColaMaterial, ui->sbxCapacidadColaMaterial, ui->lblColaMaldad, ui->sbxCapacidadColaMaldad, colaDeMonstruos, ui->lblColaMonstruos,ui->sbxCapacidadColaDeMonstruos, colaBandeja1, ui->lblContenido1, colaBandeja2, ui->lblContenido2, colaBandeja3, ui->lblContenido3, colaBandeja4, ui->lblContenido4, colaRobot1, ui->lblColaRobot1, colaRobot2, ui->lblColaRobot2, &mutexColaEnergia,&mutexColaMaterial,&mutexColaMaldad);
+    refresh = new Refresh(energiaCola,materialCola,maldadCola,ui->lblColaEnergia,ui->sbxCapacidadColaEnergia,ui->lblColaMaterial, ui->sbxCapacidadColaMaterial, ui->lblColaMaldad, ui->sbxCapacidadColaMaldad, colaDeMonstruos, ui->lblColaMonstruos,ui->sbxCapacidadColaDeMonstruos, colaBandeja1, ui->lblContenido1, colaBandeja2, ui->lblContenido2, colaBandeja3, ui->lblContenido3, colaBandeja4, ui->lblContenido4, colaRobot1, ui->lblColaRobot1, ui->sbxCapacidadColaRobot1, colaRobot2, ui->lblColaRobot2, ui->sbxCapacidadColaRobot2, listaAlmacen, ui->lblAlmacenCant, basureroDeMonstruos, ui->lblBasureroCant, &mutexColaEnergia,&mutexColaMaterial,&mutexColaMaldad);
     refresh -> start();
 }
 

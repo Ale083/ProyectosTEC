@@ -547,7 +547,7 @@
       </rect>
      </property>
      <property name="minimum">
-      <number>2</number>
+      <number>1</number>
      </property>
      <property name="maximum">
       <number>20</number>
@@ -639,6 +639,28 @@
     <property name="frameShadow">
      <enum>QFrame::Shadow::Plain</enum>
     </property>
+    <widget class="QLabel" name="lblBasureroCant">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>70</y>
+       <width>201</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+       <italic>true</italic>
+       <bold>false</bold>
+       <strikeout>false</strikeout>
+       <kerning>true</kerning>
+      </font>
+     </property>
+     <property name="text">
+      <string>Se han botado N monstruos</string>
+     </property>
+    </widget>
    </widget>
    <widget class="QLabel" name="lblBasurero">
     <property name="geometry">
@@ -1216,7 +1238,7 @@
       <x>450</x>
       <y>350</y>
       <width>281</width>
-      <height>121</height>
+      <height>131</height>
      </rect>
     </property>
     <property name="frameShape">
@@ -1369,6 +1391,80 @@
       <number>-1</number>
      </property>
     </widget>
+    <widget class="QLabel" name="lblCapacidad5">
+     <property name="geometry">
+      <rect>
+       <x>50</x>
+       <y>30</y>
+       <width>51</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>7</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Capacidad</string>
+     </property>
+    </widget>
+    <widget class="QSpinBox" name="sbxCapacidadColaRobot1">
+     <property name="geometry">
+      <rect>
+       <x>100</x>
+       <y>40</y>
+       <width>41</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="minimum">
+      <number>10</number>
+     </property>
+     <property name="maximum">
+      <number>50</number>
+     </property>
+     <property name="value">
+      <number>25</number>
+     </property>
+    </widget>
+    <widget class="QLabel" name="lblCapacidad6">
+     <property name="geometry">
+      <rect>
+       <x>50</x>
+       <y>90</y>
+       <width>51</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>7</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Capacidad</string>
+     </property>
+    </widget>
+    <widget class="QSpinBox" name="sbxCapacidadColaRobot2">
+     <property name="geometry">
+      <rect>
+       <x>100</x>
+       <y>100</y>
+       <width>41</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="minimum">
+      <number>10</number>
+     </property>
+     <property name="maximum">
+      <number>50</number>
+     </property>
+     <property name="value">
+      <number>25</number>
+     </property>
+    </widget>
    </widget>
    <widget class="Line" name="line_6">
     <property name="geometry">
@@ -1396,7 +1492,7 @@
      <enum>Qt::Orientation::Horizontal</enum>
     </property>
    </widget>
-   <widget class="QLabel" name="lblHorno_2">
+   <widget class="QLabel" name="lblCalidad">
     <property name="geometry">
      <rect>
       <x>450</x>
@@ -1416,6 +1512,79 @@
     </property>
     <property name="alignment">
      <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QFrame" name="frmAlmacen">
+    <property name="geometry">
+     <rect>
+      <x>800</x>
+      <y>390</y>
+      <width>211</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Shape::Box</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Shadow::Raised</enum>
+    </property>
+    <widget class="QLabel" name="lblAlmacenCant">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>20</y>
+       <width>201</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+       <italic>true</italic>
+       <bold>false</bold>
+       <strikeout>false</strikeout>
+       <kerning>true</kerning>
+      </font>
+     </property>
+     <property name="text">
+      <string>Se han almacenado N monstruos</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QLabel" name="lblAlmacen">
+    <property name="geometry">
+     <rect>
+      <x>800</x>
+      <y>370</y>
+      <width>171</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>Almacen</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="Line" name="line_8">
+    <property name="geometry">
+     <rect>
+      <x>730</x>
+      <y>410</y>
+      <width>71</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Orientation::Horizontal</enum>
     </property>
    </widget>
   </widget>
