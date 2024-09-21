@@ -16,6 +16,7 @@ SOURCES += \
     mainwindow.cpp \
     maldadthread.cpp \
     materialthread.cpp \
+    procesadorpedidos.cpp \
     refresh.cpp \
     robot1thread.cpp \
     robot2thread.cpp
@@ -29,6 +30,8 @@ HEADERS += \
     mainwindow.h \
     maldadthread.h \
     materialthread.h \
+    pedido.h \
+    procesadorpedidos.h \
     refresh.h \
     robot1thread.h \
     robot2thread.h

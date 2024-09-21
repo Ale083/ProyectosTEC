@@ -77,7 +77,6 @@ void CombinarThread::run(){
             colaDeMonstruos->encolar(new Monstruo(conteo++, energia, material, maldad, "Monstruo de Velocidad", false, "")); //Velocidad
         } else{
             basureroDeMonstruos->insertarAlFinal(new Monstruo(conteo++, energia, material, maldad, "Monstruo Defectuoso", true, "Por combinacion"));
-            qDebug() << "test";
         }
         mutexColaMonstruos->unlock();
         capacidadColaMonstruos->setMinimum(colaDeMonstruos->size());
