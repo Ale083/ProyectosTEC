@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>809</width>
-    <height>581</height>
+    <width>1305</width>
+    <height>868</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -494,7 +494,7 @@
     <property name="geometry">
      <rect>
       <x>320</x>
-      <y>120</y>
+      <y>80</y>
       <width>51</width>
       <height>20</height>
      </rect>
@@ -507,7 +507,7 @@
     <property name="geometry">
      <rect>
       <x>370</x>
-      <y>100</y>
+      <y>60</y>
       <width>101</width>
       <height>61</height>
      </rect>
@@ -580,7 +580,7 @@
     <property name="geometry">
      <rect>
       <x>370</x>
-      <y>80</y>
+      <y>40</y>
       <width>101</width>
       <height>21</height>
      </rect>
@@ -601,10 +601,10 @@
    <widget class="Line" name="line_2">
     <property name="geometry">
      <rect>
-      <x>403</x>
-      <y>160</y>
-      <width>16</width>
-      <height>201</height>
+      <x>410</x>
+      <y>120</y>
+      <width>20</width>
+      <height>241</height>
      </rect>
     </property>
     <property name="orientation">
@@ -616,7 +616,7 @@
      <rect>
       <x>320</x>
       <y>350</y>
-      <width>91</width>
+      <width>101</width>
       <height>20</height>
      </rect>
     </property>
@@ -666,7 +666,7 @@
     <property name="geometry">
      <rect>
       <x>520</x>
-      <y>60</y>
+      <y>40</y>
       <width>171</width>
       <height>21</height>
      </rect>
@@ -688,7 +688,7 @@
     <property name="geometry">
      <rect>
       <x>520</x>
-      <y>80</y>
+      <y>60</y>
       <width>171</width>
       <height>61</height>
      </rect>
@@ -775,7 +775,7 @@
     <property name="geometry">
      <rect>
       <x>470</x>
-      <y>110</y>
+      <y>80</y>
       <width>51</width>
       <height>20</height>
      </rect>
@@ -788,7 +788,7 @@
     <property name="geometry">
      <rect>
       <x>600</x>
-      <y>140</y>
+      <y>120</y>
       <width>16</width>
       <height>41</height>
      </rect>
@@ -801,7 +801,7 @@
     <property name="geometry">
      <rect>
       <x>500</x>
-      <y>180</y>
+      <y>160</y>
       <width>221</width>
       <height>161</height>
      </rect>
@@ -888,7 +888,7 @@
        </rect>
       </property>
       <property name="minimum">
-       <number>2</number>
+       <number>1</number>
       </property>
       <property name="maximum">
        <number>4</number>
@@ -952,7 +952,7 @@
        </rect>
       </property>
       <property name="minimum">
-       <number>2</number>
+       <number>1</number>
       </property>
       <property name="maximum">
        <number>4</number>
@@ -1016,7 +1016,7 @@
        </rect>
       </property>
       <property name="minimum">
-       <number>2</number>
+       <number>1</number>
       </property>
       <property name="maximum">
        <number>4</number>
@@ -1080,7 +1080,7 @@
        </rect>
       </property>
       <property name="minimum">
-       <number>2</number>
+       <number>1</number>
       </property>
       <property name="maximum">
        <number>4</number>
@@ -1124,7 +1124,7 @@
     <property name="geometry">
      <rect>
       <x>500</x>
-      <y>160</y>
+      <y>140</y>
       <width>171</width>
       <height>21</height>
      </rect>
@@ -1210,13 +1210,221 @@
      <string>refresh</string>
     </property>
    </widget>
+   <widget class="QFrame" name="frmCalidad">
+    <property name="geometry">
+     <rect>
+      <x>450</x>
+      <y>350</y>
+      <width>281</width>
+      <height>121</height>
+     </rect>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Shape::Box</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Shadow::Raised</enum>
+    </property>
+    <widget class="QCheckBox" name="checkBoxRobot1">
+     <property name="geometry">
+      <rect>
+       <x>190</x>
+       <y>10</y>
+       <width>81</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Corriendo</string>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QSpinBox" name="sbxProbaRobot1">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>190</x>
+       <y>30</y>
+       <width>42</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <property name="minimum">
+      <number>0</number>
+     </property>
+     <property name="maximum">
+      <number>100</number>
+     </property>
+     <property name="value">
+      <number>50</number>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="checkBoxRobot2">
+     <property name="geometry">
+      <rect>
+       <x>190</x>
+       <y>70</y>
+       <width>81</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Corriendo</string>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QSpinBox" name="sbxProbaRobot2">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>190</x>
+       <y>90</y>
+       <width>42</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <property name="minimum">
+      <number>0</number>
+     </property>
+     <property name="maximum">
+      <number>100</number>
+     </property>
+     <property name="value">
+      <number>50</number>
+     </property>
+    </widget>
+    <widget class="QLabel" name="lblColaRobot1">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>20</y>
+       <width>151</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="autoFillBackground">
+      <bool>false</bool>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::Shape::Box</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Shadow::Plain</enum>
+     </property>
+     <property name="text">
+      <string>N monstruos en cola</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignmentFlag::AlignCenter</set>
+     </property>
+     <property name="wordWrap">
+      <bool>false</bool>
+     </property>
+     <property name="margin">
+      <number>0</number>
+     </property>
+     <property name="indent">
+      <number>-1</number>
+     </property>
+    </widget>
+    <widget class="QLabel" name="lblColaRobot2">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>80</y>
+       <width>151</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="autoFillBackground">
+      <bool>false</bool>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::Shape::Box</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Shadow::Plain</enum>
+     </property>
+     <property name="text">
+      <string>N monstruos en cola</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignmentFlag::AlignCenter</set>
+     </property>
+     <property name="wordWrap">
+      <bool>false</bool>
+     </property>
+     <property name="margin">
+      <number>0</number>
+     </property>
+     <property name="indent">
+      <number>-1</number>
+     </property>
+    </widget>
+   </widget>
+   <widget class="Line" name="line_6">
+    <property name="geometry">
+     <rect>
+      <x>610</x>
+      <y>320</y>
+      <width>16</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Orientation::Vertical</enum>
+    </property>
+   </widget>
+   <widget class="Line" name="line_7">
+    <property name="geometry">
+     <rect>
+      <x>320</x>
+      <y>400</y>
+      <width>131</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Orientation::Horizontal</enum>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblHorno_2">
+    <property name="geometry">
+     <rect>
+      <x>450</x>
+      <y>330</y>
+      <width>171</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>Calidad</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>809</width>
+     <width>1305</width>
      <height>21</height>
     </rect>
    </property>

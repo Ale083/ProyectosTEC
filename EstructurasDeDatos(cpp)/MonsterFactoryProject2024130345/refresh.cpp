@@ -12,6 +12,8 @@ void Refresh::run(){
         lblContenido2->setText(QString::number(colaBandeja2->size()));
         lblContenido3->setText(QString::number(colaBandeja3->size()));
         lblContenido4->setText(QString::number(colaBandeja4->size()));
+        lblColaRobot1->setText(QString::number(colaRobot1->size()) + " monstruos en cola");
+        lblColaRobot2->setText(QString::number(colaRobot2->size()) + " monstruos en cola");
         mutexColaEnergia->unlock(); mutexColaMaterial->unlock(); mutexColaMaldad->unlock();
         QThread::msleep(500);
     }

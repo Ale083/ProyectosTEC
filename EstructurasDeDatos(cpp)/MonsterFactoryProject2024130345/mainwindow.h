@@ -12,6 +12,8 @@
 #include "combinarthread.h"
 #include "refresh.h"
 #include "hornothread.h"
+#include "robot1thread.h"
+#include "robot2thread.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {class MainWindow;}
@@ -53,7 +55,12 @@ public:
     cola<Monstruo*>* colaRobot1;
     cola<Monstruo*>* colaRobot2;
     QMutex mutexColaRobot1;
+    QMutex mutexColaRobot2;
+    QMutex mutexListaAlmacen;
 
+    Lista<Monstruo*>* listaAlmacen;
+    Robot1Thread* robot1Thread;
+    Robot2Thread* robot2Thread;
 
 private slots:
     void on_btnRefresh_clicked();

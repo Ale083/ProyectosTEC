@@ -16,7 +16,9 @@ SOURCES += \
     mainwindow.cpp \
     maldadthread.cpp \
     materialthread.cpp \
-    refresh.cpp
+    refresh.cpp \
+    robot1thread.cpp \
+    robot2thread.cpp
 
 HEADERS += \
     combinarthread.h \
@@ -27,7 +29,9 @@ HEADERS += \
     mainwindow.h \
     maldadthread.h \
     materialthread.h \
-    refresh.h
+    refresh.h \
+    robot1thread.h \
+    robot2thread.h
 
 FORMS += \
     mainwindow.ui

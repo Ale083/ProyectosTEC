@@ -102,5 +102,6 @@ void HornoThread::run(){
         checkBoxBandeja1->setEnabled(true); checkBoxBandeja2->setEnabled(true); checkBoxBandeja3->setEnabled(true); checkBoxBandeja4->setEnabled(true);
         sbxBandeja1->setEnabled(true); sbxBandeja2->setEnabled(true); sbxBandeja3->setEnabled(true); sbxBandeja4->setEnabled(true);
         lblCountdownHorno->setText(QString::number(sbxHorno->value()));
+        QThread::sleep(5); //Cooldown, además da tiempo para que el usuario deshabilite bandejas si quiere.
     }
 }
