@@ -65,6 +65,10 @@ public:
 private slots:
     void on_btnRefresh_clicked();
 
+    void on_btnIniciar_clicked();
+
+    void on_btnPausa_clicked();
+
 private:
     Ui::MainWindow *ui;
 };
