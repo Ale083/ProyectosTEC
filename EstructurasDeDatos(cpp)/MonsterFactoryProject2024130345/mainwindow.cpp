@@ -54,24 +54,27 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_btnRefresh_clicked(){
 
-    QDir dirPedidos("C:\\Users\\Proyecto Diseño\\Desktop\\testingMonsterFaact\\pedidos");  //carpeta de pedidos
-    QDir dirProcesados("C:\\Users\\Proyecto Diseño\\Desktop\\testingMonsterFaact\\procesads");  //carpeta de procesados
+    QDir dirPedidos("C:\\Users\\Proyecto Diseño\\Desktop\\testingMonsterFaact\\pedidos"); //carpeta de pedidos
     QFileInfoList listaArchivos = dirPedidos.entryInfoList(QDir::Files);
     qDebug() << "Ruta de pedidos:" << dirPedidos.absolutePath();
-    qDebug() << "Ruta de procesados:" << dirProcesados.absolutePath();
+
     if (!listaArchivos.isEmpty()) {
-        QFileInfo archivoInfo = listaArchivos.at(0);  //el primer archivo de la lista
-        //procesarArchivo(archivoInfo.absoluteFilePath());  //lo procesa con la función creada, parámetro es el path al archivo.
+        QFileInfo archivoInfo = listaArchivos.at(0); //el primer archivo de la lista
 
-        QString timestamp = QDateTime::currentDateTime().toString("yyyyMMdd_hhmmss");
-
-        QString nombreBase = archivoInfo.completeBaseName();
-        QString extension = archivoInfo.suffix();
-        QString nuevoNombreArchivo = nombreBase + "_" + timestamp + "." + extension;
-
-        QString rutaDestino = dirProcesados.absoluteFilePath(nuevoNombreArchivo);
-        QFile::rename(archivoInfo.absoluteFilePath(), rutaDestino);
+        // Mantén el archivo en su ubicación original y simplemente escribe en él
+        QFile archivo(archivoInfo.absoluteFilePath());
+        if (archivo.open(QIODevice::WriteOnly | QIODevice::Text | QIODevice::Append)) {  // Modo Append para no sobrescribir
+            QTextStream stream(&archivo);
+            stream << "Este archivo ha sido procesado." << Qt::endl;
+            archivo.close();
+            qDebug() << "Texto escrito en el archivo procesado:" << archivoInfo.fileName();
+        } else {
+            qDebug() << "Error al abrir el archivo para escribir.";
+        }
+    } else {
+        qDebug() << "No hay archivos en la carpeta de pedidos.";
     }
+
 
 }
 
