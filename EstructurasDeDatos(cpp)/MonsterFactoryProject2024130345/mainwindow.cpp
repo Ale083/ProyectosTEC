@@ -60,7 +60,7 @@ void MainWindow::on_btnRefresh_clicked(){
     QString nombreArchivoEspecifico = "pedido_especifico.txt";
     QString rutaArchivo = dirPedidos.absoluteFilePath(nombreArchivoEspecifico);
     qDebug() << rutaArchivo;
-
+    QFile archivo("C:\\Users\\Proyecto Diseño\\Desktop\\testingMonsterFaact\\bitacoraColaMonstruos.txt");
 
     if (!listaArchivos.isEmpty()) {
         QFileInfo archivoInfo = listaArchivos.at(0); //el primer archivo de la lista
@@ -134,5 +134,48 @@ void MainWindow::on_btnResumir_clicked()
     ui->checkBoxMaldad->isEnabled() ? ui->checkBoxMaldad->setChecked(true) : ui->checkBoxMaldad->setChecked(false);
     ui->btnPausa->setEnabled(true);
     ui->btnResumir->setEnabled(false);
+}
+
+
+void MainWindow::on_btnDetener_clicked()
+{
+    QFile archivoColaMonstruos("C:\\Users\\Proyecto Diseño\\Desktop\\testingMonsterFaact\\bitacoraColaMonstruos.txt");
+    if (archivoColaMonstruos.open(QIODevice::WriteOnly | QIODevice::Text)) {
+        archivoColaMonstruos.resize(0);
+        archivoColaMonstruos.close();
+    }
+
+    QFile archivoBasurero("C:\\Users\\Proyecto Diseño\\Desktop\\testingMonsterFaact\\bitacoraBasurero.txt");
+    if (archivoBasurero.open(QIODevice::WriteOnly | QIODevice::Text)) {
+        archivoBasurero.resize(0);
+        archivoBasurero.close();
+    }
+
+    QFile archivoHorno("C:\\Users\\Proyecto Diseño\\Desktop\\testingMonsterFaact\\bitacoraHorno.txt");
+    if (archivoHorno.open(QIODevice::WriteOnly | QIODevice::Text)) {
+        archivoHorno.resize(0);
+        archivoHorno.close();
+    }
+
+    QFile archivoRobot1("C:\\Users\\Proyecto Diseño\\Desktop\\testingMonsterFaact\\bitacoraRobot1.txt");
+    if (archivoRobot1.open(QIODevice::WriteOnly | QIODevice::Text)) {
+        archivoRobot1.resize(0);
+        archivoRobot1.close();
+    }
+
+    QFile archivoRobot2("C:\\Users\\Proyecto Diseño\\Desktop\\testingMonsterFaact\\bitacoraRobot2.txt");
+    if (archivoRobot2.open(QIODevice::WriteOnly | QIODevice::Text)) {
+        archivoRobot2.resize(0);
+        archivoRobot2.close();
+    }
+
+    QFile archivoAlmacen("C:\\Users\\Proyecto Diseño\\Desktop\\testingMonsterFaact\\bitacoraAlmacen.txt");
+    if (archivoAlmacen.open(QIODevice::WriteOnly | QIODevice::Text)) {
+        archivoAlmacen.resize(0);
+        archivoAlmacen.close();
+    }
+
+
+
 }
 

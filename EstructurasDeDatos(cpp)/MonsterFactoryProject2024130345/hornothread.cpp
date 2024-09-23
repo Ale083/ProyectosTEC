@@ -79,6 +79,7 @@ void HornoThread::run(){
             monstruo -> bandejaDondeSeHorneo = 1;
             monstruo -> timestampInicioHorneado = timestampInicioHorneado;
             monstruo -> timestampFinalHorneado = QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss");
+            actualizarBitacora(monstruo->toStringHorno());
             mutexColaRobot1->lock(); colaRobot1 -> encolar(monstruo); mutexColaRobot1->unlock();
             sbxColaRobot1->setMinimum(colaRobot1->size());
         }
@@ -89,6 +90,7 @@ void HornoThread::run(){
             monstruo->bandejaDondeSeHorneo = 2;
             monstruo->timestampInicioHorneado = timestampInicioHorneado;
             monstruo->timestampFinalHorneado = QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss");
+            actualizarBitacora(monstruo->toStringHorno());
             mutexColaRobot1->lock(); colaRobot1 -> encolar(monstruo); mutexColaRobot1->unlock();
             sbxColaRobot1->setMinimum(colaRobot1->size());
         }
@@ -99,6 +101,7 @@ void HornoThread::run(){
             monstruo->bandejaDondeSeHorneo = 3;
             monstruo->timestampInicioHorneado = timestampInicioHorneado;
             monstruo->timestampFinalHorneado = QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss");
+            actualizarBitacora(monstruo->toStringHorno());
             mutexColaRobot1->lock(); colaRobot1 -> encolar(monstruo); mutexColaRobot1->unlock();
             sbxColaRobot1->setMinimum(colaRobot1->size());
         }
@@ -109,13 +112,24 @@ void HornoThread::run(){
             monstruo->bandejaDondeSeHorneo = 4;
             monstruo->timestampInicioHorneado = timestampInicioHorneado;
             monstruo->timestampFinalHorneado = QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss");
+            actualizarBitacora(monstruo->toStringHorno());
             mutexColaRobot1->lock(); colaRobot1 -> encolar(monstruo); mutexColaRobot1->unlock();
             sbxColaRobot1->setMinimum(colaRobot1->size());
         }
 
         checkBoxBandeja1->setEnabled(true); checkBoxBandeja2->setEnabled(true); checkBoxBandeja3->setEnabled(true); checkBoxBandeja4->setEnabled(true);
         sbxBandeja1->setEnabled(true); sbxBandeja2->setEnabled(true); sbxBandeja3->setEnabled(true); sbxBandeja4->setEnabled(true);
-
         QThread::sleep(5); //Cooldown, además da tiempo para que el usuario deshabilite bandejas si quiere.
+    }
+}
+
+void HornoThread::actualizarBitacora(QString historico){
+    QFile archivo("C:\\Users\\Proyecto Diseño\\Desktop\\testingMonsterFaact\\bitacoraHorno.txt");
+    if (archivo.open(QIODevice::WriteOnly | QIODevice::Text | QIODevice::Append)) {
+        QTextStream stream(&archivo);
+        stream << historico << Qt::endl;
+        archivo.close();
+    } else {
+        qDebug() << "Error al abrir el archivo";
     }
 }

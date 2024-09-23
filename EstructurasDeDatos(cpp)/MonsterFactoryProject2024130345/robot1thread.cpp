@@ -20,15 +20,40 @@ void Robot1Thread::run(){
             int randomNumber = (QRandomGenerator::global()->generate())%101; //da un número entre 0-100
             if(randomNumber < sbxProbaRobot1->value()){
                 monstruo->inspectoresQueLoReviso = 2;
+                actualizarBitacora(monstruo->toStringInspeccion("1"));
                 mutexColaRobot2->lock();
                 colaRobot2->encolar(monstruo);
                 mutexColaRobot2->unlock();
             } else {
                 monstruo->inspectoresQueLoReviso = 1;
                 monstruo->esBueno = true;
-                monstruo->siEsBuenoPorque = "Por rechazo";
+                monstruo->siEsBuenoPorque = "rechazo";
+                actualizarBitacora(monstruo->toStringInspeccion("1"));
+                bitacoraBasurero(monstruo -> toStringBasurero());
                 basureroDeMonstruos->insertarAlFinal(monstruo);
             }
         }
+    }
+}
+
+void Robot1Thread::actualizarBitacora(QString historico){
+    QFile archivo("C:\\Users\\Proyecto Diseño\\Desktop\\testingMonsterFaact\\bitacoraRobot1.txt");
+    if (archivo.open(QIODevice::WriteOnly | QIODevice::Text | QIODevice::Append)) {
+        QTextStream stream(&archivo);
+        stream << historico << Qt::endl;
+        archivo.close();
+    } else {
+        qDebug() << "Error al abrir el archivo";
+    }
+}
+
+void Robot1Thread::bitacoraBasurero(QString historico){
+    QFile archivo("C:\\Users\\Proyecto Diseño\\Desktop\\testingMonsterFaact\\bitacoraBasureroDeMonstruos.txt");
+    if (archivo.open(QIODevice::WriteOnly | QIODevice::Text | QIODevice::Append)) {
+        QTextStream stream(&archivo);
+        stream << historico << Qt::endl;
+        archivo.close();
+    } else {
+        qDebug() << "Error al abrir el archivo";
     }
 }

@@ -26,6 +26,8 @@ public:
     }
 
     void run();
+    void actualizarBitacora(QString historico);
+    void bitacoraBasurero(QString historico);
 
 private:
     QString id;

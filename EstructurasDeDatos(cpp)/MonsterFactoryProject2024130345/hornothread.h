@@ -49,6 +49,7 @@ public: //if !enabled or size = capacity
     bool resume() { return running = true; };
     bool pause() { return running = false; };
     void run();
+    void actualizarBitacora(QString historico);
 
 private:
     QString id;

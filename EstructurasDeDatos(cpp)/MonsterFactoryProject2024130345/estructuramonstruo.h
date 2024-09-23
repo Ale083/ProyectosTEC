@@ -39,9 +39,41 @@ public:
         tipoEnInt = _tipoEnInt;
     }
 
-    QString toString(){
-        QString resultado = tipo + " de consecutivo " + QString::number(consecutivo) + " generado por la combinación de " + combinacion[0] + ", " + combinacion[1] + " y " + combinacion[2] + " en " + timestampCreacion;
-        //TODO
+    QString toStringColaMonstruos(){
+        QString resultado = tipo + " de consecutivo " + QString::number(consecutivo) + " generado por la combinación de " + combinacion[0] + ", " + combinacion[1] + " y " + combinacion[2] + " en " + timestampCreacion + "\n";
+        return resultado;
+    }
+
+    QString toStringBasurero(){
+        QString resultado = tipo + " de consecutivo " + QString::number(consecutivo) + " generado por la combinación de " + combinacion[0] + ", " + combinacion[1] + " y " + combinacion[2] + " creado " + timestampCreacion + " fue botado al basurero por" + siEsBuenoPorque + "\n";
+        return resultado;
+    }
+
+    QString toStringHorno(){
+        QString resultado = tipo + " de consecutivo " + QString::number(consecutivo) + " empezo a hornearse " + timestampInicioHorneado + " y terminó " + timestampFinalHorneado + " en la bandeja " + QString::number(bandejaDondeSeHorneo) + "\n";
+        return resultado;
+    }
+
+    QString toStringInspeccion(QString numRobot){
+        QString timestampInspeccion = QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss");
+        QString resultado = tipo + " de consecutivo " + QString::number(consecutivo) + " fue inspeccionado por el robot " + numRobot + " ";
+        if (esBueno){
+            resultado += "y fue rechazado";
+        } else {
+            resultado += "y la pasó exitosamente";
+        }
+        resultado += "\n";
+        return resultado;
+    }
+
+    QString toStringAlmacen(){
+        QString resultado = tipo + " de consecutivo " + QString::number(consecutivo) + " ";
+        if(entregado){
+            resultado += ("fue entregado al pedido " + QString::number(pedidoEntregado) + " en " + timestampEntrega);
+        } else {
+            resultado += "sigue en almacén";
+        }
+        resultado += "\n";
         return resultado;
     }
 };

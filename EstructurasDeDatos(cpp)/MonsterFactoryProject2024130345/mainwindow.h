@@ -71,6 +71,8 @@ private slots:
 
     void on_btnResumir_clicked();
 
+    void on_btnDetener_clicked();
+
 private:
     Ui::MainWindow *ui;
 };

@@ -28,8 +28,11 @@ public:
         this->mutexColaMaterial = mutexColaMaterial;
         this->mutexColaMaldad = mutexColaMaldad;
         this->mutexColaMonstruos = mutexColaMonstruos;
+        this->conteo = 1;
     }
     void run();
+    void actualizarBitacora(QString historico);
+    void bitacoraBasurero(QString historico);
 private:
     QString id;
     cola<QString>* colaEnergia;
@@ -46,6 +49,7 @@ private:
     QMutex* mutexColaMaterial;
     QMutex* mutexColaMaldad;
     QMutex* mutexColaMonstruos;
+    int conteo;
 };
 
 #endif // COMBINARTHREAD_H
