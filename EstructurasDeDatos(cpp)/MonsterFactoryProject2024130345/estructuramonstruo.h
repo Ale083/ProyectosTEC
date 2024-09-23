@@ -45,7 +45,7 @@ public:
     }
 
     QString toStringBasurero(){
-        QString resultado = tipo + " de consecutivo " + QString::number(consecutivo) + " generado por la combinación de " + combinacion[0] + ", " + combinacion[1] + " y " + combinacion[2] + " creado " + timestampCreacion + " fue botado al basurero por" + siEsBuenoPorque + "\n";
+        QString resultado = tipo + " de consecutivo " + QString::number(consecutivo) + " generado por la combinación de " + combinacion[0] + ", " + combinacion[1] + " y " + combinacion[2] + " creado " + timestampCreacion + " fue botado al basurero por " + siEsBuenoPorque + "\n";
         return resultado;
     }
 
@@ -74,6 +74,11 @@ public:
             resultado += "sigue en almacén";
         }
         resultado += "\n";
+        return resultado;
+    }
+
+    QString toStringRechazo(){
+        QString resultado = tipo + " de consecutivo " + QString::number(consecutivo) + " creado " + timestampCreacion + " fue botado al basurero por " + siEsBuenoPorque + "\n";
         return resultado;
     }
 };

@@ -145,7 +145,7 @@ void MainWindow::on_btnDetener_clicked()
         archivoColaMonstruos.close();
     }
 
-    QFile archivoBasurero("C:\\Users\\Proyecto Diseño\\Desktop\\testingMonsterFaact\\bitacoraBasurero.txt");
+    QFile archivoBasurero("C:\\Users\\Proyecto Diseño\\Desktop\\testingMonsterFaact\\bitacoraBasureroDeMonstruos.txt");
     if (archivoBasurero.open(QIODevice::WriteOnly | QIODevice::Text)) {
         archivoBasurero.resize(0);
         archivoBasurero.close();

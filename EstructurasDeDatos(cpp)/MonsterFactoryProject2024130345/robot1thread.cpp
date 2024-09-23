@@ -29,7 +29,7 @@ void Robot1Thread::run(){
                 monstruo->esBueno = true;
                 monstruo->siEsBuenoPorque = "rechazo";
                 actualizarBitacora(monstruo->toStringInspeccion("1"));
-                bitacoraBasurero(monstruo -> toStringBasurero());
+                bitacoraBasurero(monstruo -> toStringRechazo());
                 basureroDeMonstruos->insertarAlFinal(monstruo);
             }
         }
