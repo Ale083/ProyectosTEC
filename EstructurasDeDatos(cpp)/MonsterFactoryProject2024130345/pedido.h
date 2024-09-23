@@ -1,22 +1,19 @@
 #ifndef PEDIDO_H
 #define PEDIDO_H
 #include <QString>
-#include "estructuramonstruo.h"
 
 #include "estructuras.h"
 
 struct Pedido{
 public:
     QString nombreCliente;
-    bool prioridad;
     int numPedido;
-    Lista<Monstruo*>* monstruosPedidos;
+    Lista<int>* monstruosPedidos;
 
-    Pedido(QString _nombreCliente, bool _prioridad, int _numPedido){
+    Pedido(QString _nombreCliente, int _numPedido){
         nombreCliente = _nombreCliente;
-        prioridad = _prioridad;
         numPedido = _numPedido;
-        monstruosPedidos = new Lista<Monstruo*>;
+        monstruosPedidos = new Lista<int>;
     }
 };
 #endif // PEDIDO_H

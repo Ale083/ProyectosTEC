@@ -57,6 +57,10 @@ void MainWindow::on_btnRefresh_clicked(){
     QDir dirPedidos("C:\\Users\\Proyecto Diseño\\Desktop\\testingMonsterFaact\\pedidos"); //carpeta de pedidos
     QFileInfoList listaArchivos = dirPedidos.entryInfoList(QDir::Files);
     qDebug() << "Ruta de pedidos:" << dirPedidos.absolutePath();
+    QString nombreArchivoEspecifico = "pedido_especifico.txt";
+    QString rutaArchivo = dirPedidos.absoluteFilePath(nombreArchivoEspecifico);
+    qDebug() << rutaArchivo;
+
 
     if (!listaArchivos.isEmpty()) {
         QFileInfo archivoInfo = listaArchivos.at(0); //el primer archivo de la lista

@@ -18,8 +18,9 @@ public:
     bool entregado;
     int pedidoEntregado;
     QString timestampEntrega;
+    int tipoEnInt;
 
-    Monstruo(int _consecutivo, QString energia, QString material, QString maldad, QString _tipo, bool _esBueno, QString _siEsBuenoPorque){
+    Monstruo(int _consecutivo, QString energia, QString material, QString maldad, QString _tipo, bool _esBueno, QString _siEsBuenoPorque, int _tipoEnInt){
         consecutivo = _consecutivo;
         combinacion[0] = energia;
         combinacion[1] = material;
@@ -35,6 +36,7 @@ public:
         entregado = false;
         pedidoEntregado = 0;
         timestampEntrega = "";
+        tipoEnInt = _tipoEnInt;
     }
 
     QString toString(){

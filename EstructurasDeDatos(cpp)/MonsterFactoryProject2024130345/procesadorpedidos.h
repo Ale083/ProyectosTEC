@@ -6,14 +6,14 @@
 #include <QFile>
 #include <QTextStream>
 #include <QDebug>
-#include "estructuramonstruo.h"
 #include "estructuras.h"
+#include "pedido.h"
 
 class ProcesadorPedidos : public QThread
 {
 public:
     ProcesadorPedidos();
-    ProcesadorPedidos(QString pathPedidos, QString pathProcesados, cola<Monstruo*> colaPedidos, cola<Monstruo*> colaPedidosPrioridad){
+    ProcesadorPedidos(QString pathPedidos, QString pathProcesados, cola<Pedido*>* colaPedidos, cola<Pedido*>* colaPedidosPrioridad){
         this->pathPedidos = pathPedidos;
         this->pathProcesados = pathProcesados;
         this->colaPedidos = colaPedidos;
@@ -25,8 +25,8 @@ public:
 private:
     QString pathPedidos;
     QString pathProcesados;
-    cola<Monstruo*> colaPedidos;
-    cola<Monstruo*> colaPedidosPrioridad;
+    cola<Pedido*>* colaPedidos;
+    cola<Pedido*>* colaPedidosPrioridad;
 
     void procesarArchivo(const QString &filePath);
 };

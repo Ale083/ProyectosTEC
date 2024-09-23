@@ -50,33 +50,33 @@ void CombinarThread::run(){
         //Combinaciones:
         mutexColaMonstruos->lock();
         if (energia == "Energia Cosmica" && material == "Material Organico" && maldad == "Maldad Astuta"){
-            colaDeMonstruos->encolar(new Monstruo(conteo++,energia,material,maldad,"Monstruo de Inteligencia",false,"")); //Inteligencia
+            colaDeMonstruos->encolar(new Monstruo(conteo++,energia,material,maldad,"Monstruo de Inteligencia",false,"",1)); //Inteligencia
         }
         else if (energia == "Energia Elemental" && material == "Material Radioactivo" && maldad == "Maldad Caotica") {
-            colaDeMonstruos->encolar(new Monstruo(conteo++, energia, material, maldad, "Monstruo de Destruccion", false, "")); //Destruccion
+            colaDeMonstruos->encolar(new Monstruo(conteo++, energia, material, maldad, "Monstruo de Destruccion", false, "",2)); //Destruccion
         }
         else if (energia == "Energia Oscura" && material == "Material Organico" && maldad == "Maldad Despiadada") {
-            colaDeMonstruos->encolar(new Monstruo(conteo++, energia, material, maldad, "Monstruo de Regeneracion", false, "")); //Regeneracion
+            colaDeMonstruos->encolar(new Monstruo(conteo++, energia, material, maldad, "Monstruo de Regeneracion", false, "",3)); //Regeneracion
         }
         else if (energia == "Energia Elemental" && material == "Material Metalico" && maldad == "Maldad Despiadada") {
-            colaDeMonstruos->encolar(new Monstruo(conteo++, energia, material, maldad, "Monstruo de Fuerza", false, "")); //Fuerza
+            colaDeMonstruos->encolar(new Monstruo(conteo++, energia, material, maldad, "Monstruo de Fuerza", false, "",4)); //Fuerza
         }
         else if (energia == "Energia Oscura" && material == "Material Metalico" && maldad == "Maldad Astuta") {
-            colaDeMonstruos->encolar(new Monstruo(conteo++, energia, material, maldad, "Monstruo de Maldad", false, "")); //Maldad
+            colaDeMonstruos->encolar(new Monstruo(conteo++, energia, material, maldad, "Monstruo de Maldad", false, "",5)); //Maldad
         }
         else if (energia == "Energia Oscura" && material == "Material Radioactivo" && maldad == "Maldad Despiadada") {
-            colaDeMonstruos->encolar(new Monstruo(conteo++, energia, material, maldad, "Monstruo de Veneno", false, "")); //Veneno
+            colaDeMonstruos->encolar(new Monstruo(conteo++, energia, material, maldad, "Monstruo de Veneno", false, "",6)); //Veneno
         }
         else if (energia == "Energia Cosmica" && material == "Material Radioactivo" && maldad == "Maldad Caotica") {
-            colaDeMonstruos->encolar(new Monstruo(conteo++, energia, material, maldad, "Monstruo de Locura", false, "")); //Locura
+            colaDeMonstruos->encolar(new Monstruo(conteo++, energia, material, maldad, "Monstruo de Locura", false, "",7)); //Locura
         }
         else if (energia == "Energia Cosmica" && material == "Material Metalico" && maldad == "Maldad Astuta") {
-            colaDeMonstruos->encolar(new Monstruo(conteo++, energia, material, maldad, "Monstruo de Tecnologia", false, "")); //Tecnologia
+            colaDeMonstruos->encolar(new Monstruo(conteo++, energia, material, maldad, "Monstruo de Tecnologia", false, "",8)); //Tecnologia
         }
         else if (energia == "Energia Elemental" && material == "Material Organico" && maldad == "Maldad Caotica") {
-            colaDeMonstruos->encolar(new Monstruo(conteo++, energia, material, maldad, "Monstruo de Velocidad", false, "")); //Velocidad
+            colaDeMonstruos->encolar(new Monstruo(conteo++, energia, material, maldad, "Monstruo de Velocidad", false, "",9)); //Velocidad
         } else{
-            basureroDeMonstruos->insertarAlFinal(new Monstruo(conteo++, energia, material, maldad, "Monstruo Defectuoso", true, "Por combinacion"));
+            basureroDeMonstruos->insertarAlFinal(new Monstruo(conteo++, energia, material, maldad, "Monstruo Defectuoso", true, "Por combinacion",-1));
         }
         mutexColaMonstruos->unlock();
         capacidadColaMonstruos->setMinimum(colaDeMonstruos->size());

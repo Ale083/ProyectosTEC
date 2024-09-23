@@ -71,11 +71,11 @@ public:
 
 template<typename T>
 struct Lista{
-private:
+public:
     Nodo<T>* primerNodo;
     Nodo<T>* ultimoNodo;
     int longitud;
-public:
+
     Lista(){
         primerNodo = ultimoNodo = nullptr;
         longitud = 0;

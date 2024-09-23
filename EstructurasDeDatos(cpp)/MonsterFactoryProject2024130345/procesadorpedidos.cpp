@@ -38,13 +38,80 @@ void ProcesadorPedidos::run()
             QFile::rename(archivoInfo.absoluteFilePath(), rutaDestino);
         }
 
-        // Dormir el hilo por 1 segundo antes de revisar nuevamente
         QThread::sleep(1);
     }
 }
 
-// Función para procesar el archivo
 void ProcesadorPedidos::procesarArchivo(const QString &filePath)
 {
+    QFile archivo(filePath);
 
+    if (!archivo.open(QIODevice::ReadOnly | QIODevice::Text)) { //si no se puede abrir el archivo en modo lectura.
+        qDebug() << "No se pudo abrir el archivo para lectura.";
+        return;
+    }
+
+    QTextStream in(&archivo);
+
+    QString nombreCliente;
+    QString clavePrioridad;
+    QString numeroPedido;
+    Lista<int>* monstruosSolicitados = new Lista<int>;
+
+    int lineaActual = 0;
+
+    while (!in.atEnd()) {
+        QString linea = in.readLine();
+        lineaActual++;
+
+        if (lineaActual == 1) {
+            nombreCliente = linea;
+            qDebug() << "Cliente:" << nombreCliente;
+
+        } else if (lineaActual == 2) {
+            clavePrioridad = linea;
+            qDebug() << "Clave de prioridad:" << clavePrioridad;
+
+        } else if (lineaActual == 3) {
+            numeroPedido = linea;
+            qDebug() << "Número de pedido:" << numeroPedido;
+
+        } else {
+            if (linea == "INTELIGENCIA")
+                monstruosSolicitados->insertarAlFinal(1);
+            else if (linea == "DESTRUCCION")
+                monstruosSolicitados->insertarAlFinal(2);
+            else if (linea == "REGENERACION")
+                monstruosSolicitados->insertarAlFinal(3);
+            else if (linea == "FUERZA")
+                monstruosSolicitados->insertarAlFinal(4);
+            else if (linea == "MALDAD")
+                monstruosSolicitados->insertarAlFinal(5);
+            else if (linea == "VENENO")
+                monstruosSolicitados->insertarAlFinal(6);
+            else if (linea == "LOCURA")
+                monstruosSolicitados->insertarAlFinal(7);
+            else if (linea == "TECNOLOGIA")
+                monstruosSolicitados->insertarAlFinal(8);
+            else if (linea == "VELOCIDAD")
+                monstruosSolicitados->insertarAlFinal(9);
+            qDebug() << "Monstruo solicitado:" << linea;
+        }
+    }
+
+    Pedido* nuevoPedido = new Pedido(nombreCliente,numeroPedido.toInt());
+    Nodo<int>* tmp = monstruosSolicitados->primerNodo;
+    while (tmp != nullptr){
+        nuevoPedido ->monstruosPedidos->insertarAlFinal(tmp->dato);
+        tmp = tmp->siguiente;
+    }
+
+    if (clavePrioridad == "1ST PROGRA") {
+        colaPedidosPrioridad->encolar(nuevoPedido);
+        qDebug() << "Pedido prioritario añadido:" << nuevoPedido->numPedido;
+    } else {
+        colaPedidos->encolar(nuevoPedido);
+        qDebug() << "Pedido añadido:" << nuevoPedido->numPedido;
+    }
+    archivo.close();
 }
