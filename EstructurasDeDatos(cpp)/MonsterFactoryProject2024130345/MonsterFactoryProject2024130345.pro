@@ -24,6 +24,7 @@ SOURCES += \
 HEADERS += \
     combinarthread.h \
     energiathread.h \
+    estructuraalmacen.h \
     estructuramonstruo.h \
     estructuras.h \
     hornothread.h \
