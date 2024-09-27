@@ -43,8 +43,8 @@ MainWindow::MainWindow(QWidget *parent)
 
     robot2Thread = new Robot2Thread("Robot 2 Thread", colaRobot2, ui->checkBoxRobot2, ui->sbxProbaRobot2, almacen, basureroDeMonstruos, ui->sbxCapacidadColaRobot2, &mutexColaRobot2, &mutexListaAlmacen);
 
-
-    refresh = new Refresh(energiaCola,materialCola,maldadCola,ui->lblColaEnergia,ui->sbxCapacidadColaEnergia,ui->lblColaMaterial, ui->sbxCapacidadColaMaterial, ui->lblColaMaldad, ui->sbxCapacidadColaMaldad, colaDeMonstruos, ui->lblColaMonstruos,ui->sbxCapacidadColaDeMonstruos, colaBandeja1, ui->lblContenido1, colaBandeja2, ui->lblContenido2, colaBandeja3, ui->lblContenido3, colaBandeja4, ui->lblContenido4, colaRobot1, ui->lblColaRobot1, ui->sbxCapacidadColaRobot1, colaRobot2, ui->lblColaRobot2, ui->sbxCapacidadColaRobot2, listaAlmacen, ui->lblAlmacenCant, basureroDeMonstruos, ui->lblBasureroCant, &mutexColaEnergia,&mutexColaMaterial,&mutexColaMaldad);
+    procesadorPedidos = new ProcesadorPedidos("C:\\Users\\Proyecto Diseño\\Desktop\\testingMonsterFaact\\pedidos","C:\\Users\\Proyecto Diseño\\Desktop\\testingMonsterFaact\\procesads",listaDePedidos,listaDePedidosPrioridad);
+    refresh = new Refresh(energiaCola,materialCola,maldadCola,ui->lblColaEnergia,ui->sbxCapacidadColaEnergia,ui->lblColaMaterial, ui->sbxCapacidadColaMaterial, ui->lblColaMaldad, ui->sbxCapacidadColaMaldad, colaDeMonstruos, ui->lblColaMonstruos,ui->sbxCapacidadColaDeMonstruos, colaBandeja1, ui->lblContenido1, colaBandeja2, ui->lblContenido2, colaBandeja3, ui->lblContenido3, colaBandeja4, ui->lblContenido4, colaRobot1, ui->lblColaRobot1, ui->sbxCapacidadColaRobot1, colaRobot2, ui->lblColaRobot2, ui->sbxCapacidadColaRobot2, almacen, ui->lblAlmacenCant, basureroDeMonstruos, ui->lblBasureroCant, &mutexColaEnergia,&mutexColaMaterial,&mutexColaMaldad);
 
 }
 
@@ -94,9 +94,11 @@ void MainWindow::on_btnIniciar_clicked()
     robot1Thread->start();
     robot2Thread->start();
     refresh -> start();
+    procesadorPedidos->start();
     ui->btnIniciar->setEnabled(false);
     ui->btnPausa->setEnabled(true);
     ui->btnDetener->setEnabled(true);
+
 
 }
 

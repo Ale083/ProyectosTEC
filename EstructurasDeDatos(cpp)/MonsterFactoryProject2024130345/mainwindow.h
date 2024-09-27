@@ -15,6 +15,7 @@
 #include "robot1thread.h"
 #include "robot2thread.h"
 #include "estructuraalmacen.h"
+#include "procesadorpedidos.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {class MainWindow;}
@@ -44,7 +45,7 @@ public:
     Lista<Monstruo*>* basureroDeMonstruos;
     CombinarThread* combinarThread;
     QMutex  mutexColaMonstruos;
-
+    Almacen* almacen;
     Refresh* refresh;
 
     cola<Monstruo*>* colaBandeja1;
@@ -62,9 +63,10 @@ public:
     Lista<Pedido*>* listaDePedidos;
     Lista<Pedido*>* listaDePedidosPrioridad;
 
-    Almacen* almacen;
+    ProcesadorPedidos* procesadorPedidos;
     Robot1Thread* robot1Thread;
     Robot2Thread* robot2Thread;
+
 
 private slots:
     void on_btnRefresh_clicked();

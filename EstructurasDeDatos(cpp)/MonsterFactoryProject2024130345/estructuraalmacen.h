@@ -1,4 +1,4 @@
-#ifndef ESTRUCTURAALMACEN_H
+    #ifndef ESTRUCTURAALMACEN_H
 #define ESTRUCTURAALMACEN_H
 #include "estructuras.h"
 #include "estructuramonstruo.h"
@@ -7,6 +7,7 @@
 struct Almacen {
 public:
     Lista<Monstruo*>* almacen[9];
+    int size;
 
 
 
@@ -16,6 +17,7 @@ public:
         }
         this->listaDePedidos = listaDePedidos;
         this->listaDePedidosPrioridad = listaDePedidosPrioridad;
+        size = 0;
     }
 
 
@@ -57,6 +59,7 @@ private:
                     reservarMonstruosParaPedido(pedido);
                     //quitar pedido de la lista
                     qDebug() << "Pedido entregado: " << pedido->numPedido;
+                    size++;
                     seEntregoPedido = true;
 
                 } else {
