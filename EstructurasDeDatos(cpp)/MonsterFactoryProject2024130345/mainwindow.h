@@ -14,6 +14,7 @@
 #include "hornothread.h"
 #include "robot1thread.h"
 #include "robot2thread.h"
+#include "estructuraalmacen.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {class MainWindow;}
@@ -58,7 +59,10 @@ public:
     QMutex mutexColaRobot2;
     QMutex mutexListaAlmacen;
 
-    Lista<Monstruo*>* listaAlmacen;
+    Lista<Pedido*>* listaDePedidos;
+    Lista<Pedido*>* listaDePedidosPrioridad;
+
+    Almacen* almacen;
     Robot1Thread* robot1Thread;
     Robot2Thread* robot2Thread;
 

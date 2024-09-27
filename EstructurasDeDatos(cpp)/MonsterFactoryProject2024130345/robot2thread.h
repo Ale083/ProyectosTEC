@@ -7,12 +7,13 @@
 #include <QCheckBox>
 #include "estructuras.h"
 #include "estructuramonstruo.h"
+#include "estructuraalmacen.h"
 
 class Robot2Thread : public QThread
 {
 public:
     Robot2Thread();
-    Robot2Thread(QString id, cola<Monstruo*>* colaRobot2, QCheckBox* checkBoxRobot2, QSpinBox* sbxProbaRobot2, Lista<Monstruo*>* listaAlmacen, Lista<Monstruo*>* basureroDeMonstruos, QSpinBox* sbxColaRobot2, QMutex* mutexColaRobot2, QMutex* mutexListaAlmacen) {
+    Robot2Thread(QString id, cola<Monstruo*>* colaRobot2, QCheckBox* checkBoxRobot2, QSpinBox* sbxProbaRobot2, Almacen* listaAlmacen, Lista<Monstruo*>* basureroDeMonstruos, QSpinBox* sbxColaRobot2, QMutex* mutexColaRobot2, QMutex* mutexListaAlmacen) {
         this->id = id;
         this->colaRobot2 = colaRobot2;
         this->checkBoxRobot2 = checkBoxRobot2;
@@ -35,7 +36,7 @@ private:
     QCheckBox* checkBoxRobot2;
     QSpinBox* sbxProbaRobot2;
 
-    Lista<Monstruo*>* listaAlmacen;
+    Almacen* listaAlmacen;
     Lista<Monstruo*>* basureroDeMonstruos;
     QSpinBox* sbxColaRobot2;
     QMutex* mutexColaRobot2;

@@ -22,7 +22,7 @@ void Robot2Thread::run(){
             if(randomNumber < sbxProbaRobot2->value()){
                 actualizarBitacora(monstruo->toStringInspeccion("2"));
                 mutexListaAlmacen->lock();
-                listaAlmacen->insertarAlFinal(monstruo);
+                listaAlmacen->insertarMonstruo(monstruo);
                 mutexListaAlmacen->unlock();
                 bitacoraAlmacen();
             } else {
@@ -62,10 +62,12 @@ void Robot2Thread::bitacoraAlmacen(){
     QFile archivo("C:\\Users\\Proyecto Diseño\\Desktop\\testingMonsterFaact\\bitacoraAlmacen.txt");
     if (archivo.open(QIODevice::WriteOnly | QIODevice::Text)) {
         QTextStream stream(&archivo);
-        Nodo<Monstruo*>* tmp = listaAlmacen->primerNodo;
-        while (tmp != nullptr){
-            stream  << tmp->dato->toStringAlmacen() << Qt::endl;
-            tmp = tmp ->siguiente;
+        for (Lista<Monstruo*>* listaTipoMonstruo : listaAlmacen->almacen){
+            Nodo<Monstruo*>* tmp = listaTipoMonstruo->primerNodo;
+            while (tmp != nullptr){
+                stream  << tmp->dato->toStringAlmacen() << Qt::endl;
+                tmp = tmp ->siguiente;
+            }
         }
         archivo.close();
     } else {

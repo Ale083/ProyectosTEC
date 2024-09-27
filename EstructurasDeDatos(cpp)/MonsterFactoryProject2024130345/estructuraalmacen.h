@@ -6,82 +6,21 @@
 
 struct Almacen {
 public:
-    Lista<Monstruo*>* almacen[9];  // Almacén para 9 tipos diferentes de monstruos
-    int inteligenciaDisponibles;
-    int destruccionDisponibles;
-    int regeneracionDisponibles;
-    int fuerzaDisponibles;
-    int maldadDisponibles;
-    int venenoDisponibles;
-    int locuraDisponibles;
-    int tecnologiaDisponibles;
-    int velocidadDisponibles;
+    Lista<Monstruo*>* almacen[9];
 
-    // Constructor que ahora toma listas en vez de colas
+
+
     Almacen(Lista<Pedido*>* listaDePedidos, Lista<Pedido*>* listaDePedidosPrioridad) {
         for (int i = 0; i < 9; i++) {
             almacen[i] = new Lista<Monstruo*>;
         }
-        inteligenciaDisponibles = destruccionDisponibles = regeneracionDisponibles =
-            fuerzaDisponibles = maldadDisponibles = venenoDisponibles =
-            locuraDisponibles = tecnologiaDisponibles = velocidadDisponibles = 0;
-
         this->listaDePedidos = listaDePedidos;
         this->listaDePedidosPrioridad = listaDePedidosPrioridad;
     }
 
-    // Funciones para insertar monstruos de distintos tipos, revisan los pedidos tras la inserción
-    void insertarInteligencia(Monstruo* monstruo) {
-        almacen[0]->insertarAlFinal(monstruo);
-        inteligenciaDisponibles++;
-        revisarPedidosPendientes();
-    }
 
-    void insertarDestruccion(Monstruo* monstruo) {
-        almacen[1]->insertarAlFinal(monstruo);
-        destruccionDisponibles++;
-        revisarPedidosPendientes();
-    }
-
-    void insertarRegeneracion(Monstruo* monstruo) {
-        almacen[2]->insertarAlFinal(monstruo);
-        regeneracionDisponibles++;
-        revisarPedidosPendientes();
-    }
-
-    void insertarFuerza(Monstruo* monstruo) {
-        almacen[3]->insertarAlFinal(monstruo);
-        fuerzaDisponibles++;
-        revisarPedidosPendientes();
-    }
-
-    void insertarMaldad(Monstruo* monstruo) {
-        almacen[4]->insertarAlFinal(monstruo);
-        maldadDisponibles++;
-        revisarPedidosPendientes();
-    }
-
-    void insertarVeneno(Monstruo* monstruo) {
-        almacen[5]->insertarAlFinal(monstruo);
-        venenoDisponibles++;
-        revisarPedidosPendientes();
-    }
-
-    void insertarLocura(Monstruo* monstruo) {
-        almacen[6]->insertarAlFinal(monstruo);
-        locuraDisponibles++;
-        revisarPedidosPendientes();
-    }
-
-    void insertarTecnologia(Monstruo* monstruo) {
-        almacen[7]->insertarAlFinal(monstruo);
-        tecnologiaDisponibles++;
-        revisarPedidosPendientes();
-    }
-
-    void insertarVelocidad(Monstruo* monstruo) {
-        almacen[8]->insertarAlFinal(monstruo);
-        velocidadDisponibles++;
+    void insertarMonstruo(Monstruo* monstruo) {
+        almacen[monstruo->tipoEnInt]->insertarAlFinal(monstruo);
         revisarPedidosPendientes();
     }
 
