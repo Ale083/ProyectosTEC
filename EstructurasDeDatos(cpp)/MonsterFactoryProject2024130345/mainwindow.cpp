@@ -53,36 +53,6 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::on_btnRefresh_clicked(){
-
-    QDir dirPedidos("C:\\Users\\Proyecto Diseño\\Desktop\\testingMonsterFaact\\pedidos"); //carpeta de pedidos
-    QFileInfoList listaArchivos = dirPedidos.entryInfoList(QDir::Files);
-    qDebug() << "Ruta de pedidos:" << dirPedidos.absolutePath();
-    QString nombreArchivoEspecifico = "pedido_especifico.txt";
-    QString rutaArchivo = dirPedidos.absoluteFilePath(nombreArchivoEspecifico);
-    qDebug() << rutaArchivo;
-    QFile archivo("C:\\Users\\Proyecto Diseño\\Desktop\\testingMonsterFaact\\bitacoraColaMonstruos.txt");
-
-    if (!listaArchivos.isEmpty()) {
-        QFileInfo archivoInfo = listaArchivos.at(0); //el primer archivo de la lista
-
-        // Mantén el archivo en su ubicación original y simplemente escribe en él
-        QFile archivo(archivoInfo.absoluteFilePath());
-        if (archivo.open(QIODevice::WriteOnly | QIODevice::Text | QIODevice::Append)) {  // Modo Append para no sobrescribir
-            QTextStream stream(&archivo);
-            stream << "Este archivo ha sido procesado." << Qt::endl;
-            archivo.close();
-            qDebug() << "Texto escrito en el archivo procesado:" << archivoInfo.fileName();
-        } else {
-            qDebug() << "Error al abrir el archivo para escribir.";
-        }
-    } else {
-        qDebug() << "No hay archivos en la carpeta de pedidos.";
-    }
-
-
-}
-
 
 void MainWindow::on_btnIniciar_clicked()
 {

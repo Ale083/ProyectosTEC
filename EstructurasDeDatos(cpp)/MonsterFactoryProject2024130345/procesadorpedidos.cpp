@@ -47,7 +47,7 @@ void ProcesadorPedidos::procesarArchivo(const QString &filePath)
     QFile archivo(filePath);
 
     if (!archivo.open(QIODevice::ReadOnly | QIODevice::Text)) { //si no se puede abrir el archivo en modo lectura.
-        qDebug() << "No se pudo abrir el archivo para lectura.";
+        qDebug() << "No se pudo abrir el archivo para lectura";
         return;
     }
 
@@ -66,15 +66,11 @@ void ProcesadorPedidos::procesarArchivo(const QString &filePath)
 
         if (lineaActual == 1) {
             nombreCliente = linea;
-            qDebug() << "Cliente:" << nombreCliente;
-
         } else if (lineaActual == 2) {
             clavePrioridad = linea;
-            qDebug() << "Clave de prioridad:" << clavePrioridad;
 
         } else if (lineaActual == 3) {
             numeroPedido = linea;
-            qDebug() << "Número de pedido:" << numeroPedido;
 
         } else {
             if (linea == "INTELIGENCIA")
@@ -95,7 +91,6 @@ void ProcesadorPedidos::procesarArchivo(const QString &filePath)
                 monstruosSolicitados->insertarAlFinal(7);
             else if (linea == "VELOCIDAD")
                 monstruosSolicitados->insertarAlFinal(8);
-            qDebug() << "Monstruo solicitado:" << linea;
         }
     }
 

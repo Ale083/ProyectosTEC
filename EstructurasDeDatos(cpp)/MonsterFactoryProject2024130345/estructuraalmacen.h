@@ -22,6 +22,8 @@ public:
 
 
     void insertarMonstruo(Monstruo* monstruo) {
+
+        size++;
         almacen[monstruo->tipoEnInt]->insertarAlFinal(monstruo);
         revisarPedidosPendientes();
     }
@@ -33,6 +35,7 @@ private:
 
 
     void revisarPedidosPendientes() {
+
         if (!procesarListaDePedidos(listaDePedidosPrioridad)) {
             procesarListaDePedidos(listaDePedidos);
         }
@@ -58,15 +61,13 @@ private:
 
                     reservarMonstruosParaPedido(pedido);
                     //quitar pedido de la lista
-                    qDebug() << "Pedido entregado: " << pedido->numPedido;
-                    size++;
+
                     seEntregoPedido = true;
 
+
                 } else {
-                    qDebug() << "No se puede completar el pedido " << pedido->numPedido;
                 }
             } else {
-                qDebug() << "Pedido " << pedido->numPedido << " no puede completarse sin afectar el primer pedido";
             }
 
             if(seEntregoPedido){
@@ -182,6 +183,7 @@ private:
                     monstruo->pedidoEntregado = pedido->numPedido;
                     monstruosReservadosDeEsteTipo++;
                     monstruo->entregado = true;
+                    monstruo->timestampEntrega = QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss");
                 }
 
                 monstruoNodo = monstruoNodo->siguiente;

@@ -96,6 +96,7 @@ public:
     }
 
     void borrarNodo(Nodo<T>* nodo){
+        longitud--;
         if(primerNodo == ultimoNodo){
             primerNodo = ultimoNodo = nullptr;
         } else if(primerNodo == nodo){
