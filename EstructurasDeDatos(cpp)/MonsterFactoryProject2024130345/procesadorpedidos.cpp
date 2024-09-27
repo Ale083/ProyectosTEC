@@ -78,23 +78,23 @@ void ProcesadorPedidos::procesarArchivo(const QString &filePath)
 
         } else {
             if (linea == "INTELIGENCIA")
-                monstruosSolicitados->insertarAlFinal(1);
+                monstruosSolicitados->insertarAlFinal(0);
             else if (linea == "DESTRUCCION")
-                monstruosSolicitados->insertarAlFinal(2);
+                monstruosSolicitados->insertarAlFinal(1);
             else if (linea == "REGENERACION")
-                monstruosSolicitados->insertarAlFinal(3);
+                monstruosSolicitados->insertarAlFinal(2);
             else if (linea == "FUERZA")
-                monstruosSolicitados->insertarAlFinal(4);
+                monstruosSolicitados->insertarAlFinal(3);
             else if (linea == "MALDAD")
-                monstruosSolicitados->insertarAlFinal(5);
+                monstruosSolicitados->insertarAlFinal(4);
             else if (linea == "VENENO")
-                monstruosSolicitados->insertarAlFinal(6);
+                monstruosSolicitados->insertarAlFinal(5);
             else if (linea == "LOCURA")
-                monstruosSolicitados->insertarAlFinal(7);
+                monstruosSolicitados->insertarAlFinal(6);
             else if (linea == "TECNOLOGIA")
-                monstruosSolicitados->insertarAlFinal(8);
+                monstruosSolicitados->insertarAlFinal(7);
             else if (linea == "VELOCIDAD")
-                monstruosSolicitados->insertarAlFinal(9);
+                monstruosSolicitados->insertarAlFinal(8);
             qDebug() << "Monstruo solicitado:" << linea;
         }
     }
@@ -107,10 +107,10 @@ void ProcesadorPedidos::procesarArchivo(const QString &filePath)
     }
 
     if (clavePrioridad == "1ST PROGRA") {
-        colaPedidosPrioridad->encolar(nuevoPedido);
+        listaPedidosPrioridad->insertarAlFinal(nuevoPedido);
         qDebug() << "Pedido prioritario añadido:" << nuevoPedido->numPedido;
     } else {
-        colaPedidos->encolar(nuevoPedido);
+        listaPedidos->insertarAlFinal(nuevoPedido);
         qDebug() << "Pedido añadido:" << nuevoPedido->numPedido;
     }
     archivo.close();

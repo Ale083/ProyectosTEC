@@ -94,6 +94,28 @@ public:
     int size(){
         return longitud;
     }
+
+    void borrarNodo(Nodo<T>* nodo){
+        if(primerNodo == ultimoNodo){
+            primerNodo = ultimoNodo = nullptr;
+        } else if(primerNodo == nodo){
+            primerNodo = nodo->siguiente;
+            primerNodo->anterior = nullptr;
+            nodo->siguiente = nullptr;
+        } else if(ultimoNodo == nodo){
+            ultimoNodo = nodo->anterior;
+            ultimoNodo->siguiente = nullptr;
+            nodo->anterior = nullptr;
+        } else {
+            Nodo<T>* nodoAnterior = nodo->anterior;
+            Nodo<T>* nodoSiguiente = nodo->siguiente;
+
+            nodoAnterior->siguiente = nodoSiguiente;
+            nodoSiguiente->anterior = nodoAnterior;
+
+            nodo->anterior = nodo->siguiente = nullptr;
+        }
+    }
 };
 
 #endif // ESTRUCTURAS_H

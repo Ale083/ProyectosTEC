@@ -13,11 +13,11 @@ class ProcesadorPedidos : public QThread
 {
 public:
     ProcesadorPedidos();
-    ProcesadorPedidos(QString pathPedidos, QString pathProcesados, cola<Pedido*>* colaPedidos, cola<Pedido*>* colaPedidosPrioridad){
+    ProcesadorPedidos(QString pathPedidos, QString pathProcesados, Lista<Pedido*>* listaPedidos, Lista<Pedido*>* listaPedidosPrioridad){
         this->pathPedidos = pathPedidos;
         this->pathProcesados = pathProcesados;
-        this->colaPedidos = colaPedidos;
-        this->colaPedidosPrioridad = colaPedidosPrioridad;
+        this->listaPedidos = listaPedidos;
+        this->listaPedidosPrioridad = listaPedidosPrioridad;
     }
 
     void run();
@@ -25,8 +25,8 @@ public:
 private:
     QString pathPedidos;
     QString pathProcesados;
-    cola<Pedido*>* colaPedidos;
-    cola<Pedido*>* colaPedidosPrioridad;
+    Lista<Pedido*>* listaPedidos;
+    Lista<Pedido*>* listaPedidosPrioridad;
 
     void procesarArchivo(const QString &filePath);
 };

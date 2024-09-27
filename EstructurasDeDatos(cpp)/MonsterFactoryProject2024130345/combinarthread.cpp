@@ -49,47 +49,47 @@ void CombinarThread::run(){
         //Combinaciones:
         mutexColaMonstruos->lock();
         if (energia == "Energia Cosmica" && material == "Material Organico" && maldad == "Maldad Astuta") {
-            Monstruo* monstruo = new Monstruo(conteo++,energia,material,maldad,"Monstruo de Inteligencia",false,"",1);
+            Monstruo* monstruo = new Monstruo(conteo++,energia,material,maldad,"Monstruo de Inteligencia",false,"",0);
             colaDeMonstruos->encolar(monstruo); //Inteligencia
             actualizarBitacora(monstruo->toStringColaMonstruos());
         }
         else if (energia == "Energia Elemental" && material == "Material Radioactivo" && maldad == "Maldad Caotica") {
-            Monstruo* monstruo = new Monstruo(conteo++, energia, material, maldad, "Monstruo de Destruccion", false, "", 2);
+            Monstruo* monstruo = new Monstruo(conteo++, energia, material, maldad, "Monstruo de Destruccion", false, "", 1);
             colaDeMonstruos->encolar(monstruo); //Destruccion
             actualizarBitacora(monstruo->toStringColaMonstruos());
         }
         else if (energia == "Energia Oscura" && material == "Material Organico" && maldad == "Maldad Despiadada") {
-            Monstruo* monstruo = new Monstruo(conteo++, energia, material, maldad, "Monstruo de Regeneracion", false, "", 3);
+            Monstruo* monstruo = new Monstruo(conteo++, energia, material, maldad, "Monstruo de Regeneracion", false, "", 2);
             colaDeMonstruos->encolar(monstruo); //Regeneracion
             actualizarBitacora(monstruo->toStringColaMonstruos());
         }
         else if (energia == "Energia Elemental" && material == "Material Metalico" && maldad == "Maldad Despiadada") {
-            Monstruo* monstruo = new Monstruo(conteo++, energia, material, maldad, "Monstruo de Fuerza", false, "", 4);
+            Monstruo* monstruo = new Monstruo(conteo++, energia, material, maldad, "Monstruo de Fuerza", false, "", 3);
             colaDeMonstruos->encolar(monstruo); //Fuerza
             actualizarBitacora(monstruo->toStringColaMonstruos());
         }
         else if (energia == "Energia Oscura" && material == "Material Metalico" && maldad == "Maldad Astuta") {
-            Monstruo* monstruo = new Monstruo(conteo++, energia, material, maldad, "Monstruo de Maldad", false, "", 5);
+            Monstruo* monstruo = new Monstruo(conteo++, energia, material, maldad, "Monstruo de Maldad", false, "", 4);
             colaDeMonstruos->encolar(monstruo); //Maldad
             actualizarBitacora(monstruo->toStringColaMonstruos());
         }
         else if (energia == "Energia Oscura" && material == "Material Radioactivo" && maldad == "Maldad Despiadada") {
-            Monstruo* monstruo = new Monstruo(conteo++, energia, material, maldad, "Monstruo de Veneno", false, "", 6);
+            Monstruo* monstruo = new Monstruo(conteo++, energia, material, maldad, "Monstruo de Veneno", false, "", 5);
             colaDeMonstruos->encolar(monstruo); //Veneno
             actualizarBitacora(monstruo->toStringColaMonstruos());
         }
         else if (energia == "Energia Cosmica" && material == "Material Radioactivo" && maldad == "Maldad Caotica") {
-            Monstruo* monstruo = new Monstruo(conteo++, energia, material, maldad, "Monstruo de Locura", false, "", 7);
+            Monstruo* monstruo = new Monstruo(conteo++, energia, material, maldad, "Monstruo de Locura", false, "", 6);
             colaDeMonstruos->encolar(monstruo); //Locura
             actualizarBitacora(monstruo->toStringColaMonstruos());
         }
         else if (energia == "Energia Cosmica" && material == "Material Metalico" && maldad == "Maldad Astuta") {
-            Monstruo* monstruo = new Monstruo(conteo++, energia, material, maldad, "Monstruo de Tecnologia", false, "", 8);
+            Monstruo* monstruo = new Monstruo(conteo++, energia, material, maldad, "Monstruo de Tecnologia", false, "", 7);
             colaDeMonstruos->encolar(monstruo); //Tecnologia
             actualizarBitacora(monstruo->toStringColaMonstruos());
         }
         else if (energia == "Energia Elemental" && material == "Material Organico" && maldad == "Maldad Caotica") {
-            Monstruo* monstruo = new Monstruo(conteo++, energia, material, maldad, "Monstruo de Velocidad", false, "", 9);
+            Monstruo* monstruo = new Monstruo(conteo++, energia, material, maldad, "Monstruo de Velocidad", false, "", 8);
             colaDeMonstruos->encolar(monstruo); //Velocidad
             actualizarBitacora(monstruo->toStringColaMonstruos());
         }
