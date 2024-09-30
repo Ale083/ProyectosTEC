@@ -37,7 +37,7 @@ void Robot1Thread::run(){
 }
 
 void Robot1Thread::actualizarBitacora(QString historico){
-    QFile archivo("C:\\Users\\Proyecto Diseño\\Desktop\\testingMonsterFaact\\bitacoraRobot1.txt");
+    QFile archivo("C:\\Users\\Proyecto Diseño\\Desktop\\monsterFactoryFileBitacoras\\bitacoraRobot1.txt");
     if (archivo.open(QIODevice::WriteOnly | QIODevice::Text | QIODevice::Append)) {
         QTextStream stream(&archivo);
         stream << historico << Qt::endl;
@@ -48,7 +48,7 @@ void Robot1Thread::actualizarBitacora(QString historico){
 }
 
 void Robot1Thread::bitacoraBasurero(QString historico){
-    QFile archivo("C:\\Users\\Proyecto Diseño\\Desktop\\testingMonsterFaact\\bitacoraBasureroDeMonstruos.txt");
+    QFile archivo("C:\\Users\\Proyecto Diseño\\Desktop\\monsterFactoryFileBitacoras\\bitacoraBasureroDeMonstruos.txt");
     if (archivo.open(QIODevice::WriteOnly | QIODevice::Text | QIODevice::Append)) {
         QTextStream stream(&archivo);
         stream << historico << Qt::endl;

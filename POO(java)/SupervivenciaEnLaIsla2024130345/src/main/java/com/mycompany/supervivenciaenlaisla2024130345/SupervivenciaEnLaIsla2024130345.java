@@ -40,7 +40,7 @@ public class SupervivenciaEnLaIsla2024130345 {
 		él tambien puede recolectar.
 		
 		Cientifico:
-		Crear medicamentos. Si los perosnajes se enferman, e lcientifico puede investigar y desarrollar medicamentos que curan enfermedades más graves que los remedios del curandero.
+		Crear medicamentos. Si los personajes se enferman, e lcientifico puede investigar y desarrollar medicamentos que curan enfermedades más graves que los remedios del curandero.
 		
 		Refugio: 
 		La estructura donde los personajes pueden descansar y protegerse de eventos climaticos o ataques.

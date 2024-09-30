@@ -124,7 +124,7 @@ void HornoThread::run(){
 }
 
 void HornoThread::actualizarBitacora(QString historico){
-    QFile archivo("C:\\Users\\Proyecto Diseño\\Desktop\\testingMonsterFaact\\bitacoraHorno.txt");
+    QFile archivo("C:\\Users\\Proyecto Diseño\\Desktop\\monsterFactoryFileBitacoras\\bitacoraHorno.txt");
     if (archivo.open(QIODevice::WriteOnly | QIODevice::Text | QIODevice::Append)) {
         QTextStream stream(&archivo);
         stream << historico << Qt::endl;

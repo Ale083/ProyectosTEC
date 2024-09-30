@@ -37,13 +37,13 @@ MainWindow::MainWindow(QWidget *parent)
     listaDePedidos = new Lista<Pedido*>;
     listaDePedidosPrioridad = new Lista<Pedido*>;
 
-    almacen = new Almacen(listaDePedidos,listaDePedidosPrioridad);
+    almacen = new Almacen(listaDePedidos,listaDePedidosPrioridad,ui->checkBoxEntregas);
 
     robot1Thread = new Robot1Thread("Robot 1 Thread", colaRobot1, ui->checkBoxRobot1, ui->sbxProbaRobot1, colaRobot2, basureroDeMonstruos, ui->sbxCapacidadColaRobot1, ui->sbxCapacidadColaRobot2, &mutexColaRobot1, &mutexColaRobot2);
 
     robot2Thread = new Robot2Thread("Robot 2 Thread", colaRobot2, ui->checkBoxRobot2, ui->sbxProbaRobot2, almacen, basureroDeMonstruos, ui->sbxCapacidadColaRobot2, &mutexColaRobot2, &mutexListaAlmacen);
 
-    procesadorPedidos = new ProcesadorPedidos("C:\\Users\\Proyecto Diseño\\Desktop\\testingMonsterFaact\\pedidos","C:\\Users\\Proyecto Diseño\\Desktop\\testingMonsterFaact\\procesads",listaDePedidos,listaDePedidosPrioridad);
+    procesadorPedidos = new ProcesadorPedidos("C:\\Users\\Proyecto Diseño\\Desktop\\monsterFactoryFileBitacoras\\pedidos","C:\\Users\\Proyecto Diseño\\Desktop\\monsterFactoryFileBitacoras\\procesados",listaDePedidos,listaDePedidosPrioridad);
     refresh = new Refresh(energiaCola,materialCola,maldadCola,ui->lblColaEnergia,ui->sbxCapacidadColaEnergia,ui->lblColaMaterial, ui->sbxCapacidadColaMaterial, ui->lblColaMaldad, ui->sbxCapacidadColaMaldad, colaDeMonstruos, ui->lblColaMonstruos,ui->sbxCapacidadColaDeMonstruos, colaBandeja1, ui->lblContenido1, colaBandeja2, ui->lblContenido2, colaBandeja3, ui->lblContenido3, colaBandeja4, ui->lblContenido4, colaRobot1, ui->lblColaRobot1, ui->sbxCapacidadColaRobot1, colaRobot2, ui->lblColaRobot2, ui->sbxCapacidadColaRobot2, almacen, ui->lblAlmacenCant, basureroDeMonstruos, ui->lblBasureroCant, &mutexColaEnergia,&mutexColaMaterial,&mutexColaMaldad);
 
 }
@@ -53,6 +53,7 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+void MainWindow::on_btnRefresh_clicked(){}
 
 void MainWindow::on_btnIniciar_clicked()
 {
@@ -88,7 +89,7 @@ void MainWindow::on_btnPausa_clicked()
     ui->checkBoxMaldad->setChecked(false);
     ui->btnPausa->setEnabled(false);
     ui->btnResumir->setEnabled(true);
-
+    ui->checkBoxEntregas->setChecked(false);
 }
 
 
@@ -105,6 +106,7 @@ void MainWindow::on_btnResumir_clicked()
     ui->checkBoxEnergia->isEnabled() ? ui->checkBoxEnergia->setChecked(true) : ui->checkBoxEnergia->setChecked(false);
     ui->checkBoxMaterial->isEnabled() ? ui->checkBoxMaterial->setChecked(true) : ui->checkBoxMaterial->setChecked(false);
     ui->checkBoxMaldad->isEnabled() ? ui->checkBoxMaldad->setChecked(true) : ui->checkBoxMaldad->setChecked(false);
+    ui->checkBoxEntregas->isEnabled() ? ui->checkBoxEntregas->setChecked(true) : ui->checkBoxEntregas->setChecked(false);
     ui->btnPausa->setEnabled(true);
     ui->btnResumir->setEnabled(false);
 }
@@ -112,43 +114,41 @@ void MainWindow::on_btnResumir_clicked()
 
 void MainWindow::on_btnDetener_clicked()
 {
-    QFile archivoColaMonstruos("C:\\Users\\Proyecto Diseño\\Desktop\\testingMonsterFaact\\bitacoraColaMonstruos.txt");
+    QFile archivoColaMonstruos("C:\\Users\\Proyecto Diseño\\Desktop\\monsterFactoryFileBitacoras\\bitacoraColaMonstruos.txt");
     if (archivoColaMonstruos.open(QIODevice::WriteOnly | QIODevice::Text)) {
         archivoColaMonstruos.resize(0);
         archivoColaMonstruos.close();
     }
 
-    QFile archivoBasurero("C:\\Users\\Proyecto Diseño\\Desktop\\testingMonsterFaact\\bitacoraBasureroDeMonstruos.txt");
+    QFile archivoBasurero("C:\\Users\\Proyecto Diseño\\Desktop\\monsterFactoryFileBitacoras\\bitacoraBasureroDeMonstruos.txt");
     if (archivoBasurero.open(QIODevice::WriteOnly | QIODevice::Text)) {
         archivoBasurero.resize(0);
         archivoBasurero.close();
     }
 
-    QFile archivoHorno("C:\\Users\\Proyecto Diseño\\Desktop\\testingMonsterFaact\\bitacoraHorno.txt");
+    QFile archivoHorno("C:\\Users\\Proyecto Diseño\\Desktop\\monsterFactoryFileBitacoras\\bitacoraHorno.txt");
     if (archivoHorno.open(QIODevice::WriteOnly | QIODevice::Text)) {
         archivoHorno.resize(0);
         archivoHorno.close();
     }
 
-    QFile archivoRobot1("C:\\Users\\Proyecto Diseño\\Desktop\\testingMonsterFaact\\bitacoraRobot1.txt");
+    QFile archivoRobot1("C:\\Users\\Proyecto Diseño\\Desktop\\monsterFactoryFileBitacoras\\bitacoraRobot1.txt");
     if (archivoRobot1.open(QIODevice::WriteOnly | QIODevice::Text)) {
         archivoRobot1.resize(0);
         archivoRobot1.close();
     }
 
-    QFile archivoRobot2("C:\\Users\\Proyecto Diseño\\Desktop\\testingMonsterFaact\\bitacoraRobot2.txt");
+    QFile archivoRobot2("C:\\Users\\Proyecto Diseño\\Desktop\\monsterFactoryFileBitacoras\\bitacoraRobot2.txt");
     if (archivoRobot2.open(QIODevice::WriteOnly | QIODevice::Text)) {
         archivoRobot2.resize(0);
         archivoRobot2.close();
     }
 
-    QFile archivoAlmacen("C:\\Users\\Proyecto Diseño\\Desktop\\testingMonsterFaact\\bitacoraAlmacen.txt");
+    QFile archivoAlmacen("C:\\Users\\Proyecto Diseño\\Desktop\\monsterFactoryFileBitacoras\\bitacoraAlmacen.txt");
     if (archivoAlmacen.open(QIODevice::WriteOnly | QIODevice::Text)) {
         archivoAlmacen.resize(0);
         archivoAlmacen.close();
     }
-
-
-
+    QApplication::quit();
 }
 

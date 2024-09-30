@@ -3,6 +3,7 @@
 #include "estructuras.h"
 #include "estructuramonstruo.h"
 #include "pedido.h"
+#include <QCheckBox>
 
 struct Almacen {
 public:
@@ -11,12 +12,13 @@ public:
 
 
 
-    Almacen(Lista<Pedido*>* listaDePedidos, Lista<Pedido*>* listaDePedidosPrioridad) {
+    Almacen(Lista<Pedido*>* listaDePedidos, Lista<Pedido*>* listaDePedidosPrioridad, QCheckBox* checkBoxEntregas) {
         for (int i = 0; i < 9; i++) {
             almacen[i] = new Lista<Monstruo*>;
         }
         this->listaDePedidos = listaDePedidos;
         this->listaDePedidosPrioridad = listaDePedidosPrioridad;
+        this->checkBoxEntregas = checkBoxEntregas;
         size = 0;
     }
 
@@ -25,13 +27,15 @@ public:
 
         size++;
         almacen[monstruo->tipoEnInt]->insertarAlFinal(monstruo);
-        revisarPedidosPendientes();
+        if(checkBoxEntregas->isChecked()){
+            revisarPedidosPendientes();
+        }
     }
 
 private:
     Lista<Pedido*>* listaDePedidos;
     Lista<Pedido*>* listaDePedidosPrioridad;
-
+    QCheckBox* checkBoxEntregas;
 
 
     void revisarPedidosPendientes() {

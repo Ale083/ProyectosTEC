@@ -106,7 +106,7 @@ void CombinarThread::run(){
 
 
 void CombinarThread::actualizarBitacora(QString historico){
-    QFile archivo("C:\\Users\\Proyecto Diseño\\Desktop\\testingMonsterFaact\\bitacoraColaMonstruos.txt");
+    QFile archivo("C:\\Users\\Proyecto Diseño\\Desktop\\monsterFactoryFileBitacoras\\bitacoraColaMonstruos.txt");
     if (archivo.open(QIODevice::WriteOnly | QIODevice::Text | QIODevice::Append)) {
         QTextStream stream(&archivo);
         stream << historico << Qt::endl;
@@ -117,7 +117,7 @@ void CombinarThread::actualizarBitacora(QString historico){
 }
 
 void CombinarThread::bitacoraBasurero(QString historico){
-    QFile archivo("C:\\Users\\Proyecto Diseño\\Desktop\\testingMonsterFaact\\bitacoraBasureroDeMonstruos.txt");
+    QFile archivo("C:\\Users\\Proyecto Diseño\\Desktop\\monsterFactoryFileBitacoras\\bitacoraBasureroDeMonstruos.txt");
     if (archivo.open(QIODevice::WriteOnly | QIODevice::Text | QIODevice::Append)) {
         QTextStream stream(&archivo);
         stream << historico << Qt::endl;

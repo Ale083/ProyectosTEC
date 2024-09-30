@@ -103,10 +103,8 @@ void ProcesadorPedidos::procesarArchivo(const QString &filePath)
 
     if (clavePrioridad == "1ST PROGRA") {
         listaPedidosPrioridad->insertarAlFinal(nuevoPedido);
-        qDebug() << "Pedido prioritario añadido:" << nuevoPedido->numPedido;
     } else {
         listaPedidos->insertarAlFinal(nuevoPedido);
-        qDebug() << "Pedido añadido:" << nuevoPedido->numPedido;
     }
     archivo.close();
 }

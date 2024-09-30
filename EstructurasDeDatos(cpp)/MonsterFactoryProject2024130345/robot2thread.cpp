@@ -37,7 +37,7 @@ void Robot2Thread::run(){
 }
 
 void Robot2Thread::actualizarBitacora(QString historico){
-    QFile archivo("C:\\Users\\Proyecto Diseño\\Desktop\\testingMonsterFaact\\bitacoraRobot2.txt");
+    QFile archivo("C:\\Users\\Proyecto Diseño\\Desktop\\monsterFactoryFileBitacoras\\bitacoraRobot2.txt");
     if (archivo.open(QIODevice::WriteOnly | QIODevice::Text | QIODevice::Append)) {
         QTextStream stream(&archivo);
         stream << historico << Qt::endl;
@@ -48,7 +48,7 @@ void Robot2Thread::actualizarBitacora(QString historico){
 }
 
 void Robot2Thread::bitacoraBasurero(QString historico){
-    QFile archivo("C:\\Users\\Proyecto Diseño\\Desktop\\testingMonsterFaact\\bitacoraBasureroDeMonstruos.txt");
+    QFile archivo("C:\\Users\\Proyecto Diseño\\Desktop\\monsterFactoryFileBitacoras\\bitacoraBasureroDeMonstruos.txt");
     if (archivo.open(QIODevice::WriteOnly | QIODevice::Text | QIODevice::Append)) {
         QTextStream stream(&archivo);
         stream << historico << Qt::endl;
@@ -59,7 +59,7 @@ void Robot2Thread::bitacoraBasurero(QString historico){
 }
 
 void Robot2Thread::bitacoraAlmacen(){
-    QFile archivo("C:\\Users\\Proyecto Diseño\\Desktop\\testingMonsterFaact\\bitacoraAlmacen.txt");
+    QFile archivo("C:\\Users\\Proyecto Diseño\\Desktop\\monsterFactoryFileBitacoras\\bitacoraAlmacen.txt");
     if (archivo.open(QIODevice::WriteOnly | QIODevice::Text)) {
         QTextStream stream(&archivo);
         for (Lista<Monstruo*>* listaTipoMonstruo : listaAlmacen->almacen){
