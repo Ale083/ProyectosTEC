@@ -11,6 +11,7 @@ package com.mycompany.supervivenciaenlaisla2024130345;
 public class SupervivenciaEnLaIsla2024130345 {
 
     public static void main(String[] args) {
+		new Juego().setVisible(true);
         /*
 		Refugio puede ser una lista con personajes
 		Recursos puede ser una clase.

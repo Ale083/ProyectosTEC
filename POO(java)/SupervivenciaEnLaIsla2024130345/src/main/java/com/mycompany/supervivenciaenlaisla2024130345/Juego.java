@@ -4,17 +4,25 @@
  */
 package com.mycompany.supervivenciaenlaisla2024130345;
 
+import java.awt.Color;
+import javax.swing.BorderFactory;
+import javax.swing.JPanel;
+
 /**
  *
  * @author Proyecto Diseño
  */
 public class Juego extends javax.swing.JFrame {
-
+private JPanel[][] panelesMapa; //array para almacenar las casillas en gui
 	/**
 	 * Creates new form Juego
 	 */
 	public Juego() {
 		initComponents();
+		Mapa mapaTablero = new Mapa(26,26);
+		inicializarMapaGraficamente(mapaTablero);
+		RefrescarMapaThread refrescarMapaThread = new RefrescarMapaThread(mapaTablero,panelesMapa,jPanel1);
+		refrescarMapaThread.start();
 	}
 
 	/**
@@ -26,31 +34,28 @@ public class Juego extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jFrame1 = new javax.swing.JFrame();
-
-        javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
-        jFrame1.getContentPane().setLayout(jFrame1Layout);
-        jFrame1Layout.setHorizontalGroup(
-            jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        jFrame1Layout.setVerticalGroup(
-            jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setBackground(new java.awt.Color(255, 255, 255));
+
+        jPanel1.setBackground(new java.awt.Color(51, 153, 255));
+        jPanel1.setLayout(new java.awt.GridLayout(26, 26));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 935, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 832, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(433, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 526, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 832, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -59,39 +64,62 @@ public class Juego extends javax.swing.JFrame {
 	/**
 	 * @param args the command line arguments
 	 */
-	public static void main(String args[]) {
-		/* Set the Nimbus look and feel */
-		//<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-		/* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-		 */
-		try {
-			for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-				if ("Nimbus".equals(info.getName())) {
-					javax.swing.UIManager.setLookAndFeel(info.getClassName());
-					break;
-				}
+	private void inicializarMapaGraficamente(Mapa mapa) {
+        panelesMapa = new JPanel[mapa.getMapa().length][mapa.getMapa()[0].length];
+		
+		//Poner un 4x4 de casillas ya descubiertas en el centro.
+		int centroFila = mapa.getMapa().length / 2;
+		int centroColumna = mapa.getMapa()[0].length / 2;
+		for (int fila = centroFila - 2; fila <= centroFila + 1; fila++) {
+			for (int columna = centroColumna - 2; columna <= centroColumna + 1; columna++) {
+				mapa.getCasilla(fila, columna).setDescubierta(true);
 			}
-		} catch (ClassNotFoundException ex) {
-			java.util.logging.Logger.getLogger(Juego.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-		} catch (InstantiationException ex) {
-			java.util.logging.Logger.getLogger(Juego.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-		} catch (IllegalAccessException ex) {
-			java.util.logging.Logger.getLogger(Juego.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-		} catch (javax.swing.UnsupportedLookAndFeelException ex) {
-			java.util.logging.Logger.getLogger(Juego.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-		}
-		//</editor-fold>
+		} 
+		
+        for (int fila = 0; fila < mapa.getMapa().length; fila++) {
+            for (int columna = 0; columna < mapa.getMapa()[0].length; columna++) {
+                JPanel panelCasilla = new JPanel();
+                panelCasilla.setBorder(BorderFactory.createLineBorder(Color.black));
+                panelCasilla.setBackground(Color.decode("#369649"));
 
-		/* Create and display the form */
-		java.awt.EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				new Juego().setVisible(true);
-			}
-		});
-	}
+                final int f = fila;
+                final int c = columna;
+
+                
+				
+                panelCasilla.addMouseListener(new java.awt.event.MouseAdapter() {
+                    @Override
+                    public void mouseClicked(java.awt.event.MouseEvent evt) {
+                        int x = evt.getX();
+                        int y = evt.getY();
+						Casilla casilla = mapa.getCasilla(f, c);
+						casilla.setDescubierta(true);
+                        System.out.println("Casilla: (" + f + ", " + c + ")");
+                        System.out.println("Coordenadas dentro del JPanel: (" + x + ", " + y + ")");
+						panelCasilla.setPreferredSize(new java.awt.Dimension(32, 32));
+						panelCasilla.setMinimumSize(new java.awt.Dimension(32, 32));
+						panelCasilla.setMaximumSize(new java.awt.Dimension(32, 32));
+						int width = panelCasilla.getWidth(); 
+						int height = panelCasilla.getHeight();
+						System.out.println("Dimensiones de la casilla: " + width + "x" + height + " píxeles");
+						
+                    }
+                });
+
+                // Añadir el panel a la matriz de paneles
+                panelesMapa[fila][columna] = panelCasilla;
+
+                // Añadir la casilla al contenedor principal
+                this.jPanel1.add(panelCasilla);
+            }
+        }
+        this.jPanel1.revalidate(); //necesarios para actualizar cambios cuando se usa grid layout
+        this.jPanel1.repaint();
+    }
+
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JFrame jFrame1;
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
