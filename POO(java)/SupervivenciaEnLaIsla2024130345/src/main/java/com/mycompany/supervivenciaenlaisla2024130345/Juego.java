@@ -6,6 +6,7 @@ package com.mycompany.supervivenciaenlaisla2024130345;
 
 import java.awt.Color;
 import javax.swing.BorderFactory;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 /**
@@ -23,6 +24,8 @@ private JPanel[][] panelesMapa; //array para almacenar las casillas en gui
 		inicializarMapaGraficamente(mapaTablero);
 		RefrescarMapaThread refrescarMapaThread = new RefrescarMapaThread(mapaTablero,panelesMapa,jPanel1);
 		refrescarMapaThread.start();
+		inicializarCoordenadasX();
+		inicializarCoordenadasY();
 	}
 
 	/**
@@ -35,27 +38,47 @@ private JPanel[][] panelesMapa; //array para almacenar las casillas en gui
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        pnlCoordsX = new javax.swing.JPanel();
+        pnlCoordsY = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(51, 153, 255));
+        jPanel1.setBackground(new java.awt.Color(0, 0, 0));
         jPanel1.setLayout(new java.awt.GridLayout(26, 26));
+
+        pnlCoordsX.setBackground(new java.awt.Color(51, 51, 51));
+        pnlCoordsX.setLayout(new java.awt.GridLayout(1, 26));
+
+        pnlCoordsY.setBackground(new java.awt.Color(51, 51, 51));
+        pnlCoordsY.setLayout(new java.awt.GridLayout(26, 1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 832, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(433, Short.MAX_VALUE))
+                .addGap(20, 20, 20)
+                .addComponent(pnlCoordsY, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(pnlCoordsX, javax.swing.GroupLayout.PREFERRED_SIZE, 832, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 832, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(141, 388, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 832, Short.MAX_VALUE)
-                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(pnlCoordsY, javax.swing.GroupLayout.PREFERRED_SIZE, 832, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(pnlCoordsX, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 832, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(25, 25, 25))
         );
 
         pack();
@@ -72,16 +95,18 @@ private JPanel[][] panelesMapa; //array para almacenar las casillas en gui
 		int centroColumna = mapa.getMapa()[0].length / 2;
 		for (int fila = centroFila - 2; fila <= centroFila + 1; fila++) {
 			for (int columna = centroColumna - 2; columna <= centroColumna + 1; columna++) {
-				mapa.getCasilla(fila, columna).setDescubierta(true);
+				mapa.getCasilla(fila, columna).descubrir();
 			}
 		} 
 		
         for (int fila = 0; fila < mapa.getMapa().length; fila++) {
             for (int columna = 0; columna < mapa.getMapa()[0].length; columna++) {
                 JPanel panelCasilla = new JPanel();
-                panelCasilla.setBorder(BorderFactory.createLineBorder(Color.black));
-                panelCasilla.setBackground(Color.decode("#369649"));
-
+                panelCasilla.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
+				//jPanel2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+				panelCasilla.setPreferredSize(new java.awt.Dimension(32, 32));
+				panelCasilla.setMinimumSize(new java.awt.Dimension(32, 32));
+				panelCasilla.setMaximumSize(new java.awt.Dimension(32, 32));
                 final int f = fila;
                 final int c = columna;
 
@@ -93,12 +118,9 @@ private JPanel[][] panelesMapa; //array para almacenar las casillas en gui
                         int x = evt.getX();
                         int y = evt.getY();
 						Casilla casilla = mapa.getCasilla(f, c);
-						casilla.setDescubierta(true);
+						casilla.descubrir();
                         System.out.println("Casilla: (" + f + ", " + c + ")");
                         System.out.println("Coordenadas dentro del JPanel: (" + x + ", " + y + ")");
-						panelCasilla.setPreferredSize(new java.awt.Dimension(32, 32));
-						panelCasilla.setMinimumSize(new java.awt.Dimension(32, 32));
-						panelCasilla.setMaximumSize(new java.awt.Dimension(32, 32));
 						int width = panelCasilla.getWidth(); 
 						int height = panelCasilla.getHeight();
 						System.out.println("Dimensiones de la casilla: " + width + "x" + height + " píxeles");
@@ -116,10 +138,48 @@ private JPanel[][] panelesMapa; //array para almacenar las casillas en gui
         this.jPanel1.revalidate(); //necesarios para actualizar cambios cuando se usa grid layout
         this.jPanel1.repaint();
     }
+	
+	private void inicializarCoordenadasX() {
+    // Asumiendo que pnlCoordsX ya tiene un GridLayout(1, 32)
+    for (int i = 0; i < 26; i++) {
+        JLabel coordLabel = new JLabel(String.valueOf(i), JLabel.CENTER); // Crear un JLabel con el número
+		coordLabel.setForeground(Color.white);
+		coordLabel.setFont(new java.awt.Font("Bauhaus 93", 0, 16)); // NOI18N
+        pnlCoordsX.add(coordLabel); // Añadir el JLabel al panel
+//		coordLabel.setSize(10, 10);
+    }
+
+    // Refrescar el panel para que se vea la actualización
+    pnlCoordsX.revalidate();
+    pnlCoordsX.repaint();
+}
+	
+	private void inicializarCoordenadasY() {
+    // Asumiendo que pnlCoordsX ya tiene un GridLayout(1, 32)
+    for (int i = 0; i < 26; i++) {
+        JLabel coordLabel = new JLabel(String.valueOf(i), JLabel.CENTER); // Crear un JLabel con el número
+		coordLabel.setForeground(Color.white);
+		coordLabel.setFont(new java.awt.Font("Bauhaus 93", 0, 16)); // NOI18N
+        pnlCoordsY.add(coordLabel); // Añadir el JLabel al panel
+//		coordLabel.setSize(10, 10);
+    }
+
+    // Refrescar el panel para que se vea la actualización
+    pnlCoordsY.revalidate();
+    pnlCoordsY.repaint();
+}
+
 
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel pnlCoordsX;
+    private javax.swing.JPanel pnlCoordsY;
     // End of variables declaration//GEN-END:variables
 }
+
+
+//Se pueden hacer digamos ventanas extras para ciertas funciones, por ejemplo para los inventarios o el menú para el dios, que cuando se presione un boton, abra una ventana y así.
+//la bitacora puede ser un txt?
+//

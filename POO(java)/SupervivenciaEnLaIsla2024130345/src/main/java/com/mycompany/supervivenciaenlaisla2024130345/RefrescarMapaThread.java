@@ -41,7 +41,7 @@ public class RefrescarMapaThread extends Thread {
 
                 //TODO: todo lo que puede cambiar o hay que enseñar en gui
                 if (mapa.getCasilla(fila, columna).isDescubierta()) {
-                    panelCasilla.setBackground(Color.green); 
+                    panelCasilla.setBackground(Color.decode("#369649"));
                 } else {
                     panelCasilla.setBackground(Color.gray); 
                 }
