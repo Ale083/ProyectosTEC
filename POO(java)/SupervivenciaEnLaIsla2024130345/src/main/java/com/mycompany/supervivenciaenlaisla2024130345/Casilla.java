@@ -47,8 +47,8 @@ public class Casilla {
 		return personajes;
 	}
 
-	public void setPersonajes(ArrayList<Personaje> personajes) {
-		this.personajes = personajes;
+	public void añadirPersonaje (Personaje personaje){
+		personajes.add(personaje);
 	}
 
 	public ArrayList<Recurso> getRecursos() {

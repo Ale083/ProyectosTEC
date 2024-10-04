@@ -4,10 +4,16 @@
  */
 package com.mycompany.supervivenciaenlaisla2024130345;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.Image;
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.OverlayLayout;
 
 /**
  *
@@ -15,6 +21,8 @@ import javax.swing.JPanel;
  */
 public class Juego extends javax.swing.JFrame {
 private JPanel[][] panelesMapa; //array para almacenar las casillas en gui
+private JLabel[][] labelsImagenes; 
+private JLabel[][] labelsTexto;
 	/**
 	 * Creates new form Juego
 	 */
@@ -22,7 +30,7 @@ private JPanel[][] panelesMapa; //array para almacenar las casillas en gui
 		initComponents();
 		Mapa mapaTablero = new Mapa(26,26);
 		inicializarMapaGraficamente(mapaTablero);
-		RefrescarMapaThread refrescarMapaThread = new RefrescarMapaThread(mapaTablero,panelesMapa,jPanel1);
+		RefrescarMapaThread refrescarMapaThread = new RefrescarMapaThread(mapaTablero,panelesMapa,jPanel1,labelsImagenes,labelsTexto);
 		refrescarMapaThread.start();
 		inicializarCoordenadasX();
 		inicializarCoordenadasY();
@@ -89,6 +97,9 @@ private JPanel[][] panelesMapa; //array para almacenar las casillas en gui
 	 */
 	private void inicializarMapaGraficamente(Mapa mapa) {
         panelesMapa = new JPanel[mapa.getMapa().length][mapa.getMapa()[0].length];
+		labelsImagenes = new JLabel[mapa.getMapa().length][mapa.getMapa()[0].length];   
+		labelsTexto = new JLabel[mapa.getMapa().length][mapa.getMapa()[0].length];
+		
 		
 		//Poner un 4x4 de casillas ya descubiertas en el centro.
 		int centroFila = mapa.getMapa().length / 2;
@@ -103,12 +114,30 @@ private JPanel[][] panelesMapa; //array para almacenar las casillas en gui
             for (int columna = 0; columna < mapa.getMapa()[0].length; columna++) {
                 JPanel panelCasilla = new JPanel();
                 panelCasilla.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
-				//jPanel2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+				panelCasilla.setLayout(new OverlayLayout(panelCasilla));
+				
+				
+				
+				JLabel labelPersonas = new JLabel("");  
+				labelsTexto[fila][columna] = labelPersonas; 
+				labelPersonas.setOpaque(false);
+				panelCasilla.add(labelPersonas);
+				labelPersonas.setAlignmentX(Component.CENTER_ALIGNMENT);  
+				labelPersonas.setAlignmentY(0.3f); //0.5f lo centra, para hacerlo un poco para abajo puse 0.3f
+				
+				JLabel labelImagen = new JLabel();
+				labelsImagenes[fila][columna] = labelImagen;
+				panelCasilla.add(labelImagen);
+				labelImagen.setOpaque(false);
+				labelImagen.setAlignmentX(Component.CENTER_ALIGNMENT); 
+				labelImagen.setAlignmentY(Component.CENTER_ALIGNMENT);
+
 				panelCasilla.setPreferredSize(new java.awt.Dimension(32, 32));
 				panelCasilla.setMinimumSize(new java.awt.Dimension(32, 32));
 				panelCasilla.setMaximumSize(new java.awt.Dimension(32, 32));
-                final int f = fila;
-                final int c = columna;
+				
+                int f = fila;
+                int c = columna;
 
                 
 				
@@ -119,19 +148,25 @@ private JPanel[][] panelesMapa; //array para almacenar las casillas en gui
                         int y = evt.getY();
 						Casilla casilla = mapa.getCasilla(f, c);
 						casilla.descubrir();
+						casilla.setRefugio(new Refugio());
+						casilla.añadirPersonaje(new Curandero("a"));
                         System.out.println("Casilla: (" + f + ", " + c + ")");
                         System.out.println("Coordenadas dentro del JPanel: (" + x + ", " + y + ")");
 						int width = panelCasilla.getWidth(); 
 						int height = panelCasilla.getHeight();
 						System.out.println("Dimensiones de la casilla: " + width + "x" + height + " píxeles");
-						
-                    }
+						Component[] componentes = panelCasilla.getComponents();
+						for (Component componente : componentes) {
+							System.out.println(componente);
+							System.out.println("");
+						}
+					}
                 });
 
-                // Añadir el panel a la matriz de paneles
+                
                 panelesMapa[fila][columna] = panelCasilla;
 
-                // Añadir la casilla al contenedor principal
+                
                 this.jPanel1.add(panelCasilla);
             }
         }
@@ -140,31 +175,31 @@ private JPanel[][] panelesMapa; //array para almacenar las casillas en gui
     }
 	
 	private void inicializarCoordenadasX() {
-    // Asumiendo que pnlCoordsX ya tiene un GridLayout(1, 32)
+    
     for (int i = 0; i < 26; i++) {
-        JLabel coordLabel = new JLabel(String.valueOf(i), JLabel.CENTER); // Crear un JLabel con el número
+        JLabel coordLabel = new JLabel(String.valueOf(i), JLabel.CENTER); 
 		coordLabel.setForeground(Color.white);
-		coordLabel.setFont(new java.awt.Font("Bauhaus 93", 0, 16)); // NOI18N
-        pnlCoordsX.add(coordLabel); // Añadir el JLabel al panel
-//		coordLabel.setSize(10, 10);
+		coordLabel.setFont(new java.awt.Font("Bauhaus 93", 0, 16)); 
+        pnlCoordsX.add(coordLabel); 
+
     }
 
-    // Refrescar el panel para que se vea la actualización
+    
     pnlCoordsX.revalidate();
     pnlCoordsX.repaint();
 }
 	
 	private void inicializarCoordenadasY() {
-    // Asumiendo que pnlCoordsX ya tiene un GridLayout(1, 32)
+    
     for (int i = 0; i < 26; i++) {
-        JLabel coordLabel = new JLabel(String.valueOf(i), JLabel.CENTER); // Crear un JLabel con el número
+        JLabel coordLabel = new JLabel(String.valueOf(i), JLabel.CENTER);
 		coordLabel.setForeground(Color.white);
-		coordLabel.setFont(new java.awt.Font("Bauhaus 93", 0, 16)); // NOI18N
-        pnlCoordsY.add(coordLabel); // Añadir el JLabel al panel
-//		coordLabel.setSize(10, 10);
+		coordLabel.setFont(new java.awt.Font("Bauhaus 93", 0, 16)); 
+        pnlCoordsY.add(coordLabel); 
+
     }
 
-    // Refrescar el panel para que se vea la actualización
+    
     pnlCoordsY.revalidate();
     pnlCoordsY.repaint();
 }
