@@ -1,19 +1,8 @@
 #include "combinarthread.h"
-// this->id = id;
-// this->colaEnergia = colaEnergia;
-// this->colaMaterial = colaMaterial;
-// this->colaMaldad = colaMaldad;
-// this->countdownLabel = countdownLabel;
-// this->tiempoSbx = tiempoSbx;
-// this->corriendoChbx = corriendoChbx;
-// this->colaDeMonstruosLabel = colaDeMonstruosLabel;
-// this->capacidadColaMonstruos = capacidadColaMonstruos;
-// this->colaDeMonstruos = colaDeMonstruos;
 CombinarThread::CombinarThread() {}
 
 void CombinarThread::run(){
     while(true){
-        // colaDeMonstruosLabel -> setText(QString::number(colaDeMonstruos->size()) + " de " + QString::number(capacidadColaMonstruos->value()));
         int secondsLeft = this->tiempoSbx->value();
         while(secondsLeft > 0){
             if(!(this->corriendoChbx->isChecked())){
@@ -27,7 +16,6 @@ void CombinarThread::run(){
                 continue;
             }
             countdownLabel->setText(QString::number(secondsLeft--));
-            // secondsLeft--;
 
             QThread::sleep(1);
         }

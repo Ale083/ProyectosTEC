@@ -27,7 +27,7 @@ public:
 private:
     QString id;
     cola<QString>* colaMaterial;
-    QLabel* queueLabel; //N de 25.
+    QLabel* queueLabel;
     QLabel* countdownLabel;
     QSpinBox* tiempoSbx;
     QSpinBox* capacidadSbx;

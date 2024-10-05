@@ -1,13 +1,5 @@
 #include "robot1thread.h"
-/*
-        this->id = id;
-        this->colaRobot1 = colaRobot1;
-        this->checkBoxRobot1 = checkBoxRobot1;
-        this->sbxTiempoRobot1 = sbxTiempoRobot1;
-        this->colaRobot2 = colaRobot2;
-        this->mutexColaRobot1 = mutexColaRobot1;
-        this->mutexColaRobot2 = mutexColaRobot2;
-*/
+
 Robot1Thread::Robot1Thread() {}
 void Robot1Thread::run(){
     while (true){

@@ -1,31 +1,5 @@
 #include "hornothread.h"
-/*        this->id = id;
-        this->colaDeMonstruos = colaDeMonstruos;
 
-        this->colaBandeja1 = colaBandeja1;
-        this->checkBoxBandeja1 = checkBoxBandeja1;
-        this->lblContenido1 = lblContenido1;
-        this->sbxBandeja1 = sbxBandeja1;
-
-        this->colaBandeja2 = colaBandeja2;
-        this->checkBoxBandeja2 = checkBoxBandeja2;
-        this->lblContenido2 = lblContenido2;
-        this->sbxBandeja2 = sbxBandeja2;
-
-        this->colaBandeja3 = colaBandeja3;
-        this->checkBoxBandeja3 = checkBoxBandeja3;
-        this->lblContenido3 = lblContenido3;
-        this->sbxBandeja3 = sbxBandeja3;
-
-        this->colaBandeja4 = colaBandeja4;
-        this->checkBoxBandeja4 = checkBoxBandeja4;
-        this->lblContenido4 = lblContenido4;
-        this->sbxBandeja4 = sbxBandeja4;
-
-        this->lblCountdownHorno = lblCountdownHorno;
-        this->sbxHorno = sbxHorno;
-        this->mutexColaMonstruos = mutexColaMonstruos;
-*/
 HornoThread::HornoThread() {}
 void HornoThread::run(){
     while(true){

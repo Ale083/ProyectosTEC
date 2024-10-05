@@ -4,7 +4,6 @@ MaldadThread::MaldadThread() {}
 
 void MaldadThread::run() {
     while (true) {
-        // queueLabel->setText(QString::number(colaMaldad->size()) + " de " + QString::number(capacidadSbx->value()));
         int secondsLeft = this->tiempoSbx->value();
         while (secondsLeft > 0) {
             if (!(this->corriendoChbx->isChecked())) {
@@ -18,7 +17,6 @@ void MaldadThread::run() {
                 continue;
             }
             countdownLabel->setText(QString::number(secondsLeft--));
-            // secondsLeft--;
 
             QThread::sleep(1);
         }

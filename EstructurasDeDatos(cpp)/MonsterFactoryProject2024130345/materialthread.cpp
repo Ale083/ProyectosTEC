@@ -4,7 +4,6 @@ MaterialThread::MaterialThread() {}
 
 void MaterialThread::run(){
     while(true){
-        // queueLabel -> setText(QString::number(colaMaterial->size()) + " de " + QString::number(capacidadSbx->value()));
         int secondsLeft = this->tiempoSbx->value();
         while(secondsLeft > 0){
             if(!(this->corriendoChbx->isChecked())){

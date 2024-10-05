@@ -28,7 +28,7 @@ public:
 private:
     QString id;
     cola<QString>* colaEnergia;
-    QLabel* queueLabel; //N de 25.
+    QLabel* queueLabel;
     QLabel* countdownLabel;
     QSpinBox* tiempoSbx;
     QSpinBox* capacidadSbx;

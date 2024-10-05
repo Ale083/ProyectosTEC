@@ -1,9 +1,9 @@
 #include "procesadorpedidos.h"
 #include "pedido.h"
-// Constructor predeterminado
+
 ProcesadorPedidos::ProcesadorPedidos() {}
 
-// Función principal del hilo
+
 void ProcesadorPedidos::run()
 {
     QDir dirPedidos(pathPedidos);  //carpeta de pedidos

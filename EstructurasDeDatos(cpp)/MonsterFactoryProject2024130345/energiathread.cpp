@@ -4,7 +4,6 @@ EnergiaThread::EnergiaThread() {}
 
 void EnergiaThread::run(){
     while(true){
-        // queueLabel -> setText(QString::number(colaEnergia->size()) + " de " + QString::number(capacidadSbx->value()));
         int secondsLeft = this->tiempoSbx->value();
         while(secondsLeft > 0){
             if(!(this->corriendoChbx->isChecked())){
@@ -18,7 +17,6 @@ void EnergiaThread::run(){
                 continue;
             }
             countdownLabel->setText(QString::number(secondsLeft--));
-            // secondsLeft--;
 
             QThread::sleep(1);
         }

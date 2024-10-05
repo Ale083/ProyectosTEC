@@ -95,10 +95,10 @@ void MainWindow::on_btnPausa_clicked()
 
 void MainWindow::on_btnResumir_clicked()
 {
-    ui->checkBoxBandeja1->isEnabled() ? ui->checkBoxBandeja1->setChecked(true) : ui->checkBoxBandeja1->setChecked(false);
-    ui->checkBoxBandeja2->isEnabled() ? ui->checkBoxBandeja2->setChecked(true) : ui->checkBoxBandeja2->setChecked(false);
-    ui->checkBoxBandeja3->isEnabled() ? ui->checkBoxBandeja3->setChecked(true) : ui->checkBoxBandeja3->setChecked(false);
-    ui->checkBoxBandeja4->isEnabled() ? ui->checkBoxBandeja4->setChecked(true) : ui->checkBoxBandeja4->setChecked(false);
+    ui->checkBoxBandeja1->setChecked(true);
+    ui->checkBoxBandeja2->setChecked(true);
+    ui->checkBoxBandeja3->setChecked(true);
+    ui->checkBoxBandeja4->setChecked(true);
     hornoThread->resume();
     ui->checkBoxRobot1->isEnabled() ? ui->checkBoxRobot1->setChecked(true) : ui->checkBoxRobot1->setChecked(false);
     ui->checkBoxRobot2->isEnabled() ? ui->checkBoxRobot2->setChecked(true) : ui->checkBoxRobot2->setChecked(false);

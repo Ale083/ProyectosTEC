@@ -2,7 +2,7 @@
 #define ESTRUCTURAMONSTRUO_H
 #include <QString>
 #include <QDateTime>
-//QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss")
+
 struct Monstruo{
 public:
     int consecutivo;
