@@ -1,0 +1,1 @@
+Para que sirvan las bitácoras, mover el folder 'monsterFactoryFileBitacoras' al escritorio y cambiar en qt con ctrl f -> replace en todo el proyecto, 'Proyecto Diseño', por el nombre de su compu
