@@ -23,6 +23,7 @@ public class Juego extends javax.swing.JFrame {
 private JPanel[][] panelesMapa; //array para almacenar las casillas en gui
 private JLabel[][] labelsImagenes; 
 private JLabel[][] labelsTexto;
+
 	/**
 	 * Creates new form Juego
 	 */
@@ -100,12 +101,29 @@ private JLabel[][] labelsTexto;
 		labelsImagenes = new JLabel[mapa.getMapa().length][mapa.getMapa()[0].length];   
 		labelsTexto = new JLabel[mapa.getMapa().length][mapa.getMapa()[0].length];
 		
-		
 		//Poner un 4x4 de casillas ya descubiertas en el centro.
 		int centroFila = mapa.getMapa().length / 2;
 		int centroColumna = mapa.getMapa()[0].length / 2;
+		int counter = 0;
 		for (int fila = centroFila - 2; fila <= centroFila + 1; fila++) {
 			for (int columna = centroColumna - 2; columna <= centroColumna + 1; columna++) {
+				if(counter == 0)
+					mapa.getCasilla(fila, columna).añadirPersonaje(new Explorador());
+				else if(counter == 2)
+					mapa.getCasilla(fila, columna).añadirPersonaje(new Cazador());
+				else if(counter == 5)
+					mapa.getCasilla(fila, columna).añadirPersonaje(new Recolector());
+				else if(counter == 7)
+					mapa.getCasilla(fila, columna).añadirPersonaje(new Constructor());
+				else if(counter == 10)
+					mapa.getCasilla(fila, columna).añadirPersonaje(new Curandero());
+				else if(counter == 12){
+					mapa.getCasilla(fila, columna).añadirPersonaje(new Cientifico());
+					mapa.getCasilla(fila, columna).añadirRecurso(new Recurso("madera"));
+				}
+				else if (counter == 14)
+					mapa.getCasilla(fila, columna).añadirRecurso(new Recurso("madera"));
+				counter++;
 				mapa.getCasilla(fila, columna).descubrir();
 			}
 		} 
@@ -115,8 +133,6 @@ private JLabel[][] labelsTexto;
                 JPanel panelCasilla = new JPanel();
                 panelCasilla.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
 				panelCasilla.setLayout(new OverlayLayout(panelCasilla));
-				
-				
 				
 				JLabel labelPersonas = new JLabel("");  
 				labelsTexto[fila][columna] = labelPersonas; 
@@ -131,7 +147,12 @@ private JLabel[][] labelsTexto;
 				labelImagen.setOpaque(false);
 				labelImagen.setAlignmentX(Component.CENTER_ALIGNMENT); 
 				labelImagen.setAlignmentY(Component.CENTER_ALIGNMENT);
+				
+				 
+				
 
+				
+						
 				panelCasilla.setPreferredSize(new java.awt.Dimension(32, 32));
 				panelCasilla.setMinimumSize(new java.awt.Dimension(32, 32));
 				panelCasilla.setMaximumSize(new java.awt.Dimension(32, 32));
@@ -149,7 +170,7 @@ private JLabel[][] labelsTexto;
 						Casilla casilla = mapa.getCasilla(f, c);
 						casilla.descubrir();
 						casilla.setRefugio(new Refugio());
-						casilla.añadirPersonaje(new Curandero("a"));
+						casilla.añadirPersonaje(new Curandero());
                         System.out.println("Casilla: (" + f + ", " + c + ")");
                         System.out.println("Coordenadas dentro del JPanel: (" + x + ", " + y + ")");
 						int width = panelCasilla.getWidth(); 

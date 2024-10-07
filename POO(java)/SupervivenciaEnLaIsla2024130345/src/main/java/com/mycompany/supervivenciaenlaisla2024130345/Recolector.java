@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.mycompany.supervivenciaenlaisla2024130345;
-
+import javax.swing.ImageIcon;
 /**
  *
  * @author Proyecto Diseño
@@ -12,8 +12,8 @@ public class Recolector extends Personaje{
 	private int habilidadRecoleccion;
 	
 	
-	public Recolector(String nombre) {
-		super("Recolector");
+	public Recolector() {
+		super("Recolector", new ImageIcon("C:\\Users\\Proyecto Diseño\\Desktop\\imagenesIslandSurvivors\\Recolector.png"));
 	}
 
 	@Override

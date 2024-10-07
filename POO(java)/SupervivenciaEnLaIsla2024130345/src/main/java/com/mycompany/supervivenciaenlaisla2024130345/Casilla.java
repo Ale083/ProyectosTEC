@@ -55,8 +55,8 @@ public class Casilla {
 		return recursos;
 	}
 
-	public void setRecursos(ArrayList<Recurso> recursos) {
-		this.recursos = recursos;
+	public void añadirRecurso(Recurso recurso) {
+		recursos.add(recurso);
 	}
 
 	public Animal getAnimal() {

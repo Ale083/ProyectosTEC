@@ -4,6 +4,8 @@
  */
 package com.mycompany.supervivenciaenlaisla2024130345;
 
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author Proyecto Diseño
@@ -12,7 +14,7 @@ public class Cazador extends Personaje{
 	private int habilidadCaza;
 	
 	public Cazador() {
-		super("Cazador");
+		super("Cazador", new ImageIcon("C:\\Users\\Proyecto Diseño\\Desktop\\imagenesIslandSurvivors\\Cazador.png"));
 	}
 
 	@Override

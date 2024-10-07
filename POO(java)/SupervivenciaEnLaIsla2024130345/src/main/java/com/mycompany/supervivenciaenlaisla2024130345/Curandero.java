@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.mycompany.supervivenciaenlaisla2024130345;
-
+import javax.swing.ImageIcon;
 /**
  *
  * @author Proyecto Diseño
@@ -13,8 +13,8 @@ public class Curandero extends Personaje{
 	
 	
 	
-	public Curandero(String nombre) {
-		super(nombre);
+	public Curandero() {
+		super("Curandero", new ImageIcon("C:\\Users\\Proyecto Diseño\\Desktop\\imagenesIslandSurvivors\\Curandero.png"));
 	}
 
 	@Override

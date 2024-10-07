@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.mycompany.supervivenciaenlaisla2024130345;
-
+import javax.swing.ImageIcon;
 /**
  *
  * @author Proyecto Diseño
@@ -11,8 +11,8 @@ package com.mycompany.supervivenciaenlaisla2024130345;
 public class Cientifico extends Personaje{
 	
 	
-	public Cientifico(String nombre) {
-		super(nombre);
+	public Cientifico() {
+		super("Cientifico", new ImageIcon("C:\\Users\\Proyecto Diseño\\Desktop\\imagenesIslandSurvivors\\Cientifico.png"));
 	}
 
 	@Override

@@ -4,6 +4,8 @@
  */
 package com.mycompany.supervivenciaenlaisla2024130345;
 
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author Proyecto Diseño
@@ -11,7 +13,7 @@ package com.mycompany.supervivenciaenlaisla2024130345;
 public class Explorador extends Personaje{
 	private int nivelExploracion;
 	public Explorador() {
-		super("Explorador");
+		super("Explorador", new ImageIcon("C:\\Users\\Proyecto Diseño\\Desktop\\imagenesIslandSurvivors\\Explorador.png"));
 		this.nivelExploracion = 5; //TODO, maybe que sea random.
 	}
 

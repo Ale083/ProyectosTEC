@@ -20,6 +20,7 @@ public class RefrescarMapaThread extends Thread {
 	private JLabel[][] labelsImagenes;  
     private JLabel[][] labelsTexto;
 	private ImageIcon refugioIcon;
+	private ImageIcon materialIcon;
 
     public RefrescarMapaThread(Mapa mapa, JPanel[][] panelesMapa, JPanel jPanel1, JLabel[][] labelsImagenes, JLabel[][] labelsTexto) {
         this.mapa = mapa;
@@ -27,7 +28,8 @@ public class RefrescarMapaThread extends Thread {
         this.jPanel1 = jPanel1;
 		this.labelsImagenes = labelsImagenes;
         this.labelsTexto = labelsTexto;
-		this.refugioIcon = new ImageIcon("C:\\Users\\Proyecto Diseño\\Desktop\\varas nada que ver que descargo\\Males\\Refugio.png");
+		this.refugioIcon = new ImageIcon("C:\\Users\\Proyecto Diseño\\Desktop\\imagenesIslandSurvivors\\Refugio.png");
+		this.materialIcon = new ImageIcon("C:\\Users\\Proyecto Diseño\\Desktop\\imagenesIslandSurvivors\\Recurso.png");
     }
 
     @Override
@@ -35,7 +37,7 @@ public class RefrescarMapaThread extends Thread {
         try {
             while (true) {  
                 refrescarMapa();  
-                Thread.sleep(1000);  
+                Thread.sleep(750);  
             }
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -60,10 +62,24 @@ public class RefrescarMapaThread extends Thread {
 					if(casilla.getRefugio() != null){
 						labelImagen.setIcon(refugioIcon);
 						labelTexto.setText("" + casilla.getPersonajes().size());
-					} else{
-						
+						continue;
+					} else {
+						labelImagen.setIcon(null);
+						labelTexto.setIcon(null);
 					}
-                } else {
+					
+					if(casilla.getAnimal() != null){
+						labelImagen.setIcon(casilla.getAnimal().getAnimalIcon());
+					} else if(!casilla.getPersonajes().isEmpty()){
+						labelImagen.setIcon(casilla.getPersonajes().get(0).getPersonajeIcon());
+					} else if(!casilla.getRecursos().isEmpty()){
+						if(casilla.getRecursos().get(0).getTipo() == "Carne"){
+							labelImagen.setIcon(null);//TODO
+						} else{
+							labelImagen.setIcon(materialIcon);
+						}
+					}	
+					}else {
                     panelCasilla.setBackground(Color.gray); //TODO: Podría quitarlo.
                 }
             }

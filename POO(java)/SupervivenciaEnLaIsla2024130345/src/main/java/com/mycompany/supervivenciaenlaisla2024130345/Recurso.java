@@ -29,4 +29,14 @@ public class Recurso {
 	void agregarRecurso(int cantidadNueva){
 		
 	}
+
+	public String getTipo() {
+		return tipo;
+	}
+
+	public int getCantidad() {
+		return cantidad;
+	}
+	
+	
 }

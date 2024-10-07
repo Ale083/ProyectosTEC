@@ -5,6 +5,7 @@
 package com.mycompany.supervivenciaenlaisla2024130345;
 
 import java.util.ArrayList;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -14,15 +15,17 @@ public abstract class Personaje {
 	private String nombre;
 	private int nivelEnergia;
 	private int nivelSalud;
-	ArrayList<Recurso> inventario;
-	Refugio refugioAsignado;
+	private ArrayList<Recurso> inventario;
+	private Refugio refugioAsignado;
+	private ImageIcon personajeIcon;
 
-	public Personaje(String nombre) {
+	public Personaje(String nombre, ImageIcon personajeIcon) {
 		this.nombre = nombre;
 		nivelEnergia = 100;
 		nivelSalud = 100;
 		inventario = new ArrayList<Recurso>();
 		refugioAsignado = null;
+		this.personajeIcon = personajeIcon;
 	}
 	
 	
@@ -66,4 +69,39 @@ public abstract class Personaje {
 	public void compartirRecurso(Personaje receptor, Recurso recurso){
 		
 	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public int getNivelEnergia() {
+		return nivelEnergia;
+	}
+
+	public int getNivelSalud() {
+		return nivelSalud;
+	}
+
+	public ArrayList<Recurso> getInventario() {
+		return inventario;
+	}
+
+	public Refugio getRefugioAsignado() {
+		return refugioAsignado;
+	}
+
+	public ImageIcon getPersonajeIcon() {
+		return personajeIcon;
+	}
+
+	public void entrarARefugio(Refugio refugioAsignado) {
+		this.refugioAsignado = refugioAsignado;
+	}
+	
+	public void salirDeRefugio(){
+		this.refugioAsignado = null;
+	}
+	
+	
+	
 }
