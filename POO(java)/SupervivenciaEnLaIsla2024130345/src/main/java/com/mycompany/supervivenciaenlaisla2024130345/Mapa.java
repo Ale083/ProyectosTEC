@@ -32,6 +32,18 @@ public class Mapa {
 		return mapa;
 	}
 	
+	public void moverPersonajeHorizontal(Personaje personaje, int casilla){//no se valida que salga del tablero porque en teoría cuando se use no puede salirse
+		mapa[personaje.getyActual()][personaje.getxActual()].getPersonajes().remove(personaje);
+		mapa[personaje.getyActual()][personaje.getxActual()+casilla].getPersonajes().add(personaje);
+		personaje.setxActual(personaje.getxActual() + casilla);
+	}
+	public void moverPersonajeVertical(Personaje personaje, int casilla){
+		mapa[personaje.getyActual()][personaje.getxActual()].getPersonajes().remove(personaje);
+		mapa[personaje.getyActual()+casilla][personaje.getxActual()].getPersonajes().add(personaje);
+		personaje.setyActual(personaje.getyActual() + casilla);
+		personaje.setRefugio(mapa[personaje.getyActual()][personaje.getxActual()].getRefugio());
+	}
+	
 	
 }
 

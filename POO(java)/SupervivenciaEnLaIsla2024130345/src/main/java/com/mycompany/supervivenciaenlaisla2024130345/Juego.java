@@ -9,6 +9,7 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Image;
+import java.util.ArrayList;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -23,18 +24,27 @@ public class Juego extends javax.swing.JFrame {
 private JPanel[][] panelesMapa; //array para almacenar las casillas en gui
 private JLabel[][] labelsImagenes; 
 private JLabel[][] labelsTexto;
+private	ArrayList<Personaje> personajes;
+private ArrayList<PersonajeThread> threads;
+private Mapa mapaTablero;
+private RefrescarMapaThread refrescarMapaThread;
 
 	/**
 	 * Creates new form Juego
 	 */
 	public Juego() {
 		initComponents();
-		Mapa mapaTablero = new Mapa(26,26);
+		personajes = new ArrayList<Personaje>();
+		threads = new ArrayList<PersonajeThread>();
+		mapaTablero = new Mapa(26,26);
 		inicializarMapaGraficamente(mapaTablero);
-		RefrescarMapaThread refrescarMapaThread = new RefrescarMapaThread(mapaTablero,panelesMapa,jPanel1,labelsImagenes,labelsTexto);
+		refrescarMapaThread = new RefrescarMapaThread(mapaTablero,panelesMapa,jPanel1,labelsImagenes,labelsTexto);
 		refrescarMapaThread.start();
 		inicializarCoordenadasX();
 		inicializarCoordenadasY();
+		for (PersonajeThread thread : threads) {
+			thread.start();
+		}
 	}
 
 	/**
@@ -107,22 +117,29 @@ private JLabel[][] labelsTexto;
 		int counter = 0;
 		for (int fila = centroFila - 2; fila <= centroFila + 1; fila++) {
 			for (int columna = centroColumna - 2; columna <= centroColumna + 1; columna++) {
-				if(counter == 0)
-					mapa.getCasilla(fila, columna).añadirPersonaje(new Explorador());
-				else if(counter == 2)
-					mapa.getCasilla(fila, columna).añadirPersonaje(new Cazador());
-				else if(counter == 5)
-					mapa.getCasilla(fila, columna).añadirPersonaje(new Recolector());
-				else if(counter == 7)
-					mapa.getCasilla(fila, columna).añadirPersonaje(new Constructor());
-				else if(counter == 10)
-					mapa.getCasilla(fila, columna).añadirPersonaje(new Curandero());
-				else if(counter == 12){
-					mapa.getCasilla(fila, columna).añadirPersonaje(new Cientifico());
-					mapa.getCasilla(fila, columna).añadirRecurso(new Recurso("madera"));
+				switch (counter) {
+					case 0:
+						añadirPersonaje(fila, columna, new Explorador(columna, fila));
+						break;
+					case 2:
+						añadirPersonaje(fila, columna, new Cazador(columna, fila));
+						break;
+					case 5:
+						añadirPersonaje(fila, columna, new Recolector(columna, fila));
+						break;
+					case 7:
+						añadirPersonaje(fila, columna, new Constructor(columna, fila));
+						break;
+					case 10:
+						añadirPersonaje(fila, columna, new Curandero(columna, fila));
+						break;
+					case 12:
+						añadirPersonaje(fila, columna, new Cientifico(columna, fila));
+						break;
+					case 14:  // TEST GRAFICO RECURSO TODO: QUITARLO.
+						mapa.getCasilla(fila, columna).añadirRecurso(new Recurso("madera"));
+						break;
 				}
-				else if (counter == 14)
-					mapa.getCasilla(fila, columna).añadirRecurso(new Recurso("madera"));
 				counter++;
 				mapa.getCasilla(fila, columna).descubrir();
 			}
@@ -170,7 +187,8 @@ private JLabel[][] labelsTexto;
 						Casilla casilla = mapa.getCasilla(f, c);
 						casilla.descubrir();
 						casilla.setRefugio(new Refugio());
-						casilla.añadirPersonaje(new Curandero());
+						casilla.añadirPersonaje(new Curandero(c,f));
+						System.out.println(casilla.getPersonajes().getFirst().getxActual());
                         System.out.println("Casilla: (" + f + ", " + c + ")");
                         System.out.println("Coordenadas dentro del JPanel: (" + x + ", " + y + ")");
 						int width = panelCasilla.getWidth(); 
@@ -181,6 +199,7 @@ private JLabel[][] labelsTexto;
 							System.out.println(componente);
 							System.out.println("");
 						}
+						personajes.getLast().setDestino(c, f);
 					}
                 });
 
@@ -225,8 +244,11 @@ private JLabel[][] labelsTexto;
     pnlCoordsY.repaint();
 }
 
-
-
+	private void añadirPersonaje(int fila, int columna, Personaje personaje){
+		mapaTablero.getCasilla(fila, columna).añadirPersonaje(personaje);
+		personajes.add(personaje);
+		threads.add(new PersonajeThread(mapaTablero,personaje));
+	}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jPanel1;
@@ -236,6 +258,77 @@ private JLabel[][] labelsTexto;
 }
 
 
-//Se pueden hacer digamos ventanas extras para ciertas funciones, por ejemplo para los inventarios o el menú para el dios, que cuando se presione un boton, abra una ventana y así.
-//la bitacora puede ser un txt?
-//
+/*
+Explorador:
+	~Descansar maybe
+	2 textfields para coords
+	En inventario meter comer y compartir.
+	Maybe png + nombre
+	Vida y energia.
+	Mover
+	Explorar
+	Recolectar
+
+Cazador:
+	~Descansar maybe
+	2 textfields para coords
+	En inventario meter comer y compartir.
+	Maybe png + nombre
+	Vida y energia.
+	Mover
+	Cazar (junto a coords).
+	Defender (junto a coords).
+
+Recolector:
+	~Descansar maybe
+	2 textfields para coords
+	En inventario meter comer y compartir.
+	Maybe png + nombre
+	Vida y energia.
+	Mover
+	Recolectar
+
+Constructor:
+	~Descansar maybe
+	2 textfields para coords
+	En inventario meter comer y compartir.
+	Maybe png + nombre
+	Vida y energia.
+	Mover
+	Construir Refugio
+	Reparar Refugio
+	
+Curandero:
+	~Descansar maybe
+	2 textfields para coords
+	En inventario meter comer y compartir.
+	Maybe png + nombre
+	Vida y energia.
+	Mover
+	Curar Personaje -> healea personaje
+	Hacer remedio a personaje -> le quita la enfermedad a x personaje, cuesta plantas y energia ambos.
+	Recolectar
+
+Cientifico:
+	~Descansar maybe
+	2 textfields para coords
+	En inventario meter comer y compartir.
+	Maybe png + nombre
+	Vida y energia.
+	Mover
+	Hacer remedio a personaje -> le quita la enfermedad a x personaje.
+
+Random que cada dia los personajes puedan enfermarse.
+
+
+Poner las acciones especificas a cada personaje en accionar.
+A cada tipo de personaje, ponerle un atributo como por ejemplo "boolean cazando y boolean defendiendo".
+Entonces en accionar poner como if(cazando) ... O if defendiendo.
+Y poner accionar en el threadPersonaje, cuando ya para de moverse.
+
+
+
+
+
+
+*/

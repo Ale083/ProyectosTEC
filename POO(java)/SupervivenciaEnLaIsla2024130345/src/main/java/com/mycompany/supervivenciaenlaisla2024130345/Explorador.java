@@ -12,8 +12,8 @@ import javax.swing.ImageIcon;
  */
 public class Explorador extends Personaje{
 	private int nivelExploracion;
-	public Explorador() {
-		super("Explorador", new ImageIcon("C:\\Users\\Proyecto Diseño\\Desktop\\imagenesIslandSurvivors\\Explorador.png"));
+	public Explorador(int x, int y) {
+		super("Explorador", new ImageIcon("C:\\Users\\Proyecto Diseño\\Desktop\\imagenesIslandSurvivors\\Explorador.png"),x,y);
 		this.nivelExploracion = 5; //TODO, maybe que sea random.
 	}
 

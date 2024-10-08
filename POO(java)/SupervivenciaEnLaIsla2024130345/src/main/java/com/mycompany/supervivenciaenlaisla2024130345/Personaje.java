@@ -18,14 +18,22 @@ public abstract class Personaje {
 	private ArrayList<Recurso> inventario;
 	private Refugio refugioAsignado;
 	private ImageIcon personajeIcon;
+	private int xActual;
+	private int yActual;
+	private int xDestino;
+	private int yDestino;
 
-	public Personaje(String nombre, ImageIcon personajeIcon) {
+	public Personaje(String nombre, ImageIcon personajeIcon,int x, int y) {
 		this.nombre = nombre;
 		nivelEnergia = 100;
 		nivelSalud = 100;
 		inventario = new ArrayList<Recurso>();
 		refugioAsignado = null;
 		this.personajeIcon = personajeIcon;
+		xDestino = -1;
+		yDestino = -1;
+		xActual = x;
+		yActual = y;
 	}
 	
 	
@@ -33,6 +41,10 @@ public abstract class Personaje {
 	public abstract void accionar();
 	public abstract void comer();
 	public abstract void descansar();
+	
+	public boolean isMoving(){
+		return xDestino != -1 && yDestino != -1;
+	}
 	
 	public void reducirEnergia(int cantidad){
 		if(nivelEnergia-cantidad<0){
@@ -94,14 +106,48 @@ public abstract class Personaje {
 		return personajeIcon;
 	}
 
-	public void entrarARefugio(Refugio refugioAsignado) {
+	public void setRefugio(Refugio refugioAsignado) {
 		this.refugioAsignado = refugioAsignado;
 	}
 	
-	public void salirDeRefugio(){
-		this.refugioAsignado = null;
+	
+
+	public int getxDestino() {
+		return xDestino;
+	}
+
+	public void setxDestino(int xDestino) {
+		this.xDestino = xDestino;
+	}
+
+	public int getyDestino() {
+		return yDestino;
+	}
+
+	public void setyDestino(int yDestino) {
+		this.yDestino = yDestino;
+	}
+
+	public int getxActual() {
+		return xActual;
+	}
+
+	public void setxActual(int xActual) {
+		this.xActual = xActual;
+	}
+
+	public int getyActual() {
+		return yActual;
+	}
+
+	public void setyActual(int yActual) {
+		this.yActual = yActual;
 	}
 	
+	public void setDestino(int x, int y){
+		this.xDestino = x;
+		this.yDestino = y;
+	}
 	
 	
 }

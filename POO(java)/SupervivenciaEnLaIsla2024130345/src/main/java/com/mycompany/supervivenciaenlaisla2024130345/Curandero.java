@@ -13,8 +13,8 @@ public class Curandero extends Personaje{
 	
 	
 	
-	public Curandero() {
-		super("Curandero", new ImageIcon("C:\\Users\\Proyecto Diseño\\Desktop\\imagenesIslandSurvivors\\Curandero.png"));
+	public Curandero(int x, int y) {
+		super("Curandero", new ImageIcon("C:\\Users\\Proyecto Diseño\\Desktop\\imagenesIslandSurvivors\\Curandero.png"),x,y);
 	}
 
 	@Override

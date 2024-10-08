@@ -11,8 +11,8 @@ import javax.swing.ImageIcon;
 public class Constructor extends Personaje{
 	private int habilidadConstruccion;
 	
-	public Constructor() {
-		super("Constructor", new ImageIcon("C:\\Users\\Proyecto Diseño\\Desktop\\imagenesIslandSurvivors\\Constructor.png"));
+	public Constructor(int x, int y) {
+		super("Constructor", new ImageIcon("C:\\Users\\Proyecto Diseño\\Desktop\\imagenesIslandSurvivors\\Constructor.png"),x,y);
 	}
 
 	@Override

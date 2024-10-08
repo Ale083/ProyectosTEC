@@ -13,8 +13,8 @@ import javax.swing.ImageIcon;
 public class Cazador extends Personaje{
 	private int habilidadCaza;
 	
-	public Cazador() {
-		super("Cazador", new ImageIcon("C:\\Users\\Proyecto Diseño\\Desktop\\imagenesIslandSurvivors\\Cazador.png"));
+	public Cazador(int x, int y) {
+		super("Cazador", new ImageIcon("C:\\Users\\Proyecto Diseño\\Desktop\\imagenesIslandSurvivors\\Cazador.png"),x, y);
 	}
 
 	@Override

@@ -37,7 +37,7 @@ public class RefrescarMapaThread extends Thread {
         try {
             while (true) {  
                 refrescarMapa();  
-                Thread.sleep(750);  
+                Thread.sleep(1000);  
             }
         } catch (InterruptedException e) {
             e.printStackTrace();
