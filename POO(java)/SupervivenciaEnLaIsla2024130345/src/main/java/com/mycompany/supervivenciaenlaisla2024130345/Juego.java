@@ -28,7 +28,7 @@ private	ArrayList<Personaje> personajes;
 private ArrayList<PersonajeThread> threads;
 private Mapa mapaTablero;
 private RefrescarMapaThread refrescarMapaThread;
-
+//private JLabel[][] labelsPersonajesVidaEnergia = {{2,3},{3,4}};
 	/**
 	 * Creates new form Juego
 	 */
@@ -59,6 +59,82 @@ private RefrescarMapaThread refrescarMapaThread;
         jPanel1 = new javax.swing.JPanel();
         pnlCoordsX = new javax.swing.JPanel();
         pnlCoordsY = new javax.swing.JPanel();
+        pnlControlesCazador = new javax.swing.JPanel();
+        lblCazadorIcon = new javax.swing.JLabel();
+        lblCazadorNombre = new java.awt.Label();
+        txfXCazador = new javax.swing.JTextField();
+        txfYCazador = new javax.swing.JTextField();
+        btnMoverCazador = new javax.swing.JButton();
+        btnDefenderCazador = new javax.swing.JButton();
+        btnCazarCazador = new javax.swing.JButton();
+        btnInventarioCazador = new javax.swing.JButton();
+        lblXCazador = new java.awt.Label();
+        lblYCazador = new java.awt.Label();
+        lblVidaCazador = new javax.swing.JLabel();
+        lblEnergiaCazador = new javax.swing.JLabel();
+        pnlControlesExplorador = new javax.swing.JPanel();
+        lblExploradorIcon = new javax.swing.JLabel();
+        lblExploradorNombre = new java.awt.Label();
+        txfXExplorador = new javax.swing.JTextField();
+        txfYExplorador = new javax.swing.JTextField();
+        btnMoverExplorador = new javax.swing.JButton();
+        btnExplorarExplorador = new javax.swing.JButton();
+        btnRecolectarExplorador = new javax.swing.JButton();
+        btnInventarioExplorador = new javax.swing.JButton();
+        lblXExplorador = new java.awt.Label();
+        lblYExplorador = new java.awt.Label();
+        lblVidaExplorador = new javax.swing.JLabel();
+        lblEnergiaExplorador = new javax.swing.JLabel();
+        pnlControlesRecolector = new javax.swing.JPanel();
+        lblRecolectorIcon = new javax.swing.JLabel();
+        lblRecolectorNombre = new java.awt.Label();
+        txfXRecolector = new javax.swing.JTextField();
+        txfYRecolector = new javax.swing.JTextField();
+        btnMoverRecolector = new javax.swing.JButton();
+        btnRecolectarRecolector = new javax.swing.JButton();
+        btnInventarioRecolector = new javax.swing.JButton();
+        lblXRecolector = new java.awt.Label();
+        lblYRecolector = new java.awt.Label();
+        lblVidaRecolector = new javax.swing.JLabel();
+        lblEnergiaRecolector = new javax.swing.JLabel();
+        pnlControlesConstructor = new javax.swing.JPanel();
+        lblConstructorIcon = new javax.swing.JLabel();
+        lblConstructorNombre = new java.awt.Label();
+        txfXConstructor = new javax.swing.JTextField();
+        txfYConstructor = new javax.swing.JTextField();
+        btnMoverConstructor = new javax.swing.JButton();
+        btnConstruirConstructor = new javax.swing.JButton();
+        btnRepararConstructor = new javax.swing.JButton();
+        lblXConstructor = new java.awt.Label();
+        lblYConstructor = new java.awt.Label();
+        btnInventarioConstructor = new javax.swing.JButton();
+        lblVidaConstructor = new javax.swing.JLabel();
+        lblEnergiaConstructor = new javax.swing.JLabel();
+        pnlControlesCientifico = new javax.swing.JPanel();
+        lblCientificoIcon = new javax.swing.JLabel();
+        lblCientificoNombre = new java.awt.Label();
+        txfXCientifico = new javax.swing.JTextField();
+        txfYCientifico = new javax.swing.JTextField();
+        btnMoverCientifico = new javax.swing.JButton();
+        btnRecolectarCientifico = new javax.swing.JButton();
+        btnInventarioCientifico = new javax.swing.JButton();
+        lblXCientifico = new java.awt.Label();
+        lblYCientifico = new java.awt.Label();
+        lblVidaCientifico = new javax.swing.JLabel();
+        lblEnergiaCientifico = new javax.swing.JLabel();
+        pnlControlesCurandero = new javax.swing.JPanel();
+        lblCuranderoIcon = new javax.swing.JLabel();
+        lblCuranderoNombre = new java.awt.Label();
+        txfXCurandero = new javax.swing.JTextField();
+        txfYCurandero = new javax.swing.JTextField();
+        btnMoverCurandero = new javax.swing.JButton();
+        btnCurarCurandero = new javax.swing.JButton();
+        btnRemedioCurandero = new javax.swing.JButton();
+        lblXCurandero = new java.awt.Label();
+        lblYCurandero = new java.awt.Label();
+        btnInventarioCurandero = new javax.swing.JButton();
+        lblVidaCurandero = new javax.swing.JLabel();
+        lblEnergiaCurandero = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -71,6 +147,778 @@ private RefrescarMapaThread refrescarMapaThread;
         pnlCoordsY.setBackground(new java.awt.Color(51, 51, 51));
         pnlCoordsY.setLayout(new java.awt.GridLayout(26, 1));
 
+        pnlControlesCazador.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        lblCazadorIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblCazadorIcon.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        lblCazadorIcon.setMaximumSize(new java.awt.Dimension(32, 32));
+        lblCazadorIcon.setMinimumSize(new java.awt.Dimension(32, 32));
+        lblCazadorIcon.setPreferredSize(new java.awt.Dimension(32, 32));
+        lblCazadorIcon.setIcon(new ImageIcon("C:\\Users\\Proyecto Diseño\\Desktop\\imagenesIslandSurvivors\\Cazador.png"));
+
+        lblCazadorNombre.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        lblCazadorNombre.setFont(new java.awt.Font("Courier New", 0, 18)); // NOI18N
+        lblCazadorNombre.setText("Cazador");
+
+        txfXCazador.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+
+        txfYCazador.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+
+        btnMoverCazador.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        btnMoverCazador.setText("Mover");
+        btnMoverCazador.setMaximumSize(new java.awt.Dimension(100, 21));
+        btnMoverCazador.setMinimumSize(new java.awt.Dimension(100, 21));
+        btnMoverCazador.setPreferredSize(new java.awt.Dimension(100, 21));
+
+        btnDefenderCazador.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        btnDefenderCazador.setText("Defender");
+        btnDefenderCazador.setMaximumSize(new java.awt.Dimension(100, 21));
+        btnDefenderCazador.setMinimumSize(new java.awt.Dimension(100, 21));
+        btnDefenderCazador.setPreferredSize(new java.awt.Dimension(100, 21));
+
+        btnCazarCazador.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        btnCazarCazador.setText("Cazar");
+
+        btnInventarioCazador.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        btnInventarioCazador.setText("Inventario");
+        btnInventarioCazador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInventarioCazadorActionPerformed(evt);
+            }
+        });
+
+        lblXCazador.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        lblXCazador.setText("x:");
+
+        lblYCazador.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        lblYCazador.setText("y:");
+
+        lblVidaCazador.setBackground(new java.awt.Color(102, 255, 102));
+        lblVidaCazador.setForeground(new java.awt.Color(0, 0, 0));
+        lblVidaCazador.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblVidaCazador.setText("100");
+        lblVidaCazador.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        lblVidaCazador.setOpaque(true);
+
+        lblEnergiaCazador.setBackground(new java.awt.Color(51, 153, 255));
+        lblEnergiaCazador.setForeground(new java.awt.Color(0, 0, 0));
+        lblEnergiaCazador.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblEnergiaCazador.setText("100");
+        lblEnergiaCazador.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        lblEnergiaCazador.setOpaque(true);
+
+        javax.swing.GroupLayout pnlControlesCazadorLayout = new javax.swing.GroupLayout(pnlControlesCazador);
+        pnlControlesCazador.setLayout(pnlControlesCazadorLayout);
+        pnlControlesCazadorLayout.setHorizontalGroup(
+            pnlControlesCazadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlControlesCazadorLayout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addComponent(lblCazadorIcon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblCazadorNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlControlesCazadorLayout.createSequentialGroup()
+                .addGroup(pnlControlesCazadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlControlesCazadorLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(pnlControlesCazadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(pnlControlesCazadorLayout.createSequentialGroup()
+                                .addComponent(lblXCazador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txfXCazador, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(pnlControlesCazadorLayout.createSequentialGroup()
+                                .addComponent(lblYCazador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txfYCazador, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlControlesCazadorLayout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnDefenderCazador, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                .addGroup(pnlControlesCazadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnCazarCazador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnMoverCazador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnInventarioCazador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(34, 34, 34))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlControlesCazadorLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblVidaCazador, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(lblEnergiaCazador, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(17, 17, 17))
+        );
+        pnlControlesCazadorLayout.setVerticalGroup(
+            pnlControlesCazadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlControlesCazadorLayout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addGroup(pnlControlesCazadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lblCazadorIcon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblCazadorNombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(pnlControlesCazadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblVidaCazador)
+                    .addComponent(lblEnergiaCazador))
+                .addGap(48, 48, 48)
+                .addGroup(pnlControlesCazadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlControlesCazadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txfXCazador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnMoverCazador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblXCazador, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
+                .addGroup(pnlControlesCazadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(pnlControlesCazadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txfYCazador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnInventarioCazador))
+                    .addComponent(lblYCazador, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(25, 25, 25)
+                .addGroup(pnlControlesCazadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnDefenderCazador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCazarCazador))
+                .addGap(21, 21, 21))
+        );
+
+        pnlControlesExplorador.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        lblExploradorIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblExploradorIcon.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        lblExploradorIcon.setMaximumSize(new java.awt.Dimension(32, 32));
+        lblExploradorIcon.setMinimumSize(new java.awt.Dimension(32, 32));
+        lblExploradorIcon.setPreferredSize(new java.awt.Dimension(32, 32));
+        lblExploradorIcon.setIcon(new ImageIcon("C:\\Users\\Proyecto Diseño\\Desktop\\imagenesIslandSurvivors\\Explorador.png"));
+
+        lblExploradorNombre.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        lblExploradorNombre.setFont(new java.awt.Font("Courier New", 0, 18)); // NOI18N
+        lblExploradorNombre.setText("Explorador");
+
+        txfXExplorador.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+
+        txfYExplorador.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+
+        btnMoverExplorador.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        btnMoverExplorador.setText("Mover");
+        btnMoverExplorador.setMaximumSize(new java.awt.Dimension(100, 21));
+        btnMoverExplorador.setMinimumSize(new java.awt.Dimension(100, 21));
+        btnMoverExplorador.setPreferredSize(new java.awt.Dimension(100, 21));
+
+        btnExplorarExplorador.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        btnExplorarExplorador.setText("Explorar");
+        btnExplorarExplorador.setMaximumSize(new java.awt.Dimension(100, 21));
+        btnExplorarExplorador.setMinimumSize(new java.awt.Dimension(100, 21));
+        btnExplorarExplorador.setPreferredSize(new java.awt.Dimension(100, 21));
+
+        btnRecolectarExplorador.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        btnRecolectarExplorador.setText("Recolectar");
+
+        btnInventarioExplorador.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        btnInventarioExplorador.setText("Inventario");
+        btnInventarioExplorador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInventarioExploradorActionPerformed(evt);
+            }
+        });
+
+        lblXExplorador.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        lblXExplorador.setText("x:");
+
+        lblYExplorador.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        lblYExplorador.setText("y:");
+
+        lblVidaExplorador.setBackground(new java.awt.Color(102, 255, 102));
+        lblVidaExplorador.setForeground(new java.awt.Color(0, 0, 0));
+        lblVidaExplorador.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblVidaExplorador.setText("100");
+        lblVidaExplorador.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        lblVidaExplorador.setOpaque(true);
+
+        lblEnergiaExplorador.setBackground(new java.awt.Color(51, 153, 255));
+        lblEnergiaExplorador.setForeground(new java.awt.Color(0, 0, 0));
+        lblEnergiaExplorador.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblEnergiaExplorador.setText("100");
+        lblEnergiaExplorador.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        lblEnergiaExplorador.setOpaque(true);
+
+        javax.swing.GroupLayout pnlControlesExploradorLayout = new javax.swing.GroupLayout(pnlControlesExplorador);
+        pnlControlesExplorador.setLayout(pnlControlesExploradorLayout);
+        pnlControlesExploradorLayout.setHorizontalGroup(
+            pnlControlesExploradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlControlesExploradorLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlControlesExploradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlControlesExploradorLayout.createSequentialGroup()
+                        .addGroup(pnlControlesExploradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlControlesExploradorLayout.createSequentialGroup()
+                                .addGroup(pnlControlesExploradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(pnlControlesExploradorLayout.createSequentialGroup()
+                                        .addComponent(lblXExplorador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txfXExplorador, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(pnlControlesExploradorLayout.createSequentialGroup()
+                                        .addComponent(lblYExplorador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(txfYExplorador, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(0, 12, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlControlesExploradorLayout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(btnExplorarExplorador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(pnlControlesExploradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnRecolectarExplorador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnMoverExplorador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnInventarioExplorador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(34, 34, 34))
+                    .addGroup(pnlControlesExploradorLayout.createSequentialGroup()
+                        .addGroup(pnlControlesExploradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlControlesExploradorLayout.createSequentialGroup()
+                                .addGap(5, 5, 5)
+                                .addComponent(lblExploradorIcon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblExploradorNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(pnlControlesExploradorLayout.createSequentialGroup()
+                                .addComponent(lblVidaExplorador, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(lblEnergiaExplorador, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+        );
+        pnlControlesExploradorLayout.setVerticalGroup(
+            pnlControlesExploradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlControlesExploradorLayout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addGroup(pnlControlesExploradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lblExploradorIcon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblExploradorNombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlControlesExploradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblVidaExplorador)
+                    .addComponent(lblEnergiaExplorador))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                .addGroup(pnlControlesExploradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlControlesExploradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txfXExplorador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnMoverExplorador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblXExplorador, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
+                .addGroup(pnlControlesExploradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(pnlControlesExploradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txfYExplorador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnInventarioExplorador))
+                    .addComponent(lblYExplorador, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
+                .addGroup(pnlControlesExploradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnExplorarExplorador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnRecolectarExplorador))
+                .addGap(21, 21, 21))
+        );
+
+        pnlControlesRecolector.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        lblRecolectorIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblRecolectorIcon.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        lblRecolectorIcon.setMaximumSize(new java.awt.Dimension(32, 32));
+        lblRecolectorIcon.setMinimumSize(new java.awt.Dimension(32, 32));
+        lblRecolectorIcon.setPreferredSize(new java.awt.Dimension(32, 32));
+        lblRecolectorIcon.setIcon(new ImageIcon("C:\\Users\\Proyecto Diseño\\Desktop\\imagenesIslandSurvivors\\Recolector.png"));
+
+        lblRecolectorNombre.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        lblRecolectorNombre.setFont(new java.awt.Font("Courier New", 0, 18)); // NOI18N
+        lblRecolectorNombre.setText("Recolector");
+
+        txfXRecolector.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+
+        txfYRecolector.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+
+        btnMoverRecolector.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        btnMoverRecolector.setText("Mover");
+        btnMoverRecolector.setMaximumSize(new java.awt.Dimension(85, 23));
+        btnMoverRecolector.setMinimumSize(new java.awt.Dimension(85, 23));
+        btnMoverRecolector.setPreferredSize(new java.awt.Dimension(100, 21));
+
+        btnRecolectarRecolector.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        btnRecolectarRecolector.setText("Recolectar");
+
+        btnInventarioRecolector.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        btnInventarioRecolector.setText("Inventario");
+        btnInventarioRecolector.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInventarioRecolectorActionPerformed(evt);
+            }
+        });
+
+        lblXRecolector.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        lblXRecolector.setText("x:");
+
+        lblYRecolector.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        lblYRecolector.setText("y:");
+
+        lblVidaRecolector.setBackground(new java.awt.Color(102, 255, 102));
+        lblVidaRecolector.setForeground(new java.awt.Color(0, 0, 0));
+        lblVidaRecolector.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblVidaRecolector.setText("100");
+        lblVidaRecolector.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        lblVidaRecolector.setOpaque(true);
+
+        lblEnergiaRecolector.setBackground(new java.awt.Color(51, 153, 255));
+        lblEnergiaRecolector.setForeground(new java.awt.Color(0, 0, 0));
+        lblEnergiaRecolector.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblEnergiaRecolector.setText("100");
+        lblEnergiaRecolector.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        lblEnergiaRecolector.setOpaque(true);
+
+        javax.swing.GroupLayout pnlControlesRecolectorLayout = new javax.swing.GroupLayout(pnlControlesRecolector);
+        pnlControlesRecolector.setLayout(pnlControlesRecolectorLayout);
+        pnlControlesRecolectorLayout.setHorizontalGroup(
+            pnlControlesRecolectorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlControlesRecolectorLayout.createSequentialGroup()
+                .addGroup(pnlControlesRecolectorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlControlesRecolectorLayout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addComponent(lblRecolectorIcon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblRecolectorNombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(pnlControlesRecolectorLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(pnlControlesRecolectorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(pnlControlesRecolectorLayout.createSequentialGroup()
+                                .addComponent(lblXRecolector, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txfXRecolector, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(pnlControlesRecolectorLayout.createSequentialGroup()
+                                .addComponent(lblYRecolector, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txfYRecolector, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                        .addGroup(pnlControlesRecolectorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnInventarioRecolector, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnMoverRecolector, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGap(34, 34, 34))
+            .addGroup(pnlControlesRecolectorLayout.createSequentialGroup()
+                .addGroup(pnlControlesRecolectorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlControlesRecolectorLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(lblVidaRecolector, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblEnergiaRecolector, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlControlesRecolectorLayout.createSequentialGroup()
+                        .addGap(78, 78, 78)
+                        .addComponent(btnRecolectarRecolector)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        pnlControlesRecolectorLayout.setVerticalGroup(
+            pnlControlesRecolectorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlControlesRecolectorLayout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addGroup(pnlControlesRecolectorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lblRecolectorIcon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblRecolectorNombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlControlesRecolectorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblVidaRecolector)
+                    .addComponent(lblEnergiaRecolector))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                .addGroup(pnlControlesRecolectorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlControlesRecolectorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txfXRecolector, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnMoverRecolector, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblXRecolector, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
+                .addGroup(pnlControlesRecolectorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(pnlControlesRecolectorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txfYRecolector, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnInventarioRecolector))
+                    .addComponent(lblYRecolector, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(btnRecolectarRecolector)
+                .addGap(30, 30, 30))
+        );
+
+        pnlControlesConstructor.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        lblConstructorIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblConstructorIcon.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        lblConstructorIcon.setMaximumSize(new java.awt.Dimension(32, 32));
+        lblConstructorIcon.setMinimumSize(new java.awt.Dimension(32, 32));
+        lblConstructorIcon.setPreferredSize(new java.awt.Dimension(32, 32));
+        lblConstructorIcon.setIcon(new ImageIcon("C:\\Users\\Proyecto Diseño\\Desktop\\imagenesIslandSurvivors\\Constructor.png"));
+
+        lblConstructorNombre.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        lblConstructorNombre.setFont(new java.awt.Font("Courier New", 0, 18)); // NOI18N
+        lblConstructorNombre.setText("Constructor");
+
+        txfXConstructor.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+
+        txfYConstructor.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+
+        btnMoverConstructor.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        btnMoverConstructor.setText("Mover");
+        btnMoverConstructor.setMaximumSize(new java.awt.Dimension(100, 21));
+        btnMoverConstructor.setMinimumSize(new java.awt.Dimension(100, 21));
+        btnMoverConstructor.setPreferredSize(new java.awt.Dimension(100, 21));
+
+        btnConstruirConstructor.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        btnConstruirConstructor.setText("Construir");
+
+        btnRepararConstructor.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        btnRepararConstructor.setText("Reparar");
+        btnRepararConstructor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRepararConstructorActionPerformed(evt);
+            }
+        });
+
+        lblXConstructor.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        lblXConstructor.setText("x:");
+
+        lblYConstructor.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        lblYConstructor.setText("y:");
+
+        btnInventarioConstructor.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        btnInventarioConstructor.setText("Inventario");
+        btnInventarioConstructor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInventarioConstructorActionPerformed(evt);
+            }
+        });
+
+        lblVidaConstructor.setBackground(new java.awt.Color(102, 255, 102));
+        lblVidaConstructor.setForeground(new java.awt.Color(0, 0, 0));
+        lblVidaConstructor.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblVidaConstructor.setText("100");
+        lblVidaConstructor.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        lblVidaConstructor.setOpaque(true);
+
+        lblEnergiaConstructor.setBackground(new java.awt.Color(51, 153, 255));
+        lblEnergiaConstructor.setForeground(new java.awt.Color(0, 0, 0));
+        lblEnergiaConstructor.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblEnergiaConstructor.setText("100");
+        lblEnergiaConstructor.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        lblEnergiaConstructor.setOpaque(true);
+
+        javax.swing.GroupLayout pnlControlesConstructorLayout = new javax.swing.GroupLayout(pnlControlesConstructor);
+        pnlControlesConstructor.setLayout(pnlControlesConstructorLayout);
+        pnlControlesConstructorLayout.setHorizontalGroup(
+            pnlControlesConstructorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlControlesConstructorLayout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addComponent(lblConstructorIcon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblConstructorNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(pnlControlesConstructorLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlControlesConstructorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlControlesConstructorLayout.createSequentialGroup()
+                        .addComponent(lblVidaConstructor, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblEnergiaConstructor, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(pnlControlesConstructorLayout.createSequentialGroup()
+                        .addGroup(pnlControlesConstructorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlControlesConstructorLayout.createSequentialGroup()
+                                .addGroup(pnlControlesConstructorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(pnlControlesConstructorLayout.createSequentialGroup()
+                                        .addComponent(lblXConstructor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txfXConstructor, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(pnlControlesConstructorLayout.createSequentialGroup()
+                                        .addComponent(lblYConstructor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(txfYConstructor, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(0, 6, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlControlesConstructorLayout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(btnConstruirConstructor, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(pnlControlesConstructorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnRepararConstructor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnMoverConstructor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnInventarioConstructor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(34, 34, 34))))
+        );
+        pnlControlesConstructorLayout.setVerticalGroup(
+            pnlControlesConstructorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlControlesConstructorLayout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addGroup(pnlControlesConstructorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lblConstructorIcon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblConstructorNombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlControlesConstructorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblVidaConstructor)
+                    .addComponent(lblEnergiaConstructor))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                .addGroup(pnlControlesConstructorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlControlesConstructorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txfXConstructor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnMoverConstructor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblXConstructor, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
+                .addGroup(pnlControlesConstructorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(pnlControlesConstructorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txfYConstructor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnInventarioConstructor))
+                    .addComponent(lblYConstructor, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
+                .addGroup(pnlControlesConstructorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnConstruirConstructor)
+                    .addComponent(btnRepararConstructor))
+                .addGap(22, 22, 22))
+        );
+
+        pnlControlesCientifico.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        lblCientificoIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblCientificoIcon.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        lblCientificoIcon.setMaximumSize(new java.awt.Dimension(32, 32));
+        lblCientificoIcon.setMinimumSize(new java.awt.Dimension(32, 32));
+        lblCientificoIcon.setPreferredSize(new java.awt.Dimension(32, 32));
+        lblCientificoIcon.setIcon(new ImageIcon("C:\\Users\\Proyecto Diseño\\Desktop\\imagenesIslandSurvivors\\Cientifico.png"));
+
+        lblCientificoNombre.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        lblCientificoNombre.setFont(new java.awt.Font("Courier New", 0, 18)); // NOI18N
+        lblCientificoNombre.setText("Cientifico");
+
+        txfXCientifico.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+
+        txfYCientifico.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+
+        btnMoverCientifico.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        btnMoverCientifico.setText("Mover");
+        btnMoverCientifico.setMaximumSize(new java.awt.Dimension(85, 23));
+        btnMoverCientifico.setMinimumSize(new java.awt.Dimension(85, 23));
+        btnMoverCientifico.setPreferredSize(new java.awt.Dimension(100, 21));
+
+        btnRecolectarCientifico.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        btnRecolectarCientifico.setText("Remedio");
+
+        btnInventarioCientifico.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        btnInventarioCientifico.setText("Inventario");
+        btnInventarioCientifico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInventarioCientificoActionPerformed(evt);
+            }
+        });
+
+        lblXCientifico.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        lblXCientifico.setText("x:");
+
+        lblYCientifico.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        lblYCientifico.setText("y:");
+
+        lblVidaCientifico.setBackground(new java.awt.Color(102, 255, 102));
+        lblVidaCientifico.setForeground(new java.awt.Color(0, 0, 0));
+        lblVidaCientifico.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblVidaCientifico.setText("100");
+        lblVidaCientifico.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        lblVidaCientifico.setOpaque(true);
+
+        lblEnergiaCientifico.setBackground(new java.awt.Color(51, 153, 255));
+        lblEnergiaCientifico.setForeground(new java.awt.Color(0, 0, 0));
+        lblEnergiaCientifico.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblEnergiaCientifico.setText("100");
+        lblEnergiaCientifico.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        lblEnergiaCientifico.setOpaque(true);
+
+        javax.swing.GroupLayout pnlControlesCientificoLayout = new javax.swing.GroupLayout(pnlControlesCientifico);
+        pnlControlesCientifico.setLayout(pnlControlesCientificoLayout);
+        pnlControlesCientificoLayout.setHorizontalGroup(
+            pnlControlesCientificoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlControlesCientificoLayout.createSequentialGroup()
+                .addGroup(pnlControlesCientificoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlControlesCientificoLayout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addComponent(lblCientificoIcon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblCientificoNombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(pnlControlesCientificoLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(pnlControlesCientificoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(pnlControlesCientificoLayout.createSequentialGroup()
+                                .addComponent(lblXCientifico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txfXCientifico, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(pnlControlesCientificoLayout.createSequentialGroup()
+                                .addComponent(lblYCientifico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txfYCientifico, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                        .addGroup(pnlControlesCientificoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnInventarioCientifico, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnMoverCientifico, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGap(34, 34, 34))
+            .addGroup(pnlControlesCientificoLayout.createSequentialGroup()
+                .addGroup(pnlControlesCientificoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlControlesCientificoLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(lblVidaCientifico, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblEnergiaCientifico, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlControlesCientificoLayout.createSequentialGroup()
+                        .addGap(77, 77, 77)
+                        .addComponent(btnRecolectarCientifico)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        pnlControlesCientificoLayout.setVerticalGroup(
+            pnlControlesCientificoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlControlesCientificoLayout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addGroup(pnlControlesCientificoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lblCientificoIcon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblCientificoNombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlControlesCientificoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblVidaCientifico)
+                    .addComponent(lblEnergiaCientifico))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                .addGroup(pnlControlesCientificoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlControlesCientificoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txfXCientifico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnMoverCientifico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblXCientifico, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
+                .addGroup(pnlControlesCientificoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(pnlControlesCientificoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txfYCientifico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnInventarioCientifico))
+                    .addComponent(lblYCientifico, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(btnRecolectarCientifico)
+                .addGap(30, 30, 30))
+        );
+
+        pnlControlesCurandero.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        lblCuranderoIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblCuranderoIcon.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        lblCuranderoIcon.setMaximumSize(new java.awt.Dimension(32, 32));
+        lblCuranderoIcon.setMinimumSize(new java.awt.Dimension(32, 32));
+        lblCuranderoIcon.setPreferredSize(new java.awt.Dimension(32, 32));
+        lblCuranderoIcon.setIcon(new ImageIcon("C:\\Users\\Proyecto Diseño\\Desktop\\imagenesIslandSurvivors\\Curandero.png"));
+
+        lblCuranderoNombre.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        lblCuranderoNombre.setFont(new java.awt.Font("Courier New", 0, 18)); // NOI18N
+        lblCuranderoNombre.setText("Constructor");
+
+        txfXCurandero.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+
+        txfYCurandero.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+
+        btnMoverCurandero.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        btnMoverCurandero.setText("Mover");
+        btnMoverCurandero.setMaximumSize(new java.awt.Dimension(100, 21));
+        btnMoverCurandero.setMinimumSize(new java.awt.Dimension(100, 21));
+        btnMoverCurandero.setPreferredSize(new java.awt.Dimension(100, 21));
+
+        btnCurarCurandero.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        btnCurarCurandero.setText("Curar");
+
+        btnRemedioCurandero.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        btnRemedioCurandero.setText("Remedio");
+        btnRemedioCurandero.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRemedioCuranderoActionPerformed(evt);
+            }
+        });
+
+        lblXCurandero.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        lblXCurandero.setText("x:");
+
+        lblYCurandero.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        lblYCurandero.setText("y:");
+
+        btnInventarioCurandero.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        btnInventarioCurandero.setText("Inventario");
+        btnInventarioCurandero.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInventarioCuranderoActionPerformed(evt);
+            }
+        });
+
+        lblVidaCurandero.setBackground(new java.awt.Color(102, 255, 102));
+        lblVidaCurandero.setForeground(new java.awt.Color(0, 0, 0));
+        lblVidaCurandero.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblVidaCurandero.setText("100");
+        lblVidaCurandero.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        lblVidaCurandero.setOpaque(true);
+
+        lblEnergiaCurandero.setBackground(new java.awt.Color(51, 153, 255));
+        lblEnergiaCurandero.setForeground(new java.awt.Color(0, 0, 0));
+        lblEnergiaCurandero.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblEnergiaCurandero.setText("100");
+        lblEnergiaCurandero.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        lblEnergiaCurandero.setOpaque(true);
+
+        javax.swing.GroupLayout pnlControlesCuranderoLayout = new javax.swing.GroupLayout(pnlControlesCurandero);
+        pnlControlesCurandero.setLayout(pnlControlesCuranderoLayout);
+        pnlControlesCuranderoLayout.setHorizontalGroup(
+            pnlControlesCuranderoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlControlesCuranderoLayout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addComponent(lblCuranderoIcon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblCuranderoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(pnlControlesCuranderoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlControlesCuranderoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlControlesCuranderoLayout.createSequentialGroup()
+                        .addComponent(lblVidaCurandero, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblEnergiaCurandero, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(pnlControlesCuranderoLayout.createSequentialGroup()
+                        .addGroup(pnlControlesCuranderoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlControlesCuranderoLayout.createSequentialGroup()
+                                .addGroup(pnlControlesCuranderoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(pnlControlesCuranderoLayout.createSequentialGroup()
+                                        .addComponent(lblXCurandero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txfXCurandero, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(pnlControlesCuranderoLayout.createSequentialGroup()
+                                        .addComponent(lblYCurandero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(txfYCurandero, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(0, 6, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlControlesCuranderoLayout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(btnCurarCurandero, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(pnlControlesCuranderoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnRemedioCurandero, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnMoverCurandero, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnInventarioCurandero, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(34, 34, 34))))
+        );
+        pnlControlesCuranderoLayout.setVerticalGroup(
+            pnlControlesCuranderoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlControlesCuranderoLayout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addGroup(pnlControlesCuranderoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lblCuranderoIcon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblCuranderoNombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlControlesCuranderoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblVidaCurandero)
+                    .addComponent(lblEnergiaCurandero))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                .addGroup(pnlControlesCuranderoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlControlesCuranderoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txfXCurandero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnMoverCurandero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblXCurandero, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
+                .addGroup(pnlControlesCuranderoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(pnlControlesCuranderoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txfYCurandero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnInventarioCurandero))
+                    .addComponent(lblYCurandero, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
+                .addGroup(pnlControlesCuranderoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnCurarCurandero)
+                    .addComponent(btnRemedioCurandero))
+                .addGap(22, 22, 22))
+        );
+
+        lblCuranderoNombre.getAccessibleContext().setAccessibleName("Curandero");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -82,26 +930,88 @@ private RefrescarMapaThread refrescarMapaThread;
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(pnlCoordsX, javax.swing.GroupLayout.PREFERRED_SIZE, 832, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap(639, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 832, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(141, 388, Short.MAX_VALUE))))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(pnlControlesExplorador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(pnlControlesCazador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(pnlControlesRecolector, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(pnlControlesConstructor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(pnlControlesCurandero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(pnlControlesCientifico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(pnlCoordsY, javax.swing.GroupLayout.PREFERRED_SIZE, 832, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(pnlCoordsY, javax.swing.GroupLayout.PREFERRED_SIZE, 832, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addComponent(pnlCoordsX, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 832, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 832, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(pnlControlesExplorador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(pnlControlesCazador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(pnlControlesRecolector, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(pnlControlesConstructor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(pnlControlesCientifico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(pnlControlesCurandero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(0, 38, Short.MAX_VALUE)))
                 .addGap(25, 25, 25))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnInventarioCazadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInventarioCazadorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnInventarioCazadorActionPerformed
+
+    private void btnInventarioExploradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInventarioExploradorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnInventarioExploradorActionPerformed
+
+    private void btnInventarioRecolectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInventarioRecolectorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnInventarioRecolectorActionPerformed
+
+    private void btnRepararConstructorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRepararConstructorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnRepararConstructorActionPerformed
+
+    private void btnInventarioConstructorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInventarioConstructorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnInventarioConstructorActionPerformed
+
+    private void btnInventarioCientificoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInventarioCientificoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnInventarioCientificoActionPerformed
+
+    private void btnRemedioCuranderoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemedioCuranderoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnRemedioCuranderoActionPerformed
+
+    private void btnInventarioCuranderoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInventarioCuranderoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnInventarioCuranderoActionPerformed
 
 	/**
 	 * @param args the command line arguments
@@ -251,9 +1161,85 @@ private RefrescarMapaThread refrescarMapaThread;
 	}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCazarCazador;
+    private javax.swing.JButton btnConstruirConstructor;
+    private javax.swing.JButton btnCurarCurandero;
+    private javax.swing.JButton btnDefenderCazador;
+    private javax.swing.JButton btnExplorarExplorador;
+    private javax.swing.JButton btnInventarioCazador;
+    private javax.swing.JButton btnInventarioCientifico;
+    private javax.swing.JButton btnInventarioConstructor;
+    private javax.swing.JButton btnInventarioCurandero;
+    private javax.swing.JButton btnInventarioExplorador;
+    private javax.swing.JButton btnInventarioRecolector;
+    private javax.swing.JButton btnMoverCazador;
+    private javax.swing.JButton btnMoverCientifico;
+    private javax.swing.JButton btnMoverConstructor;
+    private javax.swing.JButton btnMoverCurandero;
+    private javax.swing.JButton btnMoverExplorador;
+    private javax.swing.JButton btnMoverRecolector;
+    private javax.swing.JButton btnRecolectarCientifico;
+    private javax.swing.JButton btnRecolectarExplorador;
+    private javax.swing.JButton btnRecolectarRecolector;
+    private javax.swing.JButton btnRemedioCurandero;
+    private javax.swing.JButton btnRepararConstructor;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lblCazadorIcon;
+    private java.awt.Label lblCazadorNombre;
+    private javax.swing.JLabel lblCientificoIcon;
+    private java.awt.Label lblCientificoNombre;
+    private javax.swing.JLabel lblConstructorIcon;
+    private java.awt.Label lblConstructorNombre;
+    private javax.swing.JLabel lblCuranderoIcon;
+    private java.awt.Label lblCuranderoNombre;
+    private javax.swing.JLabel lblEnergiaCazador;
+    private javax.swing.JLabel lblEnergiaCientifico;
+    private javax.swing.JLabel lblEnergiaConstructor;
+    private javax.swing.JLabel lblEnergiaCurandero;
+    private javax.swing.JLabel lblEnergiaExplorador;
+    private javax.swing.JLabel lblEnergiaRecolector;
+    private javax.swing.JLabel lblExploradorIcon;
+    private java.awt.Label lblExploradorNombre;
+    private javax.swing.JLabel lblRecolectorIcon;
+    private java.awt.Label lblRecolectorNombre;
+    private javax.swing.JLabel lblVidaCazador;
+    private javax.swing.JLabel lblVidaCientifico;
+    private javax.swing.JLabel lblVidaConstructor;
+    private javax.swing.JLabel lblVidaCurandero;
+    private javax.swing.JLabel lblVidaExplorador;
+    private javax.swing.JLabel lblVidaRecolector;
+    private java.awt.Label lblXCazador;
+    private java.awt.Label lblXCientifico;
+    private java.awt.Label lblXConstructor;
+    private java.awt.Label lblXCurandero;
+    private java.awt.Label lblXExplorador;
+    private java.awt.Label lblXRecolector;
+    private java.awt.Label lblYCazador;
+    private java.awt.Label lblYCientifico;
+    private java.awt.Label lblYConstructor;
+    private java.awt.Label lblYCurandero;
+    private java.awt.Label lblYExplorador;
+    private java.awt.Label lblYRecolector;
+    private javax.swing.JPanel pnlControlesCazador;
+    private javax.swing.JPanel pnlControlesCientifico;
+    private javax.swing.JPanel pnlControlesConstructor;
+    private javax.swing.JPanel pnlControlesCurandero;
+    private javax.swing.JPanel pnlControlesExplorador;
+    private javax.swing.JPanel pnlControlesRecolector;
     private javax.swing.JPanel pnlCoordsX;
     private javax.swing.JPanel pnlCoordsY;
+    private javax.swing.JTextField txfXCazador;
+    private javax.swing.JTextField txfXCientifico;
+    private javax.swing.JTextField txfXConstructor;
+    private javax.swing.JTextField txfXCurandero;
+    private javax.swing.JTextField txfXExplorador;
+    private javax.swing.JTextField txfXRecolector;
+    private javax.swing.JTextField txfYCazador;
+    private javax.swing.JTextField txfYCientifico;
+    private javax.swing.JTextField txfYConstructor;
+    private javax.swing.JTextField txfYCurandero;
+    private javax.swing.JTextField txfYExplorador;
+    private javax.swing.JTextField txfYRecolector;
     // End of variables declaration//GEN-END:variables
 }
 
