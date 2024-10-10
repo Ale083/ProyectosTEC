@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.OverlayLayout;
 
@@ -148,6 +149,7 @@ private RefrescarMapaThread refrescarMapaThread;
         pnlCoordsY.setLayout(new java.awt.GridLayout(26, 1));
 
         pnlControlesCazador.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        pnlControlesCazador.setPreferredSize(new java.awt.Dimension(272, 270));
 
         lblCazadorIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblCazadorIcon.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -169,6 +171,11 @@ private RefrescarMapaThread refrescarMapaThread;
         btnMoverCazador.setMaximumSize(new java.awt.Dimension(100, 21));
         btnMoverCazador.setMinimumSize(new java.awt.Dimension(100, 21));
         btnMoverCazador.setPreferredSize(new java.awt.Dimension(100, 21));
+        btnMoverCazador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMoverCazadorActionPerformed(evt);
+            }
+        });
 
         btnDefenderCazador.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
         btnDefenderCazador.setText("Defender");
@@ -254,7 +261,7 @@ private RefrescarMapaThread refrescarMapaThread;
                 .addGroup(pnlControlesCazadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(lblCazadorIcon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblCazadorNombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
                 .addGroup(pnlControlesCazadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblVidaCazador)
                     .addComponent(lblEnergiaCazador))
@@ -278,6 +285,7 @@ private RefrescarMapaThread refrescarMapaThread;
         );
 
         pnlControlesExplorador.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        pnlControlesExplorador.setPreferredSize(new java.awt.Dimension(272, 270));
 
         lblExploradorIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblExploradorIcon.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -299,15 +307,30 @@ private RefrescarMapaThread refrescarMapaThread;
         btnMoverExplorador.setMaximumSize(new java.awt.Dimension(100, 21));
         btnMoverExplorador.setMinimumSize(new java.awt.Dimension(100, 21));
         btnMoverExplorador.setPreferredSize(new java.awt.Dimension(100, 21));
+        btnMoverExplorador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMoverExploradorActionPerformed(evt);
+            }
+        });
 
         btnExplorarExplorador.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
         btnExplorarExplorador.setText("Explorar");
         btnExplorarExplorador.setMaximumSize(new java.awt.Dimension(100, 21));
         btnExplorarExplorador.setMinimumSize(new java.awt.Dimension(100, 21));
         btnExplorarExplorador.setPreferredSize(new java.awt.Dimension(100, 21));
+        btnExplorarExplorador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExplorarExploradorActionPerformed(evt);
+            }
+        });
 
         btnRecolectarExplorador.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
         btnRecolectarExplorador.setText("Recolectar");
+        btnRecolectarExplorador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRecolectarExploradorActionPerformed(evt);
+            }
+        });
 
         btnInventarioExplorador.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
         btnInventarioExplorador.setText("Inventario");
@@ -390,7 +413,7 @@ private RefrescarMapaThread refrescarMapaThread;
                 .addGroup(pnlControlesExploradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblVidaExplorador)
                     .addComponent(lblEnergiaExplorador))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
                 .addGroup(pnlControlesExploradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlControlesExploradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txfXExplorador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -431,6 +454,11 @@ private RefrescarMapaThread refrescarMapaThread;
         btnMoverRecolector.setMaximumSize(new java.awt.Dimension(85, 23));
         btnMoverRecolector.setMinimumSize(new java.awt.Dimension(85, 23));
         btnMoverRecolector.setPreferredSize(new java.awt.Dimension(100, 21));
+        btnMoverRecolector.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMoverRecolectorActionPerformed(evt);
+            }
+        });
 
         btnRecolectarRecolector.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
         btnRecolectarRecolector.setText("Recolectar");
@@ -531,6 +559,7 @@ private RefrescarMapaThread refrescarMapaThread;
         );
 
         pnlControlesConstructor.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        pnlControlesConstructor.setPreferredSize(new java.awt.Dimension(272, 270));
 
         lblConstructorIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblConstructorIcon.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -552,6 +581,11 @@ private RefrescarMapaThread refrescarMapaThread;
         btnMoverConstructor.setMaximumSize(new java.awt.Dimension(100, 21));
         btnMoverConstructor.setMinimumSize(new java.awt.Dimension(100, 21));
         btnMoverConstructor.setPreferredSize(new java.awt.Dimension(100, 21));
+        btnMoverConstructor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMoverConstructorActionPerformed(evt);
+            }
+        });
 
         btnConstruirConstructor.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
         btnConstruirConstructor.setText("Construir");
@@ -644,7 +678,7 @@ private RefrescarMapaThread refrescarMapaThread;
                 .addGroup(pnlControlesConstructorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblVidaConstructor)
                     .addComponent(lblEnergiaConstructor))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
                 .addGroup(pnlControlesConstructorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlControlesConstructorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txfXConstructor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -685,6 +719,11 @@ private RefrescarMapaThread refrescarMapaThread;
         btnMoverCientifico.setMaximumSize(new java.awt.Dimension(85, 23));
         btnMoverCientifico.setMinimumSize(new java.awt.Dimension(85, 23));
         btnMoverCientifico.setPreferredSize(new java.awt.Dimension(100, 21));
+        btnMoverCientifico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMoverCientificoActionPerformed(evt);
+            }
+        });
 
         btnRecolectarCientifico.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
         btnRecolectarCientifico.setText("Remedio");
@@ -785,6 +824,7 @@ private RefrescarMapaThread refrescarMapaThread;
         );
 
         pnlControlesCurandero.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        pnlControlesCurandero.setPreferredSize(new java.awt.Dimension(272, 270));
 
         lblCuranderoIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblCuranderoIcon.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -806,6 +846,11 @@ private RefrescarMapaThread refrescarMapaThread;
         btnMoverCurandero.setMaximumSize(new java.awt.Dimension(100, 21));
         btnMoverCurandero.setMinimumSize(new java.awt.Dimension(100, 21));
         btnMoverCurandero.setPreferredSize(new java.awt.Dimension(100, 21));
+        btnMoverCurandero.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMoverCuranderoActionPerformed(evt);
+            }
+        });
 
         btnCurarCurandero.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
         btnCurarCurandero.setText("Curar");
@@ -898,7 +943,7 @@ private RefrescarMapaThread refrescarMapaThread;
                 .addGroup(pnlControlesCuranderoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblVidaCurandero)
                     .addComponent(lblEnergiaCurandero))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
                 .addGroup(pnlControlesCuranderoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlControlesCuranderoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txfXCurandero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -952,30 +997,25 @@ private RefrescarMapaThread refrescarMapaThread;
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addContainerGap(7, Short.MAX_VALUE)
+                .addComponent(pnlCoordsX, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 832, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(pnlCoordsY, javax.swing.GroupLayout.PREFERRED_SIZE, 832, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addComponent(pnlCoordsX, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 832, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(pnlControlesExplorador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(pnlControlesCazador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(pnlControlesRecolector, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(pnlControlesConstructor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(pnlControlesCientifico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(pnlControlesCurandero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 38, Short.MAX_VALUE)))
-                .addGap(25, 25, 25))
+                            .addComponent(pnlControlesExplorador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(pnlControlesCazador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(pnlControlesRecolector, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(pnlControlesConstructor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(pnlControlesCientifico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(pnlControlesCurandero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(pnlCoordsY, javax.swing.GroupLayout.PREFERRED_SIZE, 832, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(63, Short.MAX_VALUE))
         );
 
         pack();
@@ -1013,6 +1053,38 @@ private RefrescarMapaThread refrescarMapaThread;
         // TODO add your handling code here:
     }//GEN-LAST:event_btnInventarioCuranderoActionPerformed
 
+    private void btnMoverExploradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoverExploradorActionPerformed
+        cambiarDestinoPersonaje(personajes.get(0),txfXExplorador.getText().trim(),txfYExplorador.getText().trim());
+    }//GEN-LAST:event_btnMoverExploradorActionPerformed
+
+    private void btnMoverCazadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoverCazadorActionPerformed
+        cambiarDestinoPersonaje(personajes.get(1),txfXCazador.getText().trim(),txfYCazador.getText().trim());
+    }//GEN-LAST:event_btnMoverCazadorActionPerformed
+
+    private void btnMoverRecolectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoverRecolectorActionPerformed
+        cambiarDestinoPersonaje(personajes.get(2),txfXRecolector.getText().trim(),txfYRecolector.getText().trim());
+    }//GEN-LAST:event_btnMoverRecolectorActionPerformed
+
+    private void btnMoverConstructorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoverConstructorActionPerformed
+        cambiarDestinoPersonaje(personajes.get(3),txfXConstructor.getText().trim(),txfYConstructor.getText().trim());
+    }//GEN-LAST:event_btnMoverConstructorActionPerformed
+
+    private void btnMoverCuranderoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoverCuranderoActionPerformed
+        cambiarDestinoPersonaje(personajes.get(4),txfXCurandero.getText().trim(),txfYCurandero.getText().trim());
+    }//GEN-LAST:event_btnMoverCuranderoActionPerformed
+
+    private void btnMoverCientificoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoverCientificoActionPerformed
+        cambiarDestinoPersonaje(personajes.get(5),txfXCientifico.getText().trim(),txfYCientifico.getText().trim());
+    }//GEN-LAST:event_btnMoverCientificoActionPerformed
+
+    private void btnExplorarExploradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExplorarExploradorActionPerformed
+		((Explorador)personajes.get(0)).explorar();
+    }//GEN-LAST:event_btnExplorarExploradorActionPerformed
+
+    private void btnRecolectarExploradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecolectarExploradorActionPerformed
+        ((Explorador)personajes.get(0)).recolectar();
+    }//GEN-LAST:event_btnRecolectarExploradorActionPerformed
+
 	/**
 	 * @param args the command line arguments
 	 */
@@ -1029,25 +1101,25 @@ private RefrescarMapaThread refrescarMapaThread;
 			for (int columna = centroColumna - 2; columna <= centroColumna + 1; columna++) {
 				switch (counter) {
 					case 0:
-						añadirPersonaje(fila, columna, new Explorador(columna, fila));
+						añadirPersonaje(fila, columna, new Explorador(columna, fila, mapa));
 						break;
 					case 2:
-						añadirPersonaje(fila, columna, new Cazador(columna, fila));
+						añadirPersonaje(fila, columna, new Cazador(columna, fila, mapa));
 						break;
 					case 5:
-						añadirPersonaje(fila, columna, new Recolector(columna, fila));
+						añadirPersonaje(fila, columna, new Recolector(columna, fila, mapa));
 						break;
 					case 7:
-						añadirPersonaje(fila, columna, new Constructor(columna, fila));
+						añadirPersonaje(fila, columna, new Constructor(columna, fila, mapa));
 						break;
 					case 10:
-						añadirPersonaje(fila, columna, new Curandero(columna, fila));
+						añadirPersonaje(fila, columna, new Curandero(columna, fila, mapa));
 						break;
 					case 12:
-						añadirPersonaje(fila, columna, new Cientifico(columna, fila));
+						añadirPersonaje(fila, columna, new Cientifico(columna, fila, mapa));
 						break;
 					case 14:  // TEST GRAFICO RECURSO TODO: QUITARLO.
-						mapa.getCasilla(fila, columna).añadirRecurso(new Recurso("madera"));
+						mapa.getCasilla(fila, columna).setRecurso(new Recurso("Carne"));
 						break;
 				}
 				counter++;
@@ -1092,24 +1164,15 @@ private RefrescarMapaThread refrescarMapaThread;
                 panelCasilla.addMouseListener(new java.awt.event.MouseAdapter() {
                     @Override
                     public void mouseClicked(java.awt.event.MouseEvent evt) {
-                        int x = evt.getX();
-                        int y = evt.getY();
+                        
 						Casilla casilla = mapa.getCasilla(f, c);
-						casilla.descubrir();
-						casilla.setRefugio(new Refugio());
-						casilla.añadirPersonaje(new Curandero(c,f));
-						System.out.println(casilla.getPersonajes().getFirst().getxActual());
+//						casilla.descubrir();
+//						casilla.setRefugio(new Refugio());
+//						casilla.añadirPersonaje(new Curandero(c,f));
                         System.out.println("Casilla: (" + f + ", " + c + ")");
-                        System.out.println("Coordenadas dentro del JPanel: (" + x + ", " + y + ")");
-						int width = panelCasilla.getWidth(); 
-						int height = panelCasilla.getHeight();
-						System.out.println("Dimensiones de la casilla: " + width + "x" + height + " píxeles");
-						Component[] componentes = panelCasilla.getComponents();
-						for (Component componente : componentes) {
-							System.out.println(componente);
-							System.out.println("");
-						}
-						personajes.getLast().setDestino(c, f);
+						
+						//ya desde aqui las que se quedan
+						cambiarTextFields(Integer.toString(c),Integer.toString(f));
 					}
                 });
 
@@ -1158,6 +1221,40 @@ private RefrescarMapaThread refrescarMapaThread;
 		mapaTablero.getCasilla(fila, columna).añadirPersonaje(personaje);
 		personajes.add(personaje);
 		threads.add(new PersonajeThread(mapaTablero,personaje));
+	}
+	
+	private boolean esSoloNumeros(String str) {
+		return str.matches("\\d+");  
+	}
+	
+	private void cambiarDestinoPersonaje(Personaje personaje, String strX, String strY){
+		if(!esSoloNumeros(strX) || !esSoloNumeros(strY)){ //si alguno no es numero
+			JOptionPane.showMessageDialog(this,"Error, solo pueden haber números en x,y","Error", JOptionPane.ERROR_MESSAGE);
+			return;
+		}
+		int x = Integer.parseInt(strX);
+		int y = Integer.parseInt(strY);
+		if(x<0 || x>25 || y<0 || y>25){
+			JOptionPane.showMessageDialog(this,"Error, uno o más números se sale del rango","Error", JOptionPane.ERROR_MESSAGE);
+			return;
+		}
+		personaje.setDestino(x, y);
+	}
+	
+	private void cambiarTextFields(String x, String y){
+		txfXExplorador.setText(x);
+		txfYExplorador.setText(y);
+		txfXCazador.setText(x);
+		txfYCazador.setText(y);
+		txfXRecolector.setText(x);
+		txfYRecolector.setText(y);
+		txfXConstructor.setText(x);
+		txfYConstructor.setText(y);
+		txfXCurandero.setText(x);
+		txfYCurandero.setText(y);
+		txfXCientifico.setText(x);
+		txfYCientifico.setText(y);
+
 	}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

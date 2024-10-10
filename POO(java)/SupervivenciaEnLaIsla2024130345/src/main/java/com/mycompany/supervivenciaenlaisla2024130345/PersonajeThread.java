@@ -58,8 +58,11 @@ public class PersonajeThread extends Thread{
 			} else {
 				try {
 					sleep(1000);
-						
-					} catch (InterruptedException ex) {}	
+					Refugio refugio = mapa.conseguirCasillaConPersonaje(refPersonaje).getRefugio();
+					if(refugio != null){
+						refPersonaje.setRefugio(refugio);
+					}
+				} catch (InterruptedException ex) {}	
 			}
 		}
 	}

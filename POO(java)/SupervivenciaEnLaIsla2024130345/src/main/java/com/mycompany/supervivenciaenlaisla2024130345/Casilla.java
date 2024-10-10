@@ -14,7 +14,7 @@ public class Casilla {
     private boolean descubierta;
     private Refugio refugio;
     private ArrayList<Personaje> personajes;
-    private ArrayList<Recurso> recursos;
+	private Recurso recurso;
     private Animal animal;
 //    private Evento eventoActual; 
 
@@ -22,9 +22,8 @@ public class Casilla {
         this.descubierta = false;
 		this.refugio = null;
 		this.personajes = new ArrayList<Personaje>();
-		this.recursos = new ArrayList<Recurso>();
+		this.recurso = null;
 		this.animal = null;
-		//TODO: Cuando se genera la casilla, ponerle un 20% chance maybe de que genere materiales, luego otro rng para ver cuantos y asi.
     }
 
     public boolean isDescubierta() {
@@ -34,6 +33,10 @@ public class Casilla {
     public void descubrir() {
         this.descubierta = true;
     }
+	public void descubrirSalvaje(){
+		this.descubierta = true;
+		//Aqui poner para generar materiales, animal, etc, cuando se descubre.
+	}
 
 	public Refugio getRefugio() {
 		return refugio;
@@ -51,13 +54,13 @@ public class Casilla {
 		personajes.add(personaje);
 	}
 
-	public ArrayList<Recurso> getRecursos() {
-		return recursos;
+	public Recurso getRecurso() {
+		return recurso;
 	}
 
-	public void añadirRecurso(Recurso recurso) {
-		recursos.add(recurso);
-	}
+	public void setRecurso(Recurso recurso) {
+		this.recurso = recurso;
+	} 
 
 	public Animal getAnimal() {
 		return animal;

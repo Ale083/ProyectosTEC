@@ -14,6 +14,7 @@ public class Recurso {
 
 	public Recurso(String tipo) {
 		this.tipo = tipo;
+		this.cantidad = 0;
 	}
 
 	public Recurso(String tipo, int cantidad) {
@@ -26,7 +27,7 @@ public class Recurso {
 		
 	}
 	
-	void agregarRecurso(int cantidadNueva){
+	void agregarRecurso(int cantidadAgregada){
 		
 	}
 

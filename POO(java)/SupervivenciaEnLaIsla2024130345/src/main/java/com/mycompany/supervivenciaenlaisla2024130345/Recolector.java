@@ -12,8 +12,8 @@ public class Recolector extends Personaje{
 	private int habilidadRecoleccion;
 	
 	
-	public Recolector(int x, int y) {
-		super("Recolector", new ImageIcon("C:\\Users\\Proyecto Diseño\\Desktop\\imagenesIslandSurvivors\\Recolector.png"),x,y);
+	public Recolector(int x, int y, Mapa mapa) {
+		super("Recolector", new ImageIcon("C:\\Users\\Proyecto Diseño\\Desktop\\imagenesIslandSurvivors\\Recolector.png"),x,y, mapa);
 	}
 
 	@Override

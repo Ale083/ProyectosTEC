@@ -19,8 +19,9 @@ public class RefrescarMapaThread extends Thread {
     private JPanel jPanel1;
 	private JLabel[][] labelsImagenes;  
     private JLabel[][] labelsTexto;
-	private ImageIcon refugioIcon;
-	private ImageIcon materialIcon;
+	private final ImageIcon refugioIcon;
+	private final ImageIcon materialIcon;
+	private final ImageIcon carneIcon;
 
     public RefrescarMapaThread(Mapa mapa, JPanel[][] panelesMapa, JPanel jPanel1, JLabel[][] labelsImagenes, JLabel[][] labelsTexto) {
         this.mapa = mapa;
@@ -30,6 +31,7 @@ public class RefrescarMapaThread extends Thread {
         this.labelsTexto = labelsTexto;
 		this.refugioIcon = new ImageIcon("C:\\Users\\Proyecto Diseño\\Desktop\\imagenesIslandSurvivors\\Refugio.png");
 		this.materialIcon = new ImageIcon("C:\\Users\\Proyecto Diseño\\Desktop\\imagenesIslandSurvivors\\Recurso.png");
+		this.carneIcon = new ImageIcon("C:\\Users\\Proyecto Diseño\\Desktop\\imagenesIslandSurvivors\\Carne.png");
     }
 
     @Override
@@ -72,9 +74,9 @@ public class RefrescarMapaThread extends Thread {
 						labelImagen.setIcon(casilla.getAnimal().getAnimalIcon());
 					} else if(!casilla.getPersonajes().isEmpty()){
 						labelImagen.setIcon(casilla.getPersonajes().get(0).getPersonajeIcon());
-					} else if(!casilla.getRecursos().isEmpty()){
-						if(casilla.getRecursos().get(0).getTipo() == "Carne"){
-							labelImagen.setIcon(null);//TODO
+					} else if(casilla.getRecurso() != null){
+						if(casilla.getRecurso().getTipo() == "Carne"){
+							labelImagen.setIcon(carneIcon);//TODO
 						} else{
 							labelImagen.setIcon(materialIcon);
 						}

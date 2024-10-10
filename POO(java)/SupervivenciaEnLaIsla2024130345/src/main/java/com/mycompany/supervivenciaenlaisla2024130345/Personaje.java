@@ -15,25 +15,31 @@ public abstract class Personaje {
 	private String nombre;
 	private int nivelEnergia;
 	private int nivelSalud;
-	private ArrayList<Recurso> inventario;
+	private Recurso[] inventario = new Recurso[4];
 	private Refugio refugioAsignado;
 	private ImageIcon personajeIcon;
 	private int xActual;
 	private int yActual;
 	private int xDestino;
 	private int yDestino;
+	private Mapa mapa;
 
-	public Personaje(String nombre, ImageIcon personajeIcon,int x, int y) {
+	public Personaje(String nombre, ImageIcon personajeIcon,int x, int y, Mapa mapa) {
 		this.nombre = nombre;
 		nivelEnergia = 100;
 		nivelSalud = 100;
-		inventario = new ArrayList<Recurso>();
 		refugioAsignado = null;
 		this.personajeIcon = personajeIcon;
 		xDestino = -1;
 		yDestino = -1;
 		xActual = x;
 		yActual = y;
+		this.mapa = mapa;
+		inventario[0] = new Recurso("Carne");
+		inventario[1] = new Recurso("Frutas");
+		inventario[2] = new Recurso("Plantas");
+		inventario[3] = new Recurso("Madera");
+		
 	}
 	
 	
@@ -94,8 +100,17 @@ public abstract class Personaje {
 		return nivelSalud;
 	}
 
-	public ArrayList<Recurso> getInventario() {
+	public Recurso[] getInventario(){
 		return inventario;
+	}
+	
+	public void añadirAInventario(Recurso recurso){
+		for (int i = 0; i < 3; i++) {
+			if(inventario[i].getTipo().equals(recurso.getTipo())){ 
+				inventario[i].agregarRecurso(recurso.getCantidad());
+				break; //Si ya lo encontró, entonces ya no hace falta que revise otros tipos.
+			}
+		}
 	}
 
 	public Refugio getRefugioAsignado() {
@@ -144,9 +159,17 @@ public abstract class Personaje {
 		this.yActual = yActual;
 	}
 	
+	public Casilla getCasillaActual(){
+		return mapa.getCasilla(yActual, xActual);
+	}
+	
 	public void setDestino(int x, int y){
 		this.xDestino = x;
 		this.yDestino = y;
+	}
+
+	public Mapa getMapa() {
+		return mapa;
 	}
 	
 	

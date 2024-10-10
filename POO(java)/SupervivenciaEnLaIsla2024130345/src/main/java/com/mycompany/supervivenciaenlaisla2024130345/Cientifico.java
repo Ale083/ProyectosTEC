@@ -11,8 +11,8 @@ import javax.swing.ImageIcon;
 public class Cientifico extends Personaje{
 	
 	
-	public Cientifico(int x, int y) {
-		super("Cientifico", new ImageIcon("C:\\Users\\Proyecto Diseño\\Desktop\\imagenesIslandSurvivors\\Cientifico.png"),x,y);
+	public Cientifico(int x, int y, Mapa mapa) {
+		super("Cientifico", new ImageIcon("C:\\Users\\Proyecto Diseño\\Desktop\\imagenesIslandSurvivors\\Cientifico.png"),x,y, mapa);
 	}
 
 	@Override

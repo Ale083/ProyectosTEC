@@ -44,6 +44,10 @@ public class Mapa {
 		personaje.setRefugio(mapa[personaje.getyActual()][personaje.getxActual()].getRefugio());
 	}
 	
+	public Casilla conseguirCasillaConPersonaje(Personaje personaje){
+		return getCasilla(personaje.getyActual(),personaje.getxActual());
+	}
+	
 	
 }
 
