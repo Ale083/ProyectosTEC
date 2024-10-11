@@ -29,23 +29,29 @@ private	ArrayList<Personaje> personajes;
 private ArrayList<PersonajeThread> threads;
 private Mapa mapaTablero;
 private RefrescarMapaThread refrescarMapaThread;
-//private JLabel[][] labelsPersonajesVidaEnergia = {{2,3},{3,4}};
+private ArrayList<Inventario> inventariosGUI;
+private JLabel[][] labelsPersonajes;
+
 	/**
 	 * Creates new form Juego
 	 */
 	public Juego() {
 		initComponents();
+		this.setTitle("Juego");
 		personajes = new ArrayList<Personaje>();
 		threads = new ArrayList<PersonajeThread>();
+		inventariosGUI = new ArrayList<Inventario>();
 		mapaTablero = new Mapa(26,26);
 		inicializarMapaGraficamente(mapaTablero);
-		refrescarMapaThread = new RefrescarMapaThread(mapaTablero,panelesMapa,jPanel1,labelsImagenes,labelsTexto);
+		labelsPersonajes = new JLabel[6][2];
+		asignarLabelsPersonajes();
+		refrescarMapaThread = new RefrescarMapaThread(mapaTablero,panelesMapa,jPanel1,labelsImagenes,labelsTexto,labelsPersonajes, personajes);
 		refrescarMapaThread.start();
 		inicializarCoordenadasX();
 		inicializarCoordenadasY();
-		for (PersonajeThread thread : threads) {
-			thread.start();
-		}
+		iniciarThreadsPersonajes();
+		iniciarInventariosGUI();
+		
 	}
 
 	/**
@@ -1026,7 +1032,7 @@ private RefrescarMapaThread refrescarMapaThread;
     }//GEN-LAST:event_btnInventarioCazadorActionPerformed
 
     private void btnInventarioExploradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInventarioExploradorActionPerformed
-        // TODO add your handling code here:
+        inventariosGUI.get(0).setVisible(true);
     }//GEN-LAST:event_btnInventarioExploradorActionPerformed
 
     private void btnInventarioRecolectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInventarioRecolectorActionPerformed
@@ -1255,6 +1261,33 @@ private RefrescarMapaThread refrescarMapaThread;
 		txfXCientifico.setText(x);
 		txfYCientifico.setText(y);
 
+	}
+	
+	private void iniciarThreadsPersonajes(){
+		for (PersonajeThread thread : threads) {
+			thread.start();
+		}
+	}
+	
+	private void iniciarInventariosGUI(){
+		for (Personaje personaje : personajes) {
+			inventariosGUI.add(new Inventario(personaje,personajes));
+		}
+	}
+	
+	private void asignarLabelsPersonajes(){
+		labelsPersonajes[0][0] = lblVidaExplorador;
+		labelsPersonajes[0][1] = lblEnergiaExplorador;
+		labelsPersonajes[1][0] = lblVidaCazador;
+		labelsPersonajes[1][1] = lblEnergiaCazador;
+		labelsPersonajes[2][0] = lblVidaRecolector;
+		labelsPersonajes[2][1] = lblEnergiaRecolector;
+		labelsPersonajes[3][0] = lblVidaConstructor;
+		labelsPersonajes[3][1] = lblEnergiaConstructor;
+		labelsPersonajes[4][0] = lblVidaCurandero;
+		labelsPersonajes[4][1] = lblEnergiaCurandero;
+		labelsPersonajes[5][0] = lblVidaCientifico;
+		labelsPersonajes[5][1] = lblEnergiaCientifico;
 	}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

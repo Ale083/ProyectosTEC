@@ -10,6 +10,7 @@ package com.mycompany.supervivenciaenlaisla2024130345;
  */
 import javax.swing.JPanel;
 import java.awt.Color;
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
@@ -19,19 +20,28 @@ public class RefrescarMapaThread extends Thread {
     private JPanel jPanel1;
 	private JLabel[][] labelsImagenes;  
     private JLabel[][] labelsTexto;
+	private JLabel[][] labelsPersonajes;
+	private	ArrayList<Personaje> personajes;
 	private final ImageIcon refugioIcon;
-	private final ImageIcon materialIcon;
 	private final ImageIcon carneIcon;
+	private final ImageIcon frutasIcon;
+	private final ImageIcon plantasIcon;
+	private final ImageIcon maderaIcon;
+	
 
-    public RefrescarMapaThread(Mapa mapa, JPanel[][] panelesMapa, JPanel jPanel1, JLabel[][] labelsImagenes, JLabel[][] labelsTexto) {
+    public RefrescarMapaThread(Mapa mapa, JPanel[][] panelesMapa, JPanel jPanel1, JLabel[][] labelsImagenes, JLabel[][] labelsTexto, JLabel[][] labelsPersonajes, ArrayList<Personaje> personajes) {
         this.mapa = mapa;
         this.panelesMapa = panelesMapa;
         this.jPanel1 = jPanel1;
 		this.labelsImagenes = labelsImagenes;
         this.labelsTexto = labelsTexto;
+		this.labelsPersonajes = labelsPersonajes;
+		this.personajes = personajes;
 		this.refugioIcon = new ImageIcon("C:\\Users\\Proyecto Diseño\\Desktop\\imagenesIslandSurvivors\\Refugio.png");
-		this.materialIcon = new ImageIcon("C:\\Users\\Proyecto Diseño\\Desktop\\imagenesIslandSurvivors\\Recurso.png");
 		this.carneIcon = new ImageIcon("C:\\Users\\Proyecto Diseño\\Desktop\\imagenesIslandSurvivors\\Carne.png");
+		this.frutasIcon = new ImageIcon("C:\\Users\\Proyecto Diseño\\Desktop\\imagenesIslandSurvivors\\Frutas.png");
+		this.plantasIcon = new ImageIcon("C:\\Users\\Proyecto Diseño\\Desktop\\imagenesIslandSurvivors\\Plantas.png");
+		this.maderaIcon = new ImageIcon("C:\\Users\\Proyecto Diseño\\Desktop\\imagenesIslandSurvivors\\Madera.png");
     }
 
     @Override
@@ -75,13 +85,17 @@ public class RefrescarMapaThread extends Thread {
 					} else if(!casilla.getPersonajes().isEmpty()){
 						labelImagen.setIcon(casilla.getPersonajes().get(0).getPersonajeIcon());
 					} else if(casilla.getRecurso() != null){
-						if(casilla.getRecurso().getTipo() == "Carne"){
-							labelImagen.setIcon(carneIcon);//TODO
-						} else{
-							labelImagen.setIcon(materialIcon);
+						if(casilla.getRecurso().getTipo().equals("Carne")){
+							labelImagen.setIcon(carneIcon);
+						} else if(casilla.getRecurso().getTipo().equals("Frutas")){
+							labelImagen.setIcon(frutasIcon);
+						} else if(casilla.getRecurso().getTipo().equals("Plantas")){
+							labelImagen.setIcon(plantasIcon);
+						} else if(casilla.getRecurso().getTipo().equals("Madera")){
+							labelImagen.setIcon(maderaIcon);
 						}
 					}	
-					}else {
+				}else {
                     panelCasilla.setBackground(Color.gray); //TODO: Podría quitarlo.
                 }
             }
@@ -89,5 +103,15 @@ public class RefrescarMapaThread extends Thread {
         
         jPanel1.revalidate();
         jPanel1.repaint();
+		
+		cambiarVidaYEnergia();
     }
+	
+	private void cambiarVidaYEnergia(){
+		for (int i = 0; i < 6; i++) {
+			labelsPersonajes[i][0].setText(Integer.toString(personajes.get(i).getNivelSalud()));
+			labelsPersonajes[i][1].setText(Integer.toString(personajes.get(i).getNivelEnergia()));
+		}
+	}
+	
 }

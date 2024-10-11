@@ -39,7 +39,6 @@ public abstract class Personaje {
 		inventario[1] = new Recurso("Frutas");
 		inventario[2] = new Recurso("Plantas");
 		inventario[3] = new Recurso("Madera");
-		
 	}
 	
 	
@@ -171,6 +170,7 @@ public abstract class Personaje {
 	public Mapa getMapa() {
 		return mapa;
 	}
+	
 	
 	
 }
