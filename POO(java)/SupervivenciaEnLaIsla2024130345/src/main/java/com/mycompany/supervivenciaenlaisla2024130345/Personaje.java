@@ -44,9 +44,18 @@ public abstract class Personaje {
 	
 	
 	public abstract void accionar();
-	public abstract void comer();
 	public abstract void descansar();
 	
+	public void comer(int posEnInv){
+		if(inventario[posEnInv].getCantidad() > 0){
+			inventario[posEnInv].usarRecurso(1);
+			if (posEnInv == 0){
+				recuperarEnergia(20);
+			} else if(posEnInv == 1){
+				recuperarEnergia(10);
+			}
+		}
+	}
 	public boolean isMoving(){
 		return xDestino != -1 && yDestino != -1;
 	}
@@ -169,6 +178,39 @@ public abstract class Personaje {
 
 	public Mapa getMapa() {
 		return mapa;
+	}
+	
+	public boolean tieneCarne(){
+		if(inventario[0].getCantidad() != 0){
+			return true;
+		}
+		return false;
+	}
+	
+	public boolean tieneFrutas(){
+		if(inventario[1].getCantidad() != 0){
+			return true;
+		}
+		return false;
+	}
+	
+	public boolean tienePlantas(){
+		if(inventario[2].getCantidad() != 0){
+			return true;
+		}
+		return false;
+	}
+	
+	public boolean tieneMadera(){
+		if(inventario[3].getCantidad() != 0){
+			return true;
+		}
+		return false;
+	}
+
+	@Override
+	public String toString() {
+		return nombre;
 	}
 	
 	

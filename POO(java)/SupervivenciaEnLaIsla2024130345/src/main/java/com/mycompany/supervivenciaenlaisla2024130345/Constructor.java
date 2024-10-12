@@ -20,10 +20,6 @@ public class Constructor extends Personaje{
 		
 	}
 
-	@Override
-	public void comer() {
-		
-	}
 
 	@Override
 	public void descansar() {

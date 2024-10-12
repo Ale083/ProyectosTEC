@@ -22,10 +22,10 @@ public class Explorador extends Personaje{
 		if(getNivelEnergia() == 0){
 			return;
 		}
-		reducirEnergia(5);
 		if(getCasillaActual().getRecurso() == null){
 			return;
 		}
+		reducirEnergia(5);
 		añadirAInventario(getCasillaActual().getRecurso());
 		getCasillaActual().setRecurso(null);
 	}
@@ -51,11 +51,6 @@ public class Explorador extends Personaje{
 	                                     
 	@Override
 	public void accionar() {
-		
-	}
-
-	@Override
-	public void comer() {
 		
 	}
 

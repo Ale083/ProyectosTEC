@@ -1028,7 +1028,7 @@ private JLabel[][] labelsPersonajes;
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnInventarioCazadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInventarioCazadorActionPerformed
-        // TODO add your handling code here:
+        inventariosGUI.get(1).setVisible(true);
     }//GEN-LAST:event_btnInventarioCazadorActionPerformed
 
     private void btnInventarioExploradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInventarioExploradorActionPerformed
@@ -1036,7 +1036,7 @@ private JLabel[][] labelsPersonajes;
     }//GEN-LAST:event_btnInventarioExploradorActionPerformed
 
     private void btnInventarioRecolectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInventarioRecolectorActionPerformed
-        // TODO add your handling code here:
+        inventariosGUI.get(2).setVisible(true);
     }//GEN-LAST:event_btnInventarioRecolectorActionPerformed
 
     private void btnRepararConstructorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRepararConstructorActionPerformed
@@ -1044,11 +1044,11 @@ private JLabel[][] labelsPersonajes;
     }//GEN-LAST:event_btnRepararConstructorActionPerformed
 
     private void btnInventarioConstructorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInventarioConstructorActionPerformed
-        // TODO add your handling code here:
+		inventariosGUI.get(3).setVisible(true);
     }//GEN-LAST:event_btnInventarioConstructorActionPerformed
 
     private void btnInventarioCientificoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInventarioCientificoActionPerformed
-        // TODO add your handling code here:
+        inventariosGUI.get(5).setVisible(true);
     }//GEN-LAST:event_btnInventarioCientificoActionPerformed
 
     private void btnRemedioCuranderoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemedioCuranderoActionPerformed
@@ -1056,31 +1056,43 @@ private JLabel[][] labelsPersonajes;
     }//GEN-LAST:event_btnRemedioCuranderoActionPerformed
 
     private void btnInventarioCuranderoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInventarioCuranderoActionPerformed
-        // TODO add your handling code here:
+        inventariosGUI.get(4).setVisible(true);
     }//GEN-LAST:event_btnInventarioCuranderoActionPerformed
 
     private void btnMoverExploradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoverExploradorActionPerformed
-        cambiarDestinoPersonaje(personajes.get(0),txfXExplorador.getText().trim(),txfYExplorador.getText().trim());
+        if(personajes.get(0).getNivelSalud()!=0){
+			cambiarDestinoPersonaje(personajes.get(0),txfXExplorador.getText().trim(),txfYExplorador.getText().trim());
+		}
     }//GEN-LAST:event_btnMoverExploradorActionPerformed
 
     private void btnMoverCazadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoverCazadorActionPerformed
-        cambiarDestinoPersonaje(personajes.get(1),txfXCazador.getText().trim(),txfYCazador.getText().trim());
+        if(personajes.get(1).getNivelSalud()!=0){
+			cambiarDestinoPersonaje(personajes.get(1),txfXCazador.getText().trim(),txfYCazador.getText().trim());
+		}
     }//GEN-LAST:event_btnMoverCazadorActionPerformed
 
     private void btnMoverRecolectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoverRecolectorActionPerformed
-        cambiarDestinoPersonaje(personajes.get(2),txfXRecolector.getText().trim(),txfYRecolector.getText().trim());
+		if(personajes.get(2).getNivelSalud()!=0){
+			cambiarDestinoPersonaje(personajes.get(2),txfXRecolector.getText().trim(),txfYRecolector.getText().trim());
+		}
     }//GEN-LAST:event_btnMoverRecolectorActionPerformed
 
     private void btnMoverConstructorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoverConstructorActionPerformed
-        cambiarDestinoPersonaje(personajes.get(3),txfXConstructor.getText().trim(),txfYConstructor.getText().trim());
+        if(personajes.get(3).getNivelSalud()!=0){
+			cambiarDestinoPersonaje(personajes.get(3),txfXConstructor.getText().trim(),txfYConstructor.getText().trim());
+		}
     }//GEN-LAST:event_btnMoverConstructorActionPerformed
 
     private void btnMoverCuranderoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoverCuranderoActionPerformed
-        cambiarDestinoPersonaje(personajes.get(4),txfXCurandero.getText().trim(),txfYCurandero.getText().trim());
+        if(personajes.get(4).getNivelSalud()!=0){
+			cambiarDestinoPersonaje(personajes.get(4),txfXCurandero.getText().trim(),txfYCurandero.getText().trim());
+		}
     }//GEN-LAST:event_btnMoverCuranderoActionPerformed
 
     private void btnMoverCientificoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoverCientificoActionPerformed
-        cambiarDestinoPersonaje(personajes.get(5),txfXCientifico.getText().trim(),txfYCientifico.getText().trim());
+        if(personajes.get(5).getNivelSalud()!=0){
+			cambiarDestinoPersonaje(personajes.get(5),txfXCientifico.getText().trim(),txfYCientifico.getText().trim());
+		}
     }//GEN-LAST:event_btnMoverCientificoActionPerformed
 
     private void btnExplorarExploradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExplorarExploradorActionPerformed
@@ -1125,7 +1137,7 @@ private JLabel[][] labelsPersonajes;
 						añadirPersonaje(fila, columna, new Cientifico(columna, fila, mapa));
 						break;
 					case 14:  // TEST GRAFICO RECURSO TODO: QUITARLO.
-						mapa.getCasilla(fila, columna).setRecurso(new Recurso("Carne"));
+						mapa.getCasilla(fila, columna).setRecurso(new Recurso("Carne",5));
 						break;
 				}
 				counter++;

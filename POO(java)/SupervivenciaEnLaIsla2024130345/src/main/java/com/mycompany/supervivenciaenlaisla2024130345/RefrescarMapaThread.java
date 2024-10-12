@@ -49,17 +49,15 @@ public class RefrescarMapaThread extends Thread {
         try {
             while (true) {  
                 refrescarMapa();  
+				cambiarVidaYEnergia();
                 Thread.sleep(1000);  
             }
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }
-//	this.descubierta = false;
-//	this.refugio = null;
-//	this.personajes = new ArrayList<Personaje>();
-//	this.recursos = new ArrayList<Recurso>();
-//	this.animal = null;
+
+	
     private void refrescarMapa() {
         for (int fila = 0; fila < mapa.getMapa().length; fila++) {
             for (int columna = 0; columna < mapa.getMapa()[0].length; columna++) {
@@ -97,14 +95,17 @@ public class RefrescarMapaThread extends Thread {
 					}	
 				}else {
                     panelCasilla.setBackground(Color.gray); //TODO: Podría quitarlo.
+					if(!casilla.getPersonajes().isEmpty()){
+						labelImagen.setIcon(casilla.getPersonajes().get(0).getPersonajeIcon());
+					} else{
+						labelImagen.setIcon(null);
+					}
                 }
             }
         }
         
         jPanel1.revalidate();
         jPanel1.repaint();
-		
-		cambiarVidaYEnergia();
     }
 	
 	private void cambiarVidaYEnergia(){

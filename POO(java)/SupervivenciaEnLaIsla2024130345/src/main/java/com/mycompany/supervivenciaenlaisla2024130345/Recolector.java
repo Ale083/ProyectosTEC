@@ -22,11 +22,6 @@ public class Recolector extends Personaje{
 	}
 
 	@Override
-	public void comer() {
-		
-	}
-
-	@Override
 	public void descansar() {
 		
 	}

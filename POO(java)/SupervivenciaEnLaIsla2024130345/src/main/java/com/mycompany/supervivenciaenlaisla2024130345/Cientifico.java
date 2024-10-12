@@ -21,11 +21,6 @@ public class Cientifico extends Personaje{
 	}
 
 	@Override
-	public void comer() {
-		
-	}
-
-	@Override
 	public void descansar() {
 		
 	}

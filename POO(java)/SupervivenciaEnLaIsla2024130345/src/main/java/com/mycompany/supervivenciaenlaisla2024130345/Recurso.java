@@ -23,12 +23,14 @@ public class Recurso {
 	}
 	
 	
-	void usarRecurso(int cantidad){
-		
+	void usarRecurso(int cantidadUsada){
+		if(cantidad > 0){
+			cantidad-=cantidadUsada;
+		}
 	}
 	
 	void agregarRecurso(int cantidadAgregada){
-		
+		cantidad += cantidadAgregada;
 	}
 
 	public String getTipo() {

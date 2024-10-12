@@ -12,12 +12,19 @@ import javax.swing.ImageIcon;
  * @author Proyecto Diseño
  */
 public class Inventario extends javax.swing.JFrame {
-	
+	private GUIInventarioThread threadInventario;
+	private Personaje personaje;
+	private ArrayList<Personaje> personajes;
 	
 	public Inventario(Personaje personaje, ArrayList<Personaje> personajes) {
 		initComponents();
+		this.personaje = personaje;
+		this.personajes = personajes;
 		this.setTitle(personaje.getNombre());
 		ponerPersonajesEnCbx(personaje, personajes);
+		threadInventario = new GUIInventarioThread(personaje,lblCantidadCarne,lblCantidadFrutas,lblCantidadPlantas,lblCantidadMadera);
+		threadInventario.start();
+		disableComida(personaje,personajes);
 	}
 
 	/**
@@ -42,12 +49,12 @@ public class Inventario extends javax.swing.JFrame {
         lblCantidadMadera = new javax.swing.JLabel();
         lblMaderaIcon = new javax.swing.JLabel();
         cbxPersonajeACompartir = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
+        btnCompartirCarne = new javax.swing.JButton();
+        btnCompartirFrutas = new javax.swing.JButton();
+        btnCompartirPlantas = new javax.swing.JButton();
+        btnCompartirMadera = new javax.swing.JButton();
+        btnComerCarne = new javax.swing.JButton();
+        btnComerFrutas = new javax.swing.JButton();
         lblACompartir = new javax.swing.JLabel();
         btnSalir = new javax.swing.JButton();
 
@@ -207,63 +214,63 @@ public class Inventario extends javax.swing.JFrame {
 
         cbxPersonajeACompartir.setMaximumSize(new java.awt.Dimension(72, 22));
 
-        jButton1.setText("Compartir");
-        jButton1.setMaximumSize(new java.awt.Dimension(102, 23));
-        jButton1.setMinimumSize(new java.awt.Dimension(102, 23));
-        jButton1.setPreferredSize(new java.awt.Dimension(102, 23));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnCompartirCarne.setText("Compartir");
+        btnCompartirCarne.setMaximumSize(new java.awt.Dimension(102, 23));
+        btnCompartirCarne.setMinimumSize(new java.awt.Dimension(102, 23));
+        btnCompartirCarne.setPreferredSize(new java.awt.Dimension(102, 23));
+        btnCompartirCarne.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnCompartirCarneActionPerformed(evt);
             }
         });
 
-        jButton5.setText("Compartir");
-        jButton5.setMaximumSize(new java.awt.Dimension(102, 23));
-        jButton5.setMinimumSize(new java.awt.Dimension(102, 23));
-        jButton5.setPreferredSize(new java.awt.Dimension(102, 23));
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        btnCompartirFrutas.setText("Compartir");
+        btnCompartirFrutas.setMaximumSize(new java.awt.Dimension(102, 23));
+        btnCompartirFrutas.setMinimumSize(new java.awt.Dimension(102, 23));
+        btnCompartirFrutas.setPreferredSize(new java.awt.Dimension(102, 23));
+        btnCompartirFrutas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                btnCompartirFrutasActionPerformed(evt);
             }
         });
 
-        jButton6.setText("Compartir");
-        jButton6.setMaximumSize(new java.awt.Dimension(102, 23));
-        jButton6.setMinimumSize(new java.awt.Dimension(102, 23));
-        jButton6.setPreferredSize(new java.awt.Dimension(102, 23));
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        btnCompartirPlantas.setText("Compartir");
+        btnCompartirPlantas.setMaximumSize(new java.awt.Dimension(102, 23));
+        btnCompartirPlantas.setMinimumSize(new java.awt.Dimension(102, 23));
+        btnCompartirPlantas.setPreferredSize(new java.awt.Dimension(102, 23));
+        btnCompartirPlantas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                btnCompartirPlantasActionPerformed(evt);
             }
         });
 
-        jButton7.setText("Compartir");
-        jButton7.setMaximumSize(new java.awt.Dimension(102, 23));
-        jButton7.setMinimumSize(new java.awt.Dimension(102, 23));
-        jButton7.setPreferredSize(new java.awt.Dimension(102, 23));
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        btnCompartirMadera.setText("Compartir");
+        btnCompartirMadera.setMaximumSize(new java.awt.Dimension(102, 23));
+        btnCompartirMadera.setMinimumSize(new java.awt.Dimension(102, 23));
+        btnCompartirMadera.setPreferredSize(new java.awt.Dimension(102, 23));
+        btnCompartirMadera.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                btnCompartirMaderaActionPerformed(evt);
             }
         });
 
-        jButton8.setText("Comer");
-        jButton8.setMaximumSize(new java.awt.Dimension(102, 23));
-        jButton8.setMinimumSize(new java.awt.Dimension(102, 23));
-        jButton8.setPreferredSize(new java.awt.Dimension(102, 23));
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
+        btnComerCarne.setText("Comer");
+        btnComerCarne.setMaximumSize(new java.awt.Dimension(102, 23));
+        btnComerCarne.setMinimumSize(new java.awt.Dimension(102, 23));
+        btnComerCarne.setPreferredSize(new java.awt.Dimension(102, 23));
+        btnComerCarne.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
+                btnComerCarneActionPerformed(evt);
             }
         });
 
-        jButton9.setText("Comer");
-        jButton9.setMaximumSize(new java.awt.Dimension(102, 23));
-        jButton9.setMinimumSize(new java.awt.Dimension(102, 23));
-        jButton9.setPreferredSize(new java.awt.Dimension(102, 23));
-        jButton9.addActionListener(new java.awt.event.ActionListener() {
+        btnComerFrutas.setText("Comer");
+        btnComerFrutas.setMaximumSize(new java.awt.Dimension(102, 23));
+        btnComerFrutas.setMinimumSize(new java.awt.Dimension(102, 23));
+        btnComerFrutas.setPreferredSize(new java.awt.Dimension(102, 23));
+        btnComerFrutas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton9ActionPerformed(evt);
+                btnComerFrutasActionPerformed(evt);
             }
         });
 
@@ -285,25 +292,25 @@ public class Inventario extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnComerCarne, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(pnlCarne, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(btnCompartirCarne, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(pnlFrutas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(btnCompartirFrutas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnComerFrutas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addComponent(lblACompartir))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(pnlPlantas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(btnCompartirPlantas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(pnlMadera, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(btnCompartirMadera, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(62, 62, 62)
                         .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(cbxPersonajeACompartir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -322,17 +329,17 @@ public class Inventario extends javax.swing.JFrame {
                             .addComponent(pnlCarne, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(btnCompartirCarne, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnCompartirFrutas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnCompartirPlantas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnCompartirMadera, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(41, 41, 41)
                         .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnComerCarne, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnComerFrutas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblACompartir)
@@ -343,29 +350,37 @@ public class Inventario extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void btnCompartirCarneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompartirCarneActionPerformed
+		if(personaje.tieneCarne()){
+			compartir("Carne", 0);
+		}
+    }//GEN-LAST:event_btnCompartirCarneActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
+    private void btnCompartirFrutasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompartirFrutasActionPerformed
+        if(personaje.tieneFrutas()){
+			compartir("Frutas", 1);
+		}
+    }//GEN-LAST:event_btnCompartirFrutasActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton6ActionPerformed
+    private void btnCompartirPlantasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompartirPlantasActionPerformed
+        if(personaje.tienePlantas()){
+			compartir("Plantas", 2);
+		}
+    }//GEN-LAST:event_btnCompartirPlantasActionPerformed
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton7ActionPerformed
+    private void btnCompartirMaderaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompartirMaderaActionPerformed
+        if(personaje.tieneMadera()){
+			compartir("Madera", 3);
+		}
+    }//GEN-LAST:event_btnCompartirMaderaActionPerformed
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton8ActionPerformed
+    private void btnComerCarneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComerCarneActionPerformed
+        personaje.comer(0);
+    }//GEN-LAST:event_btnComerCarneActionPerformed
 
-    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton9ActionPerformed
+    private void btnComerFrutasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComerFrutasActionPerformed
+        personaje.comer(1);
+    }//GEN-LAST:event_btnComerFrutasActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
         this.setVisible(false);
@@ -379,16 +394,33 @@ public class Inventario extends javax.swing.JFrame {
 			}
 		}
 	}
+	private void disableComida(Personaje personaje, ArrayList<Personaje> personajes){
+		if(personaje.equals(personajes.get(1))){
+			btnComerFrutas.setEnabled(false);
+		} else if(personaje.equals(personajes.get(2))){
+			btnComerCarne.setEnabled(false);
+		}
+	}
+	
+	private void compartir(String objeto, int posEnInv){
+		personaje.getInventario()[posEnInv].usarRecurso(1);
+		String strPersonajeACompartir = (String)cbxPersonajeACompartir.getSelectedItem();
+		for (Personaje personajeEnArray : personajes) {
+			if(personajeEnArray.getNombre().equals(strPersonajeACompartir)){
+				personajeEnArray.añadirAInventario(new Recurso(objeto,1));
+			}
+		}
+	}
 	
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnComerCarne;
+    private javax.swing.JButton btnComerFrutas;
+    private javax.swing.JButton btnCompartirCarne;
+    private javax.swing.JButton btnCompartirFrutas;
+    private javax.swing.JButton btnCompartirMadera;
+    private javax.swing.JButton btnCompartirPlantas;
     private javax.swing.JButton btnSalir;
     private javax.swing.JComboBox<String> cbxPersonajeACompartir;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
     private javax.swing.JLabel lblACompartir;
     private javax.swing.JLabel lblCantidadCarne;
     private javax.swing.JLabel lblCantidadFrutas;
