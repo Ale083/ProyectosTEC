@@ -20,6 +20,7 @@ public class Inventario extends javax.swing.JFrame {
 		initComponents();
 		this.personaje = personaje;
 		this.personajes = personajes;
+		compartirOCurar(personaje, personajes);
 		this.setTitle(personaje.getNombre());
 		ponerPersonajesEnCbx(personaje, personajes);
 		threadInventario = new GUIInventarioThread(personaje,lblCantidadCarne,lblCantidadFrutas,lblCantidadPlantas,lblCantidadMadera);
@@ -55,7 +56,7 @@ public class Inventario extends javax.swing.JFrame {
         btnCompartirMadera = new javax.swing.JButton();
         btnComerCarne = new javax.swing.JButton();
         btnComerFrutas = new javax.swing.JButton();
-        lblACompartir = new javax.swing.JLabel();
+        lblACompartirOCurar = new javax.swing.JLabel();
         btnSalir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -274,7 +275,7 @@ public class Inventario extends javax.swing.JFrame {
             }
         });
 
-        lblACompartir.setText("Personaje a compartir:");
+        lblACompartirOCurar.setText("Personaje a compartir:");
 
         btnSalir.setText("SALIR");
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -300,7 +301,7 @@ public class Inventario extends javax.swing.JFrame {
                             .addComponent(pnlFrutas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnCompartirFrutas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnComerFrutas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addComponent(lblACompartir))
+                    .addComponent(lblACompartirOCurar))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -342,7 +343,7 @@ public class Inventario extends javax.swing.JFrame {
                     .addComponent(btnComerFrutas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblACompartir)
+                    .addComponent(lblACompartirOCurar)
                     .addComponent(cbxPersonajeACompartir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(31, Short.MAX_VALUE))
         );
@@ -404,11 +405,21 @@ public class Inventario extends javax.swing.JFrame {
 	
 	private void compartir(String objeto, int posEnInv){
 		personaje.getInventario()[posEnInv].usarRecurso(1);
+		getPersonajeEnCbx().añadirAInventario(new Recurso(objeto,1));
+	}
+	
+	public Personaje getPersonajeEnCbx(){
 		String strPersonajeACompartir = (String)cbxPersonajeACompartir.getSelectedItem();
 		for (Personaje personajeEnArray : personajes) {
 			if(personajeEnArray.getNombre().equals(strPersonajeACompartir)){
-				personajeEnArray.añadirAInventario(new Recurso(objeto,1));
+				return personajeEnArray;
 			}
+		}
+		return personaje; //que si por alguna razon no sirve que no deberia, se lo comparta a si mismo.
+	}
+	private void compartirOCurar(Personaje personaje, ArrayList<Personaje> personajes){
+		if(personaje.equals(personajes.get(4)) || personaje.equals(personajes.get(5))){
+			lblACompartirOCurar.setText("Personaje a compartir/curar");
 		}
 	}
 	
@@ -421,7 +432,7 @@ public class Inventario extends javax.swing.JFrame {
     private javax.swing.JButton btnCompartirPlantas;
     private javax.swing.JButton btnSalir;
     private javax.swing.JComboBox<String> cbxPersonajeACompartir;
-    private javax.swing.JLabel lblACompartir;
+    private javax.swing.JLabel lblACompartirOCurar;
     private javax.swing.JLabel lblCantidadCarne;
     private javax.swing.JLabel lblCantidadFrutas;
     private javax.swing.JLabel lblCantidadMadera;

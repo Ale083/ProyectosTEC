@@ -71,7 +71,7 @@ public class RefrescarMapaThread extends Thread {
                     panelCasilla.setBackground(Color.decode("#369649"));
 					if(casilla.getRefugio() != null){
 						labelImagen.setIcon(refugioIcon);
-						labelTexto.setText("" + casilla.getPersonajes().size());
+						labelTexto.setText(" " + casilla.getPersonajes().size() + "|" + casilla.getRefugio().getEstabilidad());
 						continue;
 					} else {
 						labelImagen.setIcon(null);

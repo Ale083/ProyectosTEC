@@ -11,7 +11,6 @@ import javax.swing.ImageIcon;
  * @author Proyecto Diseño
  */
 public class Cazador extends Personaje{
-	private int habilidadCaza;
 	
 	public Cazador(int x, int y, Mapa mapa) {
 		super("Cazador", new ImageIcon("C:\\Users\\Proyecto Diseño\\Desktop\\imagenesIslandSurvivors\\Cazador.png"),x, y, mapa);
@@ -27,11 +26,28 @@ public class Cazador extends Personaje{
 		throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
 	}
 	
-	public void cazar(){
-		
+	public void cazar(Animal animal){
+		if (animal == null || getNivelEnergia() <=0){
+			return;
+		}
+		reducirEnergia(Random.randomInt(20, 30));
+		if(animal.getTipoAnimal() == "Grande"){
+			reducirSalud(Random.randomInt(10,20));
+		}
+		animal.serCazado(this);
 	}
 	
-	public void defender(Personaje personaje, Animal animal){
+	public void defender(Animal animal){
+		if (animal == null || getNivelEnergia() <=0){
+			return;
+		}
+		reducirEnergia(25);
+		if(animal.getTipoAnimal() == "Grande"){
+			reducirSalud(Random.randomInt(15,20));
+		} else{
+			reducirSalud(10);
+		}
+		animal.serCazado(this);
 	}
 		
 

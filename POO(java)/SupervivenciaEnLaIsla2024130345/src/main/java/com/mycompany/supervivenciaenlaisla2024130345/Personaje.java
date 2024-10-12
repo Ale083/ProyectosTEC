@@ -23,11 +23,12 @@ public abstract class Personaje {
 	private int xDestino;
 	private int yDestino;
 	private Mapa mapa;
+	private boolean estaEnfermo;
 
 	public Personaje(String nombre, ImageIcon personajeIcon,int x, int y, Mapa mapa) {
 		this.nombre = nombre;
 		nivelEnergia = 100;
-		nivelSalud = 100;
+		nivelSalud = 50;
 		refugioAsignado = null;
 		this.personajeIcon = personajeIcon;
 		xDestino = -1;
@@ -39,6 +40,7 @@ public abstract class Personaje {
 		inventario[1] = new Recurso("Frutas");
 		inventario[2] = new Recurso("Plantas");
 		inventario[3] = new Recurso("Madera");
+		estaEnfermo = false;
 	}
 	
 	
@@ -113,7 +115,7 @@ public abstract class Personaje {
 	}
 	
 	public void añadirAInventario(Recurso recurso){
-		for (int i = 0; i < 3; i++) {
+		for (int i = 0; i < 4; i++) {
 			if(inventario[i].getTipo().equals(recurso.getTipo())){ 
 				inventario[i].agregarRecurso(recurso.getCantidad());
 				break; //Si ya lo encontró, entonces ya no hace falta que revise otros tipos.
@@ -212,6 +214,15 @@ public abstract class Personaje {
 	public String toString() {
 		return nombre;
 	}
+
+	public boolean isEstaEnfermo() {
+		return estaEnfermo;
+	}
+
+	public void setEstaEnfermo(boolean estaEnfermo) {
+		this.estaEnfermo = estaEnfermo;
+	}
+	
 	
 	
 	

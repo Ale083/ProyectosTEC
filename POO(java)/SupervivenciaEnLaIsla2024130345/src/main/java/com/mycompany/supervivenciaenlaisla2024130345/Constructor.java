@@ -26,11 +26,21 @@ public class Constructor extends Personaje{
 		
 	}
 	
-	public void construirRefugio(Refugio refugio){
-		
+	public void construirRefugio(Casilla casilla){
+		if(casilla.getRefugio() != null || getInventario()[3].getCantidad() < 10 || getNivelEnergia() <10){
+			return;
+		}
+		reducirEnergia(20);
+		getInventario()[3].usarRecurso(20);
+		casilla.setRefugio(new Refugio());
 	}
 	
 	public void repararRefugio(Refugio refugio){
-		
+		if(refugio == null || getInventario()[3].getCantidad() < 10 || getNivelEnergia() <10){
+			return;
+		}
+		reducirEnergia(10);
+		getInventario()[3].usarRecurso(10);
+		refugio.reparar(this);
 	}
 }

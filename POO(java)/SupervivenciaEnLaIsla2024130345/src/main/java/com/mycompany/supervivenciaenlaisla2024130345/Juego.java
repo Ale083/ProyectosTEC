@@ -31,6 +31,7 @@ private Mapa mapaTablero;
 private RefrescarMapaThread refrescarMapaThread;
 private ArrayList<Inventario> inventariosGUI;
 private JLabel[][] labelsPersonajes;
+private String clima;
 
 	/**
 	 * Creates new form Juego
@@ -142,6 +143,9 @@ private JLabel[][] labelsPersonajes;
         btnInventarioCurandero = new javax.swing.JButton();
         lblVidaCurandero = new javax.swing.JLabel();
         lblEnergiaCurandero = new javax.swing.JLabel();
+        btnRecolectarRecolector1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -161,6 +165,7 @@ private JLabel[][] labelsPersonajes;
         lblCazadorIcon.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         lblCazadorIcon.setMaximumSize(new java.awt.Dimension(32, 32));
         lblCazadorIcon.setMinimumSize(new java.awt.Dimension(32, 32));
+        lblCazadorIcon.setOpaque(true);
         lblCazadorIcon.setPreferredSize(new java.awt.Dimension(32, 32));
         lblCazadorIcon.setIcon(new ImageIcon("C:\\Users\\Proyecto Diseño\\Desktop\\imagenesIslandSurvivors\\Cazador.png"));
 
@@ -188,9 +193,19 @@ private JLabel[][] labelsPersonajes;
         btnDefenderCazador.setMaximumSize(new java.awt.Dimension(100, 21));
         btnDefenderCazador.setMinimumSize(new java.awt.Dimension(100, 21));
         btnDefenderCazador.setPreferredSize(new java.awt.Dimension(100, 21));
+        btnDefenderCazador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDefenderCazadorActionPerformed(evt);
+            }
+        });
 
         btnCazarCazador.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
         btnCazarCazador.setText("Cazar");
+        btnCazarCazador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCazarCazadorActionPerformed(evt);
+            }
+        });
 
         btnInventarioCazador.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
         btnInventarioCazador.setText("Inventario");
@@ -297,6 +312,7 @@ private JLabel[][] labelsPersonajes;
         lblExploradorIcon.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         lblExploradorIcon.setMaximumSize(new java.awt.Dimension(32, 32));
         lblExploradorIcon.setMinimumSize(new java.awt.Dimension(32, 32));
+        lblExploradorIcon.setOpaque(true);
         lblExploradorIcon.setPreferredSize(new java.awt.Dimension(32, 32));
         lblExploradorIcon.setIcon(new ImageIcon("C:\\Users\\Proyecto Diseño\\Desktop\\imagenesIslandSurvivors\\Explorador.png"));
 
@@ -444,6 +460,7 @@ private JLabel[][] labelsPersonajes;
         lblRecolectorIcon.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         lblRecolectorIcon.setMaximumSize(new java.awt.Dimension(32, 32));
         lblRecolectorIcon.setMinimumSize(new java.awt.Dimension(32, 32));
+        lblRecolectorIcon.setOpaque(true);
         lblRecolectorIcon.setPreferredSize(new java.awt.Dimension(32, 32));
         lblRecolectorIcon.setIcon(new ImageIcon("C:\\Users\\Proyecto Diseño\\Desktop\\imagenesIslandSurvivors\\Recolector.png"));
 
@@ -468,6 +485,11 @@ private JLabel[][] labelsPersonajes;
 
         btnRecolectarRecolector.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
         btnRecolectarRecolector.setText("Recolectar");
+        btnRecolectarRecolector.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRecolectarRecolectorActionPerformed(evt);
+            }
+        });
 
         btnInventarioRecolector.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
         btnInventarioRecolector.setText("Inventario");
@@ -571,6 +593,7 @@ private JLabel[][] labelsPersonajes;
         lblConstructorIcon.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         lblConstructorIcon.setMaximumSize(new java.awt.Dimension(32, 32));
         lblConstructorIcon.setMinimumSize(new java.awt.Dimension(32, 32));
+        lblConstructorIcon.setOpaque(true);
         lblConstructorIcon.setPreferredSize(new java.awt.Dimension(32, 32));
         lblConstructorIcon.setIcon(new ImageIcon("C:\\Users\\Proyecto Diseño\\Desktop\\imagenesIslandSurvivors\\Constructor.png"));
 
@@ -595,6 +618,11 @@ private JLabel[][] labelsPersonajes;
 
         btnConstruirConstructor.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
         btnConstruirConstructor.setText("Construir");
+        btnConstruirConstructor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConstruirConstructorActionPerformed(evt);
+            }
+        });
 
         btnRepararConstructor.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
         btnRepararConstructor.setText("Reparar");
@@ -709,6 +737,7 @@ private JLabel[][] labelsPersonajes;
         lblCientificoIcon.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         lblCientificoIcon.setMaximumSize(new java.awt.Dimension(32, 32));
         lblCientificoIcon.setMinimumSize(new java.awt.Dimension(32, 32));
+        lblCientificoIcon.setOpaque(true);
         lblCientificoIcon.setPreferredSize(new java.awt.Dimension(32, 32));
         lblCientificoIcon.setIcon(new ImageIcon("C:\\Users\\Proyecto Diseño\\Desktop\\imagenesIslandSurvivors\\Cientifico.png"));
 
@@ -836,12 +865,13 @@ private JLabel[][] labelsPersonajes;
         lblCuranderoIcon.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         lblCuranderoIcon.setMaximumSize(new java.awt.Dimension(32, 32));
         lblCuranderoIcon.setMinimumSize(new java.awt.Dimension(32, 32));
+        lblCuranderoIcon.setOpaque(true);
         lblCuranderoIcon.setPreferredSize(new java.awt.Dimension(32, 32));
         lblCuranderoIcon.setIcon(new ImageIcon("C:\\Users\\Proyecto Diseño\\Desktop\\imagenesIslandSurvivors\\Curandero.png"));
 
         lblCuranderoNombre.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         lblCuranderoNombre.setFont(new java.awt.Font("Courier New", 0, 18)); // NOI18N
-        lblCuranderoNombre.setText("Constructor");
+        lblCuranderoNombre.setText("Curandero");
 
         txfXCurandero.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
 
@@ -860,6 +890,11 @@ private JLabel[][] labelsPersonajes;
 
         btnCurarCurandero.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
         btnCurarCurandero.setText("Curar");
+        btnCurarCurandero.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCurarCuranderoActionPerformed(evt);
+            }
+        });
 
         btnRemedioCurandero.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
         btnRemedioCurandero.setText("Remedio");
@@ -897,16 +932,18 @@ private JLabel[][] labelsPersonajes;
         lblEnergiaCurandero.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         lblEnergiaCurandero.setOpaque(true);
 
+        btnRecolectarRecolector1.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        btnRecolectarRecolector1.setText("Recolectar");
+        btnRecolectarRecolector1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRecolectarRecolector1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnlControlesCuranderoLayout = new javax.swing.GroupLayout(pnlControlesCurandero);
         pnlControlesCurandero.setLayout(pnlControlesCuranderoLayout);
         pnlControlesCuranderoLayout.setHorizontalGroup(
             pnlControlesCuranderoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlControlesCuranderoLayout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(lblCuranderoIcon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblCuranderoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(pnlControlesCuranderoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnlControlesCuranderoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -937,6 +974,17 @@ private JLabel[][] labelsPersonajes;
                             .addComponent(btnMoverCurandero, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnInventarioCurandero, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(34, 34, 34))))
+            .addGroup(pnlControlesCuranderoLayout.createSequentialGroup()
+                .addGroup(pnlControlesCuranderoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlControlesCuranderoLayout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addComponent(lblCuranderoIcon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblCuranderoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlControlesCuranderoLayout.createSequentialGroup()
+                        .addGap(78, 78, 78)
+                        .addComponent(btnRecolectarRecolector1)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlControlesCuranderoLayout.setVerticalGroup(
             pnlControlesCuranderoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -949,7 +997,7 @@ private JLabel[][] labelsPersonajes;
                 .addGroup(pnlControlesCuranderoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblVidaCurandero)
                     .addComponent(lblEnergiaCurandero))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(pnlControlesCuranderoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlControlesCuranderoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txfXCurandero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -965,10 +1013,18 @@ private JLabel[][] labelsPersonajes;
                 .addGroup(pnlControlesCuranderoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCurarCurandero)
                     .addComponent(btnRemedioCurandero))
-                .addGap(22, 22, 22))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnRecolectarRecolector1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         lblCuranderoNombre.getAccessibleContext().setAccessibleName("Curandero");
+
+        jLabel1.setFont(new java.awt.Font("Courier New", 0, 18)); // NOI18N
+        jLabel1.setText("Dia 0");
+
+        jLabel2.setFont(new java.awt.Font("Courier New", 0, 18)); // NOI18N
+        jLabel2.setText("Clima:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -981,15 +1037,11 @@ private JLabel[][] labelsPersonajes;
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(pnlCoordsX, javax.swing.GroupLayout.PREFERRED_SIZE, 832, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(639, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 832, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(pnlControlesExplorador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(pnlControlesCazador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(pnlControlesRecolector, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
@@ -997,14 +1049,26 @@ private JLabel[][] labelsPersonajes;
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(pnlControlesCurandero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(pnlControlesCientifico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                                .addComponent(pnlControlesCientifico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(pnlControlesExplorador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel1))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2)
+                                    .addComponent(pnlControlesCazador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(0, 59, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(7, Short.MAX_VALUE)
-                .addComponent(pnlCoordsX, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel2))
+                    .addComponent(pnlCoordsX, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 832, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1017,9 +1081,9 @@ private JLabel[][] labelsPersonajes;
                             .addComponent(pnlControlesRecolector, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(pnlControlesConstructor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(pnlControlesCientifico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(pnlControlesCurandero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(pnlControlesCientifico, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(pnlControlesCurandero, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addComponent(pnlCoordsY, javax.swing.GroupLayout.PREFERRED_SIZE, 832, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(63, Short.MAX_VALUE))
         );
@@ -1040,7 +1104,7 @@ private JLabel[][] labelsPersonajes;
     }//GEN-LAST:event_btnInventarioRecolectorActionPerformed
 
     private void btnRepararConstructorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRepararConstructorActionPerformed
-        // TODO add your handling code here:
+        ((Constructor)personajes.get(3)).repararRefugio(personajes.get(3).getCasillaActual().getRefugio());
     }//GEN-LAST:event_btnRepararConstructorActionPerformed
 
     private void btnInventarioConstructorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInventarioConstructorActionPerformed
@@ -1052,7 +1116,7 @@ private JLabel[][] labelsPersonajes;
     }//GEN-LAST:event_btnInventarioCientificoActionPerformed
 
     private void btnRemedioCuranderoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemedioCuranderoActionPerformed
-        // TODO add your handling code here:
+		((Curandero)personajes.get(4)).prepararRemedio(inventariosGUI.get(4).getPersonajeEnCbx());
     }//GEN-LAST:event_btnRemedioCuranderoActionPerformed
 
     private void btnInventarioCuranderoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInventarioCuranderoActionPerformed
@@ -1103,6 +1167,30 @@ private JLabel[][] labelsPersonajes;
         ((Explorador)personajes.get(0)).recolectar();
     }//GEN-LAST:event_btnRecolectarExploradorActionPerformed
 
+    private void btnDefenderCazadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDefenderCazadorActionPerformed
+		((Cazador)personajes.get(1)).defender(personajes.get(1).getCasillaActual().getAnimal());
+    }//GEN-LAST:event_btnDefenderCazadorActionPerformed
+
+    private void btnCazarCazadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCazarCazadorActionPerformed
+		((Cazador)personajes.get(1)).cazar(personajes.get(1).getCasillaActual().getAnimal());		
+    }//GEN-LAST:event_btnCazarCazadorActionPerformed
+
+    private void btnRecolectarRecolectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecolectarRecolectorActionPerformed
+        ((Recolector)personajes.get(2)).recolectar();
+    }//GEN-LAST:event_btnRecolectarRecolectorActionPerformed
+
+    private void btnConstruirConstructorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConstruirConstructorActionPerformed
+        ((Constructor)personajes.get(3)).construirRefugio(personajes.get(3).getCasillaActual());
+    }//GEN-LAST:event_btnConstruirConstructorActionPerformed
+
+    private void btnCurarCuranderoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCurarCuranderoActionPerformed
+		((Curandero)personajes.get(4)).curar(inventariosGUI.get(4).getPersonajeEnCbx());
+    }//GEN-LAST:event_btnCurarCuranderoActionPerformed
+
+    private void btnRecolectarRecolector1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecolectarRecolector1ActionPerformed
+		((Curandero)personajes.get(4)).recolectar();
+    }//GEN-LAST:event_btnRecolectarRecolector1ActionPerformed
+
 	/**
 	 * @param args the command line arguments
 	 */
@@ -1137,7 +1225,8 @@ private JLabel[][] labelsPersonajes;
 						añadirPersonaje(fila, columna, new Cientifico(columna, fila, mapa));
 						break;
 					case 14:  // TEST GRAFICO RECURSO TODO: QUITARLO.
-						mapa.getCasilla(fila, columna).setRecurso(new Recurso("Carne",5));
+//						mapa.getCasilla(fila, columna).setRecurso(new Recurso("Carne",5));
+						mapa.getCasilla(fila, columna).setRecurso(new Recurso("Madera",100));
 						break;
 				}
 				counter++;
@@ -1155,8 +1244,12 @@ private JLabel[][] labelsPersonajes;
 				labelsTexto[fila][columna] = labelPersonas; 
 				labelPersonas.setOpaque(false);
 				panelCasilla.add(labelPersonas);
+				labelPersonas.setFont(new java.awt.Font("Segoe UI", 0, 10));;
 				labelPersonas.setAlignmentX(Component.CENTER_ALIGNMENT);  
 				labelPersonas.setAlignmentY(0.3f); //0.5f lo centra, para hacerlo un poco para abajo puse 0.3f
+				labelPersonas.setPreferredSize(new java.awt.Dimension(32, 16));
+				labelPersonas.setMinimumSize(new java.awt.Dimension(32, 16));
+				labelPersonas.setMaximumSize(new java.awt.Dimension(32, 16));
 				
 				JLabel labelImagen = new JLabel();
 				labelsImagenes[fila][columna] = labelImagen;
@@ -1323,8 +1416,11 @@ private JLabel[][] labelsPersonajes;
     private javax.swing.JButton btnRecolectarCientifico;
     private javax.swing.JButton btnRecolectarExplorador;
     private javax.swing.JButton btnRecolectarRecolector;
+    private javax.swing.JButton btnRecolectarRecolector1;
     private javax.swing.JButton btnRemedioCurandero;
     private javax.swing.JButton btnRepararConstructor;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblCazadorIcon;
     private java.awt.Label lblCazadorNombre;

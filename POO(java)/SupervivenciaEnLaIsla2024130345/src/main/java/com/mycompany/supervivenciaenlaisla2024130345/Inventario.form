@@ -39,7 +39,7 @@
                           <Component id="btnComerFrutas" max="32767" attributes="0"/>
                       </Group>
                   </Group>
-                  <Component id="lblACompartir" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblACompartirOCurar" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
@@ -94,7 +94,7 @@
               </Group>
               <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lblACompartir" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblACompartirOCurar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="cbxPersonajeACompartir" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="31" max="32767" attributes="0"/>
@@ -530,7 +530,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnComerFrutasActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="lblACompartir">
+    <Component class="javax.swing.JLabel" name="lblACompartirOCurar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Personaje a compartir:"/>
       </Properties>

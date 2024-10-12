@@ -11,38 +11,30 @@ import javax.swing.ImageIcon;
 public class Animal {
 	private String tipoAnimal;
 	private int fuerza;
-	private int dificultadCaza;
 	private int comidaProporcionada;
 	private ImageIcon animalIcon;
 
 	public Animal(String tipoAnimal) {
 		this.tipoAnimal = tipoAnimal;
-		
+		if(tipoAnimal == "Grande"){
+			fuerza = 10;
+			comidaProporcionada = 10;
+			animalIcon = new ImageIcon("C:\\Users\\Proyecto Diseño\\Desktop\\imagenesIslandSurvivors\\AnimalGrande.png");
+		} else {
+			fuerza = 5;
+			comidaProporcionada = 5;
+			animalIcon = new ImageIcon("C:\\Users\\Proyecto Diseño\\Desktop\\imagenesIslandSurvivors\\AnimalPequeno.png");
+		}
 	}
 	
 	
 	public void atacarPersonaje(Personaje personaje){
-		
+		personaje.reducirSalud(fuerza);
 	}
 	
 	public void serCazado(Cazador cazador){
-		
-	}
-
-	private int setFuerza(String tipoAnimal) {
-		return 10; //TODO:
-	}
-
-	private int setDificultadCaza(String tipoAnimal) {
-		return 10;
-	}
-
-	private int setComidaProporcionada(String tipoAnimal) {
-		return 10;
-	}
-
-	private ImageIcon setAnimalIcon(String tipoAnimal) {
-		return new ImageIcon("C:\\Users\\Proyecto Diseño\\Desktop\\imagenesIslandSurvivors\\AnimalGrande.png");
+		cazador.añadirAInventario(new Recurso("Carne",comidaProporcionada));
+		cazador.getCasillaActual().setAnimal(null);
 	}
 
 	public String getTipoAnimal() {
@@ -51,10 +43,6 @@ public class Animal {
 
 	public int getFuerza() {
 		return fuerza;
-	}
-
-	public int getDificultadCaza() {
-		return dificultadCaza;
 	}
 
 	public int getComidaProporcionada() {

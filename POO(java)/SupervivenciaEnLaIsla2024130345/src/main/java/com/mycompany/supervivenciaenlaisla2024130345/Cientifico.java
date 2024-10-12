@@ -9,7 +9,7 @@ import javax.swing.ImageIcon;
  * @author Proyecto Diseño
  */
 public class Cientifico extends Personaje{
-	
+	private int habilidadCiencia;
 	
 	public Cientifico(int x, int y, Mapa mapa) {
 		super("Cientifico", new ImageIcon("C:\\Users\\Proyecto Diseño\\Desktop\\imagenesIslandSurvivors\\Cientifico.png"),x,y, mapa);
@@ -23,5 +23,13 @@ public class Cientifico extends Personaje{
 	@Override
 	public void descansar() {
 		
+	}
+	
+	public void prepararRemedio(Personaje enfermo){
+		if (getNivelEnergia() == 0){
+			return;
+		}
+		reducirEnergia(15);
+		enfermo.setEstaEnfermo(false);
 	}
 }

@@ -12,6 +12,20 @@ import java.util.ArrayList;
  */
 public class Refugio {
 	private int estabilidad;
-	private int capacidad;
-	private ArrayList<Recurso> materialesNecesarios;
+	
+	public Refugio(){
+		estabilidad = 100;
+	}
+	
+	public void reparar(Constructor constructor){
+		if(estabilidad + 20 >100){
+			estabilidad = 100;
+		} else {
+			estabilidad += 20;
+		}
+	}
+	
+	public int getEstabilidad(){
+		return estabilidad;
+	}
 }

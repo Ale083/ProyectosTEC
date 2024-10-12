@@ -4,9 +4,6 @@
  */
 package com.mycompany.supervivenciaenlaisla2024130345;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 /**
  *
  * @author Proyecto Diseño
@@ -58,15 +55,27 @@ public class PersonajeThread extends Thread{
 			} else {
 				try {
 					sleep(1000);
-					Refugio refugio = mapa.conseguirCasillaConPersonaje(refPersonaje).getRefugio();
-					if(refugio != null){
+					Refugio refugio = refPersonaje.getCasillaActual().getRefugio();
+					Animal animal = refPersonaje.getCasillaActual().getAnimal();
+					if(animal != null){
+						animalAtacando(animal);
+					} else if(refugio != null){
 						refPersonaje.setRefugio(refugio);
+//						refugio.
 					}
 				} catch (InterruptedException ex) {}	
 			}
 		}
 	}
 	
+	private void animalAtacando(Animal animal){
+		while(refPersonaje.getCasillaActual().getAnimal() != null){
+			try {
+				animal.atacarPersonaje(refPersonaje);
+				sleep(7000);
+			} catch (InterruptedException ex) {}
+		}
+	}
 	
 	
 	

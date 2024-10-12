@@ -27,7 +27,12 @@ public class Recolector extends Personaje{
 	}
 	
 	public void recolectar(){
-		
+		if(getNivelEnergia() == 0 || getCasillaActual().getRecurso() == null || getCasillaActual().getRecurso().getTipo().equals("Carne")){
+			return;
+		}
+		reducirEnergia(5);
+		añadirAInventario(getCasillaActual().getRecurso());
+		getCasillaActual().setRecurso(null);
 	}
 	
 }
