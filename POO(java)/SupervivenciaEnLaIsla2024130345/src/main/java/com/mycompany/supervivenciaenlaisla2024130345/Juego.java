@@ -31,7 +31,9 @@ private Mapa mapaTablero;
 private RefrescarMapaThread refrescarMapaThread;
 private ArrayList<Inventario> inventariosGUI;
 private JLabel[][] labelsPersonajes;
-private String clima;
+private boolean tormenta;
+private TiempoThread tiempoThread;
+private int contadorDias;
 
 	/**
 	 * Creates new form Juego
@@ -52,7 +54,10 @@ private String clima;
 		inicializarCoordenadasY();
 		iniciarThreadsPersonajes();
 		iniciarInventariosGUI();
-		
+		tiempoThread = new TiempoThread(lblTiempo, this);
+		tiempoThread.start();
+		tormenta = false;
+		contadorDias = 0;
 	}
 
 	/**
@@ -144,8 +149,9 @@ private String clima;
         lblVidaCurandero = new javax.swing.JLabel();
         lblEnergiaCurandero = new javax.swing.JLabel();
         btnRecolectarRecolector1 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        lblDia = new javax.swing.JLabel();
+        lblClima = new javax.swing.JLabel();
+        lblTiempo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -1020,11 +1026,14 @@ private String clima;
 
         lblCuranderoNombre.getAccessibleContext().setAccessibleName("Curandero");
 
-        jLabel1.setFont(new java.awt.Font("Courier New", 0, 18)); // NOI18N
-        jLabel1.setText("Dia 0");
+        lblDia.setFont(new java.awt.Font("Courier New", 0, 18)); // NOI18N
+        lblDia.setText("Dia 0");
 
-        jLabel2.setFont(new java.awt.Font("Courier New", 0, 18)); // NOI18N
-        jLabel2.setText("Clima:");
+        lblClima.setFont(new java.awt.Font("Courier New", 0, 18)); // NOI18N
+        lblClima.setText("Clima:");
+
+        lblTiempo.setFont(new java.awt.Font("Courier New", 0, 18)); // NOI18N
+        lblTiempo.setText("0:00");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -1053,22 +1062,28 @@ private String clima;
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(pnlControlesExplorador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel1))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(lblDia)
+                                        .addGap(83, 83, 83)
+                                        .addComponent(lblTiempo, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
+                                    .addComponent(lblClima)
                                     .addComponent(pnlControlesCazador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(0, 59, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(7, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel2))
-                    .addComponent(pnlCoordsX, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(lblDia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lblClima))
+                            .addComponent(pnlCoordsX, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(lblTiempo, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 832, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1394,6 +1409,20 @@ private String clima;
 		labelsPersonajes[5][0] = lblVidaCientifico;
 		labelsPersonajes[5][1] = lblEnergiaCientifico;
 	}
+	
+	public void pasarDia(){
+		tiempoThread.setSegundos(0);
+		tiempoThread.setMinutos(0);
+		lblDia.setText("Día " + ++contadorDias);
+		
+		//TODO: Random chance de tormenta, bajar a cada personaje vida/energia dependiendo de condiciones, random chance de enfermarse, 
+		//Revisar si hay tormenta actualmente.
+		//Revisar cada personaje si está en refugio
+		//bajar vida a refugios si hay tormenta.
+		//revisar cada personaje si está enfermo.
+		//recuperar energia a personajes si está en refugio 10 salud y 100 de energia
+		//
+	}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCazarCazador;
@@ -1419,17 +1448,17 @@ private String clima;
     private javax.swing.JButton btnRecolectarRecolector1;
     private javax.swing.JButton btnRemedioCurandero;
     private javax.swing.JButton btnRepararConstructor;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblCazadorIcon;
     private java.awt.Label lblCazadorNombre;
     private javax.swing.JLabel lblCientificoIcon;
     private java.awt.Label lblCientificoNombre;
+    private javax.swing.JLabel lblClima;
     private javax.swing.JLabel lblConstructorIcon;
     private java.awt.Label lblConstructorNombre;
     private javax.swing.JLabel lblCuranderoIcon;
     private java.awt.Label lblCuranderoNombre;
+    private javax.swing.JLabel lblDia;
     private javax.swing.JLabel lblEnergiaCazador;
     private javax.swing.JLabel lblEnergiaCientifico;
     private javax.swing.JLabel lblEnergiaConstructor;
@@ -1440,6 +1469,7 @@ private String clima;
     private java.awt.Label lblExploradorNombre;
     private javax.swing.JLabel lblRecolectorIcon;
     private java.awt.Label lblRecolectorNombre;
+    private javax.swing.JLabel lblTiempo;
     private javax.swing.JLabel lblVidaCazador;
     private javax.swing.JLabel lblVidaCientifico;
     private javax.swing.JLabel lblVidaConstructor;

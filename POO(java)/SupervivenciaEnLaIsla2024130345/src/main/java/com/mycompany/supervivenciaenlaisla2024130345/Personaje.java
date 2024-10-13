@@ -215,7 +215,7 @@ public abstract class Personaje {
 		return nombre;
 	}
 
-	public boolean isEstaEnfermo() {
+	public boolean isEnfermo() {
 		return estaEnfermo;
 	}
 
