@@ -12,7 +12,7 @@ public class Cientifico extends Personaje{
 	private int habilidadCiencia;
 	
 	public Cientifico(int x, int y, Mapa mapa) {
-		super("Cientifico", new ImageIcon("C:\\Users\\Proyecto Diseño\\Desktop\\imagenesIslandSurvivors\\Cientifico.png"),x,y, mapa);
+		super("Cientifico", new ImageIcon("C:\\Users\\Proyecto Diseño\\Desktop\\imagenesIslandSurvivors\\Cientifico.png"),x,y, mapa,"C:\\Users\\Proyecto Diseño\\Desktop\\ArchivostxtIslandSurvivors\\Cientifico.txt");
 	}
 
 	@Override
@@ -31,5 +31,6 @@ public class Cientifico extends Personaje{
 		}
 		reducirEnergia(15);
 		enfermo.setEstaEnfermo(false);
+		meterABitacora("El cientifico preparó un remedio para " + enfermo.getNombre() + " en " + java.time.LocalDateTime.now().format(java.time.format.DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
 	}
 }

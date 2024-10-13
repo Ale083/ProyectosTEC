@@ -13,7 +13,7 @@ import javax.swing.ImageIcon;
 public class Cazador extends Personaje{
 	
 	public Cazador(int x, int y, Mapa mapa) {
-		super("Cazador", new ImageIcon("C:\\Users\\Proyecto Diseño\\Desktop\\imagenesIslandSurvivors\\Cazador.png"),x, y, mapa);
+		super("Cazador", new ImageIcon("C:\\Users\\Proyecto Diseño\\Desktop\\imagenesIslandSurvivors\\Cazador.png"),x, y, mapa,"C:\\Users\\Proyecto Diseño\\Desktop\\ArchivostxtIslandSurvivors\\Cazador.txt");
 	}
 
 	@Override
@@ -35,6 +35,7 @@ public class Cazador extends Personaje{
 			reducirSalud(Random.randomInt(10,20));
 		}
 		animal.serCazado(this);
+		meterABitacora("El cazador cazó un animal en " + java.time.LocalDateTime.now().format(java.time.format.DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
 	}
 	
 	public void defender(Animal animal){
@@ -48,6 +49,7 @@ public class Cazador extends Personaje{
 			reducirSalud(10);
 		}
 		animal.serCazado(this);
+		meterABitacora("El cazador defendió de un animal en" + java.time.LocalDateTime.now().format(java.time.format.DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
 	}
 		
 

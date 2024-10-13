@@ -6,6 +6,10 @@ package com.mycompany.supervivenciaenlaisla2024130345;
 
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 /**
  *
@@ -24,8 +28,9 @@ public abstract class Personaje {
 	private int yDestino;
 	private Mapa mapa;
 	private boolean estaEnfermo;
+	private String rutaArchivo;
 
-	public Personaje(String nombre, ImageIcon personajeIcon,int x, int y, Mapa mapa) {
+	public Personaje(String nombre, ImageIcon personajeIcon,int x, int y, Mapa mapa,String rutaArchivo) {
 		this.nombre = nombre;
 		nivelEnergia = 100;
 		nivelSalud = 50;
@@ -41,6 +46,7 @@ public abstract class Personaje {
 		inventario[2] = new Recurso("Plantas");
 		inventario[3] = new Recurso("Madera");
 		estaEnfermo = false;
+		this.rutaArchivo = rutaArchivo;
 	}
 	
 	
@@ -53,10 +59,13 @@ public abstract class Personaje {
 			inventario[posEnInv].usarRecurso(1);
 			if (posEnInv == 0){
 				recuperarEnergia(20);
+				meterABitacora(nombre + " comió " + inventario[posEnInv].getTipo() + " el " + LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
 			} else if(posEnInv == 1){
 				recuperarEnergia(10);
+				meterABitacora(nombre + " comió " + inventario[posEnInv].getTipo() + " el " + LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
 			}
 		}
+		
 	}
 	public boolean isMoving(){
 		return xDestino != -1 && yDestino != -1;
@@ -176,6 +185,9 @@ public abstract class Personaje {
 	public void setDestino(int x, int y){
 		this.xDestino = x;
 		this.yDestino = y;
+		if(x != -1 && y != -1){
+			meterABitacora(nombre + " se dirige a (" + x + "," + y + ") en" + LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+		}
 	}
 
 	public Mapa getMapa() {
@@ -223,7 +235,29 @@ public abstract class Personaje {
 		this.estaEnfermo = estaEnfermo;
 	}
 	
+	public void accidentar(){
+		if(Random.randomBoolean()){
+			reducirEnergia(10);
+			reducirSalud(5);
+			meterABitacora(nombre + " se accidentó y perdió 10 de energía y 5 de salud el " + LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+		} else {
+			reducirEnergia(20);
+			reducirSalud(15);
+			meterABitacora(nombre + " se accidentó y perdió 20 de energía y 15 de salud el " + LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+		}
+		
+	}
 	
-	
+
+	public void meterABitacora(String texto){
+        try (FileWriter fw = new FileWriter(rutaArchivo, true);
+            BufferedWriter bw = new BufferedWriter(fw)) {
+
+            bw.write(texto); 
+            bw.newLine();
+            
+        } catch (java.io.IOException e) {}
+	}
+
 	
 }

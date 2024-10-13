@@ -28,4 +28,11 @@ public class Refugio {
 	public int getEstabilidad(){
 		return estabilidad;
 	}
+	public void bajarEstabilidad(int puntos){
+		if(estabilidad - puntos < 0){
+			estabilidad = 0;
+		} else {
+			estabilidad -= 0;
+		}
+	}
 }

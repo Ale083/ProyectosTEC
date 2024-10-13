@@ -13,7 +13,7 @@ public class Recolector extends Personaje{
 	
 	
 	public Recolector(int x, int y, Mapa mapa) {
-		super("Recolector", new ImageIcon("C:\\Users\\Proyecto Diseño\\Desktop\\imagenesIslandSurvivors\\Recolector.png"),x,y, mapa);
+		super("Recolector", new ImageIcon("C:\\Users\\Proyecto Diseño\\Desktop\\imagenesIslandSurvivors\\Recolector.png"),x,y, mapa,"C:\\Users\\Proyecto Diseño\\Desktop\\ArchivostxtIslandSurvivors\\Recolector.txt");
 	}
 
 	@Override
@@ -33,6 +33,7 @@ public class Recolector extends Personaje{
 		reducirEnergia(5);
 		añadirAInventario(getCasillaActual().getRecurso());
 		getCasillaActual().setRecurso(null);
+		meterABitacora("Recolector recolectó en " + java.time.LocalDateTime.now().format(java.time.format.DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
 	}
 	
 }

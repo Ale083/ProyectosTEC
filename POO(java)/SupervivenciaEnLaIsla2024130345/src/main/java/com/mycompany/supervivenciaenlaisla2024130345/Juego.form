@@ -32,7 +32,7 @@
                       <Component id="pnlCoordsX" min="-2" pref="832" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
                       <Component id="jPanel1" min="-2" pref="832" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -61,6 +61,7 @@
                                   <Component id="pnlControlesCazador" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
+                          <Component id="btnControlesDios" alignment="0" min="-2" pref="566" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="0" pref="59" max="32767" attributes="0"/>
                   </Group>
@@ -105,7 +106,9 @@
                   </Group>
                   <Component id="pnlCoordsY" min="-2" pref="832" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="63" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="btnControlesDios" min="-2" pref="51" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -162,13 +165,6 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                  <Component id="lblCazadorIcon" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="lblCazadorNombre" min="-2" pref="167" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
-              </Group>
               <Group type="102" alignment="1" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
@@ -185,7 +181,7 @@
                                   <Component id="txfYCazador" min="-2" pref="80" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace pref="18" max="32767" attributes="0"/>
+                          <EmptySpace pref="14" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="32767" attributes="0"/>
@@ -207,6 +203,21 @@
                   <Component id="lblEnergiaCazador" min="-2" pref="108" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
               </Group>
+              <Group type="102" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                          <Component id="lblCazadorIcon" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="lblCazadorNombre" min="-2" pref="167" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
+                          <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <EmptySpace max="32767" attributes="0"/>
+              </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
@@ -222,7 +233,9 @@
                       <Component id="lblVidaCazador" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="lblEnergiaCazador" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
+                  <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="txfXCazador" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -411,6 +424,14 @@
             <Property name="opaque" type="boolean" value="true"/>
           </Properties>
         </Component>
+        <Component class="javax.swing.JButton" name="jButton1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="jButton1"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+          </Events>
+        </Component>
       </SubComponents>
     </Container>
     <Container class="javax.swing.JPanel" name="pnlControlesExplorador">
@@ -446,7 +467,7 @@
                                           <Component id="txfYExplorador" min="-2" pref="80" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <EmptySpace min="0" pref="12" max="32767" attributes="0"/>
+                                  <EmptySpace min="0" pref="8" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -972,7 +993,7 @@
                                           <Component id="txfYConstructor" min="-2" pref="80" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <EmptySpace min="0" pref="6" max="32767" attributes="0"/>
+                                  <EmptySpace min="0" pref="2" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -1463,7 +1484,7 @@
                                           <Component id="txfYCurandero" min="-2" pref="80" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <EmptySpace min="0" pref="6" max="32767" attributes="0"/>
+                                  <EmptySpace min="0" pref="2" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -1490,7 +1511,7 @@
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
-                          <Component id="btnRecolectarRecolector1" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnRecolectarCurandero" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
@@ -1532,7 +1553,7 @@
                       <Component id="btnRemedioCurandero" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="btnRecolectarRecolector1" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnRecolectarCurandero" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -1572,9 +1593,6 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Curandero"/>
           </Properties>
-          <AccessibilityProperties>
-            <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Curandero"/>
-          </AccessibilityProperties>
         </Component>
         <Component class="javax.swing.JTextField" name="txfXCurandero">
           <Properties>
@@ -1695,7 +1713,7 @@
             <Property name="opaque" type="boolean" value="true"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="btnRecolectarRecolector1">
+        <Component class="javax.swing.JButton" name="btnRecolectarCurandero">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Courier New" size="12" style="0"/>
@@ -1703,7 +1721,7 @@
             <Property name="text" type="java.lang.String" value="Recolectar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRecolectarRecolector1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRecolectarCuranderoActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>
@@ -1721,7 +1739,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Courier New" size="18" style="0"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Clima:"/>
+        <Property name="text" type="java.lang.String" value="Clima: Despejado"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblTiempo">
@@ -1731,6 +1749,14 @@
         </Property>
         <Property name="text" type="java.lang.String" value="0:00"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnControlesDios">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="DIOS"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnControlesDiosActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

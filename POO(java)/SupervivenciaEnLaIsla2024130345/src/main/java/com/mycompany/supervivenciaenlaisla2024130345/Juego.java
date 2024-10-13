@@ -34,6 +34,7 @@ private JLabel[][] labelsPersonajes;
 private boolean tormenta;
 private TiempoThread tiempoThread;
 private int contadorDias;
+private ControlesDios controlesDios;
 
 	/**
 	 * Creates new form Juego
@@ -48,7 +49,7 @@ private int contadorDias;
 		inicializarMapaGraficamente(mapaTablero);
 		labelsPersonajes = new JLabel[6][2];
 		asignarLabelsPersonajes();
-		refrescarMapaThread = new RefrescarMapaThread(mapaTablero,panelesMapa,jPanel1,labelsImagenes,labelsTexto,labelsPersonajes, personajes);
+		refrescarMapaThread = new RefrescarMapaThread(mapaTablero,panelesMapa,jPanel1,labelsImagenes,labelsTexto,labelsPersonajes, personajes,this);
 		refrescarMapaThread.start();
 		inicializarCoordenadasX();
 		inicializarCoordenadasY();
@@ -58,6 +59,7 @@ private int contadorDias;
 		tiempoThread.start();
 		tormenta = false;
 		contadorDias = 0;
+		controlesDios = new ControlesDios(mapaTablero, personajes,this);
 	}
 
 	/**
@@ -85,6 +87,7 @@ private int contadorDias;
         lblYCazador = new java.awt.Label();
         lblVidaCazador = new javax.swing.JLabel();
         lblEnergiaCazador = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         pnlControlesExplorador = new javax.swing.JPanel();
         lblExploradorIcon = new javax.swing.JLabel();
         lblExploradorNombre = new java.awt.Label();
@@ -148,10 +151,11 @@ private int contadorDias;
         btnInventarioCurandero = new javax.swing.JButton();
         lblVidaCurandero = new javax.swing.JLabel();
         lblEnergiaCurandero = new javax.swing.JLabel();
-        btnRecolectarRecolector1 = new javax.swing.JButton();
+        btnRecolectarCurandero = new javax.swing.JButton();
         lblDia = new javax.swing.JLabel();
         lblClima = new javax.swing.JLabel();
         lblTiempo = new javax.swing.JLabel();
+        btnControlesDios = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -241,16 +245,17 @@ private int contadorDias;
         lblEnergiaCazador.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         lblEnergiaCazador.setOpaque(true);
 
+        jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnlControlesCazadorLayout = new javax.swing.GroupLayout(pnlControlesCazador);
         pnlControlesCazador.setLayout(pnlControlesCazadorLayout);
         pnlControlesCazadorLayout.setHorizontalGroup(
             pnlControlesCazadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlControlesCazadorLayout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(lblCazadorIcon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblCazadorNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlControlesCazadorLayout.createSequentialGroup()
                 .addGroup(pnlControlesCazadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlControlesCazadorLayout.createSequentialGroup()
@@ -264,7 +269,7 @@ private int contadorDias;
                                 .addComponent(lblYCazador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(txfYCazador, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlControlesCazadorLayout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnDefenderCazador, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -280,6 +285,17 @@ private int contadorDias;
                 .addGap(18, 18, 18)
                 .addComponent(lblEnergiaCazador, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(17, 17, 17))
+            .addGroup(pnlControlesCazadorLayout.createSequentialGroup()
+                .addGroup(pnlControlesCazadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlControlesCazadorLayout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addComponent(lblCazadorIcon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblCazadorNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlControlesCazadorLayout.createSequentialGroup()
+                        .addGap(76, 76, 76)
+                        .addComponent(jButton1)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlControlesCazadorLayout.setVerticalGroup(
             pnlControlesCazadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -292,7 +308,9 @@ private int contadorDias;
                 .addGroup(pnlControlesCazadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblVidaCazador)
                     .addComponent(lblEnergiaCazador))
-                .addGap(48, 48, 48)
+                .addGap(7, 7, 7)
+                .addComponent(jButton1)
+                .addGap(18, 18, 18)
                 .addGroup(pnlControlesCazadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlControlesCazadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txfXCazador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -407,7 +425,7 @@ private int contadorDias;
                                         .addComponent(lblYExplorador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(txfYExplorador, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(0, 12, Short.MAX_VALUE))
+                                .addGap(0, 8, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlControlesExploradorLayout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(btnExplorarExplorador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -696,7 +714,7 @@ private int contadorDias;
                                         .addComponent(lblYConstructor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(txfYConstructor, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(0, 6, Short.MAX_VALUE))
+                                .addGap(0, 2, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlControlesConstructorLayout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(btnConstruirConstructor, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -938,11 +956,11 @@ private int contadorDias;
         lblEnergiaCurandero.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         lblEnergiaCurandero.setOpaque(true);
 
-        btnRecolectarRecolector1.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
-        btnRecolectarRecolector1.setText("Recolectar");
-        btnRecolectarRecolector1.addActionListener(new java.awt.event.ActionListener() {
+        btnRecolectarCurandero.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        btnRecolectarCurandero.setText("Recolectar");
+        btnRecolectarCurandero.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRecolectarRecolector1ActionPerformed(evt);
+                btnRecolectarCuranderoActionPerformed(evt);
             }
         });
 
@@ -970,7 +988,7 @@ private int contadorDias;
                                         .addComponent(lblYCurandero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(txfYCurandero, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(0, 6, Short.MAX_VALUE))
+                                .addGap(0, 2, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlControlesCuranderoLayout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(btnCurarCurandero, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -989,7 +1007,7 @@ private int contadorDias;
                         .addComponent(lblCuranderoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pnlControlesCuranderoLayout.createSequentialGroup()
                         .addGap(78, 78, 78)
-                        .addComponent(btnRecolectarRecolector1)))
+                        .addComponent(btnRecolectarCurandero)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlControlesCuranderoLayout.setVerticalGroup(
@@ -1020,20 +1038,25 @@ private int contadorDias;
                     .addComponent(btnCurarCurandero)
                     .addComponent(btnRemedioCurandero))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnRecolectarRecolector1)
+                .addComponent(btnRecolectarCurandero)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-
-        lblCuranderoNombre.getAccessibleContext().setAccessibleName("Curandero");
 
         lblDia.setFont(new java.awt.Font("Courier New", 0, 18)); // NOI18N
         lblDia.setText("Dia 0");
 
         lblClima.setFont(new java.awt.Font("Courier New", 0, 18)); // NOI18N
-        lblClima.setText("Clima:");
+        lblClima.setText("Clima: Despejado");
 
         lblTiempo.setFont(new java.awt.Font("Courier New", 0, 18)); // NOI18N
         lblTiempo.setText("0:00");
+
+        btnControlesDios.setText("DIOS");
+        btnControlesDios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnControlesDiosActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -1069,7 +1092,8 @@ private int contadorDias;
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblClima)
-                                    .addComponent(pnlControlesCazador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(pnlControlesCazador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(btnControlesDios, javax.swing.GroupLayout.PREFERRED_SIZE, 566, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 59, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -1100,7 +1124,9 @@ private int contadorDias;
                             .addComponent(pnlControlesCientifico, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(pnlControlesCurandero, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addComponent(pnlCoordsY, javax.swing.GroupLayout.PREFERRED_SIZE, 832, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(63, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnControlesDios, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -1120,6 +1146,7 @@ private int contadorDias;
 
     private void btnRepararConstructorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRepararConstructorActionPerformed
         ((Constructor)personajes.get(3)).repararRefugio(personajes.get(3).getCasillaActual().getRefugio());
+		probabilidadAccidentar(3);
     }//GEN-LAST:event_btnRepararConstructorActionPerformed
 
     private void btnInventarioConstructorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInventarioConstructorActionPerformed
@@ -1132,6 +1159,7 @@ private int contadorDias;
 
     private void btnRemedioCuranderoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemedioCuranderoActionPerformed
 		((Curandero)personajes.get(4)).prepararRemedio(inventariosGUI.get(4).getPersonajeEnCbx());
+		probabilidadAccidentar(4);
     }//GEN-LAST:event_btnRemedioCuranderoActionPerformed
 
     private void btnInventarioCuranderoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInventarioCuranderoActionPerformed
@@ -1141,70 +1169,101 @@ private int contadorDias;
     private void btnMoverExploradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoverExploradorActionPerformed
         if(personajes.get(0).getNivelSalud()!=0){
 			cambiarDestinoPersonaje(personajes.get(0),txfXExplorador.getText().trim(),txfYExplorador.getText().trim());
+			probabilidadAccidentar(0);
+			
 		}
     }//GEN-LAST:event_btnMoverExploradorActionPerformed
 
     private void btnMoverCazadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoverCazadorActionPerformed
         if(personajes.get(1).getNivelSalud()!=0){
 			cambiarDestinoPersonaje(personajes.get(1),txfXCazador.getText().trim(),txfYCazador.getText().trim());
+			probabilidadAccidentar(1);
 		}
     }//GEN-LAST:event_btnMoverCazadorActionPerformed
 
     private void btnMoverRecolectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoverRecolectorActionPerformed
 		if(personajes.get(2).getNivelSalud()!=0){
 			cambiarDestinoPersonaje(personajes.get(2),txfXRecolector.getText().trim(),txfYRecolector.getText().trim());
+			probabilidadAccidentar(2);
 		}
     }//GEN-LAST:event_btnMoverRecolectorActionPerformed
 
     private void btnMoverConstructorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoverConstructorActionPerformed
         if(personajes.get(3).getNivelSalud()!=0){
 			cambiarDestinoPersonaje(personajes.get(3),txfXConstructor.getText().trim(),txfYConstructor.getText().trim());
+			probabilidadAccidentar(3);
 		}
     }//GEN-LAST:event_btnMoverConstructorActionPerformed
 
     private void btnMoverCuranderoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoverCuranderoActionPerformed
         if(personajes.get(4).getNivelSalud()!=0){
 			cambiarDestinoPersonaje(personajes.get(4),txfXCurandero.getText().trim(),txfYCurandero.getText().trim());
+			probabilidadAccidentar(4);
 		}
     }//GEN-LAST:event_btnMoverCuranderoActionPerformed
 
     private void btnMoverCientificoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoverCientificoActionPerformed
         if(personajes.get(5).getNivelSalud()!=0){
 			cambiarDestinoPersonaje(personajes.get(5),txfXCientifico.getText().trim(),txfYCientifico.getText().trim());
+			probabilidadAccidentar(5);
 		}
     }//GEN-LAST:event_btnMoverCientificoActionPerformed
 
     private void btnExplorarExploradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExplorarExploradorActionPerformed
 		((Explorador)personajes.get(0)).explorar();
+		probabilidadAccidentar(0);
     }//GEN-LAST:event_btnExplorarExploradorActionPerformed
 
     private void btnRecolectarExploradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecolectarExploradorActionPerformed
         ((Explorador)personajes.get(0)).recolectar();
+		probabilidadAccidentar(0);
     }//GEN-LAST:event_btnRecolectarExploradorActionPerformed
 
     private void btnDefenderCazadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDefenderCazadorActionPerformed
 		((Cazador)personajes.get(1)).defender(personajes.get(1).getCasillaActual().getAnimal());
+		probabilidadAccidentar(1);
     }//GEN-LAST:event_btnDefenderCazadorActionPerformed
 
     private void btnCazarCazadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCazarCazadorActionPerformed
-		((Cazador)personajes.get(1)).cazar(personajes.get(1).getCasillaActual().getAnimal());		
+		((Cazador)personajes.get(1)).cazar(personajes.get(1).getCasillaActual().getAnimal());	
+		probabilidadAccidentar(1);
     }//GEN-LAST:event_btnCazarCazadorActionPerformed
 
     private void btnRecolectarRecolectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecolectarRecolectorActionPerformed
         ((Recolector)personajes.get(2)).recolectar();
+		probabilidadAccidentar(2);
     }//GEN-LAST:event_btnRecolectarRecolectorActionPerformed
 
     private void btnConstruirConstructorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConstruirConstructorActionPerformed
         ((Constructor)personajes.get(3)).construirRefugio(personajes.get(3).getCasillaActual());
+		probabilidadAccidentar(3);
     }//GEN-LAST:event_btnConstruirConstructorActionPerformed
 
     private void btnCurarCuranderoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCurarCuranderoActionPerformed
 		((Curandero)personajes.get(4)).curar(inventariosGUI.get(4).getPersonajeEnCbx());
+		probabilidadAccidentar(4);
     }//GEN-LAST:event_btnCurarCuranderoActionPerformed
 
-    private void btnRecolectarRecolector1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecolectarRecolector1ActionPerformed
+    private void btnRecolectarCuranderoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecolectarCuranderoActionPerformed
 		((Curandero)personajes.get(4)).recolectar();
-    }//GEN-LAST:event_btnRecolectarRecolector1ActionPerformed
+		probabilidadAccidentar(4);
+    }//GEN-LAST:event_btnRecolectarCuranderoActionPerformed
+
+    private void btnControlesDiosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnControlesDiosActionPerformed
+        controlesDios.setVisible(true);
+    }//GEN-LAST:event_btnControlesDiosActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        controlesDios.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+	public boolean isTormenta() {
+		return tormenta;
+	}
+
+	public void setTormenta(boolean tormenta) {
+		this.tormenta = tormenta;
+	}
 
 	/**
 	 * @param args the command line arguments
@@ -1238,10 +1297,6 @@ private int contadorDias;
 						break;
 					case 12:
 						añadirPersonaje(fila, columna, new Cientifico(columna, fila, mapa));
-						break;
-					case 14:  // TEST GRAFICO RECURSO TODO: QUITARLO.
-//						mapa.getCasilla(fila, columna).setRecurso(new Recurso("Carne",5));
-						mapa.getCasilla(fila, columna).setRecurso(new Recurso("Madera",100));
 						break;
 				}
 				counter++;
@@ -1415,18 +1470,93 @@ private int contadorDias;
 		tiempoThread.setMinutos(0);
 		lblDia.setText("Día " + ++contadorDias);
 		
-		//TODO: Random chance de tormenta, bajar a cada personaje vida/energia dependiendo de condiciones, random chance de enfermarse, 
-		//Revisar si hay tormenta actualmente.
-		//Revisar cada personaje si está en refugio
-		//bajar vida a refugios si hay tormenta.
-		//revisar cada personaje si está enfermo.
-		//recuperar energia a personajes si está en refugio 10 salud y 100 de energia
-		//
+		for (Personaje personaje : personajes) {
+			if(personaje.isEnfermo()){
+				personaje.reducirSalud(10);
+			}
+			if(tormenta){
+				if(personaje.getRefugioAsignado()==null){
+					personaje.reducirEnergia(40);
+					personaje.reducirSalud(10);
+				} else if(personaje.getRefugioAsignado().getEstabilidad() <30){
+					personaje.reducirEnergia(25);
+				} else if(personaje.getRefugioAsignado().getEstabilidad() < 70){
+					personaje.reducirEnergia(15);
+				} else {
+					personaje.reducirEnergia(5);
+				}
+				
+				bajarEstabilidadRefugios();
+			} else {
+				if(personaje.getRefugioAsignado()==null){
+					personaje.reducirEnergia(10);
+				} else {
+					personaje.recuperarEnergia(100);
+					personaje.recuperarSalud(10);
+				}
+			}
+			if(Random.probabilidad(5)){
+				personaje.setEstaEnfermo(true);
+			}
+		}
+		tormenta = false;
+		if(Random.probabilidad(5)){
+			tormenta = true;
+		}
+		
+		
 	}
+	
+	private void bajarEstabilidadRefugios(){
+		for (int fila = 0; fila < mapaTablero.getMapa().length; fila++) {
+            for (int columna = 0; columna < mapaTablero.getMapa()[0].length; columna++) {
+				Casilla casilla = mapaTablero.getCasilla(fila, columna);
+				if(casilla.getRefugio() != null){
+					casilla.getRefugio().bajarEstabilidad(20);
+				}
+			}
+		}
+	}
+	
+	public void probabilidadAccidentar(int indexPersonaje){
+		if(Random.probabilidad(5)){
+			personajes.get(indexPersonaje).accidentar();
+		}
+	}
+
+	public JLabel getLblCazadorIcon() {
+		return lblCazadorIcon;
+	}
+
+	public JLabel getLblCientificoIcon() {
+		return lblCientificoIcon;
+	}
+
+	public JLabel getLblClima() {
+		return lblClima;
+	}
+
+	public JLabel getLblConstructorIcon() {
+		return lblConstructorIcon;
+	}
+
+	public JLabel getLblCuranderoIcon() {
+		return lblCuranderoIcon;
+	}
+
+	public JLabel getLblExploradorIcon() {
+		return lblExploradorIcon;
+	}
+
+	public JLabel getLblRecolectorIcon() {
+		return lblRecolectorIcon;
+	}
+	
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCazarCazador;
     private javax.swing.JButton btnConstruirConstructor;
+    private javax.swing.JButton btnControlesDios;
     private javax.swing.JButton btnCurarCurandero;
     private javax.swing.JButton btnDefenderCazador;
     private javax.swing.JButton btnExplorarExplorador;
@@ -1443,11 +1573,12 @@ private int contadorDias;
     private javax.swing.JButton btnMoverExplorador;
     private javax.swing.JButton btnMoverRecolector;
     private javax.swing.JButton btnRecolectarCientifico;
+    private javax.swing.JButton btnRecolectarCurandero;
     private javax.swing.JButton btnRecolectarExplorador;
     private javax.swing.JButton btnRecolectarRecolector;
-    private javax.swing.JButton btnRecolectarRecolector1;
     private javax.swing.JButton btnRemedioCurandero;
     private javax.swing.JButton btnRepararConstructor;
+    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblCazadorIcon;
     private java.awt.Label lblCazadorNombre;

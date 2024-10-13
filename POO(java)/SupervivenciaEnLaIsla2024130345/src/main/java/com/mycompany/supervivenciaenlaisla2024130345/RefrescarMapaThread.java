@@ -8,6 +8,7 @@ package com.mycompany.supervivenciaenlaisla2024130345;
  *
  * @author Proyecto Diseño
  */
+
 import javax.swing.JPanel;
 import java.awt.Color;
 import java.util.ArrayList;
@@ -27,9 +28,10 @@ public class RefrescarMapaThread extends Thread {
 	private final ImageIcon frutasIcon;
 	private final ImageIcon plantasIcon;
 	private final ImageIcon maderaIcon;
+	private Juego juego;
 	
 
-    public RefrescarMapaThread(Mapa mapa, JPanel[][] panelesMapa, JPanel jPanel1, JLabel[][] labelsImagenes, JLabel[][] labelsTexto, JLabel[][] labelsPersonajes, ArrayList<Personaje> personajes) {
+    public RefrescarMapaThread(Mapa mapa, JPanel[][] panelesMapa, JPanel jPanel1, JLabel[][] labelsImagenes, JLabel[][] labelsTexto, JLabel[][] labelsPersonajes, ArrayList<Personaje> personajes, Juego juego) {
         this.mapa = mapa;
         this.panelesMapa = panelesMapa;
         this.jPanel1 = jPanel1;
@@ -42,6 +44,7 @@ public class RefrescarMapaThread extends Thread {
 		this.frutasIcon = new ImageIcon("C:\\Users\\Proyecto Diseño\\Desktop\\imagenesIslandSurvivors\\Frutas.png");
 		this.plantasIcon = new ImageIcon("C:\\Users\\Proyecto Diseño\\Desktop\\imagenesIslandSurvivors\\Plantas.png");
 		this.maderaIcon = new ImageIcon("C:\\Users\\Proyecto Diseño\\Desktop\\imagenesIslandSurvivors\\Madera.png");
+		this.juego = juego;
     }
 
     @Override
@@ -50,6 +53,8 @@ public class RefrescarMapaThread extends Thread {
             while (true) {  
                 refrescarMapa();  
 				cambiarVidaYEnergia();
+				cambiarClima();
+				personajeEnfermo();
                 Thread.sleep(1000);  
             }
         } catch (InterruptedException e) {
@@ -66,7 +71,6 @@ public class RefrescarMapaThread extends Thread {
 				JLabel labelImagen = labelsImagenes[fila][columna];
 				JLabel labelTexto = labelsTexto[fila][columna];
 				
-                //TODO: todo lo que puede cambiar o hay que enseñar en gui
                 if (casilla.isDescubierta()) {
                     panelCasilla.setBackground(Color.decode("#369649"));
 					if(casilla.getRefugio() != null){
@@ -94,7 +98,7 @@ public class RefrescarMapaThread extends Thread {
 						}
 					}	
 				}else {
-                    panelCasilla.setBackground(Color.gray); //TODO: Podría quitarlo.
+                    panelCasilla.setBackground(Color.gray); 
 					if(!casilla.getPersonajes().isEmpty()){
 						labelImagen.setIcon(casilla.getPersonajes().get(0).getPersonajeIcon());
 					} else{
@@ -113,6 +117,53 @@ public class RefrescarMapaThread extends Thread {
 			labelsPersonajes[i][0].setText(Integer.toString(personajes.get(i).getNivelSalud()));
 			labelsPersonajes[i][1].setText(Integer.toString(personajes.get(i).getNivelEnergia()));
 		}
+	}
+	
+	private void cambiarClima(){
+		if(!juego.isTormenta()){
+			juego.getLblClima().setText("Clima: Despejado");
+		} else {
+			juego.getLblClima().setText("Clima: Tormentoso");
+		}
+	}
+	
+	private void personajeEnfermo(){
+		if (personajes.get(0).isEnfermo()) {
+			juego.getLblExploradorIcon().setBackground(Color.GREEN);
+		} else {
+			juego.getLblExploradorIcon().setBackground(Color.WHITE);
+		}
+
+		if (personajes.get(1).isEnfermo()) {
+			juego.getLblCazadorIcon().setBackground(Color.GREEN);
+		} else {
+			juego.getLblCazadorIcon().setBackground(Color.WHITE);
+		}
+
+		if (personajes.get(2).isEnfermo()) {
+			juego.getLblRecolectorIcon().setBackground(Color.GREEN);
+		} else {
+			juego.getLblRecolectorIcon().setBackground(Color.WHITE);
+		}
+
+		if (personajes.get(3).isEnfermo()) {
+			juego.getLblConstructorIcon().setBackground(Color.GREEN);
+		} else {
+			juego.getLblConstructorIcon().setBackground(Color.WHITE);
+		}
+
+		if (personajes.get(4).isEnfermo()) {
+			juego.getLblCuranderoIcon().setBackground(Color.GREEN);
+		} else {
+			juego.getLblCuranderoIcon().setBackground(Color.WHITE);
+		}
+
+		if (personajes.get(5).isEnfermo()) {
+			juego.getLblCientificoIcon().setBackground(Color.GREEN);
+		} else {
+			juego.getLblCientificoIcon().setBackground(Color.WHITE);
+		}
+
 	}
 	
 }

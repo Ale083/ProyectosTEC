@@ -14,8 +14,8 @@ public class Explorador extends Personaje{
 	private int nivelExploracion;
 	
 	public Explorador(int x, int y, Mapa mapa) {
-		super("Explorador", new ImageIcon("C:\\Users\\Proyecto Diseño\\Desktop\\imagenesIslandSurvivors\\Explorador.png"),x,y, mapa);
-		this.nivelExploracion = 3; //TODO, maybe que sea random.
+		super("Explorador", new ImageIcon("C:\\Users\\Proyecto Diseño\\Desktop\\imagenesIslandSurvivors\\Explorador.png"),x,y, mapa,"C:\\Users\\Proyecto Diseño\\Desktop\\ArchivostxtIslandSurvivors\\Explorador.txt");
+		this.nivelExploracion = Random.randomInt(3, 4); 
 	}
 
 	public void recolectar(){
@@ -28,6 +28,7 @@ public class Explorador extends Personaje{
 		reducirEnergia(5);
 		añadirAInventario(getCasillaActual().getRecurso());
 		getCasillaActual().setRecurso(null);
+		meterABitacora("El explorador recolectó en " + java.time.LocalDateTime.now().format(java.time.format.DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
 	}
 	
 	public void explorar(){
@@ -47,6 +48,7 @@ public class Explorador extends Personaje{
 				getMapa().getCasilla(fila + getyActual(), columna + getxActual()).descubrirSalvaje();
 			}
 		}
+		meterABitacora("El explorador exploró en " + java.time.LocalDateTime.now().format(java.time.format.DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
 	}
 	                                     
 	@Override

@@ -16,7 +16,6 @@ public class Casilla {
     private ArrayList<Personaje> personajes;
 	private Recurso recurso;
     private Animal animal;
-//    private Evento eventoActual; 
 
     public Casilla() {
         this.descubierta = false;
@@ -35,7 +34,7 @@ public class Casilla {
     }
 	public void descubrirSalvaje(){
 		this.descubierta = true;
-		//Aqui poner para generar materiales, animal, etc, cuando se descubre.
+		//Aqui poner para generar materiales, animal, etc, cuando se descubre. TODO
 	}
 
 	public Refugio getRefugio() {

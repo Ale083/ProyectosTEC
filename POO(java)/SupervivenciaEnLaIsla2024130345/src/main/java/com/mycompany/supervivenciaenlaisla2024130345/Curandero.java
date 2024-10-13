@@ -14,7 +14,7 @@ public class Curandero extends Personaje{
 	
 	
 	public Curandero(int x, int y, Mapa mapa) {
-		super("Curandero", new ImageIcon("C:\\Users\\Proyecto Diseño\\Desktop\\imagenesIslandSurvivors\\Curandero.png"),x,y, mapa);
+		super("Curandero", new ImageIcon("C:\\Users\\Proyecto Diseño\\Desktop\\imagenesIslandSurvivors\\Curandero.png"),x,y, mapa,"C:\\Users\\Proyecto Diseño\\Desktop\\ArchivostxtIslandSurvivors\\Curandero.txt");
 		habilidadCurar = Random.randomInt(15, 20);
 	}
 
@@ -36,7 +36,7 @@ public class Curandero extends Personaje{
 		getInventario()[2].usarRecurso(5);
 		reducirEnergia(10);
 		personaje.recuperarSalud(habilidadCurar);
-		
+		meterABitacora("El curandero curó a " + personaje.getNombre() + " en " + java.time.LocalDateTime.now().format(java.time.format.DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
 	}
 	
 	public void prepararRemedio(Personaje enfermo){
@@ -46,6 +46,7 @@ public class Curandero extends Personaje{
 		getInventario()[2].usarRecurso(10);
 		reducirEnergia(10);
 		enfermo.setEstaEnfermo(false);
+		meterABitacora("El curandero preparó un remedio para " + enfermo.getNombre() + " en " + java.time.LocalDateTime.now().format(java.time.format.DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
 	}
 	
 	public void recolectar(){
@@ -55,5 +56,6 @@ public class Curandero extends Personaje{
 		reducirEnergia(10);
 		añadirAInventario(getCasillaActual().getRecurso());
 		getCasillaActual().setRecurso(null);
+		meterABitacora("El curandero recolectó en" + java.time.LocalDateTime.now().format(java.time.format.DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
 	}
 }
