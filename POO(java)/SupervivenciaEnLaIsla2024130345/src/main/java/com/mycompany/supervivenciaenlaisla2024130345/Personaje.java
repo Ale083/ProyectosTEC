@@ -33,7 +33,7 @@ public abstract class Personaje {
 	public Personaje(String nombre, ImageIcon personajeIcon,int x, int y, Mapa mapa,String rutaArchivo) {
 		this.nombre = nombre;
 		nivelEnergia = 100;
-		nivelSalud = 50;
+		nivelSalud = 100;
 		refugioAsignado = null;
 		this.personajeIcon = personajeIcon;
 		xDestino = -1;

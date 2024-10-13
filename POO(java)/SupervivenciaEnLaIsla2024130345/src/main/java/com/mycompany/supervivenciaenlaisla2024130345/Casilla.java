@@ -33,8 +33,27 @@ public class Casilla {
         this.descubierta = true;
     }
 	public void descubrirSalvaje(){
-		this.descubierta = true;
-		//Aqui poner para generar materiales, animal, etc, cuando se descubre. TODO
+		if(!this.descubierta){
+			this.descubierta = true;
+			//Aqui poner para generar materiales, animal, etc, cuando se descubre. TODO
+			if(Random.probabilidad(5)){
+				if(Random.probabilidad(30)){
+					setAnimal(new Animal("Grande"));
+				} else {
+					setAnimal(new Animal("Pequeño"));
+				}
+			} else if(Random.probabilidad(15)){
+				int num = Random.randomInt(1, 3);
+				int cant = Random.randomInt(5, 20);
+				if(num == 1){
+					setRecurso(new Recurso("Frutas",cant));
+				} else if(num == 2){
+					setRecurso(new Recurso("Plantas",cant));
+				} else{
+					setRecurso(new Recurso("Madera",cant));
+				}
+			}
+		}
 	}
 
 	public Refugio getRefugio() {
