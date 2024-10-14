@@ -87,7 +87,6 @@ private ControlesDios controlesDios;
         lblYCazador = new java.awt.Label();
         lblVidaCazador = new javax.swing.JLabel();
         lblEnergiaCazador = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
         pnlControlesExplorador = new javax.swing.JPanel();
         lblExploradorIcon = new javax.swing.JLabel();
         lblExploradorNombre = new java.awt.Label();
@@ -245,13 +244,6 @@ private ControlesDios controlesDios;
         lblEnergiaCazador.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         lblEnergiaCazador.setOpaque(true);
 
-        jButton1.setText("jButton1");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout pnlControlesCazadorLayout = new javax.swing.GroupLayout(pnlControlesCazador);
         pnlControlesCazador.setLayout(pnlControlesCazadorLayout);
         pnlControlesCazadorLayout.setHorizontalGroup(
@@ -286,15 +278,10 @@ private ControlesDios controlesDios;
                 .addComponent(lblEnergiaCazador, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(17, 17, 17))
             .addGroup(pnlControlesCazadorLayout.createSequentialGroup()
-                .addGroup(pnlControlesCazadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlControlesCazadorLayout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addComponent(lblCazadorIcon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblCazadorNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlControlesCazadorLayout.createSequentialGroup()
-                        .addGap(76, 76, 76)
-                        .addComponent(jButton1)))
+                .addGap(27, 27, 27)
+                .addComponent(lblCazadorIcon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblCazadorNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlControlesCazadorLayout.setVerticalGroup(
@@ -308,9 +295,7 @@ private ControlesDios controlesDios;
                 .addGroup(pnlControlesCazadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblVidaCazador)
                     .addComponent(lblEnergiaCazador))
-                .addGap(7, 7, 7)
-                .addComponent(jButton1)
-                .addGap(18, 18, 18)
+                .addGap(48, 48, 48)
                 .addGroup(pnlControlesCazadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlControlesCazadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txfXCazador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1253,10 +1238,6 @@ private ControlesDios controlesDios;
         controlesDios.setVisible(true);
     }//GEN-LAST:event_btnControlesDiosActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        controlesDios.setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
-
 	public boolean isTormenta() {
 		return tormenta;
 	}
@@ -1314,7 +1295,7 @@ private ControlesDios controlesDios;
 				labelsTexto[fila][columna] = labelPersonas; 
 				labelPersonas.setOpaque(false);
 				panelCasilla.add(labelPersonas);
-				labelPersonas.setFont(new java.awt.Font("Segoe UI", 0, 10));;
+				labelPersonas.setFont(new java.awt.Font("Segoe UI", 0, 10));
 				labelPersonas.setAlignmentX(Component.CENTER_ALIGNMENT);  
 				labelPersonas.setAlignmentY(0.3f); //0.5f lo centra, para hacerlo un poco para abajo puse 0.3f
 				labelPersonas.setPreferredSize(new java.awt.Dimension(32, 16));
@@ -1345,14 +1326,6 @@ private ControlesDios controlesDios;
                 panelCasilla.addMouseListener(new java.awt.event.MouseAdapter() {
                     @Override
                     public void mouseClicked(java.awt.event.MouseEvent evt) {
-                        
-						Casilla casilla = mapa.getCasilla(f, c);
-//						casilla.descubrir();
-//						casilla.setRefugio(new Refugio());
-//						casilla.añadirPersonaje(new Curandero(c,f));
-                        System.out.println("Casilla: (" + f + ", " + c + ")");
-						
-						//ya desde aqui las que se quedan
 						cambiarTextFields(Integer.toString(c),Integer.toString(f));
 					}
                 });
@@ -1578,7 +1551,6 @@ private ControlesDios controlesDios;
     private javax.swing.JButton btnRecolectarRecolector;
     private javax.swing.JButton btnRemedioCurandero;
     private javax.swing.JButton btnRepararConstructor;
-    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblCazadorIcon;
     private java.awt.Label lblCazadorNombre;
